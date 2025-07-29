@@ -1,0 +1,89 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_servicecatalog_portfolio.example": {
+		"address": "aws_servicecatalog_portfolio.example",
+		"config": {
+			"description": {
+				"constant_value": "example",
+			},
+			"name": {
+				"constant_value": "example",
+			},
+			"provider_name": {
+				"constant_value": "example",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_servicecatalog_portfolio",
+	},
+	"aws_servicecatalog_portfolio_share.example": {
+		"address": "aws_servicecatalog_portfolio_share.example",
+		"config": {
+			"portfolio_id": {
+				"references": [
+					"aws_servicecatalog_portfolio.example.id",
+					"aws_servicecatalog_portfolio.example",
+				],
+			},
+			"principal_id": {
+				"constant_value": "012128675309",
+			},
+			"type": {
+				"constant_value": "ORGANIZATION_MEMBER_ACCOUNT",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_servicecatalog_portfolio_share",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

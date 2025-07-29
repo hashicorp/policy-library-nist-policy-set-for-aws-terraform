@@ -1,0 +1,325 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_acmpca_certificate_authority.example": {
+			"address":        "aws_acmpca_certificate_authority.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_acmpca_certificate_authority",
+			"values": {
+				"certificate_authority_configuration": [
+					{
+						"key_algorithm":     "RSA_4096",
+						"signing_algorithm": "SHA512WITHRSA",
+						"subject": [
+							{
+								"common_name":                  "example.com",
+								"country":                      null,
+								"distinguished_name_qualifier": null,
+								"generation_qualifier":         null,
+								"given_name":                   null,
+								"initials":                     null,
+								"locality":                     null,
+								"organization":                 null,
+								"organizational_unit":          null,
+								"pseudonym":                    null,
+								"state":                        null,
+								"surname":                      null,
+								"title":                        null,
+							},
+						],
+					},
+				],
+				"enabled":                         true,
+				"permanent_deletion_time_in_days": 7,
+				"revocation_configuration":        [],
+				"tags":     null,
+				"timeouts": null,
+				"type":     "ROOT",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_acmpca_certificate_authority.example": {
+		"address": "aws_acmpca_certificate_authority.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"certificate_authority_configuration": [
+					{
+						"key_algorithm":     "RSA_4096",
+						"signing_algorithm": "SHA512WITHRSA",
+						"subject": [
+							{
+								"common_name":                  "example.com",
+								"country":                      null,
+								"distinguished_name_qualifier": null,
+								"generation_qualifier":         null,
+								"given_name":                   null,
+								"initials":                     null,
+								"locality":                     null,
+								"organization":                 null,
+								"organizational_unit":          null,
+								"pseudonym":                    null,
+								"state":                        null,
+								"surname":                      null,
+								"title":                        null,
+							},
+						],
+					},
+				],
+				"enabled":                         true,
+				"permanent_deletion_time_in_days": 7,
+				"revocation_configuration":        [],
+				"tags":     null,
+				"timeouts": null,
+				"type":     "ROOT",
+			},
+			"after_unknown": {
+				"arn":         true,
+				"certificate": true,
+				"certificate_authority_configuration": [
+					{
+						"subject": [
+							{},
+						],
+					},
+				],
+				"certificate_chain":           true,
+				"certificate_signing_request": true,
+				"id": true,
+				"key_storage_security_standard": true,
+				"not_after":                     true,
+				"not_before":                    true,
+				"revocation_configuration":      [],
+				"serial":                        true,
+				"tags_all":                      true,
+				"usage_mode":                    true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_acmpca_certificate_authority",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_acmpca_certificate_authority.example",
+					"expressions": {
+						"certificate_authority_configuration": [
+							{
+								"key_algorithm": {
+									"constant_value": "RSA_4096",
+								},
+								"signing_algorithm": {
+									"constant_value": "SHA512WITHRSA",
+								},
+								"subject": [
+									{
+										"common_name": {
+											"constant_value": "example.com",
+										},
+									},
+								],
+							},
+						],
+						"enabled": {
+							"constant_value": true,
+						},
+						"permanent_deletion_time_in_days": {
+							"constant_value": 7,
+						},
+						"type": {
+							"constant_value": "ROOT",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_acmpca_certificate_authority",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_acmpca_certificate_authority.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"sensitive_values": {
+						"certificate_authority_configuration": [
+							{
+								"subject": [
+									{},
+								],
+							},
+						],
+						"revocation_configuration": [],
+						"tags_all":                 {},
+					},
+					"type": "aws_acmpca_certificate_authority",
+					"values": {
+						"certificate_authority_configuration": [
+							{
+								"key_algorithm":     "RSA_4096",
+								"signing_algorithm": "SHA512WITHRSA",
+								"subject": [
+									{
+										"common_name":                  "example.com",
+										"country":                      null,
+										"distinguished_name_qualifier": null,
+										"generation_qualifier":         null,
+										"given_name":                   null,
+										"initials":                     null,
+										"locality":                     null,
+										"organization":                 null,
+										"organizational_unit":          null,
+										"pseudonym":                    null,
+										"state":                        null,
+										"surname":                      null,
+										"title":                        null,
+									},
+								],
+							},
+						],
+						"enabled":                         true,
+						"permanent_deletion_time_in_days": 7,
+						"revocation_configuration":        [],
+						"tags":     null,
+						"timeouts": null,
+						"type":     "ROOT",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_acmpca_certificate_authority.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"certificate_authority_configuration": [
+						{
+							"key_algorithm":     "RSA_4096",
+							"signing_algorithm": "SHA512WITHRSA",
+							"subject": [
+								{
+									"common_name":                  "example.com",
+									"country":                      null,
+									"distinguished_name_qualifier": null,
+									"generation_qualifier":         null,
+									"given_name":                   null,
+									"initials":                     null,
+									"locality":                     null,
+									"organization":                 null,
+									"organizational_unit":          null,
+									"pseudonym":                    null,
+									"state":                        null,
+									"surname":                      null,
+									"title":                        null,
+								},
+							],
+						},
+					],
+					"enabled":                         true,
+					"permanent_deletion_time_in_days": 7,
+					"revocation_configuration":        [],
+					"tags":     null,
+					"timeouts": null,
+					"type":     "ROOT",
+				},
+				"after_sensitive": {
+					"certificate_authority_configuration": [
+						{
+							"subject": [
+								{},
+							],
+						},
+					],
+					"revocation_configuration": [],
+					"tags_all":                 {},
+				},
+				"after_unknown": {
+					"arn":         true,
+					"certificate": true,
+					"certificate_authority_configuration": [
+						{
+							"subject": [
+								{},
+							],
+						},
+					],
+					"certificate_chain":           true,
+					"certificate_signing_request": true,
+					"id": true,
+					"key_storage_security_standard": true,
+					"not_after":                     true,
+					"not_before":                    true,
+					"revocation_configuration":      [],
+					"serial":                        true,
+					"tags_all":                      true,
+					"usage_mode":                    true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_acmpca_certificate_authority",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2025-01-31T06:41:22Z",
+}

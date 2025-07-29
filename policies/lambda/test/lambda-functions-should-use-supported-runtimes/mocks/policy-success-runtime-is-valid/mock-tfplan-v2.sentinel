@@ -1,0 +1,621 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_iam_role.iam_for_lambda": {
+			"address":        "aws_iam_role.iam_for_lambda",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "iam_for_lambda",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "iam_for_lambda",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+		},
+		"aws_lambda_function.test_lambda": {
+			"address":        "aws_lambda_function.test_lambda",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test_lambda",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_lambda_function",
+			"values": {
+				"code_signing_config_arn": null,
+				"dead_letter_config":      [],
+				"description":             null,
+				"environment":             [],
+				"ephemeral_storage": [
+					{
+						"size": 10240,
+					},
+				],
+				"file_system_config": [],
+				"filename":           "lambda_function_payload.zip",
+				"function_name":      "lambda_function_name",
+				"handler":            "index.test",
+				"image_config":       [],
+				"image_uri":          null,
+				"kms_key_arn":        null,
+				"layers":             null,
+				"memory_size":        128,
+				"package_type":       "Zip",
+				"publish":            false,
+				"replace_security_groups_on_destroy": null,
+				"replacement_security_group_ids":     null,
+				"reserved_concurrent_executions":     -1,
+				"runtime":                            "nodejs18.x",
+				"s3_bucket":                          null,
+				"s3_key":                             null,
+				"s3_object_version":                  null,
+				"skip_destroy":                       false,
+				"snap_start":                         [],
+				"tags":                               null,
+				"timeout":                            3,
+				"timeouts":                           null,
+				"vpc_config":                         [],
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_iam_role.iam_for_lambda": {
+		"address": "aws_iam_role.iam_for_lambda",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "iam_for_lambda",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+			"after_unknown": {
+				"arn":                 true,
+				"create_date":         true,
+				"id":                  true,
+				"inline_policy":       true,
+				"managed_policy_arns": true,
+				"name_prefix":         true,
+				"tags_all":            true,
+				"unique_id":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "iam_for_lambda",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role",
+	},
+	"aws_lambda_function.test_lambda": {
+		"address": "aws_lambda_function.test_lambda",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"code_signing_config_arn": null,
+				"dead_letter_config":      [],
+				"description":             null,
+				"environment":             [],
+				"ephemeral_storage": [
+					{
+						"size": 10240,
+					},
+				],
+				"file_system_config": [],
+				"filename":           "lambda_function_payload.zip",
+				"function_name":      "lambda_function_name",
+				"handler":            "index.test",
+				"image_config":       [],
+				"image_uri":          null,
+				"kms_key_arn":        null,
+				"layers":             null,
+				"memory_size":        128,
+				"package_type":       "Zip",
+				"publish":            false,
+				"replace_security_groups_on_destroy": null,
+				"replacement_security_group_ids":     null,
+				"reserved_concurrent_executions":     -1,
+				"runtime":                            "nodejs18.x",
+				"s3_bucket":                          null,
+				"s3_key":                             null,
+				"s3_object_version":                  null,
+				"skip_destroy":                       false,
+				"snap_start":                         [],
+				"tags":                               null,
+				"timeout":                            3,
+				"timeouts":                           null,
+				"vpc_config":                         [],
+			},
+			"after_unknown": {
+				"architectures":      true,
+				"arn":                true,
+				"code_sha256":        true,
+				"dead_letter_config": [],
+				"environment":        [],
+				"ephemeral_storage": [
+					{},
+				],
+				"file_system_config":          [],
+				"id":                          true,
+				"image_config":                [],
+				"invoke_arn":                  true,
+				"last_modified":               true,
+				"logging_config":              true,
+				"qualified_arn":               true,
+				"qualified_invoke_arn":        true,
+				"role":                        true,
+				"signing_job_arn":             true,
+				"signing_profile_version_arn": true,
+				"snap_start":                  [],
+				"source_code_hash":            true,
+				"source_code_size":            true,
+				"tags_all":                    true,
+				"tracing_config":              true,
+				"version":                     true,
+				"vpc_config":                  [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test_lambda",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_lambda_function",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_iam_role.iam_for_lambda",
+					"expressions": {
+						"assume_role_policy": {
+							"references": [
+								"data.aws_iam_policy_document.assume_role.json",
+								"data.aws_iam_policy_document.assume_role",
+							],
+						},
+						"name": {
+							"constant_value": "iam_for_lambda",
+						},
+					},
+					"mode":                "managed",
+					"name":                "iam_for_lambda",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role",
+				},
+				{
+					"address": "aws_lambda_function.test_lambda",
+					"expressions": {
+						"ephemeral_storage": [
+							{
+								"size": {
+									"constant_value": 10240,
+								},
+							},
+						],
+						"filename": {
+							"constant_value": "lambda_function_payload.zip",
+						},
+						"function_name": {
+							"constant_value": "lambda_function_name",
+						},
+						"handler": {
+							"constant_value": "index.test",
+						},
+						"role": {
+							"references": [
+								"aws_iam_role.iam_for_lambda.arn",
+								"aws_iam_role.iam_for_lambda",
+							],
+						},
+						"runtime": {
+							"constant_value": "nodejs18.x",
+						},
+					},
+					"mode":                "managed",
+					"name":                "test_lambda",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_lambda_function",
+				},
+				{
+					"address": "data.aws_iam_policy_document.assume_role",
+					"expressions": {
+						"statement": [
+							{
+								"actions": {
+									"constant_value": [
+										"sts:AssumeRole",
+									],
+								},
+								"effect": {
+									"constant_value": "Allow",
+								},
+								"principals": [
+									{
+										"identifiers": {
+											"constant_value": [
+												"lambda.amazonaws.com",
+											],
+										},
+										"type": {
+											"constant_value": "Service",
+										},
+									},
+								],
+							},
+						],
+					},
+					"mode":                "data",
+					"name":                "assume_role",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_policy_document",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_iam_role.iam_for_lambda",
+					"mode":           "managed",
+					"name":           "iam_for_lambda",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"inline_policy":       [],
+						"managed_policy_arns": [],
+						"tags_all":            {},
+					},
+					"type": "aws_iam_role",
+					"values": {
+						"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+						"description":           null,
+						"force_detach_policies": false,
+						"max_session_duration":  3600,
+						"name":                  "iam_for_lambda",
+						"path":                  "/",
+						"permissions_boundary":  null,
+						"tags":                  null,
+					},
+				},
+				{
+					"address":        "aws_lambda_function.test_lambda",
+					"mode":           "managed",
+					"name":           "test_lambda",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"architectures":      [],
+						"dead_letter_config": [],
+						"environment":        [],
+						"ephemeral_storage": [
+							{},
+						],
+						"file_system_config": [],
+						"image_config":       [],
+						"logging_config":     [],
+						"snap_start":         [],
+						"tags_all":           {},
+						"tracing_config":     [],
+						"vpc_config":         [],
+					},
+					"type": "aws_lambda_function",
+					"values": {
+						"code_signing_config_arn": null,
+						"dead_letter_config":      [],
+						"description":             null,
+						"environment":             [],
+						"ephemeral_storage": [
+							{
+								"size": 10240,
+							},
+						],
+						"file_system_config": [],
+						"filename":           "lambda_function_payload.zip",
+						"function_name":      "lambda_function_name",
+						"handler":            "index.test",
+						"image_config":       [],
+						"image_uri":          null,
+						"kms_key_arn":        null,
+						"layers":             null,
+						"memory_size":        128,
+						"package_type":       "Zip",
+						"publish":            false,
+						"replace_security_groups_on_destroy": null,
+						"replacement_security_group_ids":     null,
+						"reserved_concurrent_executions":     -1,
+						"runtime":                            "nodejs18.x",
+						"s3_bucket":                          null,
+						"s3_key":                             null,
+						"s3_object_version":                  null,
+						"skip_destroy":                       false,
+						"snap_start":                         [],
+						"tags":                               null,
+						"timeout":                            3,
+						"timeouts":                           null,
+						"vpc_config":                         [],
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.10.2",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":        "data.aws_iam_policy_document.assume_role",
+						"mode":           "data",
+						"name":           "assume_role",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 0,
+						"sensitive_values": {
+							"statement": [
+								{
+									"actions": [
+										false,
+									],
+									"condition":      [],
+									"not_actions":    [],
+									"not_principals": [],
+									"not_resources":  [],
+									"principals": [
+										{
+											"identifiers": [
+												false,
+											],
+										},
+									],
+									"resources": [],
+								},
+							],
+						},
+						"type": "aws_iam_policy_document",
+						"values": {
+							"id":                        "2690255455",
+							"json":                      "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"lambda.amazonaws.com\"\n      }\n    }\n  ]\n}",
+							"minified_json":             "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRole\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}",
+							"override_json":             null,
+							"override_policy_documents": null,
+							"policy_id":                 null,
+							"source_json":               null,
+							"source_policy_documents":   null,
+							"statement": [
+								{
+									"actions": [
+										"sts:AssumeRole",
+									],
+									"condition":      [],
+									"effect":         "Allow",
+									"not_actions":    [],
+									"not_principals": [],
+									"not_resources":  [],
+									"principals": [
+										{
+											"identifiers": [
+												"lambda.amazonaws.com",
+											],
+											"type": "Service",
+										},
+									],
+									"resources": [],
+									"sid":       "",
+								},
+							],
+							"version": "2012-10-17",
+						},
+					},
+				],
+			},
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "aws_iam_role.iam_for_lambda",
+		},
+		{
+			"attribute": [
+				"json",
+			],
+			"resource": "data.aws_iam_policy_document.assume_role",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_iam_role.iam_for_lambda",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+					"description":           null,
+					"force_detach_policies": false,
+					"max_session_duration":  3600,
+					"name":                  "iam_for_lambda",
+					"path":                  "/",
+					"permissions_boundary":  null,
+					"tags":                  null,
+				},
+				"after_sensitive": {
+					"inline_policy":       [],
+					"managed_policy_arns": [],
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"arn":                 true,
+					"create_date":         true,
+					"id":                  true,
+					"inline_policy":       true,
+					"managed_policy_arns": true,
+					"name_prefix":         true,
+					"tags_all":            true,
+					"unique_id":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "iam_for_lambda",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role",
+		},
+		{
+			"address": "aws_lambda_function.test_lambda",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"code_signing_config_arn": null,
+					"dead_letter_config":      [],
+					"description":             null,
+					"environment":             [],
+					"ephemeral_storage": [
+						{
+							"size": 10240,
+						},
+					],
+					"file_system_config": [],
+					"filename":           "lambda_function_payload.zip",
+					"function_name":      "lambda_function_name",
+					"handler":            "index.test",
+					"image_config":       [],
+					"image_uri":          null,
+					"kms_key_arn":        null,
+					"layers":             null,
+					"memory_size":        128,
+					"package_type":       "Zip",
+					"publish":            false,
+					"replace_security_groups_on_destroy": null,
+					"replacement_security_group_ids":     null,
+					"reserved_concurrent_executions":     -1,
+					"runtime":                            "nodejs18.x",
+					"s3_bucket":                          null,
+					"s3_key":                             null,
+					"s3_object_version":                  null,
+					"skip_destroy":                       false,
+					"snap_start":                         [],
+					"tags":                               null,
+					"timeout":                            3,
+					"timeouts":                           null,
+					"vpc_config":                         [],
+				},
+				"after_sensitive": {
+					"architectures":      [],
+					"dead_letter_config": [],
+					"environment":        [],
+					"ephemeral_storage": [
+						{},
+					],
+					"file_system_config": [],
+					"image_config":       [],
+					"logging_config":     [],
+					"snap_start":         [],
+					"tags_all":           {},
+					"tracing_config":     [],
+					"vpc_config":         [],
+				},
+				"after_unknown": {
+					"architectures":      true,
+					"arn":                true,
+					"code_sha256":        true,
+					"dead_letter_config": [],
+					"environment":        [],
+					"ephemeral_storage": [
+						{},
+					],
+					"file_system_config":          [],
+					"id":                          true,
+					"image_config":                [],
+					"invoke_arn":                  true,
+					"last_modified":               true,
+					"logging_config":              true,
+					"qualified_arn":               true,
+					"qualified_invoke_arn":        true,
+					"role":                        true,
+					"signing_job_arn":             true,
+					"signing_profile_version_arn": true,
+					"snap_start":                  [],
+					"source_code_hash":            true,
+					"source_code_size":            true,
+					"tags_all":                    true,
+					"tracing_config":              true,
+					"version":                     true,
+					"vpc_config":                  [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test_lambda",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_lambda_function",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-03-26T06:00:39Z",
+}

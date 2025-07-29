@@ -1,0 +1,411 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_guardduty_detector.MyDetector": {
+			"address":        "aws_guardduty_detector.MyDetector",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "MyDetector",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_guardduty_detector",
+			"values": {
+				"datasources": [
+					{
+						"kubernetes": [
+							{
+								"audit_logs": [
+									{
+										"enable": false,
+									},
+								],
+							},
+						],
+						"malware_protection": [
+							{
+								"scan_ec2_instance_with_findings": [
+									{
+										"ebs_volumes": [
+											{
+												"enable": true,
+											},
+										],
+									},
+								],
+							},
+						],
+						"s3_logs": [
+							{
+								"enable": true,
+							},
+						],
+					},
+				],
+				"enable": false,
+				"tags":   null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_guardduty_detector.MyDetector": {
+		"address": "aws_guardduty_detector.MyDetector",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"datasources": [
+					{
+						"kubernetes": [
+							{
+								"audit_logs": [
+									{
+										"enable": false,
+									},
+								],
+							},
+						],
+						"malware_protection": [
+							{
+								"scan_ec2_instance_with_findings": [
+									{
+										"ebs_volumes": [
+											{
+												"enable": true,
+											},
+										],
+									},
+								],
+							},
+						],
+						"s3_logs": [
+							{
+								"enable": true,
+							},
+						],
+					},
+				],
+				"enable": true,
+				"tags":   null,
+			},
+			"after_unknown": {
+				"account_id": true,
+				"arn":        true,
+				"datasources": [
+					{
+						"kubernetes": [
+							{
+								"audit_logs": [
+									{},
+								],
+							},
+						],
+						"malware_protection": [
+							{
+								"scan_ec2_instance_with_findings": [
+									{
+										"ebs_volumes": [
+											{},
+										],
+									},
+								],
+							},
+						],
+						"s3_logs": [
+							{},
+						],
+					},
+				],
+				"finding_publishing_frequency": true,
+				"id":       true,
+				"tags_all": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "MyDetector",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_guardduty_detector",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_guardduty_detector.MyDetector",
+					"expressions": {
+						"datasources": [
+							{
+								"kubernetes": [
+									{
+										"audit_logs": [
+											{
+												"enable": {
+													"constant_value": false,
+												},
+											},
+										],
+									},
+								],
+								"malware_protection": [
+									{
+										"scan_ec2_instance_with_findings": [
+											{
+												"ebs_volumes": [
+													{
+														"enable": {
+															"constant_value": true,
+														},
+													},
+												],
+											},
+										],
+									},
+								],
+								"s3_logs": [
+									{
+										"enable": {
+											"constant_value": true,
+										},
+									},
+								],
+							},
+						],
+						"enable": {
+							"constant_value": true,
+						},
+					},
+					"mode":                "managed",
+					"name":                "MyDetector",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_guardduty_detector",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_guardduty_detector.MyDetector",
+					"mode":           "managed",
+					"name":           "MyDetector",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"datasources": [
+							{
+								"kubernetes": [
+									{
+										"audit_logs": [
+											{},
+										],
+									},
+								],
+								"malware_protection": [
+									{
+										"scan_ec2_instance_with_findings": [
+											{
+												"ebs_volumes": [
+													{},
+												],
+											},
+										],
+									},
+								],
+								"s3_logs": [
+									{},
+								],
+							},
+						],
+						"tags_all": {},
+					},
+					"type": "aws_guardduty_detector",
+					"values": {
+						"datasources": [
+							{
+								"kubernetes": [
+									{
+										"audit_logs": [
+											{
+												"enable": false,
+											},
+										],
+									},
+								],
+								"malware_protection": [
+									{
+										"scan_ec2_instance_with_findings": [
+											{
+												"ebs_volumes": [
+													{
+														"enable": true,
+													},
+												],
+											},
+										],
+									},
+								],
+								"s3_logs": [
+									{
+										"enable": true,
+									},
+								],
+							},
+						],
+						"enable": true,
+						"tags":   null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_guardduty_detector.MyDetector",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"datasources": [
+						{
+							"kubernetes": [
+								{
+									"audit_logs": [
+										{
+											"enable": false,
+										},
+									],
+								},
+							],
+							"malware_protection": [
+								{
+									"scan_ec2_instance_with_findings": [
+										{
+											"ebs_volumes": [
+												{
+													"enable": true,
+												},
+											],
+										},
+									],
+								},
+							],
+							"s3_logs": [
+								{
+									"enable": true,
+								},
+							],
+						},
+					],
+					"enable": true,
+					"tags":   null,
+				},
+				"after_sensitive": {
+					"datasources": [
+						{
+							"kubernetes": [
+								{
+									"audit_logs": [
+										{},
+									],
+								},
+							],
+							"malware_protection": [
+								{
+									"scan_ec2_instance_with_findings": [
+										{
+											"ebs_volumes": [
+												{},
+											],
+										},
+									],
+								},
+							],
+							"s3_logs": [
+								{},
+							],
+						},
+					],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"account_id": true,
+					"arn":        true,
+					"datasources": [
+						{
+							"kubernetes": [
+								{
+									"audit_logs": [
+										{},
+									],
+								},
+							],
+							"malware_protection": [
+								{
+									"scan_ec2_instance_with_findings": [
+										{
+											"ebs_volumes": [
+												{},
+											],
+										},
+									],
+								},
+							],
+							"s3_logs": [
+								{},
+							],
+						},
+					],
+					"finding_publishing_frequency": true,
+					"id":       true,
+					"tags_all": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "MyDetector",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_guardduty_detector",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-01-07T21:32:10Z",
+}

@@ -1,0 +1,106 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_kms_key.example": {
+		"address": "aws_kms_key.example",
+		"config": {
+			"deletion_window_in_days": {
+				"constant_value": 20,
+			},
+			"description": {
+				"constant_value": "An example symmetric encryption KMS key",
+			},
+			"enable_key_rotation": {
+				"constant_value": true,
+			},
+			"policy": {
+				"references": [
+					"data.aws_caller_identity.current.account_id",
+					"data.aws_caller_identity.current",
+					"data.aws_caller_identity.current.account_id",
+					"data.aws_caller_identity.current",
+					"data.aws_caller_identity.current.account_id",
+					"data.aws_caller_identity.current",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_kms_key",
+	},
+	"aws_sqs_queue.terraform_queue": {
+		"address": "aws_sqs_queue.terraform_queue",
+		"config": {
+			"name": {
+				"constant_value": "terraform-example-queue",
+			},
+			"sqs_managed_sse_enabled": {
+				"constant_value": false,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "terraform_queue",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sqs_queue",
+	},
+	"data.aws_caller_identity.current": {
+		"address":             "data.aws_caller_identity.current",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "current",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_caller_identity",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

@@ -1,0 +1,386 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudwatch_event_bus.example": {
+			"address":        "aws_cloudwatch_event_bus.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_event_bus",
+			"values": {
+				"description":        null,
+				"event_source_name":  null,
+				"kms_key_identifier": null,
+				"name":               "example-event-bus",
+				"tags":               null,
+			},
+		},
+		"aws_cloudwatch_event_bus_policy.example": {
+			"address":        "aws_cloudwatch_event_bus_policy.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_event_bus_policy",
+			"values": {
+				"event_bus_name": "example-event-bus",
+				"policy":         "{\"Statement\":[{\"Action\":\"events:PutEvents\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"123456789012\"},\"Resource\":\"arn:aws:events:eu-west-1:123456789012:event-bus/default\",\"Sid\":\"DevAccountAccess\"}],\"Version\":\"2012-10-17\"}",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_cloudwatch_event_bus.example": {
+		"address": "aws_cloudwatch_event_bus.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description":        null,
+				"event_source_name":  null,
+				"kms_key_identifier": null,
+				"name":               "example-event-bus",
+				"tags":               null,
+			},
+			"after_unknown": {
+				"arn":      true,
+				"id":       true,
+				"tags_all": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_cloudwatch_event_bus",
+	},
+	"aws_cloudwatch_event_bus_policy.example": {
+		"address": "aws_cloudwatch_event_bus_policy.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"event_bus_name": "example-event-bus",
+				"policy":         "{\"Statement\":[{\"Action\":\"events:PutEvents\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"123456789012\"},\"Resource\":\"arn:aws:events:eu-west-1:123456789012:event-bus/default\",\"Sid\":\"DevAccountAccess\"}],\"Version\":\"2012-10-17\"}",
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_cloudwatch_event_bus_policy",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_cloudwatch_event_bus.example",
+					"expressions": {
+						"name": {
+							"constant_value": "example-event-bus",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_cloudwatch_event_bus",
+				},
+				{
+					"address": "aws_cloudwatch_event_bus_policy.example",
+					"expressions": {
+						"event_bus_name": {
+							"references": [
+								"aws_cloudwatch_event_bus.example.name",
+								"aws_cloudwatch_event_bus.example",
+							],
+						},
+						"policy": {
+							"references": [
+								"data.aws_iam_policy_document.test.json",
+								"data.aws_iam_policy_document.test",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_cloudwatch_event_bus_policy",
+				},
+				{
+					"address": "data.aws_iam_policy_document.test",
+					"expressions": {
+						"statement": [
+							{
+								"actions": {
+									"constant_value": [
+										"events:PutEvents",
+									],
+								},
+								"effect": {
+									"constant_value": "Allow",
+								},
+								"principals": [
+									{
+										"identifiers": {
+											"constant_value": [
+												"123456789012",
+											],
+										},
+										"type": {
+											"constant_value": "AWS",
+										},
+									},
+								],
+								"resources": {
+									"constant_value": [
+										"arn:aws:events:eu-west-1:123456789012:event-bus/default",
+									],
+								},
+								"sid": {
+									"constant_value": "DevAccountAccess",
+								},
+							},
+						],
+					},
+					"mode":                "data",
+					"name":                "test",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_policy_document",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_cloudwatch_event_bus.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"tags_all": {},
+					},
+					"type": "aws_cloudwatch_event_bus",
+					"values": {
+						"description":        null,
+						"event_source_name":  null,
+						"kms_key_identifier": null,
+						"name":               "example-event-bus",
+						"tags":               null,
+					},
+				},
+				{
+					"address":          "aws_cloudwatch_event_bus_policy.example",
+					"mode":             "managed",
+					"name":             "example",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_cloudwatch_event_bus_policy",
+					"values": {
+						"event_bus_name": "example-event-bus",
+						"policy":         "{\"Statement\":[{\"Action\":\"events:PutEvents\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"123456789012\"},\"Resource\":\"arn:aws:events:eu-west-1:123456789012:event-bus/default\",\"Sid\":\"DevAccountAccess\"}],\"Version\":\"2012-10-17\"}",
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.9.4",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":        "data.aws_iam_policy_document.test",
+						"mode":           "data",
+						"name":           "test",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 0,
+						"sensitive_values": {
+							"statement": [
+								{
+									"actions": [
+										false,
+									],
+									"condition":      [],
+									"not_actions":    [],
+									"not_principals": [],
+									"not_resources":  [],
+									"principals": [
+										{
+											"identifiers": [
+												false,
+											],
+										},
+									],
+									"resources": [
+										false,
+									],
+								},
+							],
+						},
+						"type": "aws_iam_policy_document",
+						"values": {
+							"id":                        "2812158936",
+							"json":                      "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"DevAccountAccess\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"events:PutEvents\",\n      \"Resource\": \"arn:aws:events:eu-west-1:123456789012:event-bus/default\",\n      \"Principal\": {\n        \"AWS\": \"123456789012\"\n      }\n    }\n  ]\n}",
+							"minified_json":             "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"DevAccountAccess\",\"Effect\":\"Allow\",\"Action\":\"events:PutEvents\",\"Resource\":\"arn:aws:events:eu-west-1:123456789012:event-bus/default\",\"Principal\":{\"AWS\":\"123456789012\"}}]}",
+							"override_json":             null,
+							"override_policy_documents": null,
+							"policy_id":                 null,
+							"source_json":               null,
+							"source_policy_documents":   null,
+							"statement": [
+								{
+									"actions": [
+										"events:PutEvents",
+									],
+									"condition":      [],
+									"effect":         "Allow",
+									"not_actions":    [],
+									"not_principals": [],
+									"not_resources":  [],
+									"principals": [
+										{
+											"identifiers": [
+												"123456789012",
+											],
+											"type": "AWS",
+										},
+									],
+									"resources": [
+										"arn:aws:events:eu-west-1:123456789012:event-bus/default",
+									],
+									"sid": "DevAccountAccess",
+								},
+							],
+							"version": "2012-10-17",
+						},
+					},
+				],
+			},
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"name",
+			],
+			"resource": "aws_cloudwatch_event_bus.example",
+		},
+		{
+			"attribute": [
+				"json",
+			],
+			"resource": "data.aws_iam_policy_document.test",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_cloudwatch_event_bus.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description":        null,
+					"event_source_name":  null,
+					"kms_key_identifier": null,
+					"name":               "example-event-bus",
+					"tags":               null,
+				},
+				"after_sensitive": {
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn":      true,
+					"id":       true,
+					"tags_all": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_cloudwatch_event_bus",
+		},
+		{
+			"address": "aws_cloudwatch_event_bus_policy.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"event_bus_name": "example-event-bus",
+					"policy":         "{\"Statement\":[{\"Action\":\"events:PutEvents\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"123456789012\"},\"Resource\":\"arn:aws:events:eu-west-1:123456789012:event-bus/default\",\"Sid\":\"DevAccountAccess\"}],\"Version\":\"2012-10-17\"}",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_cloudwatch_event_bus_policy",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2025-04-10T04:59:49Z",
+}

@@ -1,0 +1,72 @@
+# This policy requires resources of type `aws_sqs_queue` to be encrypted at rest.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":             "sqs-queue-should-be-encrypted-at-rest",
+	"message":                 "SQS queues should be encrypted at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sqs-controls.html#sqs-1 for more details.",
+	"resource_aws_sqs_queue":  "aws_sqs_queue",
+	"kms_master_key_id":       "kms_master_key_id",
+	"sqs_managed_sse_enabled": "sqs_managed_sse_enabled",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		return get_sse_kms_violations(maps.get(res, "config." + const.kms_master_key_id, null)) or
+			get_sse_sqs_violations(maps.get(res, "config." + const.sqs_managed_sse_enabled, null))
+	})
+}
+
+get_sse_kms_violations = func(kms_master_key_id) {
+	if kms_master_key_id is null {
+		return false
+	}
+	return (kms_master_key_id.constant_value is defined and kms_master_key_id.constant_value is not empty) or
+		(kms_master_key_id.references is defined and kms_master_key_id.references is not empty)
+}
+
+get_sse_sqs_violations = func(sqs_managed_sse_enabled) {
+	if sqs_managed_sse_enabled is null {
+		return false
+	}
+	return sqs_managed_sse_enabled.constant_value is true
+}
+
+# Variables
+
+sqs_queue_resources = tf.config(tfconfig.resources).type(const.resource_aws_sqs_queue).resources
+violations = get_violations(sqs_queue_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

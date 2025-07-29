@@ -1,0 +1,60 @@
+# IAM customer managed policies that you create should not allow wildcard actions for services.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfstate/v2" as tfstate
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":                      "iam-policy-no-statements-with-full-access",
+	"message":                          "IAM customer managed policies that you create should not allow wildcard actions for services. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/iam-controls.html#iam-21 for more details.",
+	"resource_aws_iam_policy_document": "aws_iam_policy_document",
+	"Allow": "Allow",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		statements = maps.get(res, "values.statement", [])
+		if statements is null {
+			return true
+		}
+		full_access = collection.find(statements, func(statement) {
+			actions = maps.get(statement, "actions", [])
+			return collection.find(actions, func(action) {
+				return action contains ":*"
+			}) is defined and
+				maps.get(statement, "effect", "") == const.Allow
+		})
+		return full_access is not defined or full_access is empty
+	})
+}
+
+iam_policy_document_resources = tf.state(tfstate.resources).type(const.resource_aws_iam_policy_document).resources
+violations = get_violations(iam_policy_document_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+print(report.generate_policy_report(summary))
+
+main = rule {
+	violations is empty
+}

@@ -1,0 +1,234 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_ssm_document.foo": {
+			"address":        "aws_ssm_document.foo",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "foo",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_ssm_document",
+			"values": {
+				"attachments_source": [],
+				"content":            "  {\n    \"schemaVersion\": \"1.2\",\n    \"description\": \"Check ip configuration of a Linux instance.\",\n    \"parameters\": {\n\n    },\n    \"runtimeConfig\": {\n      \"aws:runShellScript\": {\n        \"properties\": [\n          {\n            \"id\": \"0.aws:runShellScript\",\n            \"runCommand\": [\"ifconfig\"]\n          }\n        ]\n      }\n    }\n  }\n",
+				"document_format":    "JSON",
+				"document_type":      "Command",
+				"name":               "test_document",
+				"permissions": {
+					"account_ids": "All",
+					"type":        "Share",
+				},
+				"tags":         null,
+				"target_type":  null,
+				"version_name": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_ssm_document.foo": {
+		"address": "aws_ssm_document.foo",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"attachments_source": [],
+				"content":            "  {\n    \"schemaVersion\": \"1.2\",\n    \"description\": \"Check ip configuration of a Linux instance.\",\n    \"parameters\": {\n\n    },\n    \"runtimeConfig\": {\n      \"aws:runShellScript\": {\n        \"properties\": [\n          {\n            \"id\": \"0.aws:runShellScript\",\n            \"runCommand\": [\"ifconfig\"]\n          }\n        ]\n      }\n    }\n  }\n",
+				"document_format":    "JSON",
+				"document_type":      "Command",
+				"name":               "test_document",
+				"permissions": {
+					"account_ids": "All",
+					"type":        "Share",
+				},
+				"tags":         null,
+				"target_type":  null,
+				"version_name": null,
+			},
+			"after_unknown": {
+				"arn":                true,
+				"attachments_source": [],
+				"created_date":       true,
+				"default_version":    true,
+				"description":        true,
+				"document_version":   true,
+				"hash":               true,
+				"hash_type":          true,
+				"id":                 true,
+				"latest_version":     true,
+				"owner":              true,
+				"parameter":          true,
+				"permissions":        {},
+				"platform_types":     true,
+				"schema_version":     true,
+				"status":             true,
+				"tags_all":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "foo",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_ssm_document",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_ssm_document.foo",
+					"expressions": {
+						"content": {
+							"constant_value": "  {\n    \"schemaVersion\": \"1.2\",\n    \"description\": \"Check ip configuration of a Linux instance.\",\n    \"parameters\": {\n\n    },\n    \"runtimeConfig\": {\n      \"aws:runShellScript\": {\n        \"properties\": [\n          {\n            \"id\": \"0.aws:runShellScript\",\n            \"runCommand\": [\"ifconfig\"]\n          }\n        ]\n      }\n    }\n  }\n",
+						},
+						"document_type": {
+							"constant_value": "Command",
+						},
+						"name": {
+							"constant_value": "test_document",
+						},
+						"permissions": {
+							"constant_value": {
+								"account_ids": "All",
+								"type":        "Share",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "foo",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_ssm_document",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_ssm_document.foo",
+					"mode":           "managed",
+					"name":           "foo",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"attachments_source": [],
+						"parameter":          [],
+						"permissions":        {},
+						"platform_types":     [],
+						"tags_all":           {},
+					},
+					"type": "aws_ssm_document",
+					"values": {
+						"attachments_source": [],
+						"content":            "  {\n    \"schemaVersion\": \"1.2\",\n    \"description\": \"Check ip configuration of a Linux instance.\",\n    \"parameters\": {\n\n    },\n    \"runtimeConfig\": {\n      \"aws:runShellScript\": {\n        \"properties\": [\n          {\n            \"id\": \"0.aws:runShellScript\",\n            \"runCommand\": [\"ifconfig\"]\n          }\n        ]\n      }\n    }\n  }\n",
+						"document_format":    "JSON",
+						"document_type":      "Command",
+						"name":               "test_document",
+						"permissions": {
+							"account_ids": "All",
+							"type":        "Share",
+						},
+						"tags":         null,
+						"target_type":  null,
+						"version_name": null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_ssm_document.foo",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"attachments_source": [],
+					"content":            "  {\n    \"schemaVersion\": \"1.2\",\n    \"description\": \"Check ip configuration of a Linux instance.\",\n    \"parameters\": {\n\n    },\n    \"runtimeConfig\": {\n      \"aws:runShellScript\": {\n        \"properties\": [\n          {\n            \"id\": \"0.aws:runShellScript\",\n            \"runCommand\": [\"ifconfig\"]\n          }\n        ]\n      }\n    }\n  }\n",
+					"document_format":    "JSON",
+					"document_type":      "Command",
+					"name":               "test_document",
+					"permissions": {
+						"account_ids": "All",
+						"type":        "Share",
+					},
+					"tags":         null,
+					"target_type":  null,
+					"version_name": null,
+				},
+				"after_sensitive": {
+					"attachments_source": [],
+					"parameter":          [],
+					"permissions":        {},
+					"platform_types":     [],
+					"tags_all":           {},
+				},
+				"after_unknown": {
+					"arn":                true,
+					"attachments_source": [],
+					"created_date":       true,
+					"default_version":    true,
+					"description":        true,
+					"document_version":   true,
+					"hash":               true,
+					"hash_type":          true,
+					"id":                 true,
+					"latest_version":     true,
+					"owner":              true,
+					"parameter":          true,
+					"permissions":        {},
+					"platform_types":     true,
+					"schema_version":     true,
+					"status":             true,
+					"tags_all":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "foo",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_ssm_document",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2025-04-16T06:12:49Z",
+}

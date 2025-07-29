@@ -1,0 +1,57 @@
+# This policy checks if resources of type 'aws_opensearch_domain' have the 'anonymous_auth_enabled' attribute set to true
+# in the 'advanced_security_options' block and the 'advanced_security_options' block is enabled
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                    "opensearch-access-control-enabled",
+	"message":                        "Attribute 'anonymous_auth_enabled' in 'advanced_security_options' should be true and 'advanced_security_options' should be enabled for Fine Grained Access Control for AWS OpenSearch Domain. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-7 for more details.",
+	"resource_aws_opensearch_domain": "aws_opensearch_domain",
+	"anonymous_auth_enabled":         "anonymous_auth_enabled",
+	"enabled":                        "enabled",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		advanced_security_options_values = maps.get(res, "values.advanced_security_options", null)
+		if advanced_security_options_values is null or advanced_security_options_values is empty {
+			return false
+		}
+		return maps.get(advanced_security_options_values[0], const.anonymous_auth_enabled, false) is true and maps.get(advanced_security_options_values[0], const.enabled, false) is true
+	})
+}
+
+# Variables
+
+opensearch_domain_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_opensearch_domain).resources
+violations = get_violations(opensearch_domain_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

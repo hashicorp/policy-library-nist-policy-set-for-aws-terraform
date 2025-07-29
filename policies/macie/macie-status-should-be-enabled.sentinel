@@ -1,0 +1,52 @@
+# This policy checks if resources of type 'aws_macie2_account' have the 'status'
+# attribute set to 'ENABLED'
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                    "aws-macie-status-should-be-enabled",
+	"message":                        "Attribute 'status' should be 'ENABLED' for AWS Macie Account. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/macie-controls.html#macie-1 for more details.",
+	"resource_aws_macie2_account":    "aws_macie2_account",
+	"resource_macie2_status_enabled": "ENABLED",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		return maps.get(res, "values.status", "") is const.resource_macie2_status_enabled
+	})
+}
+
+# Variables
+
+macie2_accounts = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_macie2_account).resources
+violations = get_violations(macie2_accounts)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

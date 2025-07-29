@@ -1,0 +1,58 @@
+# This policy checks if the EC2 Instance have only one Network Interface
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "json"
+
+# Constants
+const = {
+	"policy_name":           "ec2-instance-should-not-use-multiple-enis",
+	"message":               "Resource EC2 Instance should have the only one Network Interface. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-17 for more details.",
+	"resource_aws_instance": "aws_instance",
+	"network_interface":     "network_interface",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		network_interfaces_values = maps.get(res, "values.network_interface", [])
+		if network_interfaces_values is empty {
+			return true
+		}
+		return length(network_interfaces_values) <= 1
+	})
+}
+
+# Variables
+
+ec2_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_instance).resources
+
+violations = get_violations(ec2_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

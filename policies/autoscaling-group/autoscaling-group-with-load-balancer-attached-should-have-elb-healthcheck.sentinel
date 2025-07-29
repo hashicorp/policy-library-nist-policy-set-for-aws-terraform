@@ -1,0 +1,99 @@
+# This policy requires `aws_autoscaling_group` resources to be associated with load balancers and to have attribute 'health_check_health_check_type' should be 'ELB'.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+
+const = {
+	"policy_name":                         "autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck",
+	"message":                             "Attribute 'health_check_type' must be 'ELB' for 'aws_autoscaling_group' and should be associated with the load balancer resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-1 for more details.",
+	"resource_aws_autoscaling_group":      "aws_autoscaling_group",
+	"resource_aws_autoscaling_attachment": "aws_autoscaling_attachment",
+	"health_check_type":                   "health_check_type",
+	"ELB":                                 "ELB",
+	"autoscaling_group_name": "autoscaling_group_name",
+	"name":           "name",
+	"constant_value": "constant_value",
+	"module_prefix":  "module.",
+}
+
+# Functions
+
+get_violations = func(autoscaling_resources, autoscaling_attachment_resources) {
+	if autoscaling_attachment_resources is empty {
+		return []
+	}
+	autoscaling_elb_attached = get_autoscaling_attached_ids(autoscaling_attachment_resources)
+	return collection.reject(autoscaling_resources, func(res) {
+		health_check_values = maps.get(res, "config." + const.health_check_type, {})
+		if health_check_values is empty {
+			return false
+		}
+		autoscaling_complaint = false
+		if maps.get(health_check_values, const.constant_value, "") is const.ELB {
+			autoscaling_complaint = true
+		}
+		return autoscaling_complaint and res.address in autoscaling_elb_attached
+	})
+}
+
+get_autoscaling_attached_ids = func(autoscaling_attachment_resources) {
+	autoscaling_elb_attached = collection.reject(autoscaling_attachment_resources, func(res) {
+		elb_attached = maps.get(res.config, "elb", [])
+		return elb_attached is empty or elb_attached is not defined
+	})
+	return map autoscaling_elb_attached as _, res {
+		get_referenced_resource_address(res, "config.autoscaling_group_name")
+	}
+}
+
+get_referenced_resource_address = func(res, attr) {
+	references_list = maps.get(res, attr, [])
+	if references_list.references is empty {
+		return ""
+	}
+	referenced_address = references_list.references[1]
+	if strings.has_prefix(res.address, const.module_prefix) {
+		referenced_address = res.module_address + "." + referenced_address
+	}
+	return referenced_address
+}
+
+# Variables
+
+config_resources = tf.config(tfconfig.resources)
+autoscaling_resources = config_resources.type(const.resource_aws_autoscaling_group).resources
+autoscaling_attachment_resources = config_resources.type(const.resource_aws_autoscaling_attachment).resources
+
+violations = get_violations(autoscaling_resources, autoscaling_attachment_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

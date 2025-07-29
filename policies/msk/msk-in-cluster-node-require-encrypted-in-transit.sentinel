@@ -1,0 +1,59 @@
+# This policy checks if resources of type 'aws_msk_cluster' have the 'in_cluster'
+# attribute set to true in encryption_in_transit of encryption_info attribute
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":              "msk-in-cluster-node-require-encrypted-in-transit",
+	"message":                  "Attribute 'in_cluster' should be true in encryption_in_transit of encryption_info attribute for AWS MSK Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/msk-controls.html#msk-1 for more details.",
+	"resource_aws_msk_cluster": "aws_msk_cluster",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		attribute_encryption_info_resource_value = maps.get(res, "values.encryption_info", [])
+		if attribute_encryption_info_resource_value is empty {
+			return false
+		}
+		attribute_encryption_in_transit_resource_value = maps.get(attribute_encryption_info_resource_value[0], "encryption_in_transit", [])
+		if attribute_encryption_in_transit_resource_value is empty {
+			return false
+		}
+		return maps.get(attribute_encryption_in_transit_resource_value[0], "in_cluster", false) is true
+	})
+}
+
+# Variables
+
+msk_clusters = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_msk_cluster).resources
+violations = get_violations(msk_clusters)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

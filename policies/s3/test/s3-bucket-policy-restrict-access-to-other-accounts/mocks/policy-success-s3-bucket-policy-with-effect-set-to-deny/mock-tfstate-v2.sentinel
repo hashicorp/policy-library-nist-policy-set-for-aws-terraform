@@ -1,0 +1,49 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+outputs = {}
+
+resources = {
+	"aws_iam_policy_document.policy": {
+		"address":        "aws_iam_policy_document.policy",
+		"depends_on":     [],
+		"deposed_key":    "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "",
+		"name":           "policy",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"tainted":        false,
+		"type":           "aws_iam_policy_document",
+		"values": {
+			"id":                        "4150992607",
+			"json":                      "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": \"s3:DeleteBucketPolicy\",\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+			"minified_json":             "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Deny\",\"Action\":\"s3:DeleteBucketPolicy\",\"Resource\":\"*\"}]}",
+			"override_json":             null,
+			"override_policy_documents": null,
+			"policy_id":                 null,
+			"source_json":               null,
+			"source_policy_documents":   null,
+			"statement": [
+				{
+					"actions": [
+						"s3:DeleteBucketPolicy",
+					],
+					"condition":      [],
+					"effect":         "Deny",
+					"not_actions":    [],
+					"not_principals": [],
+					"not_resources":  [],
+					"principals":     [],
+					"resources": [
+						"*",
+					],
+					"sid": "",
+				},
+			],
+			"version": "2012-10-17",
+		},
+	},
+}

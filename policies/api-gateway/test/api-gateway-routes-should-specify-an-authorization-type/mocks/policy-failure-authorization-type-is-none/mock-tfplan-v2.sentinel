@@ -1,0 +1,356 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.5"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_apigatewayv2_api.example": {
+			"address":        "aws_apigatewayv2_api.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_apigatewayv2_api",
+			"values": {
+				"api_key_selection_expression": "$request.header.x-api-key",
+				"body":                         null,
+				"cors_configuration":           [],
+				"credentials_arn":              null,
+				"description":                  null,
+				"disable_execute_api_endpoint": null,
+				"fail_on_warnings":             null,
+				"name":                         "example-websocket-api",
+				"protocol_type":                "WEBSOCKET",
+				"route_key":                    null,
+				"route_selection_expression":   "$request.body.action",
+				"tags":    null,
+				"target":  null,
+				"version": null,
+			},
+		},
+		"aws_apigatewayv2_route.example": {
+			"address":        "aws_apigatewayv2_route.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_apigatewayv2_route",
+			"values": {
+				"api_key_required":                    false,
+				"authorization_scopes":                null,
+				"authorization_type":                  "NONE",
+				"authorizer_id":                       null,
+				"model_selection_expression":          null,
+				"operation_name":                      null,
+				"request_models":                      null,
+				"request_parameter":                   [],
+				"route_key":                           "$default",
+				"route_response_selection_expression": null,
+				"target": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_apigatewayv2_api.example": {
+		"address": "aws_apigatewayv2_api.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"api_key_selection_expression": "$request.header.x-api-key",
+				"body":                         null,
+				"cors_configuration":           [],
+				"credentials_arn":              null,
+				"description":                  null,
+				"disable_execute_api_endpoint": null,
+				"fail_on_warnings":             null,
+				"name":                         "example-websocket-api",
+				"protocol_type":                "WEBSOCKET",
+				"route_key":                    null,
+				"route_selection_expression":   "$request.body.action",
+				"tags":    null,
+				"target":  null,
+				"version": null,
+			},
+			"after_unknown": {
+				"api_endpoint":       true,
+				"arn":                true,
+				"cors_configuration": [],
+				"execution_arn":      true,
+				"id":                 true,
+				"tags_all":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_apigatewayv2_api",
+	},
+	"aws_apigatewayv2_route.example": {
+		"address": "aws_apigatewayv2_route.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"api_key_required":                    false,
+				"authorization_scopes":                null,
+				"authorization_type":                  "AWS_IAM",
+				"authorizer_id":                       null,
+				"model_selection_expression":          null,
+				"operation_name":                      null,
+				"request_models":                      null,
+				"request_parameter":                   [],
+				"route_key":                           "$default",
+				"route_response_selection_expression": null,
+				"target": null,
+			},
+			"after_unknown": {
+				"api_id":            true,
+				"id":                true,
+				"request_parameter": [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_apigatewayv2_route",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_apigatewayv2_api.example",
+					"expressions": {
+						"name": {
+							"constant_value": "example-websocket-api",
+						},
+						"protocol_type": {
+							"constant_value": "WEBSOCKET",
+						},
+						"route_selection_expression": {
+							"constant_value": "$request.body.action",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_apigatewayv2_api",
+				},
+				{
+					"address": "aws_apigatewayv2_route.example",
+					"expressions": {
+						"api_id": {
+							"references": [
+								"aws_apigatewayv2_api.example.id",
+								"aws_apigatewayv2_api.example",
+							],
+						},
+						"authorization_type": {
+							"constant_value": "AWS_IAM",
+						},
+						"route_key": {
+							"constant_value": "$default",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_apigatewayv2_route",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_apigatewayv2_api.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors_configuration": [],
+						"tags_all":           {},
+					},
+					"type": "aws_apigatewayv2_api",
+					"values": {
+						"api_key_selection_expression": "$request.header.x-api-key",
+						"body":                         null,
+						"cors_configuration":           [],
+						"credentials_arn":              null,
+						"description":                  null,
+						"disable_execute_api_endpoint": null,
+						"fail_on_warnings":             null,
+						"name":                         "example-websocket-api",
+						"protocol_type":                "WEBSOCKET",
+						"route_key":                    null,
+						"route_selection_expression":   "$request.body.action",
+						"tags":    null,
+						"target":  null,
+						"version": null,
+					},
+				},
+				{
+					"address":        "aws_apigatewayv2_route.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"request_parameter": [],
+					},
+					"type": "aws_apigatewayv2_route",
+					"values": {
+						"api_key_required":                    false,
+						"authorization_scopes":                null,
+						"authorization_type":                  "AWS_IAM",
+						"authorizer_id":                       null,
+						"model_selection_expression":          null,
+						"operation_name":                      null,
+						"request_models":                      null,
+						"request_parameter":                   [],
+						"route_key":                           "$default",
+						"route_response_selection_expression": null,
+						"target": null,
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_apigatewayv2_api.example",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_apigatewayv2_api.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"api_key_selection_expression": "$request.header.x-api-key",
+					"body":                         null,
+					"cors_configuration":           [],
+					"credentials_arn":              null,
+					"description":                  null,
+					"disable_execute_api_endpoint": null,
+					"fail_on_warnings":             null,
+					"name":                         "example-websocket-api",
+					"protocol_type":                "WEBSOCKET",
+					"route_key":                    null,
+					"route_selection_expression":   "$request.body.action",
+					"tags":    null,
+					"target":  null,
+					"version": null,
+				},
+				"after_sensitive": {
+					"cors_configuration": [],
+					"tags_all":           {},
+				},
+				"after_unknown": {
+					"api_endpoint":       true,
+					"arn":                true,
+					"cors_configuration": [],
+					"execution_arn":      true,
+					"id":                 true,
+					"tags_all":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_apigatewayv2_api",
+		},
+		{
+			"address": "aws_apigatewayv2_route.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"api_key_required":                    false,
+					"authorization_scopes":                null,
+					"authorization_type":                  "AWS_IAM",
+					"authorizer_id":                       null,
+					"model_selection_expression":          null,
+					"operation_name":                      null,
+					"request_models":                      null,
+					"request_parameter":                   [],
+					"route_key":                           "$default",
+					"route_response_selection_expression": null,
+					"target": null,
+				},
+				"after_sensitive": {
+					"request_parameter": [],
+				},
+				"after_unknown": {
+					"api_id":            true,
+					"id":                true,
+					"request_parameter": [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_apigatewayv2_route",
+		},
+	],
+	"terraform_version": "1.9.5",
+	"timestamp":         "2024-10-15T05:30:05Z",
+}

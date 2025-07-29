@@ -1,0 +1,27 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+resources = {
+	"module.lb.aws_lb.this": {
+		"address": "module.lb.aws_lb.this",
+		"config": {
+			"load_balancer_type": {
+				"constant_value": "application",
+			},
+			"subnets": {
+				"constant_value": [
+					"subnet-01",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.lb",
+		"name":                "this",
+		"provider_config_key": "module.lb:aws",
+		"provisioners":        [],
+		"type":                "aws_lb",
+	},
+}

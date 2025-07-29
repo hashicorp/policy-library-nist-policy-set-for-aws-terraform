@@ -1,0 +1,97 @@
+# This policy checks if resources of type 'aws_autoscaling_group' have the multiple instance types
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                    "autoscaling-group-should-use-multiple-instance-types",
+	"message":                        "AWS Autoscaling Group must use multiple instance types. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-6 for more details.",
+	"resource_aws_autoscaling_group": "aws_autoscaling_group",
+	"max_size":                       "max_size",
+	"mixed_instances_policy":         "mixed_instances_policy",
+	"launch_template":                "launch_template",
+	"override":                       "override",
+	"instance_type":                  "instance_type",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		max_size_values = maps.get(res, "values." + const.max_size, 1)
+		launch_template_values = maps.get(res, "values." + const.launch_template, [])
+
+		if launch_template_values is not empty or max_size_values < 2 {
+			return false
+		}
+
+		mixed_instances_policy_values = maps.get(res, "values." + const.mixed_instances_policy, [])
+		if mixed_instances_policy_values is empty {
+			return false
+		}
+
+		launch_template = maps.get(mixed_instances_policy_values[0], const.launch_template, [])
+		if launch_template is empty {
+			return false
+		}
+		override_values = maps.get(launch_template[0], const.override, [])
+		if override_values is empty {
+			return false
+		}
+
+		instance_types = []
+
+		for override_values as res {
+			if maps.get(res, const.instance_type, "") is empty {
+				continue
+			}
+			append(instance_types, maps.get(res, const.instance_type))
+		}
+
+		return length(remove_duplicates(instance_types)) > 1
+	})
+}
+
+# Remove duplicates from the list
+
+remove_duplicates = func(list) {
+	result = []
+	for list as item {
+		if result not contains item {
+			append(result, item)
+		}
+	}
+	return result
+}
+
+# Variables
+
+autoscaling_groups_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_autoscaling_group).resources
+violations = get_violations(autoscaling_groups_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

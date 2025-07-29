@@ -1,0 +1,98 @@
+# This policy requires `aws_vpc_endpoint` resources to have attribute 'vpc_endpoint_type' to be 'Interface' and 'service_name' to be 'ec2'.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+
+const = {
+	"policy_name":               "ec2-service-vpc-endpoint-enabled",
+	"message":                   "Attribute 'vpc_endpoint_type' must be 'Interface' and 'service_name' to be 'ec2' for 'aws_vpc_endpoint' linked with the 'aws_vpc' resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-10 for more details.",
+	"resource_aws_vpc_endpoint": "aws_vpc_endpoint",
+	"resource_aws_vpc":          "aws_vpc",
+	"vpc_endpoint_type":         "vpc_endpoint_type",
+	"constant_value":            "constant_value",
+	"module_prefix":             "module.",
+	"Interface":                 "Interface",
+	"Gateway":                   "Gateway",
+	"service_name":              "service_name",
+}
+
+# Functions
+
+get_endpoint_complaint = func(resources) {
+	return collection.reject(resources, func(res) {
+		endpoint_type_values = maps.get(res, "values." + const.vpc_endpoint_type, const.Gateway)
+		if endpoint_type_values is empty {
+			return true
+		}
+		service_name_values = maps.get(res, "values." + const.service_name, {})
+		if service_name_values is empty {
+			return true
+		}
+		return endpoint_type_values is not const.Interface or not strings.has_suffix(service_name_values, "ec2")
+	})
+}
+
+get_referenced_resource_address = func(res, attr) {
+	vpc_endpoint_config_resource = tf.config(tfconfig.resources).type(const.resource_aws_vpc_endpoint).address(res.address).resources[0]
+	references_list = maps.get(vpc_endpoint_config_resource, attr, [])
+	if references_list.references is empty {
+		return ""
+	}
+	referenced_address = references_list.references[1]
+	if strings.has_prefix(res.address, const.module_prefix) {
+		referenced_address = res.module_address + "." + referenced_address
+	}
+	return referenced_address
+}
+
+# Variables
+
+config_resources = tf.config(tfconfig.resources)
+vpc_resources = config_resources.type(const.resource_aws_vpc).resources
+vpc_endpoint_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_vpc_endpoint).resources
+
+vpc_endpoint_complaint = get_endpoint_complaint(vpc_endpoint_resources)
+if vpc_endpoint_complaint is not defined {
+	violations = []
+}
+
+vpc_addresses = map vpc_endpoint_complaint as _, res {
+	get_referenced_resource_address(res, "config.vpc_id")
+}
+
+violations = filter vpc_resources as _, res {
+	res.address not in vpc_addresses
+}
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

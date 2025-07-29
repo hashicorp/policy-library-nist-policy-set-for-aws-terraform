@@ -1,0 +1,52 @@
+# This policy requires AWS Transfer Servers shouldn't contain "FTP" for the attribute protocols.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                  "transfer-family-server-should-not-use-ftp",
+	"message":                      "Transfer Family servers should not use FTP protocol for endpoint connection. For more information, Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/transfer-controls.html#transfer-2 for more details.",
+	"resource_aws_transfer_server": "aws_transfer_server",
+	"protocols":                    "protocols",
+	"FTP":                          "FTP",
+}
+
+# Variables
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_transfer_server).resources
+
+violations = collection.reject(resources, func(res) {
+	protocols = maps.get(res, "values." + const.protocols, null)
+
+	if protocols is null {
+		return true
+	}
+
+	return const.FTP not in protocols
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+main = rule {
+	violations is empty
+}

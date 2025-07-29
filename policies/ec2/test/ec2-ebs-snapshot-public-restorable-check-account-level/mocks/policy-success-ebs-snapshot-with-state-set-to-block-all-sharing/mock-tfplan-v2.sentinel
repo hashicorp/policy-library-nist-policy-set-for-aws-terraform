@@ -1,0 +1,134 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_ebs_snapshot_block_public_access.example": {
+			"address":        "aws_ebs_snapshot_block_public_access.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_ebs_snapshot_block_public_access",
+			"values": {
+				"state": "block-all-sharing",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_ebs_snapshot_block_public_access.example": {
+		"address": "aws_ebs_snapshot_block_public_access.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"state": "block-all-sharing",
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_ebs_snapshot_block_public_access",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_ebs_snapshot_block_public_access.example",
+					"expressions": {
+						"state": {
+							"constant_value": "block-all-sharing",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_ebs_snapshot_block_public_access",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":          "aws_ebs_snapshot_block_public_access.example",
+					"mode":             "managed",
+					"name":             "example",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_ebs_snapshot_block_public_access",
+					"values": {
+						"state": "block-all-sharing",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_ebs_snapshot_block_public_access.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"state": "block-all-sharing",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_ebs_snapshot_block_public_access",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2025-03-27T06:26:36Z",
+}

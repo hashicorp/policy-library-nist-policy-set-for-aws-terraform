@@ -1,0 +1,94 @@
+// This policy checks whether 'aws_cloudfront_distribution' are pointing to non-existent Amazon S3 origins.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+// Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+// Constants
+
+const = {
+	"policy_name": "cloudfront-s3-origin-non-existent-bucket",
+	"message":     "'aws_cloudfront_distribution' should not point to non-existent Amazon S3 origins. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-12 for more details.",
+	"resource_aws_cloudfront_distribution": "aws_cloudfront_distribution",
+}
+
+// Functions
+
+get_bucket_names = func() {
+	names = []
+	s3_bucket_resource = tf.config(tfconfig.resources).type("aws_s3_bucket").resources
+	for s3_bucket_resource as s3_bucket {
+		bucket_name = "aws_s3_bucket." + s3_bucket.name
+		append(names, bucket_name)
+	}
+	return names
+}
+
+s3_bucket_names = get_bucket_names()
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		if s3_bucket_names is empty {
+			return false
+		}
+		origin = maps.get(res.config, "origin", [])
+		if origin is empty {
+			return false
+		}
+		domain_name = maps.get(origin[0], "domain_name", [])
+		if domain_name is empty {
+			return false
+		}
+		references = maps.get(domain_name, "references", [])
+		if references is empty {
+			return false
+		}
+		for references as ref {
+			bucket_name_split = strings.split(ref, ".")
+			if bucket_name_split is empty or length(bucket_name_split) < 2 {
+				return false
+			}
+			bucket_name = bucket_name_split[0] + "." + bucket_name_split[1]
+			if s3_bucket_names not contains bucket_name {
+				return false
+			}
+		}
+		return true
+	})
+}
+
+// Variables
+
+config_resources = tf.config(tfconfig.resources)
+cloudfront_distribution_resource = config_resources.type(const.resource_aws_cloudfront_distribution).resources
+
+violations = get_violations(cloudfront_distribution_resource)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+// Outputs
+
+print(report.generate_policy_report(summary))
+
+// Rules
+
+main = rule {
+	violations is empty
+}

@@ -1,0 +1,71 @@
+# This policy requires resources of type `aws_efs_file_system` should have 'encrypted' set to true and 'kms_key_id' should not be empty.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+param service_name default "ecr.api"
+
+# Constants
+
+const = {
+	"policy_name":                  "efs-file-systems-should-be-encrypted-at-rest",
+	"message":                      "AWS EFS file systems should be encrypted at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-1 for more details.",
+	"resource_aws_efs_file_system": "aws_efs_file_system",
+	"efs_encrypted":                "encrypted",
+	"efs_kms_key_id":               "kms_key_id",
+}
+
+# Functions
+
+get_violations = func(efs_file_system_resources) {
+	return collection.reject(efs_file_system_resources, func(res) {
+		efs_encrypted_values = maps.get(res.config, const.efs_encrypted, null)
+		if efs_encrypted_values is null or efs_encrypted_values is empty {
+			return false
+		}
+		efs_kms_key_id_values = maps.get(res.config, const.efs_kms_key_id, null)
+		if efs_kms_key_id_values is null or efs_kms_key_id_values is empty {
+			return false
+		}
+		if efs_kms_key_id_values.constant_value is not defined {
+			return efs_encrypted_values.constant_value is true and efs_kms_key_id_values.references is not empty
+		}
+		return efs_encrypted_values.constant_value is true and efs_kms_key_id_values.constant_value is not ""
+	})
+}
+
+# Variables
+
+efs_file_system_resources = tf.config(tfconfig.resources).type(const.resource_aws_efs_file_system).resources
+
+violations = get_violations(efs_file_system_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

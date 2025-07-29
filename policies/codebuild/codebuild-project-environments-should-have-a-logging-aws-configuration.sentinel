@@ -1,0 +1,68 @@
+# This control checks whether a 'aws_codebuild_project' has at least one log option, either to S3 or CloudWatch logs enabled.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                    "codebuild-project-environments-should-have-a-logging-aws-configuration",
+	"resource_aws_codebuild_project": "aws_codebuild_project",
+	"message":                        "'aws_codebuild_project' should have at least one log option, either to S3 or CloudWatch logs enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/codebuild-controls.html#codebuild-4 for more details.",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		logs_config = maps.get(res.values, "logs_config", [])
+		if logs_config is empty {
+			return false
+		}
+		s3_logs = maps.get(logs_config[0], "s3_logs", [])
+		cloudwatch_logs = maps.get(logs_config[0], "cloudwatch_logs", [])
+		if s3_logs is empty and cloudwatch_logs is empty {
+			return false
+		} else if s3_logs is empty {
+			cloudwatch_status = maps.get(cloudwatch_logs[0], "status", "ENABLED")
+			return cloudwatch_status is "ENABLED"
+		} else if cloudwatch_logs is empty {
+			s3_status = maps.get(s3_logs[0], "status", "DISABLED")
+			return s3_status is "ENABLED"
+		}
+		s3_status = maps.get(s3_logs[0], "status", "DISABLED")
+		cloudwatch_status = maps.get(cloudwatch_logs[0], "status", "ENABLED")
+		return s3_status is "ENABLED" or cloudwatch_status is "ENABLED"
+	})
+}
+
+# Variables
+
+aws_codebuild_project = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_codebuild_project).resources
+violations = get_violations(aws_codebuild_project)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

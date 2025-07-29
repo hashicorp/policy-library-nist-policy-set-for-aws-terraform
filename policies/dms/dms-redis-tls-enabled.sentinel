@@ -1,0 +1,60 @@
+# This policy checks if resources of type 'aws_dms_endpoint' have the 'ssl_security_protocol'
+# set to 'ssl-encryption' in 'redis_settings' for engine of type 'redis'
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":               "dms-redis-tls-enabled",
+	"message":                   "Attribute 'ssl_security_protocol' should be 'ssl-encrypted' in 'redis_settings' for engine of type 'redis' in AWS DMS Endpoint. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-12 for more details.",
+	"resource_aws_dms_endpoint": "aws_dms_endpoint",
+	"redis_engine":              "redis",
+	"ssl_encryption":            "ssl-encryption",
+	"ssl_security_protocol":     "ssl_security_protocol",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		engine_type = maps.get(res, "values.engine_name", "")
+		if engine_type is not const.redis_engine {
+			return true
+		}
+		redis_settings = maps.get(res, "values.redis_settings", {})[0]
+		ssl_security_protocol_attribute = maps.get(redis_settings, const.ssl_security_protocol, "ssl-encrypted")
+		return ssl_security_protocol_attribute is const.ssl_encryption
+	})
+}
+
+# Variables
+
+dms_endpoint_resource = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_dms_endpoint).resources
+violations = get_violations(dms_endpoint_resource)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

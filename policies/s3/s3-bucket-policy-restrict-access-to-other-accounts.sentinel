@@ -1,0 +1,64 @@
+# S3 general purpose bucket policies should restrict access to other AWS accounts
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfstate/v2" as tfstate
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Params
+param blacklistedactionpatterns default ["s3:DeleteBucketPolicy", "s3:PutBucketAcl", "s3:PutBucketPolicy", "s3:PutEncryptionConfiguration", "s3:PutObjectAcl"]
+
+# Constants
+
+const = {
+	"policy_name":                      "s3-bucket-policy-restrict-access-to-other-accounts",
+	"message":                          "S3 general purpose bucket policies should restrict access to other AWS accounts. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-6 for more details.",
+	"resource_aws_iam_policy_document": "aws_iam_policy_document",
+	"Allow": "Allow",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		statements = maps.get(res, "values.statement", [])
+		if statements is null {
+			return true
+		}
+		full_access = collection.find(statements, func(statement) {
+			actions = maps.get(statement, "actions", [])
+			return collection.find(actions, func(action) {
+				return action contains "s3:*" or action in blacklistedactionpatterns
+			}) is defined and
+				maps.get(statement, "effect", "") == const.Allow
+		})
+		return full_access is not defined or full_access is empty
+	})
+}
+
+iam_policy_document_resources = tf.state(tfstate.resources).type(const.resource_aws_iam_policy_document).resources
+
+violations = get_violations(iam_policy_document_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+print(report.generate_policy_report(summary))
+
+main = rule {
+	violations is empty
+}
