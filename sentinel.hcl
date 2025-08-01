@@ -17,6 +17,7 @@ import "module" "tfconfig-functions" {
   source = "./modules/tfconfig-functions/tfconfig-functions.sentinel"
 }
 
+<<<<<<< HEAD
 policy "ecr-tag-immutability-configured" {
   source = "./policies/ecr/ecr-tag-immutability-configured.sentinel"
   enforcement_level = "advisory"
@@ -1258,6 +1259,11 @@ policy "cloudtrail-cloudwatch-logs-group-arn-present" {
   source = "./policies/cloudtrail/cloudtrail-cloudwatch-logs-group-arn-present.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys" {
+  source = "./policies/cloudtrail/cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel"
+  enforcement_level = "advisory"
+}
   
 policy "appsync-graphql-api-should-not-authenticate-with-api-keys" {
   source = "./policies/appsync/appsync-graphql-api-should-not-authenticate-with-api-keys.sentinel"
@@ -1268,3 +1274,5 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
   enforcement_level = "advisory"
 }
+=======
+>>>>>>> 7097e75 (Initial setup)
