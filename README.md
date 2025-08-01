@@ -100,3 +100,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 - [Sentinel Language](https://developer.hashicorp.com/sentinel/docs/language/)
 - [Sentinel Language Specification](https://developer.hashicorp.com/sentinel/docs/language/spec)
 - [Policy Libraries](https://registry.terraform.io/browse/policies)
+
+## Policies Included
+
+- EBS volumes should be covered by a backup plan ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/ebs-volumes-should-be-in-a-backup-plan.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/ec2/ebs-volumes-should-be-in-a-backup-plan.sentinel))

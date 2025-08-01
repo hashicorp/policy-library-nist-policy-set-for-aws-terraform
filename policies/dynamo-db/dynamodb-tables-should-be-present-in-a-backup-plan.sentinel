@@ -10,10 +10,10 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":              "dynamodb-tables-should-be-present-in-a-backup-plan",
-	"message":                  "DynamoDB tables should be included in an AWS Backup plan for data protection.",
-	"resource_dynamodb_table":  "aws_dynamodb_table",
-	"resource_backup_plan":     "aws_backup_plan",
+	"policy_name":               "dynamodb-tables-should-be-present-in-a-backup-plan",
+	"message":                   "DynamoDB tables should be included in an AWS Backup plan for data protection.",
+	"resource_dynamodb_table":   "aws_dynamodb_table",
+	"resource_backup_plan":      "aws_backup_plan",
 	"resource_backup_selection": "aws_backup_selection",
 }
 
@@ -27,29 +27,28 @@ tables_in_backup_plans = []
 
 # Check if any backup selection includes DynamoDB tables
 for backup_selections as selection {
-    selection_resources = maps.get(selection.config, "resources", [])
-    references = maps.get(selection_resources, "references", [])
-    if references is not empty {
-        for references as reference {
-            append(tables_in_backup_plans, reference)
-        }
-    }
+	selection_resources = maps.get(selection.config, "resources", [])
+	references = maps.get(selection_resources, "references", [])
+	if references is not empty {
+		for references as reference {
+			append(tables_in_backup_plans, reference)
+		}
+	}
 }
 
 # Find tables not covered by backup plans
 violations = collection.filter(dynamodb_tables, func(table) {
-    table_name = maps.get(table.config, "address", "")
-    # Check if this table is included in any backup selection
-    for tables_in_backup_plans as backup_table {
+	table_name = maps.get(table.config, "address", "")
+	# Check if this table is included in any backup selection
+	for tables_in_backup_plans as backup_table {
 
-        if backup_table contains table_name {
-            return false
-        }
-    }
-    
-    return true
+		if backup_table contains table_name {
+			return false
+		}
+	}
+
+	return true
 })
-
 
 # Generate report summary
 summary = {
