@@ -1,0 +1,290 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_dms_endpoint.example": {
+			"address":        "aws_dms_endpoint.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_dms_endpoint",
+			"values": {
+				"database_name":           "example-db",
+				"elasticsearch_settings":  [],
+				"endpoint_id":             "example-endpoint",
+				"endpoint_type":           "source",
+				"engine_name":             "mysql",
+				"kafka_settings":          [],
+				"kinesis_settings":        [],
+				"mongodb_settings":        [],
+				"password":                "REDACTED_SENSITIVE",
+				"pause_replication_tasks": null,
+				"port":                            3306,
+				"postgres_settings":               [],
+				"redis_settings":                  [],
+				"s3_settings":                     [],
+				"secrets_manager_access_role_arn": null,
+				"secrets_manager_arn":             null,
+				"server_name":                     "example-server",
+				"service_access_role":             null,
+				"ssl_mode":                        "verify-ca",
+				"tags":                            null,
+				"timeouts":                        null,
+				"username":                        "example-user",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_dms_endpoint.example": {
+		"address": "aws_dms_endpoint.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"database_name":           "example-db",
+				"elasticsearch_settings":  [],
+				"endpoint_id":             "example-endpoint",
+				"endpoint_type":           "source",
+				"engine_name":             "mysql",
+				"kafka_settings":          [],
+				"kinesis_settings":        [],
+				"mongodb_settings":        [],
+				"password":                "REDACTED_SENSITIVE",
+				"pause_replication_tasks": null,
+				"port":                            3306,
+				"postgres_settings":               [],
+				"redis_settings":                  [],
+				"s3_settings":                     [],
+				"secrets_manager_access_role_arn": null,
+				"secrets_manager_arn":             null,
+				"server_name":                     "example-server",
+				"service_access_role":             null,
+				"ssl_mode":                        "verify-ca",
+				"tags":                            null,
+				"timeouts":                        null,
+				"username":                        "example-user",
+			},
+			"after_unknown": {
+				"certificate_arn":             true,
+				"elasticsearch_settings":      [],
+				"endpoint_arn":                true,
+				"extra_connection_attributes": true,
+				"id":                true,
+				"kafka_settings":    [],
+				"kinesis_settings":  [],
+				"kms_key_arn":       true,
+				"mongodb_settings":  [],
+				"postgres_settings": [],
+				"redis_settings":    [],
+				"redshift_settings": true,
+				"s3_settings":       [],
+				"tags_all":          true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_dms_endpoint",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_dms_endpoint.example",
+					"expressions": {
+						"database_name": {
+							"constant_value": "example-db",
+						},
+						"endpoint_id": {
+							"constant_value": "example-endpoint",
+						},
+						"endpoint_type": {
+							"constant_value": "source",
+						},
+						"engine_name": {
+							"constant_value": "mysql",
+						},
+						"password": {
+							"constant_value": "example-password",
+						},
+						"port": {
+							"constant_value": 3306,
+						},
+						"server_name": {
+							"constant_value": "example-server",
+						},
+						"ssl_mode": {
+							"constant_value": "verify-ca",
+						},
+						"username": {
+							"constant_value": "example-user",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_dms_endpoint",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_dms_endpoint.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"elasticsearch_settings": [],
+						"kafka_settings":         [],
+						"kinesis_settings":       [],
+						"mongodb_settings":       [],
+						"password":               true,
+						"postgres_settings":      [],
+						"redis_settings":         [],
+						"redshift_settings":      [],
+						"s3_settings":            [],
+						"tags_all":               {},
+					},
+					"type": "aws_dms_endpoint",
+					"values": {
+						"database_name":           "example-db",
+						"elasticsearch_settings":  [],
+						"endpoint_id":             "example-endpoint",
+						"endpoint_type":           "source",
+						"engine_name":             "mysql",
+						"kafka_settings":          [],
+						"kinesis_settings":        [],
+						"mongodb_settings":        [],
+						"password":                "REDACTED_SENSITIVE",
+						"pause_replication_tasks": null,
+						"port":                            3306,
+						"postgres_settings":               [],
+						"redis_settings":                  [],
+						"s3_settings":                     [],
+						"secrets_manager_access_role_arn": null,
+						"secrets_manager_arn":             null,
+						"server_name":                     "example-server",
+						"service_access_role":             null,
+						"ssl_mode":                        "verify-ca",
+						"tags":                            null,
+						"timeouts":                        null,
+						"username":                        "example-user",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_dms_endpoint.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"database_name":           "example-db",
+					"elasticsearch_settings":  [],
+					"endpoint_id":             "example-endpoint",
+					"endpoint_type":           "source",
+					"engine_name":             "mysql",
+					"kafka_settings":          [],
+					"kinesis_settings":        [],
+					"mongodb_settings":        [],
+					"password":                "REDACTED_SENSITIVE",
+					"pause_replication_tasks": null,
+					"port":                            3306,
+					"postgres_settings":               [],
+					"redis_settings":                  [],
+					"s3_settings":                     [],
+					"secrets_manager_access_role_arn": null,
+					"secrets_manager_arn":             null,
+					"server_name":                     "example-server",
+					"service_access_role":             null,
+					"ssl_mode":                        "verify-ca",
+					"tags":                            null,
+					"timeouts":                        null,
+					"username":                        "example-user",
+				},
+				"after_sensitive": {
+					"elasticsearch_settings": [],
+					"kafka_settings":         [],
+					"kinesis_settings":       [],
+					"mongodb_settings":       [],
+					"password":               true,
+					"postgres_settings":      [],
+					"redis_settings":         [],
+					"redshift_settings":      [],
+					"s3_settings":            [],
+					"tags_all":               {},
+				},
+				"after_unknown": {
+					"certificate_arn":             true,
+					"elasticsearch_settings":      [],
+					"endpoint_arn":                true,
+					"extra_connection_attributes": true,
+					"id":                true,
+					"kafka_settings":    [],
+					"kinesis_settings":  [],
+					"kms_key_arn":       true,
+					"mongodb_settings":  [],
+					"postgres_settings": [],
+					"redis_settings":    [],
+					"redshift_settings": true,
+					"s3_settings":       [],
+					"tags_all":          true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_dms_endpoint",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2025-04-15T04:16:15Z",
+}

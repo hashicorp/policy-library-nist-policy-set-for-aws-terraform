@@ -1,0 +1,1332 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_wafv2_web_acl.example": {
+			"address":        "aws_wafv2_web_acl.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_wafv2_web_acl",
+			"values": {
+				"association_config":   [],
+				"captcha_config":       [],
+				"challenge_config":     [],
+				"custom_response_body": [],
+				"default_action": [
+					{
+						"allow": [
+							{
+								"custom_request_handling": [],
+							},
+						],
+						"block": [],
+					},
+				],
+				"description": "Example of a managed rule.",
+				"name":        "managed-rule-example",
+				"rule": [
+					{
+						"action":           [],
+						"captcha_config":   [],
+						"challenge_config": [],
+						"name":             "rule-1",
+						"override_action": [
+							{
+								"count": [
+									{},
+								],
+								"none": [],
+							},
+						],
+						"priority":   1,
+						"rule_label": [],
+						"statement": [
+							{
+								"and_statement":              [],
+								"byte_match_statement":       [],
+								"geo_match_statement":        [],
+								"ip_set_reference_statement": [],
+								"label_match_statement":      [],
+								"managed_rule_group_statement": [
+									{
+										"managed_rule_group_configs": [],
+										"name": "AWSManagedRulesCommonRuleSet",
+										"rule_action_override": [
+											{
+												"action_to_use": [
+													{
+														"allow":     [],
+														"block":     [],
+														"captcha":   [],
+														"challenge": [],
+														"count": [
+															{
+																"custom_request_handling": [],
+															},
+														],
+													},
+												],
+												"name": "SizeRestrictions_QUERYSTRING",
+											},
+											{
+												"action_to_use": [
+													{
+														"allow":     [],
+														"block":     [],
+														"captcha":   [],
+														"challenge": [],
+														"count": [
+															{
+																"custom_request_handling": [],
+															},
+														],
+													},
+												],
+												"name": "NoUserAgent_HEADER",
+											},
+										],
+										"scope_down_statement": [
+											{
+												"and_statement":        [],
+												"byte_match_statement": [],
+												"geo_match_statement": [
+													{
+														"country_codes": [
+															"US",
+															"NL",
+														],
+														"forwarded_ip_config": [],
+													},
+												],
+												"ip_set_reference_statement":            [],
+												"label_match_statement":                 [],
+												"not_statement":                         [],
+												"or_statement":                          [],
+												"regex_match_statement":                 [],
+												"regex_pattern_set_reference_statement": [],
+												"size_constraint_statement":             [],
+												"sqli_match_statement":                  [],
+												"xss_match_statement":                   [],
+											},
+										],
+										"vendor_name": "AWS",
+										"version":     "",
+									},
+								],
+								"not_statement":                         [],
+								"or_statement":                          [],
+								"rate_based_statement":                  [],
+								"regex_match_statement":                 [],
+								"regex_pattern_set_reference_statement": [],
+								"rule_group_reference_statement":        [],
+								"size_constraint_statement":             [],
+								"sqli_match_statement":                  [],
+								"xss_match_statement":                   [],
+							},
+						],
+						"visibility_config": [
+							{
+								"cloudwatch_metrics_enabled": false,
+								"metric_name":                "friendly-rule-metric-name",
+								"sampled_requests_enabled":   false,
+							},
+						],
+					},
+				],
+				"rule_json": null,
+				"scope":     "REGIONAL",
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"token_domains": [
+					"myotherwebsite.com",
+					"mywebsite.com",
+				],
+				"visibility_config": [
+					{
+						"cloudwatch_metrics_enabled": false,
+						"metric_name":                "friendly-metric-name",
+						"sampled_requests_enabled":   false,
+					},
+				],
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_wafv2_web_acl.example": {
+		"address": "aws_wafv2_web_acl.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"association_config":   [],
+				"captcha_config":       [],
+				"challenge_config":     [],
+				"custom_response_body": [],
+				"default_action": [
+					{
+						"allow": [
+							{
+								"custom_request_handling": [],
+							},
+						],
+						"block": [],
+					},
+				],
+				"description": "Example of a managed rule.",
+				"name":        "managed-rule-example",
+				"rule": [
+					{
+						"action":           [],
+						"captcha_config":   [],
+						"challenge_config": [],
+						"name":             "rule-1",
+						"override_action": [
+							{
+								"count": [
+									{},
+								],
+								"none": [],
+							},
+						],
+						"priority":   1,
+						"rule_label": [],
+						"statement": [
+							{
+								"and_statement":              [],
+								"byte_match_statement":       [],
+								"geo_match_statement":        [],
+								"ip_set_reference_statement": [],
+								"label_match_statement":      [],
+								"managed_rule_group_statement": [
+									{
+										"managed_rule_group_configs": [],
+										"name": "AWSManagedRulesCommonRuleSet",
+										"rule_action_override": [
+											{
+												"action_to_use": [
+													{
+														"allow":     [],
+														"block":     [],
+														"captcha":   [],
+														"challenge": [],
+														"count": [
+															{
+																"custom_request_handling": [],
+															},
+														],
+													},
+												],
+												"name": "SizeRestrictions_QUERYSTRING",
+											},
+											{
+												"action_to_use": [
+													{
+														"allow":     [],
+														"block":     [],
+														"captcha":   [],
+														"challenge": [],
+														"count": [
+															{
+																"custom_request_handling": [],
+															},
+														],
+													},
+												],
+												"name": "NoUserAgent_HEADER",
+											},
+										],
+										"scope_down_statement": [
+											{
+												"and_statement":        [],
+												"byte_match_statement": [],
+												"geo_match_statement": [
+													{
+														"country_codes": [
+															"US",
+															"NL",
+														],
+														"forwarded_ip_config": [],
+													},
+												],
+												"ip_set_reference_statement":            [],
+												"label_match_statement":                 [],
+												"not_statement":                         [],
+												"or_statement":                          [],
+												"regex_match_statement":                 [],
+												"regex_pattern_set_reference_statement": [],
+												"size_constraint_statement":             [],
+												"sqli_match_statement":                  [],
+												"xss_match_statement":                   [],
+											},
+										],
+										"vendor_name": "AWS",
+										"version":     "",
+									},
+								],
+								"not_statement":                         [],
+								"or_statement":                          [],
+								"rate_based_statement":                  [],
+								"regex_match_statement":                 [],
+								"regex_pattern_set_reference_statement": [],
+								"rule_group_reference_statement":        [],
+								"size_constraint_statement":             [],
+								"sqli_match_statement":                  [],
+								"xss_match_statement":                   [],
+							},
+						],
+						"visibility_config": [
+							{
+								"cloudwatch_metrics_enabled": false,
+								"metric_name":                "friendly-rule-metric-name",
+								"sampled_requests_enabled":   false,
+							},
+						],
+					},
+				],
+				"rule_json": null,
+				"scope":     "REGIONAL",
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"token_domains": [
+					"myotherwebsite.com",
+					"mywebsite.com",
+				],
+				"visibility_config": [
+					{
+						"cloudwatch_metrics_enabled": false,
+						"metric_name":                "friendly-metric-name",
+						"sampled_requests_enabled":   false,
+					},
+				],
+			},
+			"after_unknown": {
+				"application_integration_url": true,
+				"arn":                  true,
+				"association_config":   [],
+				"capacity":             true,
+				"captcha_config":       [],
+				"challenge_config":     [],
+				"custom_response_body": [],
+				"default_action": [
+					{
+						"allow": [
+							{
+								"custom_request_handling": [],
+							},
+						],
+						"block": [],
+					},
+				],
+				"id":          true,
+				"lock_token":  true,
+				"name_prefix": true,
+				"rule": [
+					{
+						"action":           [],
+						"captcha_config":   [],
+						"challenge_config": [],
+						"override_action": [
+							{
+								"count": [
+									{},
+								],
+								"none": [],
+							},
+						],
+						"rule_label": [],
+						"statement": [
+							{
+								"and_statement":              [],
+								"byte_match_statement":       [],
+								"geo_match_statement":        [],
+								"ip_set_reference_statement": [],
+								"label_match_statement":      [],
+								"managed_rule_group_statement": [
+									{
+										"managed_rule_group_configs": [],
+										"rule_action_override": [
+											{
+												"action_to_use": [
+													{
+														"allow":     [],
+														"block":     [],
+														"captcha":   [],
+														"challenge": [],
+														"count": [
+															{
+																"custom_request_handling": [],
+															},
+														],
+													},
+												],
+											},
+											{
+												"action_to_use": [
+													{
+														"allow":     [],
+														"block":     [],
+														"captcha":   [],
+														"challenge": [],
+														"count": [
+															{
+																"custom_request_handling": [],
+															},
+														],
+													},
+												],
+											},
+										],
+										"scope_down_statement": [
+											{
+												"and_statement":        [],
+												"byte_match_statement": [],
+												"geo_match_statement": [
+													{
+														"country_codes": [
+															false,
+															false,
+														],
+														"forwarded_ip_config": [],
+													},
+												],
+												"ip_set_reference_statement":            [],
+												"label_match_statement":                 [],
+												"not_statement":                         [],
+												"or_statement":                          [],
+												"regex_match_statement":                 [],
+												"regex_pattern_set_reference_statement": [],
+												"size_constraint_statement":             [],
+												"sqli_match_statement":                  [],
+												"xss_match_statement":                   [],
+											},
+										],
+									},
+								],
+								"not_statement":                         [],
+								"or_statement":                          [],
+								"rate_based_statement":                  [],
+								"regex_match_statement":                 [],
+								"regex_pattern_set_reference_statement": [],
+								"rule_group_reference_statement":        [],
+								"size_constraint_statement":             [],
+								"sqli_match_statement":                  [],
+								"xss_match_statement":                   [],
+							},
+						],
+						"visibility_config": [
+							{},
+						],
+					},
+				],
+				"tags":     {},
+				"tags_all": {},
+				"token_domains": [
+					false,
+					false,
+				],
+				"visibility_config": [
+					{},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_wafv2_web_acl",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_wafv2_web_acl.example",
+					"expressions": {
+						"default_action": [
+							{
+								"allow": [
+									{},
+								],
+							},
+						],
+						"description": {
+							"constant_value": "Example of a managed rule.",
+						},
+						"name": {
+							"constant_value": "managed-rule-example",
+						},
+						"rule": [
+							{
+								"name": {
+									"constant_value": "rule-1",
+								},
+								"override_action": [
+									{
+										"count": [
+											{},
+										],
+									},
+								],
+								"priority": {
+									"constant_value": 1,
+								},
+								"statement": [
+									{
+										"managed_rule_group_statement": [
+											{
+												"name": {
+													"constant_value": "AWSManagedRulesCommonRuleSet",
+												},
+												"rule_action_override": [
+													{
+														"action_to_use": [
+															{
+																"count": [
+																	{},
+																],
+															},
+														],
+														"name": {
+															"constant_value": "SizeRestrictions_QUERYSTRING",
+														},
+													},
+													{
+														"action_to_use": [
+															{
+																"count": [
+																	{},
+																],
+															},
+														],
+														"name": {
+															"constant_value": "NoUserAgent_HEADER",
+														},
+													},
+												],
+												"scope_down_statement": [
+													{
+														"geo_match_statement": [
+															{
+																"country_codes": {
+																	"constant_value": [
+																		"US",
+																		"NL",
+																	],
+																},
+															},
+														],
+													},
+												],
+												"vendor_name": {
+													"constant_value": "AWS",
+												},
+											},
+										],
+									},
+								],
+								"visibility_config": [
+									{
+										"cloudwatch_metrics_enabled": {
+											"constant_value": false,
+										},
+										"metric_name": {
+											"constant_value": "friendly-rule-metric-name",
+										},
+										"sampled_requests_enabled": {
+											"constant_value": false,
+										},
+									},
+								],
+							},
+						],
+						"scope": {
+							"constant_value": "REGIONAL",
+						},
+						"tags": {
+							"constant_value": {
+								"Tag1": "Value1",
+								"Tag2": "Value2",
+							},
+						},
+						"token_domains": {
+							"constant_value": [
+								"mywebsite.com",
+								"myotherwebsite.com",
+							],
+						},
+						"visibility_config": [
+							{
+								"cloudwatch_metrics_enabled": {
+									"constant_value": false,
+								},
+								"metric_name": {
+									"constant_value": "friendly-metric-name",
+								},
+								"sampled_requests_enabled": {
+									"constant_value": false,
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_wafv2_web_acl",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_wafv2_web_acl.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"association_config":   [],
+						"captcha_config":       [],
+						"challenge_config":     [],
+						"custom_response_body": [],
+						"default_action": [
+							{
+								"allow": [
+									{
+										"custom_request_handling": [],
+									},
+								],
+								"block": [],
+							},
+						],
+						"rule": [
+							{
+								"action":           [],
+								"captcha_config":   [],
+								"challenge_config": [],
+								"override_action": [
+									{
+										"count": [
+											{},
+										],
+										"none": [],
+									},
+								],
+								"rule_label": [],
+								"statement": [
+									{
+										"and_statement":              [],
+										"byte_match_statement":       [],
+										"geo_match_statement":        [],
+										"ip_set_reference_statement": [],
+										"label_match_statement":      [],
+										"managed_rule_group_statement": [
+											{
+												"managed_rule_group_configs": [],
+												"rule_action_override": [
+													{
+														"action_to_use": [
+															{
+																"allow":     [],
+																"block":     [],
+																"captcha":   [],
+																"challenge": [],
+																"count": [
+																	{
+																		"custom_request_handling": [],
+																	},
+																],
+															},
+														],
+													},
+													{
+														"action_to_use": [
+															{
+																"allow":     [],
+																"block":     [],
+																"captcha":   [],
+																"challenge": [],
+																"count": [
+																	{
+																		"custom_request_handling": [],
+																	},
+																],
+															},
+														],
+													},
+												],
+												"scope_down_statement": [
+													{
+														"and_statement":        [],
+														"byte_match_statement": [],
+														"geo_match_statement": [
+															{
+																"country_codes": [
+																	false,
+																	false,
+																],
+																"forwarded_ip_config": [],
+															},
+														],
+														"ip_set_reference_statement":            [],
+														"label_match_statement":                 [],
+														"not_statement":                         [],
+														"or_statement":                          [],
+														"regex_match_statement":                 [],
+														"regex_pattern_set_reference_statement": [],
+														"size_constraint_statement":             [],
+														"sqli_match_statement":                  [],
+														"xss_match_statement":                   [],
+													},
+												],
+											},
+										],
+										"not_statement":                         [],
+										"or_statement":                          [],
+										"rate_based_statement":                  [],
+										"regex_match_statement":                 [],
+										"regex_pattern_set_reference_statement": [],
+										"rule_group_reference_statement":        [],
+										"size_constraint_statement":             [],
+										"sqli_match_statement":                  [],
+										"xss_match_statement":                   [],
+									},
+								],
+								"visibility_config": [
+									{},
+								],
+							},
+						],
+						"tags":     {},
+						"tags_all": {},
+						"token_domains": [
+							false,
+							false,
+						],
+						"visibility_config": [
+							{},
+						],
+					},
+					"type": "aws_wafv2_web_acl",
+					"values": {
+						"association_config":   [],
+						"captcha_config":       [],
+						"challenge_config":     [],
+						"custom_response_body": [],
+						"default_action": [
+							{
+								"allow": [
+									{
+										"custom_request_handling": [],
+									},
+								],
+								"block": [],
+							},
+						],
+						"description": "Example of a managed rule.",
+						"name":        "managed-rule-example",
+						"rule": [
+							{
+								"action":           [],
+								"captcha_config":   [],
+								"challenge_config": [],
+								"name":             "rule-1",
+								"override_action": [
+									{
+										"count": [
+											{},
+										],
+										"none": [],
+									},
+								],
+								"priority":   1,
+								"rule_label": [],
+								"statement": [
+									{
+										"and_statement":              [],
+										"byte_match_statement":       [],
+										"geo_match_statement":        [],
+										"ip_set_reference_statement": [],
+										"label_match_statement":      [],
+										"managed_rule_group_statement": [
+											{
+												"managed_rule_group_configs": [],
+												"name": "AWSManagedRulesCommonRuleSet",
+												"rule_action_override": [
+													{
+														"action_to_use": [
+															{
+																"allow":     [],
+																"block":     [],
+																"captcha":   [],
+																"challenge": [],
+																"count": [
+																	{
+																		"custom_request_handling": [],
+																	},
+																],
+															},
+														],
+														"name": "SizeRestrictions_QUERYSTRING",
+													},
+													{
+														"action_to_use": [
+															{
+																"allow":     [],
+																"block":     [],
+																"captcha":   [],
+																"challenge": [],
+																"count": [
+																	{
+																		"custom_request_handling": [],
+																	},
+																],
+															},
+														],
+														"name": "NoUserAgent_HEADER",
+													},
+												],
+												"scope_down_statement": [
+													{
+														"and_statement":        [],
+														"byte_match_statement": [],
+														"geo_match_statement": [
+															{
+																"country_codes": [
+																	"US",
+																	"NL",
+																],
+																"forwarded_ip_config": [],
+															},
+														],
+														"ip_set_reference_statement":            [],
+														"label_match_statement":                 [],
+														"not_statement":                         [],
+														"or_statement":                          [],
+														"regex_match_statement":                 [],
+														"regex_pattern_set_reference_statement": [],
+														"size_constraint_statement":             [],
+														"sqli_match_statement":                  [],
+														"xss_match_statement":                   [],
+													},
+												],
+												"vendor_name": "AWS",
+												"version":     "",
+											},
+										],
+										"not_statement":                         [],
+										"or_statement":                          [],
+										"rate_based_statement":                  [],
+										"regex_match_statement":                 [],
+										"regex_pattern_set_reference_statement": [],
+										"rule_group_reference_statement":        [],
+										"size_constraint_statement":             [],
+										"sqli_match_statement":                  [],
+										"xss_match_statement":                   [],
+									},
+								],
+								"visibility_config": [
+									{
+										"cloudwatch_metrics_enabled": false,
+										"metric_name":                "friendly-rule-metric-name",
+										"sampled_requests_enabled":   false,
+									},
+								],
+							},
+						],
+						"rule_json": null,
+						"scope":     "REGIONAL",
+						"tags": {
+							"Tag1": "Value1",
+							"Tag2": "Value2",
+						},
+						"tags_all": {
+							"Tag1": "Value1",
+							"Tag2": "Value2",
+						},
+						"token_domains": [
+							"myotherwebsite.com",
+							"mywebsite.com",
+						],
+						"visibility_config": [
+							{
+								"cloudwatch_metrics_enabled": false,
+								"metric_name":                "friendly-metric-name",
+								"sampled_requests_enabled":   false,
+							},
+						],
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_wafv2_web_acl.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"association_config":   [],
+					"captcha_config":       [],
+					"challenge_config":     [],
+					"custom_response_body": [],
+					"default_action": [
+						{
+							"allow": [
+								{
+									"custom_request_handling": [],
+								},
+							],
+							"block": [],
+						},
+					],
+					"description": "Example of a managed rule.",
+					"name":        "managed-rule-example",
+					"rule": [
+						{
+							"action":           [],
+							"captcha_config":   [],
+							"challenge_config": [],
+							"name":             "rule-1",
+							"override_action": [
+								{
+									"count": [
+										{},
+									],
+									"none": [],
+								},
+							],
+							"priority":   1,
+							"rule_label": [],
+							"statement": [
+								{
+									"and_statement":              [],
+									"byte_match_statement":       [],
+									"geo_match_statement":        [],
+									"ip_set_reference_statement": [],
+									"label_match_statement":      [],
+									"managed_rule_group_statement": [
+										{
+											"managed_rule_group_configs": [],
+											"name": "AWSManagedRulesCommonRuleSet",
+											"rule_action_override": [
+												{
+													"action_to_use": [
+														{
+															"allow":     [],
+															"block":     [],
+															"captcha":   [],
+															"challenge": [],
+															"count": [
+																{
+																	"custom_request_handling": [],
+																},
+															],
+														},
+													],
+													"name": "SizeRestrictions_QUERYSTRING",
+												},
+												{
+													"action_to_use": [
+														{
+															"allow":     [],
+															"block":     [],
+															"captcha":   [],
+															"challenge": [],
+															"count": [
+																{
+																	"custom_request_handling": [],
+																},
+															],
+														},
+													],
+													"name": "NoUserAgent_HEADER",
+												},
+											],
+											"scope_down_statement": [
+												{
+													"and_statement":        [],
+													"byte_match_statement": [],
+													"geo_match_statement": [
+														{
+															"country_codes": [
+																"US",
+																"NL",
+															],
+															"forwarded_ip_config": [],
+														},
+													],
+													"ip_set_reference_statement":            [],
+													"label_match_statement":                 [],
+													"not_statement":                         [],
+													"or_statement":                          [],
+													"regex_match_statement":                 [],
+													"regex_pattern_set_reference_statement": [],
+													"size_constraint_statement":             [],
+													"sqli_match_statement":                  [],
+													"xss_match_statement":                   [],
+												},
+											],
+											"vendor_name": "AWS",
+											"version":     "",
+										},
+									],
+									"not_statement":                         [],
+									"or_statement":                          [],
+									"rate_based_statement":                  [],
+									"regex_match_statement":                 [],
+									"regex_pattern_set_reference_statement": [],
+									"rule_group_reference_statement":        [],
+									"size_constraint_statement":             [],
+									"sqli_match_statement":                  [],
+									"xss_match_statement":                   [],
+								},
+							],
+							"visibility_config": [
+								{
+									"cloudwatch_metrics_enabled": false,
+									"metric_name":                "friendly-rule-metric-name",
+									"sampled_requests_enabled":   false,
+								},
+							],
+						},
+					],
+					"rule_json": null,
+					"scope":     "REGIONAL",
+					"tags": {
+						"Tag1": "Value1",
+						"Tag2": "Value2",
+					},
+					"tags_all": {
+						"Tag1": "Value1",
+						"Tag2": "Value2",
+					},
+					"token_domains": [
+						"myotherwebsite.com",
+						"mywebsite.com",
+					],
+					"visibility_config": [
+						{
+							"cloudwatch_metrics_enabled": false,
+							"metric_name":                "friendly-metric-name",
+							"sampled_requests_enabled":   false,
+						},
+					],
+				},
+				"after_sensitive": {
+					"association_config":   [],
+					"captcha_config":       [],
+					"challenge_config":     [],
+					"custom_response_body": [],
+					"default_action": [
+						{
+							"allow": [
+								{
+									"custom_request_handling": [],
+								},
+							],
+							"block": [],
+						},
+					],
+					"rule": [
+						{
+							"action":           [],
+							"captcha_config":   [],
+							"challenge_config": [],
+							"override_action": [
+								{
+									"count": [
+										{},
+									],
+									"none": [],
+								},
+							],
+							"rule_label": [],
+							"statement": [
+								{
+									"and_statement":              [],
+									"byte_match_statement":       [],
+									"geo_match_statement":        [],
+									"ip_set_reference_statement": [],
+									"label_match_statement":      [],
+									"managed_rule_group_statement": [
+										{
+											"managed_rule_group_configs": [],
+											"rule_action_override": [
+												{
+													"action_to_use": [
+														{
+															"allow":     [],
+															"block":     [],
+															"captcha":   [],
+															"challenge": [],
+															"count": [
+																{
+																	"custom_request_handling": [],
+																},
+															],
+														},
+													],
+												},
+												{
+													"action_to_use": [
+														{
+															"allow":     [],
+															"block":     [],
+															"captcha":   [],
+															"challenge": [],
+															"count": [
+																{
+																	"custom_request_handling": [],
+																},
+															],
+														},
+													],
+												},
+											],
+											"scope_down_statement": [
+												{
+													"and_statement":        [],
+													"byte_match_statement": [],
+													"geo_match_statement": [
+														{
+															"country_codes": [
+																false,
+																false,
+															],
+															"forwarded_ip_config": [],
+														},
+													],
+													"ip_set_reference_statement":            [],
+													"label_match_statement":                 [],
+													"not_statement":                         [],
+													"or_statement":                          [],
+													"regex_match_statement":                 [],
+													"regex_pattern_set_reference_statement": [],
+													"size_constraint_statement":             [],
+													"sqli_match_statement":                  [],
+													"xss_match_statement":                   [],
+												},
+											],
+										},
+									],
+									"not_statement":                         [],
+									"or_statement":                          [],
+									"rate_based_statement":                  [],
+									"regex_match_statement":                 [],
+									"regex_pattern_set_reference_statement": [],
+									"rule_group_reference_statement":        [],
+									"size_constraint_statement":             [],
+									"sqli_match_statement":                  [],
+									"xss_match_statement":                   [],
+								},
+							],
+							"visibility_config": [
+								{},
+							],
+						},
+					],
+					"tags":     {},
+					"tags_all": {},
+					"token_domains": [
+						false,
+						false,
+					],
+					"visibility_config": [
+						{},
+					],
+				},
+				"after_unknown": {
+					"application_integration_url": true,
+					"arn":                  true,
+					"association_config":   [],
+					"capacity":             true,
+					"captcha_config":       [],
+					"challenge_config":     [],
+					"custom_response_body": [],
+					"default_action": [
+						{
+							"allow": [
+								{
+									"custom_request_handling": [],
+								},
+							],
+							"block": [],
+						},
+					],
+					"id":          true,
+					"lock_token":  true,
+					"name_prefix": true,
+					"rule": [
+						{
+							"action":           [],
+							"captcha_config":   [],
+							"challenge_config": [],
+							"override_action": [
+								{
+									"count": [
+										{},
+									],
+									"none": [],
+								},
+							],
+							"rule_label": [],
+							"statement": [
+								{
+									"and_statement":              [],
+									"byte_match_statement":       [],
+									"geo_match_statement":        [],
+									"ip_set_reference_statement": [],
+									"label_match_statement":      [],
+									"managed_rule_group_statement": [
+										{
+											"managed_rule_group_configs": [],
+											"rule_action_override": [
+												{
+													"action_to_use": [
+														{
+															"allow":     [],
+															"block":     [],
+															"captcha":   [],
+															"challenge": [],
+															"count": [
+																{
+																	"custom_request_handling": [],
+																},
+															],
+														},
+													],
+												},
+												{
+													"action_to_use": [
+														{
+															"allow":     [],
+															"block":     [],
+															"captcha":   [],
+															"challenge": [],
+															"count": [
+																{
+																	"custom_request_handling": [],
+																},
+															],
+														},
+													],
+												},
+											],
+											"scope_down_statement": [
+												{
+													"and_statement":        [],
+													"byte_match_statement": [],
+													"geo_match_statement": [
+														{
+															"country_codes": [
+																false,
+																false,
+															],
+															"forwarded_ip_config": [],
+														},
+													],
+													"ip_set_reference_statement":            [],
+													"label_match_statement":                 [],
+													"not_statement":                         [],
+													"or_statement":                          [],
+													"regex_match_statement":                 [],
+													"regex_pattern_set_reference_statement": [],
+													"size_constraint_statement":             [],
+													"sqli_match_statement":                  [],
+													"xss_match_statement":                   [],
+												},
+											],
+										},
+									],
+									"not_statement":                         [],
+									"or_statement":                          [],
+									"rate_based_statement":                  [],
+									"regex_match_statement":                 [],
+									"regex_pattern_set_reference_statement": [],
+									"rule_group_reference_statement":        [],
+									"size_constraint_statement":             [],
+									"sqli_match_statement":                  [],
+									"xss_match_statement":                   [],
+								},
+							],
+							"visibility_config": [
+								{},
+							],
+						},
+					],
+					"tags":     {},
+					"tags_all": {},
+					"token_domains": [
+						false,
+						false,
+					],
+					"visibility_config": [
+						{},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_wafv2_web_acl",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-04-08T05:36:36Z",
+}

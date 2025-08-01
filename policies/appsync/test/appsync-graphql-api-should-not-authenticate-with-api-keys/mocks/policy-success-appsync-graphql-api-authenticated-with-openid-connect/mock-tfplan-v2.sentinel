@@ -1,0 +1,279 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_appsync_graphql_api.example": {
+			"address":        "aws_appsync_graphql_api.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_appsync_graphql_api",
+			"values": {
+				"additional_authentication_provider": [],
+				"api_type":                           "GRAPHQL",
+				"authentication_type":                "OPENID_CONNECT",
+				"enhanced_metrics_config":            [],
+				"introspection_config":               "ENABLED",
+				"lambda_authorizer_config":           [],
+				"log_config": [
+					{
+						"cloudwatch_logs_role_arn": "arn:aws:iam::123456789012:role/service-role/AWSAppSyncPushToCloudWatchLogs",
+						"exclude_verbose_content":  false,
+						"field_log_level":          "ALL",
+					},
+				],
+				"merged_api_execution_role_arn": null,
+				"name":                  "example",
+				"openid_connect_config": [],
+				"query_depth_limit":     0,
+				"resolver_count_limit":  0,
+				"schema":                null,
+				"tags":                  null,
+				"user_pool_config":      [],
+				"visibility":            "GLOBAL",
+				"xray_enabled":          null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_appsync_graphql_api.example": {
+		"address": "aws_appsync_graphql_api.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"additional_authentication_provider": [],
+				"api_type":                           "GRAPHQL",
+				"authentication_type":                "OPENID_CONNECT",
+				"enhanced_metrics_config":            [],
+				"introspection_config":               "ENABLED",
+				"lambda_authorizer_config":           [],
+				"log_config": [
+					{
+						"cloudwatch_logs_role_arn": "arn:aws:iam::123456789012:role/service-role/AWSAppSyncPushToCloudWatchLogs",
+						"exclude_verbose_content":  false,
+						"field_log_level":          "ALL",
+					},
+				],
+				"merged_api_execution_role_arn": null,
+				"name":                  "example",
+				"openid_connect_config": [],
+				"query_depth_limit":     0,
+				"resolver_count_limit":  0,
+				"schema":                null,
+				"tags":                  null,
+				"user_pool_config":      [],
+				"visibility":            "GLOBAL",
+				"xray_enabled":          null,
+			},
+			"after_unknown": {
+				"additional_authentication_provider": [],
+				"arn": true,
+				"enhanced_metrics_config": [],
+				"id": true,
+				"lambda_authorizer_config": [],
+				"log_config": [
+					{},
+				],
+				"openid_connect_config": [],
+				"tags_all":              true,
+				"uris":                  true,
+				"user_pool_config":      [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_appsync_graphql_api",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_appsync_graphql_api.example",
+					"expressions": {
+						"authentication_type": {
+							"constant_value": "OPENID_CONNECT",
+						},
+						"log_config": [
+							{
+								"cloudwatch_logs_role_arn": {
+									"constant_value": "arn:aws:iam::123456789012:role/service-role/AWSAppSyncPushToCloudWatchLogs",
+								},
+								"field_log_level": {
+									"constant_value": "ALL",
+								},
+							},
+						],
+						"name": {
+							"constant_value": "example",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_appsync_graphql_api",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_appsync_graphql_api.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"additional_authentication_provider": [],
+						"enhanced_metrics_config":            [],
+						"lambda_authorizer_config":           [],
+						"log_config": [
+							{},
+						],
+						"openid_connect_config": [],
+						"tags_all":              {},
+						"uris":                  {},
+						"user_pool_config":      [],
+					},
+					"type": "aws_appsync_graphql_api",
+					"values": {
+						"additional_authentication_provider": [],
+						"api_type":                           "GRAPHQL",
+						"authentication_type":                "OPENID_CONNECT",
+						"enhanced_metrics_config":            [],
+						"introspection_config":               "ENABLED",
+						"lambda_authorizer_config":           [],
+						"log_config": [
+							{
+								"cloudwatch_logs_role_arn": "arn:aws:iam::123456789012:role/service-role/AWSAppSyncPushToCloudWatchLogs",
+								"exclude_verbose_content":  false,
+								"field_log_level":          "ALL",
+							},
+						],
+						"merged_api_execution_role_arn": null,
+						"name":                  "example",
+						"openid_connect_config": [],
+						"query_depth_limit":     0,
+						"resolver_count_limit":  0,
+						"schema":                null,
+						"tags":                  null,
+						"user_pool_config":      [],
+						"visibility":            "GLOBAL",
+						"xray_enabled":          null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_appsync_graphql_api.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"additional_authentication_provider": [],
+					"api_type":                           "GRAPHQL",
+					"authentication_type":                "OPENID_CONNECT",
+					"enhanced_metrics_config":            [],
+					"introspection_config":               "ENABLED",
+					"lambda_authorizer_config":           [],
+					"log_config": [
+						{
+							"cloudwatch_logs_role_arn": "arn:aws:iam::123456789012:role/service-role/AWSAppSyncPushToCloudWatchLogs",
+							"exclude_verbose_content":  false,
+							"field_log_level":          "ALL",
+						},
+					],
+					"merged_api_execution_role_arn": null,
+					"name":                  "example",
+					"openid_connect_config": [],
+					"query_depth_limit":     0,
+					"resolver_count_limit":  0,
+					"schema":                null,
+					"tags":                  null,
+					"user_pool_config":      [],
+					"visibility":            "GLOBAL",
+					"xray_enabled":          null,
+				},
+				"after_sensitive": {
+					"additional_authentication_provider": [],
+					"enhanced_metrics_config":            [],
+					"lambda_authorizer_config":           [],
+					"log_config": [
+						{},
+					],
+					"openid_connect_config": [],
+					"tags_all":              {},
+					"uris":                  {},
+					"user_pool_config":      [],
+				},
+				"after_unknown": {
+					"additional_authentication_provider": [],
+					"arn": true,
+					"enhanced_metrics_config": [],
+					"id": true,
+					"lambda_authorizer_config": [],
+					"log_config": [
+						{},
+					],
+					"openid_connect_config": [],
+					"tags_all":              true,
+					"uris":                  true,
+					"user_pool_config":      [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_appsync_graphql_api",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-06-02T06:24:25Z",
+}

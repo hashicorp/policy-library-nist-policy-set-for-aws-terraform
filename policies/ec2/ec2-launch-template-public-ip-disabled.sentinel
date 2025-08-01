@@ -1,0 +1,61 @@
+# This policy checks if resources of type 'aws_launch_template' have the attribute
+# 'associate_public_ip_address' in 'network_interfaces' set to 'false'
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Import
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                  "ec2-launch-template-public-ip-disabled",
+	"message":                      "Attribute 'associate_public_ip_address' must be set to 'false' in 'network_interfaces' for 'aws_launch_template' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-25 for more details.",
+	"resource_aws_launch_template": "aws_launch_template",
+	"associate_public_ip_address":  "associate_public_ip_address",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		network_interfaces_values = maps.get(res, "values.network_interfaces", [])
+		if network_interfaces_values is empty {
+			return false
+		}
+		return collection.reject(network_interfaces_values, func(network_interfaces_value) {
+			return maps.get(network_interfaces_value, const.associate_public_ip_address, true) is "false"
+		}) is empty
+	})
+}
+
+# Variables
+
+aws_launch_templates = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_launch_template).resources
+violations = get_violations(aws_launch_templates)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

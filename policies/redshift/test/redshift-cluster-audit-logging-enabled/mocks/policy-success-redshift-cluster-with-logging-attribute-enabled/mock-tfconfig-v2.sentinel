@@ -1,0 +1,91 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_redshift_cluster.rscluster": {
+		"address": "aws_redshift_cluster.rscluster",
+		"config": {
+			"allow_version_upgrade": {
+				"constant_value": true,
+			},
+			"automated_snapshot_retention_period": {
+				"constant_value": 10,
+			},
+			"cluster_identifier": {
+				"constant_value": "tf-redshift-cluster",
+			},
+			"cluster_type": {
+				"constant_value": "single-node",
+			},
+			"database_name": {
+				"constant_value": "newdb",
+			},
+			"enhanced_vpc_routing": {
+				"constant_value": true,
+			},
+			"logging": [
+				{
+					"enable": {
+						"constant_value": true,
+					},
+				},
+			],
+			"master_password": {
+				"constant_value": "Newpass12345678",
+			},
+			"master_username": {
+				"constant_value": "exampleuser",
+			},
+			"node_type": {
+				"constant_value": "dc1.large",
+			},
+			"publicly_accessible": {
+				"constant_value": true,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "rscluster",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_redshift_cluster",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

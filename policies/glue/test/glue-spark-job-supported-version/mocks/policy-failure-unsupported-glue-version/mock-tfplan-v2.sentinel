@@ -1,0 +1,272 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_glue_job.fail": {
+			"address":        "aws_glue_job.fail",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "fail",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_glue_job",
+			"values": {
+				"command": [
+					{
+						"name":            "glueetl",
+						"script_location": "s3://my-bucket/scripts/script.py",
+					},
+				],
+				"connections":             null,
+				"default_arguments":       null,
+				"description":             null,
+				"execution_class":         null,
+				"glue_version":            "2.0",
+				"job_run_queuing_enabled": null,
+				"maintenance_window":      null,
+				"max_retries":             null,
+				"name":                    "legacy-spark-job",
+				"non_overridable_arguments": null,
+				"role_arn":                  "arn:aws:iam::123456789012:role/glue-role",
+				"security_configuration":    null,
+				"source_control_details":    [],
+				"tags": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_glue_job.fail": {
+		"address": "aws_glue_job.fail",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"command": [
+					{
+						"name":            "glueetl",
+						"script_location": "s3://my-bucket/scripts/script.py",
+					},
+				],
+				"connections":             null,
+				"default_arguments":       null,
+				"description":             null,
+				"execution_class":         null,
+				"glue_version":            "2.0",
+				"job_run_queuing_enabled": null,
+				"maintenance_window":      null,
+				"max_retries":             null,
+				"name":                    "legacy-spark-job",
+				"non_overridable_arguments": null,
+				"role_arn":                  "arn:aws:iam::123456789012:role/glue-role",
+				"security_configuration":    null,
+				"source_control_details":    [],
+				"tags": null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"command": [
+					{
+						"python_version": true,
+						"runtime":        true,
+					},
+				],
+				"execution_property":     true,
+				"id":                     true,
+				"max_capacity":           true,
+				"notification_property":  true,
+				"number_of_workers":      true,
+				"source_control_details": [],
+				"tags_all":               true,
+				"timeout":                true,
+				"worker_type":            true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "fail",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_glue_job",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_glue_job.fail",
+					"expressions": {
+						"command": [
+							{
+								"name": {
+									"constant_value": "glueetl",
+								},
+								"script_location": {
+									"constant_value": "s3://my-bucket/scripts/script.py",
+								},
+							},
+						],
+						"glue_version": {
+							"constant_value": "2.0",
+						},
+						"name": {
+							"constant_value": "legacy-spark-job",
+						},
+						"role_arn": {
+							"constant_value": "arn:aws:iam::123456789012:role/glue-role",
+						},
+					},
+					"mode":                "managed",
+					"name":                "fail",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_glue_job",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_glue_job.fail",
+					"mode":           "managed",
+					"name":           "fail",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"command": [
+							{},
+						],
+						"execution_property":     [],
+						"notification_property":  [],
+						"source_control_details": [],
+						"tags_all":               {},
+					},
+					"type": "aws_glue_job",
+					"values": {
+						"command": [
+							{
+								"name":            "glueetl",
+								"script_location": "s3://my-bucket/scripts/script.py",
+							},
+						],
+						"connections":             null,
+						"default_arguments":       null,
+						"description":             null,
+						"execution_class":         null,
+						"glue_version":            "2.0",
+						"job_run_queuing_enabled": null,
+						"maintenance_window":      null,
+						"max_retries":             null,
+						"name":                    "legacy-spark-job",
+						"non_overridable_arguments": null,
+						"role_arn":                  "arn:aws:iam::123456789012:role/glue-role",
+						"security_configuration":    null,
+						"source_control_details":    [],
+						"tags": null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_glue_job.fail",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"command": [
+						{
+							"name":            "glueetl",
+							"script_location": "s3://my-bucket/scripts/script.py",
+						},
+					],
+					"connections":             null,
+					"default_arguments":       null,
+					"description":             null,
+					"execution_class":         null,
+					"glue_version":            "2.0",
+					"job_run_queuing_enabled": null,
+					"maintenance_window":      null,
+					"max_retries":             null,
+					"name":                    "legacy-spark-job",
+					"non_overridable_arguments": null,
+					"role_arn":                  "arn:aws:iam::123456789012:role/glue-role",
+					"security_configuration":    null,
+					"source_control_details":    [],
+					"tags": null,
+				},
+				"after_sensitive": {
+					"command": [
+						{},
+					],
+					"execution_property":     [],
+					"notification_property":  [],
+					"source_control_details": [],
+					"tags_all":               {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"command": [
+						{
+							"python_version": true,
+							"runtime":        true,
+						},
+					],
+					"execution_property":     true,
+					"id":                     true,
+					"max_capacity":           true,
+					"notification_property":  true,
+					"number_of_workers":      true,
+					"source_control_details": [],
+					"tags_all":               true,
+					"timeout":                true,
+					"worker_type":            true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "fail",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_glue_job",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-06-17T11:14:00Z",
+}

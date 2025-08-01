@@ -1,0 +1,117 @@
+# This policy requires resources of type `aws_vpc_endpoint` should have 'vpc_endpoint_type' configured with interface endpoint and should be referenced to `aws_vpc` resource.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+param service_name default "ecr.api"
+
+# Constants
+
+const = {
+	"policy_name":               "ec2-vpc-should-be-configured-for-interface-endpoint",
+	"message":                   "AWS EC2 VPC endpoints should be configured for interface endpoints.",
+	"resource_aws_vpc_endpoint": "aws_vpc_endpoint",
+	"resource_aws_vpc":          "aws_vpc",
+	"vpc_endpoint_type":         "vpc_endpoint_type",
+	"service_name":              "service_name",
+	"interface":                 "Interface",
+	"regex":                     "^com.amazonaws.(.*).",
+	"references":                "references",
+	"address":                   "address",
+	"module_prefix":             "module.",
+}
+
+docs = {
+	"ecr.api":       "https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-55",
+	"ecr.dkr":       "https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-56",
+	"ssm":           "https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-57",
+	"ssm-contacts":  "https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-58",
+	"ssm-incidents": "https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-60",
+}
+
+# Functions
+
+# Removes module address prefix from a resource
+# and returns back the localized address for a module.
+resource_address_without_module_address = func(res) {
+	resource_addr = res[const.address]
+
+	# Check for root module
+	if not strings.has_prefix(resource_addr, const.module_prefix) {
+		return resource_addr
+	}
+
+	module_addr_prefix = res[const.module_address] + "."
+	return strings.trim_prefix(resource_addr, module_addr_prefix)
+}
+
+get_complaint_resources = func(vpc_endpoint_resources) {
+	if vpc_endpoint_resources is null or vpc_endpoint_resources is empty {
+		return null
+	}
+	return collection.reject(vpc_endpoint_resources, func(res) {
+		endpoint_type_values = maps.get(res.config, const.vpc_endpoint_type, null)
+		if endpoint_type_values is null or endpoint_type_values is empty {
+			return true
+		}
+		service_name_values = maps.get(res.config, const.service_name, null)
+		if service_name_values is null or service_name_values is empty {
+			return true
+		}
+		regex = const.regex + service_name
+		return maps.get(endpoint_type_values, "constant_value", false) is not const.interface or maps.get(service_name_values, "constant_value", "") not matches regex
+	})
+}
+
+# Variables
+
+vpc_endpoint_resources = tf.config(tfconfig.resources).type(const.resource_aws_vpc_endpoint).resources
+vpc_resources = tf.config(tfconfig.resources).type(const.resource_aws_vpc).resources
+
+vpc_endpoint_complaint = get_complaint_resources(vpc_endpoint_resources)
+violations = []
+
+if vpc_endpoint_complaint is null {
+	violations = vpc_resources
+} else {
+	# Get the api_id references from the complaint resources
+	vpc_endpoint_addresses = map vpc_endpoint_complaint as _, res {
+		res.config.vpc_id.references[1]
+	}
+
+	violations = filter vpc_resources as _, res {
+		resource_address_without_module_address(res) not in vpc_endpoint_addresses
+	}
+}
+
+message = const.message + " Refer to " + docs[service_name] + " for more details."
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

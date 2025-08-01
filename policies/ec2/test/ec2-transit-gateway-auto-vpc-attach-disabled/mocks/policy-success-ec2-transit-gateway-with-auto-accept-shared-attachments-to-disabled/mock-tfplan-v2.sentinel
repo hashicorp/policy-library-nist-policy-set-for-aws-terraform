@@ -1,0 +1,195 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_ec2_transit_gateway.example": {
+			"address":        "aws_ec2_transit_gateway.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_ec2_transit_gateway",
+			"values": {
+				"amazon_side_asn":                    64512,
+				"auto_accept_shared_attachments":     "disable",
+				"default_route_table_association":    "enable",
+				"default_route_table_propagation":    "enable",
+				"description":                        "example",
+				"dns_support":                        "enable",
+				"multicast_support":                  "disable",
+				"security_group_referencing_support": "disable",
+				"tags":                        null,
+				"timeouts":                    null,
+				"transit_gateway_cidr_blocks": null,
+				"vpn_ecmp_support":            "enable",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_ec2_transit_gateway.example": {
+		"address": "aws_ec2_transit_gateway.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"amazon_side_asn":                    64512,
+				"auto_accept_shared_attachments":     "disable",
+				"default_route_table_association":    "enable",
+				"default_route_table_propagation":    "enable",
+				"description":                        "example",
+				"dns_support":                        "enable",
+				"multicast_support":                  "disable",
+				"security_group_referencing_support": "disable",
+				"tags":                        null,
+				"timeouts":                    null,
+				"transit_gateway_cidr_blocks": null,
+				"vpn_ecmp_support":            "enable",
+			},
+			"after_unknown": {
+				"arn": true,
+				"association_default_route_table_id": true,
+				"id":                                 true,
+				"owner_id":                           true,
+				"propagation_default_route_table_id": true,
+				"tags_all":                           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_ec2_transit_gateway",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_ec2_transit_gateway.example",
+					"expressions": {
+						"auto_accept_shared_attachments": {
+							"constant_value": "disable",
+						},
+						"description": {
+							"constant_value": "example",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_ec2_transit_gateway",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_ec2_transit_gateway.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"tags_all": {},
+					},
+					"type": "aws_ec2_transit_gateway",
+					"values": {
+						"amazon_side_asn":                    64512,
+						"auto_accept_shared_attachments":     "disable",
+						"default_route_table_association":    "enable",
+						"default_route_table_propagation":    "enable",
+						"description":                        "example",
+						"dns_support":                        "enable",
+						"multicast_support":                  "disable",
+						"security_group_referencing_support": "disable",
+						"tags":                        null,
+						"timeouts":                    null,
+						"transit_gateway_cidr_blocks": null,
+						"vpn_ecmp_support":            "enable",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_ec2_transit_gateway.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"amazon_side_asn":                    64512,
+					"auto_accept_shared_attachments":     "disable",
+					"default_route_table_association":    "enable",
+					"default_route_table_propagation":    "enable",
+					"description":                        "example",
+					"dns_support":                        "enable",
+					"multicast_support":                  "disable",
+					"security_group_referencing_support": "disable",
+					"tags":                        null,
+					"timeouts":                    null,
+					"transit_gateway_cidr_blocks": null,
+					"vpn_ecmp_support":            "enable",
+				},
+				"after_sensitive": {
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"association_default_route_table_id": true,
+					"id":                                 true,
+					"owner_id":                           true,
+					"propagation_default_route_table_id": true,
+					"tags_all":                           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_ec2_transit_gateway",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2025-04-04T06:34:57Z",
+}

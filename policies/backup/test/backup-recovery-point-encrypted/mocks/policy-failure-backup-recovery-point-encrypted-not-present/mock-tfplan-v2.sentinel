@@ -1,0 +1,915 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_backup_framework.Example": {
+			"address":        "aws_backup_framework.Example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "Example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_backup_framework",
+			"values": {
+				"control": [
+					{
+						"input_parameter": [
+							{
+								"name":  "maxRetentionDays",
+								"value": "100",
+							},
+							{
+								"name":  "minRetentionDays",
+								"value": "1",
+							},
+						],
+						"name": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+						"scope": [
+							{
+								"compliance_resource_types": [
+									"EBS",
+								],
+								"tags": null,
+							},
+						],
+					},
+					{
+						"input_parameter": [
+							{
+								"name":  "recoveryPointAgeUnit",
+								"value": "days",
+							},
+							{
+								"name":  "recoveryPointAgeValue",
+								"value": "1",
+							},
+						],
+						"name": "BACKUP_LAST_RECOVERY_POINT_CREATED",
+						"scope": [
+							{
+								"compliance_resource_types": [
+									"EBS",
+								],
+								"tags": null,
+							},
+						],
+					},
+					{
+						"input_parameter": [
+							{
+								"name":  "requiredFrequencyUnit",
+								"value": "hours",
+							},
+							{
+								"name":  "requiredFrequencyValue",
+								"value": "1",
+							},
+							{
+								"name":  "requiredRetentionDays",
+								"value": "35",
+							},
+						],
+						"name":  "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
+						"scope": [],
+					},
+					{
+						"input_parameter": [
+							{
+								"name":  "requiredRetentionDays",
+								"value": "35",
+							},
+						],
+						"name":  "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
+						"scope": [],
+					},
+					{
+						"input_parameter": [],
+						"name":            "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED",
+						"scope":           [],
+					},
+					{
+						"input_parameter": [],
+						"name":            "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
+						"scope": [
+							{
+								"compliance_resource_types": [
+									"EBS",
+								],
+								"tags": null,
+							},
+						],
+					},
+				],
+				"description": "this is an example framework",
+				"name":        "exampleFramework",
+				"tags": {
+					"Name": "Example Framework",
+				},
+				"tags_all": {
+					"Name": "Example Framework",
+				},
+				"timeouts": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_backup_framework.Example": {
+		"address": "aws_backup_framework.Example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"control": [
+					{
+						"input_parameter": [
+							{
+								"name":  "maxRetentionDays",
+								"value": "100",
+							},
+							{
+								"name":  "minRetentionDays",
+								"value": "1",
+							},
+						],
+						"name": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+						"scope": [
+							{
+								"compliance_resource_types": [
+									"EBS",
+								],
+								"tags": null,
+							},
+						],
+					},
+					{
+						"input_parameter": [
+							{
+								"name":  "recoveryPointAgeUnit",
+								"value": "days",
+							},
+							{
+								"name":  "recoveryPointAgeValue",
+								"value": "1",
+							},
+						],
+						"name": "BACKUP_LAST_RECOVERY_POINT_CREATED",
+						"scope": [
+							{
+								"compliance_resource_types": [
+									"EBS",
+								],
+								"tags": null,
+							},
+						],
+					},
+					{
+						"input_parameter": [
+							{
+								"name":  "requiredFrequencyUnit",
+								"value": "hours",
+							},
+							{
+								"name":  "requiredFrequencyValue",
+								"value": "1",
+							},
+							{
+								"name":  "requiredRetentionDays",
+								"value": "35",
+							},
+						],
+						"name":  "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
+						"scope": [],
+					},
+					{
+						"input_parameter": [
+							{
+								"name":  "requiredRetentionDays",
+								"value": "35",
+							},
+						],
+						"name":  "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
+						"scope": [],
+					},
+					{
+						"input_parameter": [],
+						"name":            "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED",
+						"scope":           [],
+					},
+					{
+						"input_parameter": [],
+						"name":            "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
+						"scope": [
+							{
+								"compliance_resource_types": [
+									"EBS",
+								],
+								"tags": null,
+							},
+						],
+					},
+				],
+				"description": "this is an example framework",
+				"name":        "exampleFramework",
+				"tags": {
+					"Name": "Example Framework",
+				},
+				"tags_all": {
+					"Name": "Example Framework",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"control": [
+					{
+						"input_parameter": [
+							{},
+							{},
+						],
+						"scope": [
+							{
+								"compliance_resource_ids": true,
+								"compliance_resource_types": [
+									false,
+								],
+							},
+						],
+					},
+					{
+						"input_parameter": [
+							{},
+							{},
+						],
+						"scope": [
+							{
+								"compliance_resource_ids": true,
+								"compliance_resource_types": [
+									false,
+								],
+							},
+						],
+					},
+					{
+						"input_parameter": [
+							{},
+							{},
+							{},
+						],
+						"scope": [],
+					},
+					{
+						"input_parameter": [
+							{},
+						],
+						"scope": [],
+					},
+					{
+						"input_parameter": [],
+						"scope":           [],
+					},
+					{
+						"input_parameter": [],
+						"scope": [
+							{
+								"compliance_resource_ids": true,
+								"compliance_resource_types": [
+									false,
+								],
+							},
+						],
+					},
+				],
+				"creation_time":     true,
+				"deployment_status": true,
+				"id":                true,
+				"status":            true,
+				"tags":              {},
+				"tags_all":          {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "Example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_backup_framework",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_backup_framework.Example",
+					"expressions": {
+						"control": [
+							{
+								"input_parameter": [
+									{
+										"name": {
+											"constant_value": "requiredRetentionDays",
+										},
+										"value": {
+											"constant_value": "35",
+										},
+									},
+								],
+								"name": {
+									"constant_value": "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
+								},
+							},
+							{
+								"input_parameter": [
+									{
+										"name": {
+											"constant_value": "requiredFrequencyUnit",
+										},
+										"value": {
+											"constant_value": "hours",
+										},
+									},
+									{
+										"name": {
+											"constant_value": "requiredRetentionDays",
+										},
+										"value": {
+											"constant_value": "35",
+										},
+									},
+									{
+										"name": {
+											"constant_value": "requiredFrequencyValue",
+										},
+										"value": {
+											"constant_value": "1",
+										},
+									},
+								],
+								"name": {
+									"constant_value": "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
+								},
+							},
+							{
+								"name": {
+									"constant_value": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
+								},
+								"scope": [
+									{
+										"compliance_resource_types": {
+											"constant_value": [
+												"EBS",
+											],
+										},
+									},
+								],
+							},
+							{
+								"name": {
+									"constant_value": "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED",
+								},
+							},
+							{
+								"input_parameter": [
+									{
+										"name": {
+											"constant_value": "maxRetentionDays",
+										},
+										"value": {
+											"constant_value": "100",
+										},
+									},
+									{
+										"name": {
+											"constant_value": "minRetentionDays",
+										},
+										"value": {
+											"constant_value": "1",
+										},
+									},
+								],
+								"name": {
+									"constant_value": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+								},
+								"scope": [
+									{
+										"compliance_resource_types": {
+											"constant_value": [
+												"EBS",
+											],
+										},
+									},
+								],
+							},
+							{
+								"input_parameter": [
+									{
+										"name": {
+											"constant_value": "recoveryPointAgeUnit",
+										},
+										"value": {
+											"constant_value": "days",
+										},
+									},
+									{
+										"name": {
+											"constant_value": "recoveryPointAgeValue",
+										},
+										"value": {
+											"constant_value": "1",
+										},
+									},
+								],
+								"name": {
+									"constant_value": "BACKUP_LAST_RECOVERY_POINT_CREATED",
+								},
+								"scope": [
+									{
+										"compliance_resource_types": {
+											"constant_value": [
+												"EBS",
+											],
+										},
+									},
+								],
+							},
+						],
+						"description": {
+							"constant_value": "this is an example framework",
+						},
+						"name": {
+							"constant_value": "exampleFramework",
+						},
+						"tags": {
+							"constant_value": {
+								"Name": "Example Framework",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "Example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_backup_framework",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_backup_framework.Example",
+					"mode":           "managed",
+					"name":           "Example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"control": [
+							{
+								"input_parameter": [
+									{},
+									{},
+								],
+								"scope": [
+									{
+										"compliance_resource_ids": [],
+										"compliance_resource_types": [
+											false,
+										],
+									},
+								],
+							},
+							{
+								"input_parameter": [
+									{},
+									{},
+								],
+								"scope": [
+									{
+										"compliance_resource_ids": [],
+										"compliance_resource_types": [
+											false,
+										],
+									},
+								],
+							},
+							{
+								"input_parameter": [
+									{},
+									{},
+									{},
+								],
+								"scope": [],
+							},
+							{
+								"input_parameter": [
+									{},
+								],
+								"scope": [],
+							},
+							{
+								"input_parameter": [],
+								"scope":           [],
+							},
+							{
+								"input_parameter": [],
+								"scope": [
+									{
+										"compliance_resource_ids": [],
+										"compliance_resource_types": [
+											false,
+										],
+									},
+								],
+							},
+						],
+						"tags":     {},
+						"tags_all": {},
+					},
+					"type": "aws_backup_framework",
+					"values": {
+						"control": [
+							{
+								"input_parameter": [
+									{
+										"name":  "maxRetentionDays",
+										"value": "100",
+									},
+									{
+										"name":  "minRetentionDays",
+										"value": "1",
+									},
+								],
+								"name": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+								"scope": [
+									{
+										"compliance_resource_types": [
+											"EBS",
+										],
+										"tags": null,
+									},
+								],
+							},
+							{
+								"input_parameter": [
+									{
+										"name":  "recoveryPointAgeUnit",
+										"value": "days",
+									},
+									{
+										"name":  "recoveryPointAgeValue",
+										"value": "1",
+									},
+								],
+								"name": "BACKUP_LAST_RECOVERY_POINT_CREATED",
+								"scope": [
+									{
+										"compliance_resource_types": [
+											"EBS",
+										],
+										"tags": null,
+									},
+								],
+							},
+							{
+								"input_parameter": [
+									{
+										"name":  "requiredFrequencyUnit",
+										"value": "hours",
+									},
+									{
+										"name":  "requiredFrequencyValue",
+										"value": "1",
+									},
+									{
+										"name":  "requiredRetentionDays",
+										"value": "35",
+									},
+								],
+								"name":  "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
+								"scope": [],
+							},
+							{
+								"input_parameter": [
+									{
+										"name":  "requiredRetentionDays",
+										"value": "35",
+									},
+								],
+								"name":  "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
+								"scope": [],
+							},
+							{
+								"input_parameter": [],
+								"name":            "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED",
+								"scope":           [],
+							},
+							{
+								"input_parameter": [],
+								"name":            "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
+								"scope": [
+									{
+										"compliance_resource_types": [
+											"EBS",
+										],
+										"tags": null,
+									},
+								],
+							},
+						],
+						"description": "this is an example framework",
+						"name":        "exampleFramework",
+						"tags": {
+							"Name": "Example Framework",
+						},
+						"tags_all": {
+							"Name": "Example Framework",
+						},
+						"timeouts": null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_backup_framework.Example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"control": [
+						{
+							"input_parameter": [
+								{
+									"name":  "maxRetentionDays",
+									"value": "100",
+								},
+								{
+									"name":  "minRetentionDays",
+									"value": "1",
+								},
+							],
+							"name": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+							"scope": [
+								{
+									"compliance_resource_types": [
+										"EBS",
+									],
+									"tags": null,
+								},
+							],
+						},
+						{
+							"input_parameter": [
+								{
+									"name":  "recoveryPointAgeUnit",
+									"value": "days",
+								},
+								{
+									"name":  "recoveryPointAgeValue",
+									"value": "1",
+								},
+							],
+							"name": "BACKUP_LAST_RECOVERY_POINT_CREATED",
+							"scope": [
+								{
+									"compliance_resource_types": [
+										"EBS",
+									],
+									"tags": null,
+								},
+							],
+						},
+						{
+							"input_parameter": [
+								{
+									"name":  "requiredFrequencyUnit",
+									"value": "hours",
+								},
+								{
+									"name":  "requiredFrequencyValue",
+									"value": "1",
+								},
+								{
+									"name":  "requiredRetentionDays",
+									"value": "35",
+								},
+							],
+							"name":  "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
+							"scope": [],
+						},
+						{
+							"input_parameter": [
+								{
+									"name":  "requiredRetentionDays",
+									"value": "35",
+								},
+							],
+							"name":  "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
+							"scope": [],
+						},
+						{
+							"input_parameter": [],
+							"name":            "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED",
+							"scope":           [],
+						},
+						{
+							"input_parameter": [],
+							"name":            "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
+							"scope": [
+								{
+									"compliance_resource_types": [
+										"EBS",
+									],
+									"tags": null,
+								},
+							],
+						},
+					],
+					"description": "this is an example framework",
+					"name":        "exampleFramework",
+					"tags": {
+						"Name": "Example Framework",
+					},
+					"tags_all": {
+						"Name": "Example Framework",
+					},
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"control": [
+						{
+							"input_parameter": [
+								{},
+								{},
+							],
+							"scope": [
+								{
+									"compliance_resource_ids": [],
+									"compliance_resource_types": [
+										false,
+									],
+								},
+							],
+						},
+						{
+							"input_parameter": [
+								{},
+								{},
+							],
+							"scope": [
+								{
+									"compliance_resource_ids": [],
+									"compliance_resource_types": [
+										false,
+									],
+								},
+							],
+						},
+						{
+							"input_parameter": [
+								{},
+								{},
+								{},
+							],
+							"scope": [],
+						},
+						{
+							"input_parameter": [
+								{},
+							],
+							"scope": [],
+						},
+						{
+							"input_parameter": [],
+							"scope":           [],
+						},
+						{
+							"input_parameter": [],
+							"scope": [
+								{
+									"compliance_resource_ids": [],
+									"compliance_resource_types": [
+										false,
+									],
+								},
+							],
+						},
+					],
+					"tags":     {},
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"control": [
+						{
+							"input_parameter": [
+								{},
+								{},
+							],
+							"scope": [
+								{
+									"compliance_resource_ids": true,
+									"compliance_resource_types": [
+										false,
+									],
+								},
+							],
+						},
+						{
+							"input_parameter": [
+								{},
+								{},
+							],
+							"scope": [
+								{
+									"compliance_resource_ids": true,
+									"compliance_resource_types": [
+										false,
+									],
+								},
+							],
+						},
+						{
+							"input_parameter": [
+								{},
+								{},
+								{},
+							],
+							"scope": [],
+						},
+						{
+							"input_parameter": [
+								{},
+							],
+							"scope": [],
+						},
+						{
+							"input_parameter": [],
+							"scope":           [],
+						},
+						{
+							"input_parameter": [],
+							"scope": [
+								{
+									"compliance_resource_ids": true,
+									"compliance_resource_types": [
+										false,
+									],
+								},
+							],
+						},
+					],
+					"creation_time":     true,
+					"deployment_status": true,
+					"id":                true,
+					"status":            true,
+					"tags":              {},
+					"tags_all":          {},
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "Example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_backup_framework",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2024-11-20T07:02:59Z",
+}

@@ -1,0 +1,58 @@
+# This policy checks if resources of type 'aws_opensearch_domain' have the 'enable' attribute set to true
+# in the 'log_publishing_options' block
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                    "opensearch-logs-to-cloudwatch",
+	"message":                        "Attribute 'enable' in 'log_publishing_options' should be true for AWS OpenSearch Domain. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-4 for more details.",
+	"resource_aws_opensearch_domain": "aws_opensearch_domain",
+	"enabled":                        "enabled",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		log_publishing_options_values = maps.get(res, "values.log_publishing_options", null)
+		if log_publishing_options_values is null or log_publishing_options_values is empty {
+			return false
+		}
+		return collection.reject(log_publishing_options_values, func(log_publishing_options_value) {
+			return maps.get(log_publishing_options_value, const.enabled, false) is true
+		}) is empty
+	})
+}
+
+# Variables
+
+opensearch_domain_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_opensearch_domain).resources
+violations = get_violations(opensearch_domain_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

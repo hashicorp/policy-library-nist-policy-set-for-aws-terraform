@@ -1,0 +1,61 @@
+# This control checks whether 'aws_cloudfront_distribution' are encrypting traffic to custom origins.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                          "cloudfront-distributions-should-encrypt-traffic-to-custom-origins",
+	"resource_aws_cloudfront_distribution": "aws_cloudfront_distribution",
+	"message": "'aws_cloudfront_distribution' are encrypting traffic to custom origins. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-9 for more details.",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		default_cache_behavior = maps.get(res.values, "default_cache_behavior", [])
+		viewer_protocol_policy = maps.get(default_cache_behavior[0], "viewer_protocol_policy", "")
+		origin = maps.get(res.values, "origin", [])
+		custom_origin_config = maps.get(origin[0], "custom_origin_config", [])
+		origin_protocol_policy = maps.get(custom_origin_config[0], "origin_protocol_policy", "")
+
+		if viewer_protocol_policy is "allow-all" and origin_protocol_policy is "match-viewer" {
+			return false
+		}
+
+		return origin_protocol_policy is not "http-only"
+	})
+}
+
+# Variables
+
+aws_cloudfront_distribution = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_cloudfront_distribution).resources
+violations = get_violations(aws_cloudfront_distribution)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

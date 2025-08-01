@@ -1,0 +1,802 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudwatch_log_group.example": {
+			"address":        "aws_cloudwatch_log_group.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_log_group",
+			"values": {
+				"kms_key_id":        null,
+				"name":              "example",
+				"retention_in_days": 0,
+				"skip_destroy":      false,
+				"tags":              null,
+			},
+		},
+		"aws_cloudwatch_log_resource_policy.example": {
+			"address":        "aws_cloudwatch_log_resource_policy.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_log_resource_policy",
+			"values": {
+				"policy_document": "{\"Statement\":[{\"Action\":[\"logs:PutLogEventsBatch\",\"logs:PutLogEvents\",\"logs:CreateLogStream\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"es.amazonaws.com\"},\"Resource\":\"arn:aws:logs:*\"}],\"Version\":\"2012-10-17\"}",
+				"policy_name":     "example",
+			},
+		},
+		"aws_elasticsearch_domain.example": {
+			"address":        "aws_elasticsearch_domain.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_elasticsearch_domain",
+			"values": {
+				"cluster_config": [
+					{
+						"dedicated_master_count":   null,
+						"dedicated_master_enabled": false,
+						"dedicated_master_type":    null,
+						"instance_count":           1,
+						"instance_type":            "r4.large.elasticsearch",
+						"warm_count":               null,
+						"warm_enabled":             null,
+						"warm_type":                null,
+						"zone_awareness_config":    [],
+						"zone_awareness_enabled":   null,
+					},
+				],
+				"cognito_options":       [],
+				"domain_name":           "example",
+				"elasticsearch_version": "7.10",
+				"encrypt_at_rest": [
+					{
+						"enabled": false,
+					},
+				],
+				"log_publishing_options": [
+					{
+						"enabled":  true,
+						"log_type": "AUDIT_LOGS",
+					},
+				],
+				"node_to_node_encryption": [
+					{
+						"enabled": false,
+					},
+				],
+				"snapshot_options": [],
+				"tags": {
+					"Domain": "TestDomain",
+				},
+				"tags_all": {
+					"Domain": "TestDomain",
+				},
+				"timeouts":    null,
+				"vpc_options": [],
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_cloudwatch_log_group.example": {
+		"address": "aws_cloudwatch_log_group.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"kms_key_id":        null,
+				"name":              "example",
+				"retention_in_days": 0,
+				"skip_destroy":      false,
+				"tags":              null,
+			},
+			"after_unknown": {
+				"arn":             true,
+				"id":              true,
+				"log_group_class": true,
+				"name_prefix":     true,
+				"tags_all":        true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_cloudwatch_log_group",
+	},
+	"aws_cloudwatch_log_resource_policy.example": {
+		"address": "aws_cloudwatch_log_resource_policy.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"policy_document": "{\"Statement\":[{\"Action\":[\"logs:PutLogEventsBatch\",\"logs:PutLogEvents\",\"logs:CreateLogStream\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"es.amazonaws.com\"},\"Resource\":\"arn:aws:logs:*\"}],\"Version\":\"2012-10-17\"}",
+				"policy_name":     "example",
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_cloudwatch_log_resource_policy",
+	},
+	"aws_elasticsearch_domain.example": {
+		"address": "aws_elasticsearch_domain.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"cluster_config": [
+					{
+						"dedicated_master_count":   null,
+						"dedicated_master_enabled": false,
+						"dedicated_master_type":    null,
+						"instance_count":           1,
+						"instance_type":            "r4.large.elasticsearch",
+						"warm_count":               null,
+						"warm_enabled":             null,
+						"warm_type":                null,
+						"zone_awareness_config":    [],
+						"zone_awareness_enabled":   null,
+					},
+				],
+				"cognito_options":       [],
+				"domain_name":           "example",
+				"elasticsearch_version": "7.10",
+				"encrypt_at_rest": [
+					{
+						"enabled": false,
+					},
+				],
+				"log_publishing_options": [
+					{
+						"enabled":  true,
+						"log_type": "AUDIT_LOGS",
+					},
+				],
+				"node_to_node_encryption": [
+					{
+						"enabled": false,
+					},
+				],
+				"snapshot_options": [],
+				"tags": {
+					"Domain": "TestDomain",
+				},
+				"tags_all": {
+					"Domain": "TestDomain",
+				},
+				"timeouts":    null,
+				"vpc_options": [],
+			},
+			"after_unknown": {
+				"access_policies":           true,
+				"advanced_options":          true,
+				"advanced_security_options": true,
+				"arn":               true,
+				"auto_tune_options": true,
+				"cluster_config": [
+					{
+						"cold_storage_options":  true,
+						"zone_awareness_config": [],
+					},
+				],
+				"cognito_options":         [],
+				"domain_endpoint_options": true,
+				"domain_id":               true,
+				"ebs_options":             true,
+				"encrypt_at_rest": [
+					{
+						"kms_key_id": true,
+					},
+				],
+				"endpoint":        true,
+				"id":              true,
+				"kibana_endpoint": true,
+				"log_publishing_options": [
+					{
+						"cloudwatch_log_group_arn": true,
+					},
+				],
+				"node_to_node_encryption": [
+					{},
+				],
+				"snapshot_options": [],
+				"tags":             {},
+				"tags_all":         {},
+				"vpc_options":      [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_elasticsearch_domain",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_cloudwatch_log_group.example",
+					"expressions": {
+						"name": {
+							"constant_value": "example",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_cloudwatch_log_group",
+				},
+				{
+					"address": "aws_cloudwatch_log_resource_policy.example",
+					"expressions": {
+						"policy_document": {
+							"references": [
+								"data.aws_iam_policy_document.example.json",
+								"data.aws_iam_policy_document.example",
+							],
+						},
+						"policy_name": {
+							"constant_value": "example",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_cloudwatch_log_resource_policy",
+				},
+				{
+					"address": "aws_elasticsearch_domain.example",
+					"expressions": {
+						"cluster_config": [
+							{
+								"instance_type": {
+									"constant_value": "r4.large.elasticsearch",
+								},
+							},
+						],
+						"domain_name": {
+							"constant_value": "example",
+						},
+						"elasticsearch_version": {
+							"constant_value": "7.10",
+						},
+						"encrypt_at_rest": [
+							{
+								"enabled": {
+									"constant_value": false,
+								},
+							},
+						],
+						"log_publishing_options": [
+							{
+								"cloudwatch_log_group_arn": {
+									"references": [
+										"aws_cloudwatch_log_group.example.arn",
+										"aws_cloudwatch_log_group.example",
+									],
+								},
+								"enabled": {
+									"constant_value": true,
+								},
+								"log_type": {
+									"constant_value": "AUDIT_LOGS",
+								},
+							},
+						],
+						"node_to_node_encryption": [
+							{
+								"enabled": {
+									"constant_value": false,
+								},
+							},
+						],
+						"tags": {
+							"constant_value": {
+								"Domain": "TestDomain",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_elasticsearch_domain",
+				},
+				{
+					"address": "data.aws_iam_policy_document.example",
+					"expressions": {
+						"statement": [
+							{
+								"actions": {
+									"constant_value": [
+										"logs:PutLogEvents",
+										"logs:PutLogEventsBatch",
+										"logs:CreateLogStream",
+									],
+								},
+								"effect": {
+									"constant_value": "Allow",
+								},
+								"principals": [
+									{
+										"identifiers": {
+											"constant_value": [
+												"es.amazonaws.com",
+											],
+										},
+										"type": {
+											"constant_value": "Service",
+										},
+									},
+								],
+								"resources": {
+									"constant_value": [
+										"arn:aws:logs:*",
+									],
+								},
+							},
+						],
+					},
+					"mode":                "data",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_policy_document",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_cloudwatch_log_group.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"tags_all": {},
+					},
+					"type": "aws_cloudwatch_log_group",
+					"values": {
+						"kms_key_id":        null,
+						"name":              "example",
+						"retention_in_days": 0,
+						"skip_destroy":      false,
+						"tags":              null,
+					},
+				},
+				{
+					"address":          "aws_cloudwatch_log_resource_policy.example",
+					"mode":             "managed",
+					"name":             "example",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_cloudwatch_log_resource_policy",
+					"values": {
+						"policy_document": "{\"Statement\":[{\"Action\":[\"logs:PutLogEventsBatch\",\"logs:PutLogEvents\",\"logs:CreateLogStream\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"es.amazonaws.com\"},\"Resource\":\"arn:aws:logs:*\"}],\"Version\":\"2012-10-17\"}",
+						"policy_name":     "example",
+					},
+				},
+				{
+					"address":        "aws_elasticsearch_domain.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"advanced_options":          {},
+						"advanced_security_options": [],
+						"auto_tune_options":         [],
+						"cluster_config": [
+							{
+								"cold_storage_options":  [],
+								"zone_awareness_config": [],
+							},
+						],
+						"cognito_options":         [],
+						"domain_endpoint_options": [],
+						"ebs_options":             [],
+						"encrypt_at_rest": [
+							{},
+						],
+						"log_publishing_options": [
+							{},
+						],
+						"node_to_node_encryption": [
+							{},
+						],
+						"snapshot_options": [],
+						"tags":             {},
+						"tags_all":         {},
+						"vpc_options":      [],
+					},
+					"type": "aws_elasticsearch_domain",
+					"values": {
+						"cluster_config": [
+							{
+								"dedicated_master_count":   null,
+								"dedicated_master_enabled": false,
+								"dedicated_master_type":    null,
+								"instance_count":           1,
+								"instance_type":            "r4.large.elasticsearch",
+								"warm_count":               null,
+								"warm_enabled":             null,
+								"warm_type":                null,
+								"zone_awareness_config":    [],
+								"zone_awareness_enabled":   null,
+							},
+						],
+						"cognito_options":       [],
+						"domain_name":           "example",
+						"elasticsearch_version": "7.10",
+						"encrypt_at_rest": [
+							{
+								"enabled": false,
+							},
+						],
+						"log_publishing_options": [
+							{
+								"enabled":  true,
+								"log_type": "AUDIT_LOGS",
+							},
+						],
+						"node_to_node_encryption": [
+							{
+								"enabled": false,
+							},
+						],
+						"snapshot_options": [],
+						"tags": {
+							"Domain": "TestDomain",
+						},
+						"tags_all": {
+							"Domain": "TestDomain",
+						},
+						"timeouts":    null,
+						"vpc_options": [],
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.9.4",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":        "data.aws_iam_policy_document.example",
+						"mode":           "data",
+						"name":           "example",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 0,
+						"sensitive_values": {
+							"statement": [
+								{
+									"actions": [
+										false,
+										false,
+										false,
+									],
+									"condition":      [],
+									"not_actions":    [],
+									"not_principals": [],
+									"not_resources":  [],
+									"principals": [
+										{
+											"identifiers": [
+												false,
+											],
+										},
+									],
+									"resources": [
+										false,
+									],
+								},
+							],
+						},
+						"type": "aws_iam_policy_document",
+						"values": {
+							"id":                        "2597252832",
+							"json":                      "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"logs:PutLogEventsBatch\",\n        \"logs:PutLogEvents\",\n        \"logs:CreateLogStream\"\n      ],\n      \"Resource\": \"arn:aws:logs:*\",\n      \"Principal\": {\n        \"Service\": \"es.amazonaws.com\"\n      }\n    }\n  ]\n}",
+							"minified_json":             "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"logs:PutLogEventsBatch\",\"logs:PutLogEvents\",\"logs:CreateLogStream\"],\"Resource\":\"arn:aws:logs:*\",\"Principal\":{\"Service\":\"es.amazonaws.com\"}}]}",
+							"override_json":             null,
+							"override_policy_documents": null,
+							"policy_id":                 null,
+							"source_json":               null,
+							"source_policy_documents":   null,
+							"statement": [
+								{
+									"actions": [
+										"logs:CreateLogStream",
+										"logs:PutLogEvents",
+										"logs:PutLogEventsBatch",
+									],
+									"condition":      [],
+									"effect":         "Allow",
+									"not_actions":    [],
+									"not_principals": [],
+									"not_resources":  [],
+									"principals": [
+										{
+											"identifiers": [
+												"es.amazonaws.com",
+											],
+											"type": "Service",
+										},
+									],
+									"resources": [
+										"arn:aws:logs:*",
+									],
+									"sid": "",
+								},
+							],
+							"version": "2012-10-17",
+						},
+					},
+				],
+			},
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"json",
+			],
+			"resource": "data.aws_iam_policy_document.example",
+		},
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "aws_cloudwatch_log_group.example",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_cloudwatch_log_group.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"kms_key_id":        null,
+					"name":              "example",
+					"retention_in_days": 0,
+					"skip_destroy":      false,
+					"tags":              null,
+				},
+				"after_sensitive": {
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn":             true,
+					"id":              true,
+					"log_group_class": true,
+					"name_prefix":     true,
+					"tags_all":        true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_cloudwatch_log_group",
+		},
+		{
+			"address": "aws_cloudwatch_log_resource_policy.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"policy_document": "{\"Statement\":[{\"Action\":[\"logs:PutLogEventsBatch\",\"logs:PutLogEvents\",\"logs:CreateLogStream\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"es.amazonaws.com\"},\"Resource\":\"arn:aws:logs:*\"}],\"Version\":\"2012-10-17\"}",
+					"policy_name":     "example",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_cloudwatch_log_resource_policy",
+		},
+		{
+			"address": "aws_elasticsearch_domain.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"cluster_config": [
+						{
+							"dedicated_master_count":   null,
+							"dedicated_master_enabled": false,
+							"dedicated_master_type":    null,
+							"instance_count":           1,
+							"instance_type":            "r4.large.elasticsearch",
+							"warm_count":               null,
+							"warm_enabled":             null,
+							"warm_type":                null,
+							"zone_awareness_config":    [],
+							"zone_awareness_enabled":   null,
+						},
+					],
+					"cognito_options":       [],
+					"domain_name":           "example",
+					"elasticsearch_version": "7.10",
+					"encrypt_at_rest": [
+						{
+							"enabled": false,
+						},
+					],
+					"log_publishing_options": [
+						{
+							"enabled":  true,
+							"log_type": "AUDIT_LOGS",
+						},
+					],
+					"node_to_node_encryption": [
+						{
+							"enabled": false,
+						},
+					],
+					"snapshot_options": [],
+					"tags": {
+						"Domain": "TestDomain",
+					},
+					"tags_all": {
+						"Domain": "TestDomain",
+					},
+					"timeouts":    null,
+					"vpc_options": [],
+				},
+				"after_sensitive": {
+					"advanced_options":          {},
+					"advanced_security_options": [],
+					"auto_tune_options":         [],
+					"cluster_config": [
+						{
+							"cold_storage_options":  [],
+							"zone_awareness_config": [],
+						},
+					],
+					"cognito_options":         [],
+					"domain_endpoint_options": [],
+					"ebs_options":             [],
+					"encrypt_at_rest": [
+						{},
+					],
+					"log_publishing_options": [
+						{},
+					],
+					"node_to_node_encryption": [
+						{},
+					],
+					"snapshot_options": [],
+					"tags":             {},
+					"tags_all":         {},
+					"vpc_options":      [],
+				},
+				"after_unknown": {
+					"access_policies":           true,
+					"advanced_options":          true,
+					"advanced_security_options": true,
+					"arn":               true,
+					"auto_tune_options": true,
+					"cluster_config": [
+						{
+							"cold_storage_options":  true,
+							"zone_awareness_config": [],
+						},
+					],
+					"cognito_options":         [],
+					"domain_endpoint_options": true,
+					"domain_id":               true,
+					"ebs_options":             true,
+					"encrypt_at_rest": [
+						{
+							"kms_key_id": true,
+						},
+					],
+					"endpoint":        true,
+					"id":              true,
+					"kibana_endpoint": true,
+					"log_publishing_options": [
+						{
+							"cloudwatch_log_group_arn": true,
+						},
+					],
+					"node_to_node_encryption": [
+						{},
+					],
+					"snapshot_options": [],
+					"tags":             {},
+					"tags_all":         {},
+					"vpc_options":      [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_elasticsearch_domain",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2024-12-09T04:33:08Z",
+}

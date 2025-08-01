@@ -1,0 +1,117 @@
+# S3 general purpose buckets should block public read access
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfstate/v2" as tfstate
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":                         "s3-bucket-block-public-read-access",
+	"message":                             "S3 general purpose buckets should block public read access. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-2 for more details.",
+	"resource_aws_iam_policy_document":    "aws_iam_policy_document",
+	"resource_aws_s3_public_access_block": "aws_s3_bucket_public_access_block",
+	"resource_aws_s3_bucket_acl":          "aws_s3_bucket_acl",
+	"Allow":                                  "Allow",
+	"acl_not_valid_values":                   ["public-read", "public-read-write", "authenticated-read", "aws-exec-read"],
+	"access_control_policy_not_valid_values": ["FULL_CONTROL", "READ", "READ_ACP"],
+}
+
+# Functions
+
+# Function to get violations for data source aws_iam_policy_document for s3 bucket policy
+get_policy_document_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		statements = maps.get(res, "values.statement", [])
+		if statements is null {
+			return true
+		}
+		full_access = collection.find(statements, func(statement) {
+			actions = maps.get(statement, "actions", [])
+			return collection.find(actions, func(action) {
+				return action contains ":*" or action contains "s3:GetObject" or action contains "s3:GetBucket"
+			}) is defined and
+				maps.get(statement, "effect", "") == const.Allow
+		})
+		return full_access is not defined or full_access is empty
+	})
+}
+
+# Function to get violations for resource aws_s3_bucket_public_access_block for s3 bucket
+get_public_access_block_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		block_public_acls = maps.get(res, "values.block_public_acls", false)
+		ignore_public_acls = maps.get(res, "values.ignore_public_acls", false)
+		block_public_policy = maps.get(res, "values.block_public_policy", false)
+		restrict_public_buckets = maps.get(res, "values.restrict_public_buckets", false)
+		return block_public_acls and ignore_public_acls and block_public_policy and restrict_public_buckets
+	})
+}
+
+# Function to get violations for resource aws_s3_bucket_acl for s3 bucket
+get_bucket_acl_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		acl_complaint = false
+		access_control_policy_complaint = false
+
+		acl = maps.get(res, "values.acl", null)
+		if acl is not null {
+			if acl in const.acl_not_valid_values {
+				acl_complaint = false
+			} else {
+				acl_complaint = true
+			}
+		}
+
+		access_control_policy = maps.get(res, "values.access_control_policy", [])
+		if access_control_policy is empty {
+			return acl_complaint
+		}
+
+		grant = maps.get(access_control_policy[0], "grant", [])
+		if grant is empty {
+			return acl_complaint
+		}
+
+		permission = maps.get(grant[0], "permission", "")
+		if permission is not "" and permission not in const.access_control_policy_not_valid_values {
+			access_control_policy_complaint = true
+		}
+
+		return acl_complaint or access_control_policy_complaint
+	})
+}
+
+iam_policy_document_resources = tf.state(tfstate.resources).type(const.resource_aws_iam_policy_document).resources
+public_access_block_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_s3_public_access_block).resources
+bucket_acl_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_s3_bucket_acl).resources
+
+violations = []
+violations += get_policy_document_violations(iam_policy_document_resources)
+violations += get_public_access_block_violations(public_access_block_resources)
+violations += get_bucket_acl_violations(bucket_acl_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+print(report.generate_policy_report(summary))
+
+main = rule {
+	violations is empty
+}

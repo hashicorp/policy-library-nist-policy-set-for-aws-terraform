@@ -1,0 +1,59 @@
+# This policy checks if resources of type 'kinesis-stream-encrypted' have the 'encryption_type'
+# set to 'KMS'
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "json"
+
+# Constants
+
+const = {
+	"policy_name":                 "kinesis-stream-encrypted",
+	"message":                     "Attribute 'kms_key_id' attribute must be specified and not empty, and 'encryption_type' must be set to 'KMS' for the AWS Kinesis Stream. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kinesis-controls.html#kinesis-1 for more details.",
+	"resource_aws_kinesis_stream": "aws_kinesis_stream",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		kinesis_id = maps.get(res, "values.kms_key_id", {})
+		if kinesis_id is null or kinesis_id is empty {
+			return false
+		}
+		kinesis_stream_values = maps.get(res, "values.encryption_type", "NONE")
+		return kinesis_stream_values is not empty and kinesis_stream_values is "KMS"
+	})
+}
+
+# Variables
+
+kinesis_stream = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_kinesis_stream).resources
+violations = get_violations(kinesis_stream)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

@@ -1,0 +1,68 @@
+# This policy ensures that AWS Glue Spark jobs use only supported Glue versions.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":               "glue-spark-job-supported-version",
+	"message":                   "AWS Glue Spark jobs must use supported Glue versions. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/glue-controls.html#glue-4 for more details.",
+	"resource_type":             "aws_glue_job",
+	"minimum_supported_version": 3.0,
+}
+
+# Functions
+
+uses_supported_version = func(res) {
+	glue_version = maps.get(res.values, "glue_version", "")
+	command = maps.get(res.values, "command", [])
+	job_type = maps.get(command[0], "name", "")
+
+	if job_type is not "glueetl" {
+		return true
+	}
+
+	if glue_version is null or glue_version == "" {
+		return false
+	}
+
+	return float(glue_version) >= const.minimum_supported_version
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_type).resources
+
+violations = collection.reject(resources, func(res) {
+	return uses_supported_version(res)
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Output
+
+print(report.generate_policy_report(summary))
+
+# Rule
+
+main = rule {
+	violations is empty
+}

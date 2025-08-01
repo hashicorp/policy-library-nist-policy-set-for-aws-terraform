@@ -1,0 +1,181 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_api_gateway_deployment.example": {
+		"address": "aws_api_gateway_deployment.example",
+		"config": {
+			"rest_api_id": {
+				"references": [
+					"aws_api_gateway_rest_api.example.id",
+					"aws_api_gateway_rest_api.example",
+				],
+			},
+			"triggers": {
+				"references": [
+					"aws_api_gateway_rest_api.example.body",
+					"aws_api_gateway_rest_api.example",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_api_gateway_deployment",
+	},
+	"aws_api_gateway_rest_api.example": {
+		"address": "aws_api_gateway_rest_api.example",
+		"config": {
+			"body": {
+				"constant_value": null,
+			},
+			"name": {
+				"constant_value": "example",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_api_gateway_rest_api",
+	},
+	"aws_api_gateway_stage.example": {
+		"address": "aws_api_gateway_stage.example",
+		"config": {
+			"deployment_id": {
+				"references": [
+					"aws_api_gateway_deployment.example.id",
+					"aws_api_gateway_deployment.example",
+				],
+			},
+			"rest_api_id": {
+				"references": [
+					"aws_api_gateway_rest_api.example.id",
+					"aws_api_gateway_rest_api.example",
+				],
+			},
+			"stage_name": {
+				"constant_value": "example",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_api_gateway_stage",
+	},
+	"aws_wafv2_web_acl.example": {
+		"address": "aws_wafv2_web_acl.example",
+		"config": {
+			"default_action": [
+				{
+					"allow": [
+						{},
+					],
+				},
+			],
+			"name": {
+				"constant_value": "web-acl-association-example",
+			},
+			"scope": {
+				"constant_value": "REGIONAL",
+			},
+			"visibility_config": [
+				{
+					"cloudwatch_metrics_enabled": {
+						"constant_value": false,
+					},
+					"metric_name": {
+						"constant_value": "friendly-metric-name",
+					},
+					"sampled_requests_enabled": {
+						"constant_value": false,
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_wafv2_web_acl",
+	},
+	"aws_wafv2_web_acl_association.example": {
+		"address": "aws_wafv2_web_acl_association.example",
+		"config": {
+			"resource_arn": {
+				"references": [
+					"aws_api_gateway_stage.example.arn",
+					"aws_api_gateway_stage.example",
+				],
+			},
+			"web_acl_arn": {
+				"references": [
+					"aws_wafv2_web_acl.example.arn",
+					"aws_wafv2_web_acl.example",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_wafv2_web_acl_association",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

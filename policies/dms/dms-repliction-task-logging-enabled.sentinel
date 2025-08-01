@@ -1,0 +1,89 @@
+# This policy checks if resources of type 'aws_dms_replication_task' have the 'replication_task_settings'
+# have logging enabled
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "json" as json
+
+param db_type default "target"
+
+# Constants
+const = {
+	"policy_name":                       "dms-replication-instances-should-not-be-public",
+	"message":                           "Attribute 'replication_task-settings' should have the logging enabled for AWS DMS Replication Task.",
+	"resource_aws_dms_replication_task": "aws_dms_replication_task",
+	"target": "https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-7",
+	"source": "https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-8",
+	"logging_severity_accepted_level": ["LOGGER_SEVERITY_DEFAULT", "LOGGER_SEVERITY_DEBUG", "LOGGER_SEVERITY_DETAILED_DEBUG"],
+}
+
+logging_attribute_list = {
+	"source": ["SOURCE_CAPTURE", "SOURCE_UNLOAD"],
+	"target": ["TARGET_APPLY", "TARGET_LOAD"],
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+
+		replication_task_settings_string = maps.get(res, "values.replication_task_settings", "")
+		if replication_task_settings_string is empty {
+			return false
+		}
+
+		replication_task_settings = json.unmarshal(replication_task_settings_string)
+		replication_settings_logging_values = maps.get(replication_task_settings, "Logging", {})
+
+		enable_logging_attribute = maps.get(replication_settings_logging_values, "EnableLogging", false)
+		if enable_logging_attribute is not true {
+			return false
+		}
+
+		log_components_values = maps.get(replication_settings_logging_values, "LogComponents", [])
+		if log_components_values is empty {
+			return false
+		}
+		for log_components_values as log_components_value {
+			if logging_attribute_list[db_type] contains maps.get(log_components_value, "Id", "") {
+				if const.logging_severity_accepted_level not contains maps.get(log_components_value, "Severity", "") {
+					return false
+				}
+			}
+		}
+		return true
+	})
+}
+
+# Variables
+
+dms_replication_task = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_dms_replication_task).resources
+violations = get_violations(dms_replication_task)
+
+message = const.message + "Refer to " + const[db_type] + " for more details."
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

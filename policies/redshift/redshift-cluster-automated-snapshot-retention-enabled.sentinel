@@ -1,0 +1,67 @@
+# This policy checks if resources of type 'aws_redshift_cluster' have the 'automated-snapshot-retention-period'
+# attribute set in between '7 to 35'
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Params
+
+param automated_snapshot_retention_period_lower_limit default 7
+param automated_snapshot_retention_period_upper_limit default 35
+
+# Constants
+
+const = {
+	"policy_name":                   "redshift-cluster-automated-snapshot-retention-enabled",
+	"resource_aws_redshift_cluster": "aws_redshift_cluster",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		automated_snapshot_retention_period_value = maps.get(res, "values.automated_snapshot_retention_period", 1)
+		return automated_snapshot_retention_period_value >= automated_snapshot_retention_period_lower_limit and automated_snapshot_retention_period_value <= automated_snapshot_retention_period_upper_limit
+	})
+}
+
+# Variables
+
+redshift_clusters = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshift_cluster).resources
+violations = get_violations(redshift_clusters)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        "Attribute 'automated_snapshot_retention_period' should be in between '" + string(automated_snapshot_retention_period_lower_limit) + " to " + string(automated_snapshot_retention_period_upper_limit) + "' for AWS DocumentDb Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-3 for more details.",
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+check_if_automated_snapshot_retention_limits_are_valid = rule {
+	automated_snapshot_retention_period_lower_limit < automated_snapshot_retention_period_upper_limit
+}
+
+check_redshift_cluster_backup_retention_violations = rule {
+	violations is empty
+}
+
+main = rule {
+	check_if_automated_snapshot_retention_limits_are_valid and
+	check_redshift_cluster_backup_retention_violations
+}

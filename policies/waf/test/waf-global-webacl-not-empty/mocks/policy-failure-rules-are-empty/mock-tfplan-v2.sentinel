@@ -1,0 +1,208 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_waf_web_acl.waf_acl": {
+			"address":        "aws_waf_web_acl.waf_acl",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "waf_acl",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_waf_web_acl",
+			"values": {
+				"default_action": [
+					{
+						"type": "ALLOW",
+					},
+				],
+				"logging_configuration": [],
+				"metric_name":           "tfWebACL",
+				"name":                  "tfWebACL",
+				"rules":                 [],
+				"tags":                  null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_waf_web_acl.waf_acl": {
+		"address": "aws_waf_web_acl.waf_acl",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"default_action": [
+					{
+						"type": "ALLOW",
+					},
+				],
+				"logging_configuration": [],
+				"metric_name":           "tfWebACL",
+				"name":                  "tfWebACL",
+				"rules":                 [],
+				"tags":                  null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"default_action": [
+					{},
+				],
+				"id": true,
+				"logging_configuration": [],
+				"rules":                 [],
+				"tags_all":              true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "waf_acl",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_waf_web_acl",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_waf_web_acl.waf_acl",
+					"expressions": {
+						"default_action": [
+							{
+								"type": {
+									"constant_value": "ALLOW",
+								},
+							},
+						],
+						"metric_name": {
+							"constant_value": "tfWebACL",
+						},
+						"name": {
+							"constant_value": "tfWebACL",
+						},
+					},
+					"mode":                "managed",
+					"name":                "waf_acl",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_waf_web_acl",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_waf_web_acl.waf_acl",
+					"mode":           "managed",
+					"name":           "waf_acl",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"default_action": [
+							{},
+						],
+						"logging_configuration": [],
+						"rules":                 [],
+						"tags_all":              {},
+					},
+					"type": "aws_waf_web_acl",
+					"values": {
+						"default_action": [
+							{
+								"type": "ALLOW",
+							},
+						],
+						"logging_configuration": [],
+						"metric_name":           "tfWebACL",
+						"name":                  "tfWebACL",
+						"rules":                 [],
+						"tags":                  null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_waf_web_acl.waf_acl",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"default_action": [
+						{
+							"type": "ALLOW",
+						},
+					],
+					"logging_configuration": [],
+					"metric_name":           "tfWebACL",
+					"name":                  "tfWebACL",
+					"rules":                 [],
+					"tags":                  null,
+				},
+				"after_sensitive": {
+					"default_action": [
+						{},
+					],
+					"logging_configuration": [],
+					"rules":                 [],
+					"tags_all":              {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"default_action": [
+						{},
+					],
+					"id": true,
+					"logging_configuration": [],
+					"rules":                 [],
+					"tags_all":              true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "waf_acl",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_waf_web_acl",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-04-07T20:18:55Z",
+}

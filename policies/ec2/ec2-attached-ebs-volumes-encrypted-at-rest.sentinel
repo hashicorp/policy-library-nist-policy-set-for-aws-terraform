@@ -1,0 +1,98 @@
+// This policy requires `aws_ebs_volume` resources to be encrypted and in attached state.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+// Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+// Constants
+
+const = {
+	"policy_name":                    "ec2-attached-ebs-volumes-encrypted-at-rest",
+	"message":                        "Attribute 'encrypted' must be 'true' for 'aws_ebs_volume' resources and should be attached. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-3 for more details.",
+	"resource_aws_ebs_volume":        "aws_ebs_volume",
+	"resource_aws_volume_attachment": "aws_volume_attachment",
+	"encrypted":                      "encrypted",
+	"constant_value":                 "constant_value",
+	"module_prefix":                  "module.",
+}
+
+// Functions
+
+get_encrypted_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		volume_encrypted_values = maps.get(res, "config." + const.encrypted, {})
+		if volume_encrypted_values is empty {
+			return false
+		}
+		return maps.get(volume_encrypted_values, const.constant_value, false) is true
+	})
+}
+
+get_attachment_violations = func(ebs_volume_resources, ebs_attachment_resources) {
+	if ebs_attachment_resources is empty {
+		return ebs_volume_resources
+	}
+	return collection.reject(ebs_attachment_resources, func(res) {
+		volume_id_reference = get_referenced_resource_address(res, "config.volume_id")
+		if volume_id_reference is empty {
+			return false
+		}
+		return collection.find(ebs_volume_resources, func(resource) {
+			volume_address = maps.get(resource, "address", {})
+			if volume_address is empty {
+				return false
+			}
+			return volume_address is volume_id_reference
+		}) is defined
+	})
+}
+
+get_referenced_resource_address = func(res, attr) {
+	references_list = maps.get(res, attr, [])
+	if references_list.references is empty {
+		return ""
+	}
+	referenced_address = references_list.references[1]
+	if strings.has_prefix(res.address, const.module_prefix) {
+		referenced_address = res.module_address + "." + referenced_address
+	}
+	return referenced_address
+}
+
+// Variables
+
+config_resources = tf.config(tfconfig.resources)
+ebs_volume_resources = config_resources.type(const.resource_aws_ebs_volume).resources
+ebs_attachment_resources = config_resources.type(const.resource_aws_volume_attachment).resources
+
+violations = get_encrypted_violations(ebs_volume_resources)
+violations += get_attachment_violations(ebs_volume_resources, ebs_attachment_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+// Outputs
+
+print(report.generate_policy_report(summary))
+
+// Rules
+
+main = rule {
+	violations is empty
+}

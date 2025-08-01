@@ -1,0 +1,88 @@
+# This policy checks if resources of type 'aws_redshift_cluster' have the
+# enable attribute set to true in logging or referenced to the
+# resource 'aws_redshift_logging'
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+const = {
+	"policy_name":                           "redshift-cluster-audit-logging-enabled",
+	"message":                               "Parameter 'logging' should be enabled or referenced to resource AWS Redshift Logging for AWS Redshift Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-4 for more details.",
+	"resource_aws_redshift_cluster":         "aws_redshift_cluster",
+	"resource_aws_redshift_cluster_logging": "aws_redshift_logging",
+	"address":        "address",
+	"module_prefix":  "module.",
+	"module_address": "module_address",
+}
+
+# Functions
+
+redshift_cluster_with_logging_attribute = func(redshift_cluster) {
+	redshift_cluster_logging_values = redshift_cluster.values.logging
+	return redshift_cluster_logging_values is defined and redshift_cluster_logging_values[0].enable is true
+}
+
+redshift_cluster_referenced_to_logging = func(redshift_cluster, config_resources) {
+	# Extract the redshift cluster logging resources from the config resources
+	print("config_resources: ", config_resources)
+	redshift_cluster_logging_config_resources = config_resources.type(const.resource_aws_redshift_cluster_logging).resources
+	if (redshift_cluster_logging_config_resources is not defined or redshift_cluster_logging_config_resources is empty) {
+		return false
+	}
+	# Check if the redshift cluster is referenced to the redshift cluster logging resource
+	redshift_logging_referenced_to_redshift_cluster_resources = redshift_cluster_logging_config_resources[0].config.cluster_identifier.references[-1]
+	redshift_cluster_address_without_module_prefix = resource_address_without_module_address(redshift_cluster)
+	return redshift_logging_referenced_to_redshift_cluster_resources is redshift_cluster_address_without_module_prefix
+}
+
+# Removes module address prefix from a resource
+# and returns back the localized address for a module.
+resource_address_without_module_address = func(res) {
+	resource_addr = res[const.address]
+	# Check for root module
+	if not strings.has_prefix(resource_addr, const.module_prefix) {
+		return resource_addr
+	}
+
+	module_addr_prefix = res[const.module_address] + "."
+	return strings.trim_prefix(resource_addr, module_addr_prefix)
+}
+
+# Variables
+
+redshift_clusters = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshift_cluster).resources
+redshift_cluster_logging_resource = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshift_cluster_logging).resources
+config_resources = tf.config(tfconfig.resources)
+violations = []
+violations += collection.reject(redshift_clusters, func(res) {
+	return redshift_cluster_with_logging_attribute(res) or redshift_cluster_referenced_to_logging(res, config_resources)
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

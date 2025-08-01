@@ -1,0 +1,617 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_waf_ipset.ipset": {
+			"address":        "aws_waf_ipset.ipset",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "ipset",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_waf_ipset",
+			"values": {
+				"ip_set_descriptors": [
+					{
+						"type":  "IPV4",
+						"value": "192.0.7.0/24",
+					},
+				],
+				"name": "tfIPSet",
+			},
+		},
+		"aws_waf_rule.wafrule": {
+			"address":        "aws_waf_rule.wafrule",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "wafrule",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_waf_rule",
+			"values": {
+				"metric_name": "tfWAFRule",
+				"name":        "tfWAFRule",
+				"predicates": [
+					{
+						"negated": false,
+						"type":    "IPMatch",
+					},
+				],
+				"tags": null,
+			},
+		},
+		"aws_waf_web_acl.waf_acl": {
+			"address":        "aws_waf_web_acl.waf_acl",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "waf_acl",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_waf_web_acl",
+			"values": {
+				"default_action": [
+					{
+						"type": "ALLOW",
+					},
+				],
+				"logging_configuration": [],
+				"metric_name":           "tfWebACL",
+				"name":                  "tfWebACL",
+				"rules": [
+					{
+						"action": [
+							{
+								"type": "BLOCK",
+							},
+						],
+						"override_action": [],
+						"priority":        1,
+						"type":            "REGULAR",
+					},
+				],
+				"tags": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_waf_ipset.ipset": {
+		"address": "aws_waf_ipset.ipset",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"ip_set_descriptors": [
+					{
+						"type":  "IPV4",
+						"value": "192.0.7.0/24",
+					},
+				],
+				"name": "tfIPSet",
+			},
+			"after_unknown": {
+				"arn": true,
+				"id":  true,
+				"ip_set_descriptors": [
+					{},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "ipset",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_waf_ipset",
+	},
+	"aws_waf_rule.wafrule": {
+		"address": "aws_waf_rule.wafrule",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"metric_name": "tfWAFRule",
+				"name":        "tfWAFRule",
+				"predicates": [
+					{
+						"negated": false,
+						"type":    "IPMatch",
+					},
+				],
+				"tags": null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"id":  true,
+				"predicates": [
+					{
+						"data_id": true,
+					},
+				],
+				"tags_all": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "wafrule",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_waf_rule",
+	},
+	"aws_waf_web_acl.waf_acl": {
+		"address": "aws_waf_web_acl.waf_acl",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"default_action": [
+					{
+						"type": "ALLOW",
+					},
+				],
+				"logging_configuration": [],
+				"metric_name":           "tfWebACL",
+				"name":                  "tfWebACL",
+				"rules": [
+					{
+						"action": [
+							{
+								"type": "BLOCK",
+							},
+						],
+						"override_action": [],
+						"priority":        1,
+						"type":            "REGULAR",
+					},
+				],
+				"tags": null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"default_action": [
+					{},
+				],
+				"id": true,
+				"logging_configuration": [],
+				"rules": [
+					{
+						"action": [
+							{},
+						],
+						"override_action": [],
+						"rule_id":         true,
+					},
+				],
+				"tags_all": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "waf_acl",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_waf_web_acl",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_waf_ipset.ipset",
+					"expressions": {
+						"ip_set_descriptors": [
+							{
+								"type": {
+									"constant_value": "IPV4",
+								},
+								"value": {
+									"constant_value": "192.0.7.0/24",
+								},
+							},
+						],
+						"name": {
+							"constant_value": "tfIPSet",
+						},
+					},
+					"mode":                "managed",
+					"name":                "ipset",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_waf_ipset",
+				},
+				{
+					"address": "aws_waf_rule.wafrule",
+					"depends_on": [
+						"aws_waf_ipset.ipset",
+					],
+					"expressions": {
+						"metric_name": {
+							"constant_value": "tfWAFRule",
+						},
+						"name": {
+							"constant_value": "tfWAFRule",
+						},
+						"predicates": [
+							{
+								"data_id": {
+									"references": [
+										"aws_waf_ipset.ipset.id",
+										"aws_waf_ipset.ipset",
+									],
+								},
+								"negated": {
+									"constant_value": false,
+								},
+								"type": {
+									"constant_value": "IPMatch",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "wafrule",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_waf_rule",
+				},
+				{
+					"address": "aws_waf_web_acl.waf_acl",
+					"depends_on": [
+						"aws_waf_ipset.ipset",
+						"aws_waf_rule.wafrule",
+					],
+					"expressions": {
+						"default_action": [
+							{
+								"type": {
+									"constant_value": "ALLOW",
+								},
+							},
+						],
+						"metric_name": {
+							"constant_value": "tfWebACL",
+						},
+						"name": {
+							"constant_value": "tfWebACL",
+						},
+						"rules": [
+							{
+								"action": [
+									{
+										"type": {
+											"constant_value": "BLOCK",
+										},
+									},
+								],
+								"priority": {
+									"constant_value": 1,
+								},
+								"rule_id": {
+									"references": [
+										"aws_waf_rule.wafrule.id",
+										"aws_waf_rule.wafrule",
+									],
+								},
+								"type": {
+									"constant_value": "REGULAR",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "waf_acl",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_waf_web_acl",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_waf_ipset.ipset",
+					"mode":           "managed",
+					"name":           "ipset",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"ip_set_descriptors": [
+							{},
+						],
+					},
+					"type": "aws_waf_ipset",
+					"values": {
+						"ip_set_descriptors": [
+							{
+								"type":  "IPV4",
+								"value": "192.0.7.0/24",
+							},
+						],
+						"name": "tfIPSet",
+					},
+				},
+				{
+					"address":        "aws_waf_rule.wafrule",
+					"mode":           "managed",
+					"name":           "wafrule",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"predicates": [
+							{},
+						],
+						"tags_all": {},
+					},
+					"type": "aws_waf_rule",
+					"values": {
+						"metric_name": "tfWAFRule",
+						"name":        "tfWAFRule",
+						"predicates": [
+							{
+								"negated": false,
+								"type":    "IPMatch",
+							},
+						],
+						"tags": null,
+					},
+				},
+				{
+					"address":        "aws_waf_web_acl.waf_acl",
+					"mode":           "managed",
+					"name":           "waf_acl",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"default_action": [
+							{},
+						],
+						"logging_configuration": [],
+						"rules": [
+							{
+								"action": [
+									{},
+								],
+								"override_action": [],
+							},
+						],
+						"tags_all": {},
+					},
+					"type": "aws_waf_web_acl",
+					"values": {
+						"default_action": [
+							{
+								"type": "ALLOW",
+							},
+						],
+						"logging_configuration": [],
+						"metric_name":           "tfWebACL",
+						"name":                  "tfWebACL",
+						"rules": [
+							{
+								"action": [
+									{
+										"type": "BLOCK",
+									},
+								],
+								"override_action": [],
+								"priority":        1,
+								"type":            "REGULAR",
+							},
+						],
+						"tags": null,
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_waf_ipset.ipset",
+		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_waf_rule.wafrule",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_waf_ipset.ipset",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"ip_set_descriptors": [
+						{
+							"type":  "IPV4",
+							"value": "192.0.7.0/24",
+						},
+					],
+					"name": "tfIPSet",
+				},
+				"after_sensitive": {
+					"ip_set_descriptors": [
+						{},
+					],
+				},
+				"after_unknown": {
+					"arn": true,
+					"id":  true,
+					"ip_set_descriptors": [
+						{},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "ipset",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_waf_ipset",
+		},
+		{
+			"address": "aws_waf_rule.wafrule",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"metric_name": "tfWAFRule",
+					"name":        "tfWAFRule",
+					"predicates": [
+						{
+							"negated": false,
+							"type":    "IPMatch",
+						},
+					],
+					"tags": null,
+				},
+				"after_sensitive": {
+					"predicates": [
+						{},
+					],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"id":  true,
+					"predicates": [
+						{
+							"data_id": true,
+						},
+					],
+					"tags_all": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "wafrule",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_waf_rule",
+		},
+		{
+			"address": "aws_waf_web_acl.waf_acl",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"default_action": [
+						{
+							"type": "ALLOW",
+						},
+					],
+					"logging_configuration": [],
+					"metric_name":           "tfWebACL",
+					"name":                  "tfWebACL",
+					"rules": [
+						{
+							"action": [
+								{
+									"type": "BLOCK",
+								},
+							],
+							"override_action": [],
+							"priority":        1,
+							"type":            "REGULAR",
+						},
+					],
+					"tags": null,
+				},
+				"after_sensitive": {
+					"default_action": [
+						{},
+					],
+					"logging_configuration": [],
+					"rules": [
+						{
+							"action": [
+								{},
+							],
+							"override_action": [],
+						},
+					],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"default_action": [
+						{},
+					],
+					"id": true,
+					"logging_configuration": [],
+					"rules": [
+						{
+							"action": [
+								{},
+							],
+							"override_action": [],
+							"rule_id":         true,
+						},
+					],
+					"tags_all": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "waf_acl",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_waf_web_acl",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-04-07T20:17:17Z",
+}

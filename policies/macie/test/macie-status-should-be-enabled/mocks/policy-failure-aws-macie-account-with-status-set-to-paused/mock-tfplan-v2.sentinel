@@ -1,0 +1,698 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_kms_key.example": {
+			"address":        "aws_kms_key.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_kms_key",
+			"values": {
+				"bypass_policy_lockout_safety_check": false,
+				"custom_key_store_id":                null,
+				"customer_master_key_spec":           "SYMMETRIC_DEFAULT",
+				"deletion_window_in_days":            20,
+				"description":                        "An example symmetric encryption KMS key",
+				"enable_key_rotation":                true,
+				"is_enabled":                         true,
+				"key_usage":                          "ENCRYPT_DECRYPT",
+				"policy":                             "{\"Id\":\"key-default-1\",\"Statement\":[{\"Action\":\"kms:*\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:root\"},\"Resource\":\"*\",\"Sid\":\"Enable IAM User Permissions\"},{\"Action\":[\"kms:ReplicateKey\",\"kms:Create*\",\"kms:Describe*\",\"kms:Enable*\",\"kms:List*\",\"kms:Put*\",\"kms:Update*\",\"kms:Revoke*\",\"kms:Disable*\",\"kms:Get*\",\"kms:Delete*\",\"kms:ScheduleKeyDeletion\",\"kms:CancelKeyDeletion\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:user/Alice\"},\"Resource\":\"*\",\"Sid\":\"Allow administration of the key\"},{\"Action\":[\"kms:DescribeKey\",\"kms:Encrypt\",\"kms:Decrypt\",\"kms:ReEncrypt*\",\"kms:GenerateDataKey\",\"kms:GenerateDataKeyWithoutPlaintext\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:user/Bob\"},\"Resource\":\"*\",\"Sid\":\"Allow use of the key\"}],\"Version\":\"2012-10-17\"}",
+				"tags":                               null,
+				"timeouts":                           null,
+				"xks_key_id":                         null,
+			},
+		},
+		"aws_macie2_account.example": {
+			"address":        "aws_macie2_account.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_macie2_account",
+			"values": {
+				"finding_publishing_frequency": "FIFTEEN_MINUTES",
+				"status":                       "PAUSED",
+			},
+		},
+		"aws_macie2_classification_export_configuration.example": {
+			"address":        "aws_macie2_classification_export_configuration.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_macie2_classification_export_configuration",
+			"values": {
+				"s3_destination": [
+					{
+						"bucket_name": "my-new-bucket",
+						"key_prefix":  "exampleprefix/",
+					},
+				],
+			},
+		},
+		"aws_s3_bucket.new_bucket": {
+			"address":        "aws_s3_bucket.new_bucket",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "new_bucket",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"bucket":        "my-new-bucket",
+				"force_destroy": false,
+				"tags": {
+					"Environment": "Dev",
+					"Name":        "My bucket",
+				},
+				"tags_all": {
+					"Environment": "Dev",
+					"Name":        "My bucket",
+				},
+				"timeouts": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_kms_key.example": {
+		"address": "aws_kms_key.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bypass_policy_lockout_safety_check": false,
+				"custom_key_store_id":                null,
+				"customer_master_key_spec":           "SYMMETRIC_DEFAULT",
+				"deletion_window_in_days":            20,
+				"description":                        "An example symmetric encryption KMS key",
+				"enable_key_rotation":                true,
+				"is_enabled":                         true,
+				"key_usage":                          "ENCRYPT_DECRYPT",
+				"policy":                             "{\"Id\":\"key-default-1\",\"Statement\":[{\"Action\":\"kms:*\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:root\"},\"Resource\":\"*\",\"Sid\":\"Enable IAM User Permissions\"},{\"Action\":[\"kms:ReplicateKey\",\"kms:Create*\",\"kms:Describe*\",\"kms:Enable*\",\"kms:List*\",\"kms:Put*\",\"kms:Update*\",\"kms:Revoke*\",\"kms:Disable*\",\"kms:Get*\",\"kms:Delete*\",\"kms:ScheduleKeyDeletion\",\"kms:CancelKeyDeletion\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:user/Alice\"},\"Resource\":\"*\",\"Sid\":\"Allow administration of the key\"},{\"Action\":[\"kms:DescribeKey\",\"kms:Encrypt\",\"kms:Decrypt\",\"kms:ReEncrypt*\",\"kms:GenerateDataKey\",\"kms:GenerateDataKeyWithoutPlaintext\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:user/Bob\"},\"Resource\":\"*\",\"Sid\":\"Allow use of the key\"}],\"Version\":\"2012-10-17\"}",
+				"tags":                               null,
+				"timeouts":                           null,
+				"xks_key_id":                         null,
+			},
+			"after_unknown": {
+				"arn":                     true,
+				"id":                      true,
+				"key_id":                  true,
+				"multi_region":            true,
+				"rotation_period_in_days": true,
+				"tags_all":                true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_kms_key",
+	},
+	"aws_macie2_account.example": {
+		"address": "aws_macie2_account.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"finding_publishing_frequency": "FIFTEEN_MINUTES",
+				"status":                       "PAUSED",
+			},
+			"after_unknown": {
+				"created_at":   true,
+				"id":           true,
+				"service_role": true,
+				"updated_at":   true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_macie2_account",
+	},
+	"aws_macie2_classification_export_configuration.example": {
+		"address": "aws_macie2_classification_export_configuration.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"s3_destination": [
+					{
+						"bucket_name": "my-new-bucket",
+						"key_prefix":  "exampleprefix/",
+					},
+				],
+			},
+			"after_unknown": {
+				"id": true,
+				"s3_destination": [
+					{
+						"kms_key_arn": true,
+					},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_macie2_classification_export_configuration",
+	},
+	"aws_s3_bucket.new_bucket": {
+		"address": "aws_s3_bucket.new_bucket",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bucket":        "my-new-bucket",
+				"force_destroy": false,
+				"tags": {
+					"Environment": "Dev",
+					"Name":        "My bucket",
+				},
+				"tags_all": {
+					"Environment": "Dev",
+					"Name":        "My bucket",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"acceleration_status": true,
+				"acl":                                  true,
+				"arn":                                  true,
+				"bucket_domain_name":                   true,
+				"bucket_prefix":                        true,
+				"bucket_regional_domain_name":          true,
+				"cors_rule":                            true,
+				"grant":                                true,
+				"hosted_zone_id":                       true,
+				"id":                                   true,
+				"lifecycle_rule":                       true,
+				"logging":                              true,
+				"object_lock_configuration":            true,
+				"object_lock_enabled":                  true,
+				"policy":                               true,
+				"region":                               true,
+				"replication_configuration":            true,
+				"request_payer":                        true,
+				"server_side_encryption_configuration": true,
+				"tags":             {},
+				"tags_all":         {},
+				"versioning":       true,
+				"website":          true,
+				"website_domain":   true,
+				"website_endpoint": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "new_bucket",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_kms_key.example",
+					"expressions": {
+						"deletion_window_in_days": {
+							"constant_value": 20,
+						},
+						"description": {
+							"constant_value": "An example symmetric encryption KMS key",
+						},
+						"enable_key_rotation": {
+							"constant_value": true,
+						},
+						"policy": {
+							"references": [
+								"data.aws_caller_identity.current.account_id",
+								"data.aws_caller_identity.current",
+								"data.aws_caller_identity.current.account_id",
+								"data.aws_caller_identity.current",
+								"data.aws_caller_identity.current.account_id",
+								"data.aws_caller_identity.current",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_kms_key",
+				},
+				{
+					"address": "aws_macie2_account.example",
+					"expressions": {
+						"finding_publishing_frequency": {
+							"constant_value": "FIFTEEN_MINUTES",
+						},
+						"status": {
+							"constant_value": "PAUSED",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_macie2_account",
+				},
+				{
+					"address": "aws_macie2_classification_export_configuration.example",
+					"depends_on": [
+						"aws_macie2_account.example",
+					],
+					"expressions": {
+						"s3_destination": [
+							{
+								"bucket_name": {
+									"references": [
+										"aws_s3_bucket.new_bucket.bucket",
+										"aws_s3_bucket.new_bucket",
+									],
+								},
+								"key_prefix": {
+									"constant_value": "exampleprefix/",
+								},
+								"kms_key_arn": {
+									"references": [
+										"aws_kms_key.example.arn",
+										"aws_kms_key.example",
+									],
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_macie2_classification_export_configuration",
+				},
+				{
+					"address": "aws_s3_bucket.new_bucket",
+					"expressions": {
+						"bucket": {
+							"constant_value": "my-new-bucket",
+						},
+						"tags": {
+							"constant_value": {
+								"Environment": "Dev",
+								"Name":        "My bucket",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "new_bucket",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket",
+				},
+				{
+					"address":             "data.aws_caller_identity.current",
+					"mode":                "data",
+					"name":                "current",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_caller_identity",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_kms_key.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"tags_all": {},
+					},
+					"type": "aws_kms_key",
+					"values": {
+						"bypass_policy_lockout_safety_check": false,
+						"custom_key_store_id":                null,
+						"customer_master_key_spec":           "SYMMETRIC_DEFAULT",
+						"deletion_window_in_days":            20,
+						"description":                        "An example symmetric encryption KMS key",
+						"enable_key_rotation":                true,
+						"is_enabled":                         true,
+						"key_usage":                          "ENCRYPT_DECRYPT",
+						"policy":                             "{\"Id\":\"key-default-1\",\"Statement\":[{\"Action\":\"kms:*\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:root\"},\"Resource\":\"*\",\"Sid\":\"Enable IAM User Permissions\"},{\"Action\":[\"kms:ReplicateKey\",\"kms:Create*\",\"kms:Describe*\",\"kms:Enable*\",\"kms:List*\",\"kms:Put*\",\"kms:Update*\",\"kms:Revoke*\",\"kms:Disable*\",\"kms:Get*\",\"kms:Delete*\",\"kms:ScheduleKeyDeletion\",\"kms:CancelKeyDeletion\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:user/Alice\"},\"Resource\":\"*\",\"Sid\":\"Allow administration of the key\"},{\"Action\":[\"kms:DescribeKey\",\"kms:Encrypt\",\"kms:Decrypt\",\"kms:ReEncrypt*\",\"kms:GenerateDataKey\",\"kms:GenerateDataKeyWithoutPlaintext\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:user/Bob\"},\"Resource\":\"*\",\"Sid\":\"Allow use of the key\"}],\"Version\":\"2012-10-17\"}",
+						"tags":                               null,
+						"timeouts":                           null,
+						"xks_key_id":                         null,
+					},
+				},
+				{
+					"address":          "aws_macie2_account.example",
+					"mode":             "managed",
+					"name":             "example",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_macie2_account",
+					"values": {
+						"finding_publishing_frequency": "FIFTEEN_MINUTES",
+						"status":                       "PAUSED",
+					},
+				},
+				{
+					"address":        "aws_macie2_classification_export_configuration.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"s3_destination": [
+							{},
+						],
+					},
+					"type": "aws_macie2_classification_export_configuration",
+					"values": {
+						"s3_destination": [
+							{
+								"bucket_name": "my-new-bucket",
+								"key_prefix":  "exampleprefix/",
+							},
+						],
+					},
+				},
+				{
+					"address":        "aws_s3_bucket.new_bucket",
+					"mode":           "managed",
+					"name":           "new_bucket",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors_rule":                            [],
+						"grant":                                [],
+						"lifecycle_rule":                       [],
+						"logging":                              [],
+						"object_lock_configuration":            [],
+						"replication_configuration":            [],
+						"server_side_encryption_configuration": [],
+						"tags":       {},
+						"tags_all":   {},
+						"versioning": [],
+						"website":    [],
+					},
+					"type": "aws_s3_bucket",
+					"values": {
+						"bucket":        "my-new-bucket",
+						"force_destroy": false,
+						"tags": {
+							"Environment": "Dev",
+							"Name":        "My bucket",
+						},
+						"tags_all": {
+							"Environment": "Dev",
+							"Name":        "My bucket",
+						},
+						"timeouts": null,
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.9.4",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":          "data.aws_caller_identity.current",
+						"mode":             "data",
+						"name":             "current",
+						"provider_name":    "registry.terraform.io/hashicorp/aws",
+						"schema_version":   0,
+						"sensitive_values": {},
+						"type":             "aws_caller_identity",
+						"values": {
+							"account_id": "992382722822",
+							"arn":        "arn:aws:sts::992382722822:assumed-role/aws_nagateja.gs_test-developer/nagateja.gs@hashicorp.com",
+							"id":         "992382722822",
+							"user_id":    "AROA6ODU6UMDO723RHDYI:nagateja.gs@hashicorp.com",
+						},
+					},
+				],
+			},
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"account_id",
+			],
+			"resource": "data.aws_caller_identity.current",
+		},
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "aws_kms_key.example",
+		},
+		{
+			"attribute": [
+				"bucket",
+			],
+			"resource": "aws_s3_bucket.new_bucket",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_kms_key.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bypass_policy_lockout_safety_check": false,
+					"custom_key_store_id":                null,
+					"customer_master_key_spec":           "SYMMETRIC_DEFAULT",
+					"deletion_window_in_days":            20,
+					"description":                        "An example symmetric encryption KMS key",
+					"enable_key_rotation":                true,
+					"is_enabled":                         true,
+					"key_usage":                          "ENCRYPT_DECRYPT",
+					"policy":                             "{\"Id\":\"key-default-1\",\"Statement\":[{\"Action\":\"kms:*\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:root\"},\"Resource\":\"*\",\"Sid\":\"Enable IAM User Permissions\"},{\"Action\":[\"kms:ReplicateKey\",\"kms:Create*\",\"kms:Describe*\",\"kms:Enable*\",\"kms:List*\",\"kms:Put*\",\"kms:Update*\",\"kms:Revoke*\",\"kms:Disable*\",\"kms:Get*\",\"kms:Delete*\",\"kms:ScheduleKeyDeletion\",\"kms:CancelKeyDeletion\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:user/Alice\"},\"Resource\":\"*\",\"Sid\":\"Allow administration of the key\"},{\"Action\":[\"kms:DescribeKey\",\"kms:Encrypt\",\"kms:Decrypt\",\"kms:ReEncrypt*\",\"kms:GenerateDataKey\",\"kms:GenerateDataKeyWithoutPlaintext\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::992382722822:user/Bob\"},\"Resource\":\"*\",\"Sid\":\"Allow use of the key\"}],\"Version\":\"2012-10-17\"}",
+					"tags":                               null,
+					"timeouts":                           null,
+					"xks_key_id":                         null,
+				},
+				"after_sensitive": {
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn":                     true,
+					"id":                      true,
+					"key_id":                  true,
+					"multi_region":            true,
+					"rotation_period_in_days": true,
+					"tags_all":                true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_kms_key",
+		},
+		{
+			"address": "aws_macie2_account.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"finding_publishing_frequency": "FIFTEEN_MINUTES",
+					"status":                       "PAUSED",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"created_at":   true,
+					"id":           true,
+					"service_role": true,
+					"updated_at":   true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_macie2_account",
+		},
+		{
+			"address": "aws_macie2_classification_export_configuration.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"s3_destination": [
+						{
+							"bucket_name": "my-new-bucket",
+							"key_prefix":  "exampleprefix/",
+						},
+					],
+				},
+				"after_sensitive": {
+					"s3_destination": [
+						{},
+					],
+				},
+				"after_unknown": {
+					"id": true,
+					"s3_destination": [
+						{
+							"kms_key_arn": true,
+						},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_macie2_classification_export_configuration",
+		},
+		{
+			"address": "aws_s3_bucket.new_bucket",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bucket":        "my-new-bucket",
+					"force_destroy": false,
+					"tags": {
+						"Environment": "Dev",
+						"Name":        "My bucket",
+					},
+					"tags_all": {
+						"Environment": "Dev",
+						"Name":        "My bucket",
+					},
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"cors_rule":                            [],
+					"grant":                                [],
+					"lifecycle_rule":                       [],
+					"logging":                              [],
+					"object_lock_configuration":            [],
+					"replication_configuration":            [],
+					"server_side_encryption_configuration": [],
+					"tags":       {},
+					"tags_all":   {},
+					"versioning": [],
+					"website":    [],
+				},
+				"after_unknown": {
+					"acceleration_status": true,
+					"acl":                                  true,
+					"arn":                                  true,
+					"bucket_domain_name":                   true,
+					"bucket_prefix":                        true,
+					"bucket_regional_domain_name":          true,
+					"cors_rule":                            true,
+					"grant":                                true,
+					"hosted_zone_id":                       true,
+					"id":                                   true,
+					"lifecycle_rule":                       true,
+					"logging":                              true,
+					"object_lock_configuration":            true,
+					"object_lock_enabled":                  true,
+					"policy":                               true,
+					"region":                               true,
+					"replication_configuration":            true,
+					"request_payer":                        true,
+					"server_side_encryption_configuration": true,
+					"tags":             {},
+					"tags_all":         {},
+					"versioning":       true,
+					"website":          true,
+					"website_domain":   true,
+					"website_endpoint": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "new_bucket",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2024-08-27T10:28:58Z",
+}

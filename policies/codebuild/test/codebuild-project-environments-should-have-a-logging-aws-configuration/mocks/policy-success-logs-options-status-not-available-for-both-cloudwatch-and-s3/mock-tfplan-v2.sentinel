@@ -1,0 +1,298 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_codebuild_project.example": {
+			"address":        "aws_codebuild_project.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_codebuild_project",
+			"values": {
+				"artifacts": [
+					{
+						"artifact_identifier":    null,
+						"bucket_owner_access":    null,
+						"encryption_disabled":    false,
+						"location":               null,
+						"name":                   null,
+						"namespace_type":         null,
+						"override_artifact_name": false,
+						"packaging":              null,
+						"path":                   null,
+						"type":                   "NO_ARTIFACTS",
+					},
+				],
+				"badge_enabled":      false,
+				"build_batch_config": [],
+				"build_timeout":      5,
+				"cache": [
+					{
+						"location": "example",
+						"modes":    null,
+						"type":     "S3",
+					},
+				],
+				"concurrent_build_limit": null,
+				"description":            "test_codebuild_project",
+				"environment": [
+					{
+						"certificate":  null,
+						"compute_type": "BUILD_GENERAL1_SMALL",
+						"environment_variable": [
+							{
+								"name":  "SOME_KEY1",
+								"type":  "PLAINTEXT",
+								"value": "SOME_VALUE1",
+							},
+							{
+								"name":  "SOME_KEY2",
+								"type":  "PARAMETER_STORE",
+								"value": "SOME_VALUE2",
+							},
+						],
+						"fleet": [],
+						"image": "aws/codebuild/amazonlinux2-x86_64-standard:4.0",
+						"image_pull_credentials_type": "CODEBUILD",
+						"privileged_mode":             false,
+						"registry_credential":         [],
+						"type":                        "LINUX_CONTAINER",
+					},
+				],
+				"file_system_locations": [],
+				"logs_config": [
+					{
+						"cloudwatch_logs": [
+							{
+								"group_name":  "log-group",
+								"status":      "ENABLED",
+								"stream_name": "log-stream",
+							},
+						],
+						"s3_logs": [
+							{
+								"bucket_owner_access": null,
+								"encryption_disabled": true,
+								"status":              "DISABLED",
+							},
+						],
+					},
+				],
+				"name":                     "test-project",
+				"project_visibility":       "PRIVATE",
+				"queued_timeout":           480,
+				"resource_access_role":     null,
+				"secondary_artifacts":      [],
+				"secondary_source_version": [],
+				"secondary_sources":        [],
+				"source": [
+					{
+						"build_status_config": [],
+						"buildspec":           null,
+						"git_clone_depth":     1,
+						"git_submodules_config": [
+							{
+								"fetch_submodules": true,
+							},
+						],
+						"insecure_ssl":        null,
+						"location":            "https://github.com/mitchellh/packer.git",
+						"report_build_status": null,
+						"type":                "GITHUB",
+					},
+				],
+				"source_version": "master",
+				"tags": {
+					"Environment": "Test",
+				},
+				"tags_all": {
+					"Environment": "Test",
+				},
+				"vpc_config": [],
+			},
+		},
+		"aws_iam_policy_document.example": {
+			"address":        "aws_iam_policy_document.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "data",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_policy_document",
+			"values": {
+				"override_json":             null,
+				"override_policy_documents": null,
+				"policy_id":                 null,
+				"source_json":               null,
+				"source_policy_documents":   null,
+				"statement": [
+					{
+						"actions": [
+							"logs:CreateLogGroup",
+							"logs:CreateLogStream",
+							"logs:PutLogEvents",
+						],
+						"condition":      [],
+						"effect":         "Allow",
+						"not_actions":    null,
+						"not_principals": [],
+						"not_resources":  null,
+						"principals":     [],
+						"resources": [
+							"*",
+						],
+						"sid": null,
+					},
+					{
+						"actions": [
+							"ec2:CreateNetworkInterface",
+							"ec2:DeleteNetworkInterface",
+							"ec2:DescribeDhcpOptions",
+							"ec2:DescribeNetworkInterfaces",
+							"ec2:DescribeSecurityGroups",
+							"ec2:DescribeSubnets",
+						],
+						"condition":      [],
+						"effect":         "Allow",
+						"not_actions":    null,
+						"not_principals": [],
+						"not_resources":  null,
+						"principals":     [],
+						"resources": [
+							"*",
+						],
+						"sid": null,
+					},
+					{
+						"actions": [
+							"ec2:CreateNetworkInterfacePermission",
+						],
+						"condition": [
+							{
+								"test": "StringEquals",
+								"values": [
+									"codebuild.amazonaws.com",
+								],
+								"variable": "ec2:AuthorizedService",
+							},
+							{
+								"test":     "StringEquals",
+								"values":   [],
+								"variable": "ec2:Subnet",
+							},
+						],
+						"effect":         "Allow",
+						"not_actions":    null,
+						"not_principals": [],
+						"not_resources":  null,
+						"principals":     [],
+						"resources": [
+							"arn:aws:ec2:us-east-1:123456789012:network-interface/*",
+						],
+						"sid": null,
+					},
+					{
+						"actions": [
+							"s3:*",
+						],
+						"condition":      [],
+						"effect":         "Allow",
+						"not_actions":    null,
+						"not_principals": [],
+						"not_resources":  null,
+						"principals":     [],
+						"resources": [
+							null,
+							null,
+						],
+						"sid": null,
+					},
+				],
+				"version": null,
+			},
+		},
+		"aws_iam_role.example": {
+			"address":        "aws_iam_role.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codebuild.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "example",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+		},
+		"aws_iam_role_policy.example": {
+			"address":        "aws_iam_role_policy.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role_policy",
+			"values": {
+				"role": "example",
+			},
+		},
+		"aws_s3_bucket.example": {
+			"address":        "aws_s3_bucket.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"bucket":        "example",
+				"force_destroy": false,
+				"tags":          null,
+				"timeouts":      null,
+			},
+		},
+		"aws_s3_bucket_acl.example": {
+			"address":        "aws_s3_bucket_acl.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_acl",
+			"values": {
+				"acl": "private",
+				"expected_bucket_owner": null,
+			},
+		},
+	},
+}

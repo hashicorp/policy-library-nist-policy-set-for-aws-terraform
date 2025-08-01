@@ -1,0 +1,69 @@
+# This policy requires resources of type `aws_db_instance` to have `enabled_cloudwatch_logs_exports` set to valid array of values.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":              "rds-ensure-cloudwatch-logs-enabled",
+	"message":                  "Attribute 'enabled_cloudwatch_logs_exports' must be set to valid values for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-9 for more details.",
+	"resource_aws_db_instance": "aws_db_instance",
+	"allowed_logs": {
+		"oracle":            ["alert", "audit", "trace", "listener"],
+		"postgres":          ["postgresql", "upgrade"],
+		"mysql":             ["audit", "error", "general", "slowquery"],
+		"mariadb":           ["audit", "error", "general", "slowquery"],
+		"sqlserver":         ["error", "agent"],
+		"aurora":            ["audit", "error", "general", "slowquery"],
+		"aurora-mysql":      ["audit", "error", "general", "slowquery"],
+		"aurora-postgresql": ["postgresql", "upgrade"],
+	},
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_db_instance).resources
+violations = collection.reject(resources, func(res) {
+	engine = maps.get(res, "values.engine", "")
+	enabled_logs = maps.get(res, "values.enabled_cloudwatch_logs_exports", null)
+	if engine not in const.allowed_logs {
+		return true
+	}
+	# if attribute is not set in tf config, it is set to null in plan
+	if enabled_logs is null {
+		return false
+	}
+	return all const.allowed_logs[engine] as log {
+		log in enabled_logs
+	}
+})
+
+summary = {
+	"policy_name": "rds-ensure-cloudwatch-logs-enabled",
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

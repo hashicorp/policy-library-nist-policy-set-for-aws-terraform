@@ -1,0 +1,239 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_ami.example": {
+		"address": "aws_ami.example",
+		"config": {
+			"ebs_block_device": [
+				{
+					"device_name": {
+						"constant_value": "/dev/xvda",
+					},
+					"snapshot_id": {
+						"constant_value": "snap-xxxxxxxx",
+					},
+					"volume_size": {
+						"constant_value": 8,
+					},
+				},
+			],
+			"imds_support": {
+				"constant_value": "v2.0",
+			},
+			"name": {
+				"constant_value": "terraform-example",
+			},
+			"root_device_name": {
+				"constant_value": "/dev/xvda",
+			},
+			"virtualization_type": {
+				"constant_value": "hvm",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_ami",
+	},
+	"aws_autoscaling_group.bar": {
+		"address": "aws_autoscaling_group.bar",
+		"config": {
+			"availability_zones": {
+				"constant_value": [
+					"us-east-1",
+				],
+			},
+			"desired_capacity": {
+				"constant_value": 4,
+			},
+			"force_delete": {
+				"constant_value": true,
+			},
+			"health_check_grace_period": {
+				"constant_value": 300,
+			},
+			"health_check_type": {
+				"constant_value": "ELB",
+			},
+			"initial_lifecycle_hook": [
+				{
+					"default_result": {
+						"constant_value": "CONTINUE",
+					},
+					"heartbeat_timeout": {
+						"constant_value": 2000,
+					},
+					"lifecycle_transition": {
+						"constant_value": "autoscaling:EC2_INSTANCE_LAUNCHING",
+					},
+					"name": {
+						"constant_value": "foobar",
+					},
+					"notification_metadata": {
+						"constant_value": null,
+					},
+					"notification_target_arn": {
+						"constant_value": "arn:aws:sqs:us-east-1:444455556666:queue1*",
+					},
+					"role_arn": {
+						"constant_value": "arn:aws:iam::123456789012:role/S3Access",
+					},
+				},
+			],
+			"instance_maintenance_policy": [
+				{
+					"max_healthy_percentage": {
+						"constant_value": 120,
+					},
+					"min_healthy_percentage": {
+						"constant_value": 90,
+					},
+				},
+			],
+			"launch_configuration": {
+				"references": [
+					"aws_launch_configuration.foobar.name",
+					"aws_launch_configuration.foobar",
+				],
+			},
+			"max_size": {
+				"constant_value": 5,
+			},
+			"min_size": {
+				"constant_value": 2,
+			},
+			"name": {
+				"constant_value": "foobar3-terraform-test",
+			},
+			"placement_group": {
+				"references": [
+					"aws_placement_group.test.id",
+					"aws_placement_group.test",
+				],
+			},
+			"tag": [
+				{
+					"key": {
+						"constant_value": "foo",
+					},
+					"propagate_at_launch": {
+						"constant_value": true,
+					},
+					"value": {
+						"constant_value": "bar",
+					},
+				},
+				{
+					"key": {
+						"constant_value": "lorem",
+					},
+					"propagate_at_launch": {
+						"constant_value": false,
+					},
+					"value": {
+						"constant_value": "ipsum",
+					},
+				},
+			],
+			"timeouts": {
+				"constant_value": null,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "bar",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_autoscaling_group",
+	},
+	"aws_launch_configuration.foobar": {
+		"address": "aws_launch_configuration.foobar",
+		"config": {
+			"image_id": {
+				"references": [
+					"aws_ami.example.id",
+					"aws_ami.example",
+				],
+			},
+			"instance_type": {
+				"constant_value": "t2.micro",
+			},
+			"name": {
+				"constant_value": "web_config",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "foobar",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_launch_configuration",
+	},
+	"aws_placement_group.test": {
+		"address": "aws_placement_group.test",
+		"config": {
+			"name": {
+				"constant_value": "test",
+			},
+			"strategy": {
+				"constant_value": "cluster",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_placement_group",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
