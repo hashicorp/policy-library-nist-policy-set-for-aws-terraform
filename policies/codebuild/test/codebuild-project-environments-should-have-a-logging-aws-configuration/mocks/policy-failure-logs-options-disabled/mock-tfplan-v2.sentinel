@@ -1,0 +1,138 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_codebuild_project.my_codebuild_project": {
+			"address":        "aws_codebuild_project.my_codebuild_project",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "my_codebuild_project",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_codebuild_project",
+			"values": {
+				"artifacts": [
+					{
+						"artifact_identifier":    null,
+						"bucket_owner_access":    null,
+						"encryption_disabled":    false,
+						"location":               null,
+						"name":                   null,
+						"namespace_type":         null,
+						"override_artifact_name": false,
+						"packaging":              null,
+						"path":                   null,
+						"type":                   "NO_ARTIFACTS",
+					},
+				],
+				"badge_enabled":          false,
+				"build_batch_config":     [],
+				"build_timeout":          60,
+				"cache":                  [],
+				"concurrent_build_limit": null,
+				"environment": [
+					{
+						"certificate":          null,
+						"compute_type":         "BUILD_GENERAL1_SMALL",
+						"environment_variable": [],
+						"fleet":                [],
+						"image":                "aws/codebuild/standard:5.0",
+						"image_pull_credentials_type": "CODEBUILD",
+						"privileged_mode":             false,
+						"registry_credential":         [],
+						"type":                        "LINUX_CONTAINER",
+					},
+				],
+				"file_system_locations": [],
+				"logs_config": [
+					{
+						"cloudwatch_logs": [
+							{
+								"group_name":  "codebuild-log-group",
+								"status":      "DISABLED",
+								"stream_name": "log-stream",
+							},
+						],
+						"s3_logs": [
+							{
+								"bucket_owner_access": null,
+								"encryption_disabled": false,
+								"location":            "codebuild-logs-bucket/build-logs",
+								"status":              "DISABLED",
+							},
+						],
+					},
+				],
+				"name":                     "MyCodeBuildProject",
+				"project_visibility":       "PRIVATE",
+				"queued_timeout":           480,
+				"resource_access_role":     null,
+				"secondary_artifacts":      [],
+				"secondary_source_version": [],
+				"secondary_sources":        [],
+				"source": [
+					{
+						"build_status_config":   [],
+						"buildspec":             null,
+						"git_clone_depth":       null,
+						"git_submodules_config": [],
+						"insecure_ssl":          null,
+						"location":              "https://github.com/your-repo/codebuild-example",
+						"report_build_status":   null,
+						"type":                  "GITHUB",
+					},
+				],
+				"source_version": null,
+				"tags":           null,
+				"vpc_config":     [],
+			},
+		},
+		"aws_iam_role.codebuild_service_role": {
+			"address":        "aws_iam_role.codebuild_service_role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "codebuild_service_role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codebuild.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "codebuild-service-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+		},
+		"aws_s3_bucket.build_logs": {
+			"address":        "aws_s3_bucket.build_logs",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "build_logs",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"bucket":        "codebuild-logs-bucket",
+				"force_destroy": false,
+				"tags":          null,
+				"timeouts":      null,
+			},
+		},
+	},
+}

@@ -1,0 +1,124 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_cloudfront_distribution.without_waf": {
+		"address": "aws_cloudfront_distribution.without_waf",
+		"config": {
+			"default_cache_behavior": [
+				{
+					"allowed_methods": {
+						"constant_value": [
+							"GET",
+							"HEAD",
+						],
+					},
+					"cached_methods": {
+						"constant_value": [
+							"GET",
+							"HEAD",
+						],
+					},
+					"forwarded_values": [
+						{
+							"cookies": [
+								{
+									"forward": {
+										"constant_value": "none",
+									},
+								},
+							],
+							"query_string": {
+								"constant_value": false,
+							},
+						},
+					],
+					"target_origin_id": {
+						"constant_value": "S3-example",
+					},
+					"viewer_protocol_policy": {
+						"constant_value": "redirect-to-https",
+					},
+				},
+			],
+			"default_root_object": {
+				"constant_value": "index.html",
+			},
+			"enabled": {
+				"constant_value": true,
+			},
+			"origin": [
+				{
+					"domain_name": {
+						"constant_value": "example.s3.amazonaws.com",
+					},
+					"origin_id": {
+						"constant_value": "S3-example",
+					},
+				},
+			],
+			"restrictions": [
+				{
+					"geo_restriction": [
+						{
+							"restriction_type": {
+								"constant_value": "none",
+							},
+						},
+					],
+				},
+			],
+			"viewer_certificate": [
+				{
+					"cloudfront_default_certificate": {
+						"constant_value": true,
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "without_waf",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_cloudfront_distribution",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

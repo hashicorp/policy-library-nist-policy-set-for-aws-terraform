@@ -1,0 +1,57 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+outputs = {}
+
+resources = {
+	"aws_iam_policy_document.example": {
+		"address":        "aws_iam_policy_document.example",
+		"depends_on":     [],
+		"deposed_key":    "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"tainted":        false,
+		"type":           "aws_iam_policy_document",
+		"values": {
+			"id":                        "3619922110",
+			"json":                      "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"1\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:GetBucket\"\n      ],\n      \"Resource\": \"arn:aws:s3:::*\",\n      \"Principal\": {\n        \"AWS\": \"*\"\n      }\n    }\n  ]\n}",
+			"minified_json":             "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"1\",\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\",\"s3:GetBucket\"],\"Resource\":\"arn:aws:s3:::*\",\"Principal\":{\"AWS\":\"*\"}}]}",
+			"override_json":             null,
+			"override_policy_documents": null,
+			"policy_id":                 null,
+			"source_json":               null,
+			"source_policy_documents":   null,
+			"statement": [
+				{
+					"actions": [
+						"s3:GetBucket",
+						"s3:GetObject",
+					],
+					"condition":      [],
+					"effect":         "Allow",
+					"not_actions":    [],
+					"not_principals": [],
+					"not_resources":  [],
+					"principals": [
+						{
+							"identifiers": [
+								"*",
+							],
+							"type": "AWS",
+						},
+					],
+					"resources": [
+						"arn:aws:s3:::*",
+					],
+					"sid": "1",
+				},
+			],
+			"version": "2012-10-17",
+		},
+	},
+}

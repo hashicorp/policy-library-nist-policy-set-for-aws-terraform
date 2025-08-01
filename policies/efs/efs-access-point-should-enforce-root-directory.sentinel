@@ -1,0 +1,58 @@
+# This policy requires resources of type `aws_efs_access_point` have attribute `root_directory` should not have path set to '/'.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":                   "efs-access-point-should-enforce-root-directory",
+	"message":                       "Attribute 'path' should not be '/' in 'root_directory' for 'aws_efs_access_point' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-3 for more details.",
+	"resource_aws_efs_access_point": "aws_efs_access_point",
+	"root_directory":                "root_directory",
+	"path":                          "path",
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_efs_access_point).resources
+
+violations = collection.reject(resources, func(res) {
+	root_directory = maps.get(res.values, const.root_directory, {})
+	if root_directory is null or root_directory is empty {
+		return false
+	}
+	if root_directory[0] is empty {
+		return false
+	}
+	return maps.get(root_directory[0], const.path, "") is not "/"
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

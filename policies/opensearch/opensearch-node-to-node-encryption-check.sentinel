@@ -1,0 +1,56 @@
+# This policy checks if resources of type 'aws_opensearch_domain' have the 'enable' attribute set to true
+# in the 'node_to_node_encryption' block
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                    "opensearch-node-to-node-encryption-check",
+	"message":                        "Attribute 'enable' in 'node_to_node_encryption' should be true for AWS OpenSearch Domain. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-3 for more details.",
+	"resource_aws_opensearch_domain": "aws_opensearch_domain",
+	"enabled":                        "enabled",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		node_to_node_encryption_values = maps.get(res, "values.node_to_node_encryption", null)
+		if node_to_node_encryption_values is null or node_to_node_encryption_values is empty {
+			return false
+		}
+		return maps.get(node_to_node_encryption_values[0], const.enabled, false) is true
+	})
+}
+
+# Variables
+
+opensearch_domain_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_opensearch_domain).resources
+violations = get_violations(opensearch_domain_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

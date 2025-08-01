@@ -1,0 +1,91 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_ebs_volume.example": {
+		"address": "aws_ebs_volume.example",
+		"config": {
+			"availability_zone": {
+				"constant_value": "us-west-2a",
+			},
+			"encrypted": {
+				"constant_value": false,
+			},
+			"size": {
+				"constant_value": 1,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_ebs_volume",
+	},
+	"aws_instance.web": {
+		"address": "aws_instance.web",
+		"config": {
+			"ami": {
+				"constant_value": "ami-21f78e11",
+			},
+			"availability_zone": {
+				"constant_value": "us-west-2a",
+			},
+			"instance_type": {
+				"constant_value": "t2.micro",
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "HelloWorld",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "web",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_instance",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

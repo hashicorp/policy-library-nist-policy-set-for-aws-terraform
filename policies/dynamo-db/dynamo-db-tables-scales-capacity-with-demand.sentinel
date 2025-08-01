@@ -1,0 +1,119 @@
+# This policy requires that `aws_dynamodb_table` resources with 'billing_mode' attribute set to 'PROVISIONED'
+# have autoscaling configured
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Params
+
+# min_read_capacity specifies the minimum read capacity units for DynamoDB table auto-scaling targets.
+param min_read_capacity default 1
+
+# max_read_capacity specifies the maximum read capacity units for DynamoDB table auto-scaling targets.
+param max_read_capacity default 40000
+
+# min_write_capacity specifies the minimum write capacity units for DynamoDB table auto-scaling targets.
+param min_write_capacity default 1
+
+# max_write_capacity specifies the maximum write capacity units for DynamoDB table auto-scaling targets.
+param max_write_capacity default 40000
+
+# min_target_read_utilization specifies the minimum target utilization percentage for read auto-scaling policies.
+param min_target_read_utilization default 20
+
+# max_target_read_utilization specifies the maximum target utilization percentage for read auto-scaling policies.
+param max_target_read_utilization default 90
+
+# min_target_write_utilization specifies the minimum target utilization percentage for write auto-scaling policies.
+param min_target_write_utilization default 20
+
+# max_target_write_utilization specifies the maximum target utilization percentage for write auto-scaling policies.
+param max_target_write_utilization default 90
+
+# Constants
+const = {
+	"policy_name":                        "dynamo-db-tables-scales-capacity-with-demand",
+	"resource_aws_dynamodb_table":        "aws_dynamodb_table",
+	"resource_aws_appautoscaling_target": "aws_appautoscaling_target",
+	"resource_aws_appautoscaling_policy": "aws_appautoscaling_policy",
+}
+
+# Functions
+scaling_target_exists = func(scaling_targets, table, min_capacity, max_capacity) {
+	return collection.find(scaling_targets, func(target) {
+		return target.values.resource_id is "table/" + table.values.name and
+			target.values.min_capacity >= min_capacity and
+			target.values.max_capacity <= max_capacity
+	}) is defined
+}
+
+scaling_policy_exists = func(read_scaling_policies, table, min_target_utilization, max_target_utilization) {
+	return collection.find(read_scaling_policies, func(policy) {
+		return policy.values.resource_id is "table/" + table.values.name and
+			maps.get(policy, "values.target_tracking_scaling_policy_configuration", []) is not empty and
+			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) >= min_target_utilization and
+			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) <= max_target_utilization
+	}) is defined
+}
+
+find_scaling_policies_by_metric = func(metric_type) {
+	return collection.reject(planned_resources.type(const.resource_aws_appautoscaling_policy).resources, func(resource) {
+		return maps.get(resource, "values.target_tracking_scaling_policy_configuration", []) is empty or
+			maps.get(resource.values.target_tracking_scaling_policy_configuration[0], "predefined_metric_specification", []) is empty or
+			maps.get(resource.values.target_tracking_scaling_policy_configuration[0].predefined_metric_specification[0], "predefined_metric_type", "") is not metric_type
+	})
+}
+
+# Variables
+planned_resources = tf.plan(tfplan.planned_values.resources)
+
+# Filter for DynamoDB tables with PROVISIONED billing mode
+dynamodb_tables = collection.reject(planned_resources.type(const.resource_aws_dynamodb_table).resources, func(resource) {
+	return maps.get(resource, "values.billing_mode", "") is not "PROVISIONED"
+})
+
+# Filter for auto-scaling targets for read capacity
+read_scaling_targets = collection.reject(planned_resources.type(const.resource_aws_appautoscaling_target).resources, func(resource) {
+	return maps.get(resource, "values.scalable_dimension", "") is not "dynamodb:table:ReadCapacityUnits"
+})
+
+# Filter for auto-scaling targets for write capacity
+write_scaling_targets = collection.reject(planned_resources.type(const.resource_aws_appautoscaling_target).resources, func(resource) {
+	return maps.get(resource, "values.scalable_dimension", "") is not "dynamodb:table:WriteCapacityUnits"
+})
+
+violations = collection.reject(dynamodb_tables, func(table) {
+	return scaling_target_exists(read_scaling_targets, table, min_read_capacity, max_read_capacity) and
+		scaling_target_exists(write_scaling_targets, table, min_write_capacity, max_write_capacity) and
+		scaling_policy_exists(find_scaling_policies_by_metric("DynamoDBReadCapacityUtilization"), table, min_target_read_utilization, max_target_read_utilization) and
+		scaling_policy_exists(find_scaling_policies_by_metric("DynamoDBWriteCapacityUtilization"), table, min_target_read_utilization, max_target_write_utilization)
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        "Autoscaling is not enabled for 'aws_dynamodb_table' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-1 for more details.",
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

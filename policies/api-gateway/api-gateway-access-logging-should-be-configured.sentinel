@@ -1,0 +1,52 @@
+# This policy checks if 'aws_apigatewayv2_stage' have access logging configured.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                     "api-gateway-access-logging-should-be-configured",
+	"resource_aws_apigatewayv2_stage": "aws_apigatewayv2_stage",
+	"message":                         "'aws_apigatewayv2_stage' have access logging configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-9 for more details.",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		access_log_settings = maps.get(res, "values.access_log_settings", [])
+		return access_log_settings is not empty
+	})
+}
+
+# Variables
+
+aws_apigatewayv2_stage = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_apigatewayv2_stage).resources
+violations = get_violations(aws_apigatewayv2_stage)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

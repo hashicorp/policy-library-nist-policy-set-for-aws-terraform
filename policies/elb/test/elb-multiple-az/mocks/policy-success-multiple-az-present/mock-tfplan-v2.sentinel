@@ -1,0 +1,311 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_lb.pass_lb": {
+			"address":        "aws_lb.pass_lb",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "pass_lb",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_lb",
+			"values": {
+				"access_logs":                                 [],
+				"client_keep_alive":                           3600,
+				"connection_logs":                             [],
+				"customer_owned_ipv4_pool":                    null,
+				"desync_mitigation_mode":                      "defensive",
+				"dns_record_client_routing_policy":            null,
+				"drop_invalid_header_fields":                  false,
+				"enable_cross_zone_load_balancing":            null,
+				"enable_deletion_protection":                  false,
+				"enable_http2":                                true,
+				"enable_tls_version_and_cipher_suite_headers": false,
+				"enable_waf_fail_open":                        false,
+				"enable_xff_client_port":                      false,
+				"enable_zonal_shift":                          false,
+				"idle_timeout":                                60,
+				"ipam_pools":                                  [],
+				"load_balancer_type":                          "application",
+				"minimum_load_balancer_capacity":              [],
+				"name":                 "pass-example-lb",
+				"preserve_host_header": false,
+				"subnets": [
+					"subnet-aaa111",
+					"subnet-bbb222",
+				],
+				"tags":                       null,
+				"timeouts":                   null,
+				"xff_header_processing_mode": "append",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_lb.pass_lb": {
+		"address": "aws_lb.pass_lb",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"access_logs":                                 [],
+				"client_keep_alive":                           3600,
+				"connection_logs":                             [],
+				"customer_owned_ipv4_pool":                    null,
+				"desync_mitigation_mode":                      "defensive",
+				"dns_record_client_routing_policy":            null,
+				"drop_invalid_header_fields":                  false,
+				"enable_cross_zone_load_balancing":            null,
+				"enable_deletion_protection":                  false,
+				"enable_http2":                                true,
+				"enable_tls_version_and_cipher_suite_headers": false,
+				"enable_waf_fail_open":                        false,
+				"enable_xff_client_port":                      false,
+				"enable_zonal_shift":                          false,
+				"idle_timeout":                                60,
+				"ipam_pools":                                  [],
+				"load_balancer_type":                          "application",
+				"minimum_load_balancer_capacity":              [],
+				"name":                 "pass-example-lb",
+				"preserve_host_header": false,
+				"subnets": [
+					"subnet-aaa111",
+					"subnet-bbb222",
+				],
+				"tags":                       null,
+				"timeouts":                   null,
+				"xff_header_processing_mode": "append",
+			},
+			"after_unknown": {
+				"access_logs":     [],
+				"arn":             true,
+				"arn_suffix":      true,
+				"connection_logs": [],
+				"dns_name":        true,
+				"enforce_security_group_inbound_rules_on_private_link_traffic": true,
+				"id":                             true,
+				"internal":                       true,
+				"ip_address_type":                true,
+				"ipam_pools":                     [],
+				"minimum_load_balancer_capacity": [],
+				"name_prefix":                    true,
+				"security_groups":                true,
+				"subnet_mapping":                 true,
+				"subnets": [
+					false,
+					false,
+				],
+				"tags_all": true,
+				"vpc_id":   true,
+				"zone_id":  true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "pass_lb",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_lb",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_lb.pass_lb",
+					"expressions": {
+						"load_balancer_type": {
+							"constant_value": "application",
+						},
+						"name": {
+							"constant_value": "pass-example-lb",
+						},
+						"subnets": {
+							"constant_value": [
+								"subnet-aaa111",
+								"subnet-bbb222",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "pass_lb",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_lb",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_lb.pass_lb",
+					"mode":           "managed",
+					"name":           "pass_lb",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"access_logs":                    [],
+						"connection_logs":                [],
+						"ipam_pools":                     [],
+						"minimum_load_balancer_capacity": [],
+						"security_groups":                [],
+						"subnet_mapping":                 [],
+						"subnets": [
+							false,
+							false,
+						],
+						"tags_all": {},
+					},
+					"type": "aws_lb",
+					"values": {
+						"access_logs":                                 [],
+						"client_keep_alive":                           3600,
+						"connection_logs":                             [],
+						"customer_owned_ipv4_pool":                    null,
+						"desync_mitigation_mode":                      "defensive",
+						"dns_record_client_routing_policy":            null,
+						"drop_invalid_header_fields":                  false,
+						"enable_cross_zone_load_balancing":            null,
+						"enable_deletion_protection":                  false,
+						"enable_http2":                                true,
+						"enable_tls_version_and_cipher_suite_headers": false,
+						"enable_waf_fail_open":                        false,
+						"enable_xff_client_port":                      false,
+						"enable_zonal_shift":                          false,
+						"idle_timeout":                                60,
+						"ipam_pools":                                  [],
+						"load_balancer_type":                          "application",
+						"minimum_load_balancer_capacity":              [],
+						"name":                 "pass-example-lb",
+						"preserve_host_header": false,
+						"subnets": [
+							"subnet-aaa111",
+							"subnet-bbb222",
+						],
+						"tags":                       null,
+						"timeouts":                   null,
+						"xff_header_processing_mode": "append",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_lb.pass_lb",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"access_logs":                                 [],
+					"client_keep_alive":                           3600,
+					"connection_logs":                             [],
+					"customer_owned_ipv4_pool":                    null,
+					"desync_mitigation_mode":                      "defensive",
+					"dns_record_client_routing_policy":            null,
+					"drop_invalid_header_fields":                  false,
+					"enable_cross_zone_load_balancing":            null,
+					"enable_deletion_protection":                  false,
+					"enable_http2":                                true,
+					"enable_tls_version_and_cipher_suite_headers": false,
+					"enable_waf_fail_open":                        false,
+					"enable_xff_client_port":                      false,
+					"enable_zonal_shift":                          false,
+					"idle_timeout":                                60,
+					"ipam_pools":                                  [],
+					"load_balancer_type":                          "application",
+					"minimum_load_balancer_capacity":              [],
+					"name":                 "pass-example-lb",
+					"preserve_host_header": false,
+					"subnets": [
+						"subnet-aaa111",
+						"subnet-bbb222",
+					],
+					"tags":                       null,
+					"timeouts":                   null,
+					"xff_header_processing_mode": "append",
+				},
+				"after_sensitive": {
+					"access_logs":                    [],
+					"connection_logs":                [],
+					"ipam_pools":                     [],
+					"minimum_load_balancer_capacity": [],
+					"security_groups":                [],
+					"subnet_mapping":                 [],
+					"subnets": [
+						false,
+						false,
+					],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"access_logs":     [],
+					"arn":             true,
+					"arn_suffix":      true,
+					"connection_logs": [],
+					"dns_name":        true,
+					"enforce_security_group_inbound_rules_on_private_link_traffic": true,
+					"id":                             true,
+					"internal":                       true,
+					"ip_address_type":                true,
+					"ipam_pools":                     [],
+					"minimum_load_balancer_capacity": [],
+					"name_prefix":                    true,
+					"security_groups":                true,
+					"subnet_mapping":                 true,
+					"subnets": [
+						false,
+						false,
+					],
+					"tags_all": true,
+					"vpc_id":   true,
+					"zone_id":  true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "pass_lb",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_lb",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-06-16T10:56:23Z",
+}

@@ -1,0 +1,54 @@
+# This policy checks if the EC2 Transit Gateway have the attribute 'auto_accept_shared_attachments' set to disable
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "json"
+
+# Constants
+const = {
+	"policy_name":                      "ec2-transit-gateway-auto-vpc-attach-disabled",
+	"message":                          "Resource EC2 Transit Gateway should have the attribute 'auto_accept_shared_attachments' set to diable. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-23 for more details.",
+	"resource_aws_ec2_transit_gateway": "aws_ec2_transit_gateway",
+	"auto_accept_shared_attachments":   "auto_accept_shared_attachments",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		return maps.get(res, "values.auto_accept_shared_attachments", "disable") is "disable"
+	})
+}
+
+# Variables
+
+ec2_transit_gateway_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_ec2_transit_gateway).resources
+
+violations = get_violations(ec2_transit_gateway_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

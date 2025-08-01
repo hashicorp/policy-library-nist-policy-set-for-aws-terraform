@@ -1,0 +1,92 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_iam_role.lambda_exec": {
+		"address": "aws_iam_role.lambda_exec",
+		"config": {
+			"assume_role_policy": {
+				"constant_value": null,
+			},
+			"name": {
+				"constant_value": "lambda_execution_role",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "lambda_exec",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role",
+	},
+	"aws_lambda_function.vpc_lambda": {
+		"address": "aws_lambda_function.vpc_lambda",
+		"config": {
+			"filename": {
+				"constant_value": "lambda_function_payload.zip",
+			},
+			"function_name": {
+				"constant_value": "vpc-lambda-multi-az",
+			},
+			"handler": {
+				"constant_value": "index.handler",
+			},
+			"role": {
+				"references": [
+					"aws_iam_role.lambda_exec.arn",
+					"aws_iam_role.lambda_exec",
+				],
+			},
+			"runtime": {
+				"constant_value": "nodejs18.x",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "vpc_lambda",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_lambda_function",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

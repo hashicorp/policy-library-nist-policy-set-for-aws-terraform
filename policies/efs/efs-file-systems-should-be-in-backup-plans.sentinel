@@ -1,0 +1,77 @@
+# This policy requires resources of type `aws_efs_file_system` should be associated with resource 'aws_backup_selection'.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+param service_name default "ecr.api"
+
+# Constants
+
+const = {
+	"policy_name":                   "efs-file-systems-should-be-in-backup-plans",
+	"message":                       "AWS EFS file systems should be included in backup plans. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-2 for more details.",
+	"resource_aws_efs_file_system":  "aws_efs_file_system",
+	"resource_aws_backup_selection": "aws_backup_selection",
+	"efs_encrypted":                 "encrypted",
+	"efs_kms_key_id":                "kms_key_id",
+}
+
+# Functions
+
+get_backup_referenced_resources = func(backup_selection_resource) {
+	# This function retrieves the referenced EFS file system resources from the backup selection resource.
+	resources = maps.get(backup_selection_resource.config, "resources", [])
+	if resources is null or resources is empty or resources.constant_value is defined {
+		return ""
+	}
+	return resources.references
+}
+
+# Variables
+
+efs_file_system_resources = tf.config(tfconfig.resources).type(const.resource_aws_efs_file_system).resources
+efs_backup_selection_resources = tf.config(tfconfig.resources).type(const.resource_aws_backup_selection).resources
+
+efs_backup_referenced_arn = []
+if efs_backup_selection_resources is not empty {
+	for efs_backup_selection_resources as _, res {
+		backup_referenced_resources = get_backup_referenced_resources(res)
+		if backup_referenced_resources is not empty {
+			efs_backup_referenced_arn = efs_backup_referenced_arn + backup_referenced_resources
+		}
+	}
+}
+
+violations = filter efs_file_system_resources as _, res {
+	res.address not in efs_backup_referenced_arn
+}
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

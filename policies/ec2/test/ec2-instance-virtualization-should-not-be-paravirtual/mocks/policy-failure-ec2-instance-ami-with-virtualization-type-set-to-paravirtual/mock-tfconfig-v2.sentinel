@@ -1,0 +1,90 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_ami.example": {
+		"address": "aws_ami.example",
+		"config": {
+			"ebs_block_device": [
+				{
+					"device_name": {
+						"constant_value": "/dev/xvda",
+					},
+					"snapshot_id": {
+						"constant_value": "snap-xxxxxxxx",
+					},
+					"volume_size": {
+						"constant_value": 8,
+					},
+				},
+			],
+			"imds_support": {
+				"constant_value": "v2.0",
+			},
+			"name": {
+				"constant_value": "terraform-example",
+			},
+			"root_device_name": {
+				"constant_value": "/dev/xvda",
+			},
+			"virtualization_type": {
+				"constant_value": "paravirtual",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_ami",
+	},
+	"aws_instance.example": {
+		"address": "aws_instance.example",
+		"config": {
+			"ami": {
+				"references": [
+					"aws_ami.example.id",
+					"aws_ami.example",
+				],
+			},
+			"instance_type": {
+				"constant_value": "t2.micro",
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "terraform-example-instance",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_instance",
+	},
+}

@@ -1,0 +1,225 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_api_gateway_deployment.example": {
+		"address": "aws_api_gateway_deployment.example",
+		"config": {
+			"rest_api_id": {
+				"references": [
+					"aws_api_gateway_rest_api.example.id",
+					"aws_api_gateway_rest_api.example",
+				],
+			},
+			"stage_name": {
+				"constant_value": "prod",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_api_gateway_deployment",
+	},
+	"aws_api_gateway_rest_api.example": {
+		"address": "aws_api_gateway_rest_api.example",
+		"config": {
+			"description": {
+				"constant_value": "API Gateway with incorrect WAF Web ACL association",
+			},
+			"name": {
+				"constant_value": "example-api-gateway",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_api_gateway_rest_api",
+	},
+	"aws_api_gateway_stage.example": {
+		"address": "aws_api_gateway_stage.example",
+		"config": {
+			"deployment_id": {
+				"references": [
+					"aws_api_gateway_deployment.example.id",
+					"aws_api_gateway_deployment.example",
+				],
+			},
+			"rest_api_id": {
+				"references": [
+					"aws_api_gateway_rest_api.example.id",
+					"aws_api_gateway_rest_api.example",
+				],
+			},
+			"stage_name": {
+				"references": [
+					"aws_api_gateway_deployment.example.stage_name",
+					"aws_api_gateway_deployment.example",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_api_gateway_stage",
+	},
+	"aws_wafv2_web_acl.example_waf": {
+		"address": "aws_wafv2_web_acl.example_waf",
+		"config": {
+			"default_action": [
+				{
+					"allow": [
+						{},
+					],
+				},
+			],
+			"description": {
+				"constant_value": "WAF Web ACL for API Gateway Stage",
+			},
+			"name": {
+				"constant_value": "example-waf-acl",
+			},
+			"rule": [
+				{
+					"action": [
+						{
+							"block": [
+								{},
+							],
+						},
+					],
+					"name": {
+						"constant_value": "rate-limit",
+					},
+					"priority": {
+						"constant_value": 1,
+					},
+					"statement": [
+						{
+							"rate_based_statement": [
+								{
+									"aggregate_key_type": {
+										"constant_value": "IP",
+									},
+									"limit": {
+										"constant_value": 1000,
+									},
+								},
+							],
+						},
+					],
+					"visibility_config": [
+						{
+							"cloudwatch_metrics_enabled": {
+								"constant_value": true,
+							},
+							"metric_name": {
+								"constant_value": "rate-limit",
+							},
+							"sampled_requests_enabled": {
+								"constant_value": true,
+							},
+						},
+					],
+				},
+			],
+			"scope": {
+				"constant_value": "REGIONAL",
+			},
+			"visibility_config": [
+				{
+					"cloudwatch_metrics_enabled": {
+						"constant_value": true,
+					},
+					"metric_name": {
+						"constant_value": "example-waf",
+					},
+					"sampled_requests_enabled": {
+						"constant_value": true,
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example_waf",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_wafv2_web_acl",
+	},
+	"aws_wafv2_web_acl_association.example_association": {
+		"address": "aws_wafv2_web_acl_association.example_association",
+		"config": {
+			"resource_arn": {
+				"constant_value": "arn:aws:apigateway:us-east-1::/restapis/invalid-id/stages/prod",
+			},
+			"web_acl_arn": {
+				"references": [
+					"aws_wafv2_web_acl.example_waf.arn",
+					"aws_wafv2_web_acl.example_waf",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example_association",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_wafv2_web_acl_association",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

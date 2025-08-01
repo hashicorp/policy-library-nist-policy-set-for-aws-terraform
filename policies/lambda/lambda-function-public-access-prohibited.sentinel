@@ -1,0 +1,52 @@
+# This control checks whether the 'aws_lambda_function' resource-based policy prohibits public access outside of your account.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                    "lambda-function-public-access-prohibited",
+	"resource_aws_lambda_permission": "aws_lambda_permission",
+	"message":                        "'aws_lambda_function' resource-based policy should prohibits public access outside of your account. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-1 for more details.",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		principal_field_values = maps.get(res.values, "principal", "*")
+		return principal_field_values is not "*"
+	})
+}
+
+# Variables
+
+aws_lambda_permission = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_lambda_permission).resources
+violations = get_violations(aws_lambda_permission)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

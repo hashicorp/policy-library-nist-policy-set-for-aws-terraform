@@ -1,0 +1,33 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+outputs = {}
+
+resources = {
+	"aws_iam_policy_document.policy": {
+		"address":        "aws_iam_policy_document.policy",
+		"depends_on":     [],
+		"deposed_key":    "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "",
+		"name":           "policy",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"tainted":        false,
+		"type":           "aws_iam_policy_document",
+		"values": {
+			"id":                        "1132004489",
+			"json":                      "{\n  \"Version\": \"2012-10-17\"\n}",
+			"minified_json":             "{\"Version\":\"2012-10-17\"}",
+			"override_json":             null,
+			"override_policy_documents": null,
+			"policy_id":                 null,
+			"source_json":               null,
+			"source_policy_documents":   null,
+			"statement":                 null,
+			"version":                   "2012-10-17",
+		},
+	},
+}

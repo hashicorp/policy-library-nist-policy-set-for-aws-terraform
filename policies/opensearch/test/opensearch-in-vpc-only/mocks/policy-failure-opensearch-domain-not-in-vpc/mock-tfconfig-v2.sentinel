@@ -1,0 +1,88 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_opensearch_domain.public_domain": {
+		"address": "aws_opensearch_domain.public_domain",
+		"config": {
+			"access_policies": {
+				"constant_value": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": \"*\",\n      \"Action\": \"es:*\",\n      \"Resource\": \"arn:aws:es:us-east-1:123456789012:domain/public-example/*\"\n    }\n  ]\n}\n",
+			},
+			"cluster_config": [
+				{
+					"instance_count": {
+						"constant_value": 1,
+					},
+					"instance_type": {
+						"constant_value": "t3.small.search",
+					},
+				},
+			],
+			"domain_name": {
+				"constant_value": "public-example",
+			},
+			"ebs_options": [
+				{
+					"ebs_enabled": {
+						"constant_value": true,
+					},
+					"volume_size": {
+						"constant_value": 10,
+					},
+				},
+			],
+			"engine_version": {
+				"constant_value": "OpenSearch_1.3",
+			},
+			"tags": {
+				"constant_value": {
+					"Environment": "prod",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "public_domain",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_opensearch_domain",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

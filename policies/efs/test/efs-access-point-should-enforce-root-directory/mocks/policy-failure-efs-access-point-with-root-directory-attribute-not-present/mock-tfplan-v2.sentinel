@@ -1,0 +1,469 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_efs_access_point.test": {
+			"address":        "aws_efs_access_point.test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_efs_access_point",
+			"values": {
+				"posix_user": [],
+				"tags":       null,
+			},
+		},
+		"aws_efs_file_system.foo": {
+			"address":        "aws_efs_file_system.foo",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "foo",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_efs_file_system",
+			"values": {
+				"creation_token":                  "foo",
+				"encrypted":                       true,
+				"lifecycle_policy":                [],
+				"performance_mode":                "generalPurpose",
+				"provisioned_throughput_in_mibps": null,
+				"tags":            null,
+				"throughput_mode": "bursting",
+			},
+		},
+		"aws_kms_key.foo": {
+			"address":        "aws_kms_key.foo",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "foo",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_kms_key",
+			"values": {
+				"bypass_policy_lockout_safety_check": false,
+				"custom_key_store_id":                null,
+				"customer_master_key_spec":           "SYMMETRIC_DEFAULT",
+				"deletion_window_in_days":            null,
+				"description":                        "KMS key for EFS encryption",
+				"enable_key_rotation":                false,
+				"is_enabled":                         true,
+				"key_usage":                          "ENCRYPT_DECRYPT",
+				"tags":                               null,
+				"timeouts":                           null,
+				"xks_key_id":                         null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_efs_access_point.test": {
+		"address": "aws_efs_access_point.test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"posix_user": [],
+				"tags":       null,
+			},
+			"after_unknown": {
+				"arn":             true,
+				"file_system_arn": true,
+				"file_system_id":  true,
+				"id":              true,
+				"owner_id":        true,
+				"posix_user":      [],
+				"root_directory":  true,
+				"tags_all":        true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_efs_access_point",
+	},
+	"aws_efs_file_system.foo": {
+		"address": "aws_efs_file_system.foo",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"creation_token":                  "foo",
+				"encrypted":                       true,
+				"lifecycle_policy":                [],
+				"performance_mode":                "generalPurpose",
+				"provisioned_throughput_in_mibps": null,
+				"tags":            null,
+				"throughput_mode": "bursting",
+			},
+			"after_unknown": {
+				"arn": true,
+				"availability_zone_id":   true,
+				"availability_zone_name": true,
+				"dns_name":               true,
+				"id":                     true,
+				"kms_key_id":             true,
+				"lifecycle_policy":       [],
+				"name":                   true,
+				"number_of_mount_targets": true,
+				"owner_id":                true,
+				"protection":              true,
+				"size_in_bytes":           true,
+				"tags_all":                true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "foo",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_efs_file_system",
+	},
+	"aws_kms_key.foo": {
+		"address": "aws_kms_key.foo",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bypass_policy_lockout_safety_check": false,
+				"custom_key_store_id":                null,
+				"customer_master_key_spec":           "SYMMETRIC_DEFAULT",
+				"deletion_window_in_days":            null,
+				"description":                        "KMS key for EFS encryption",
+				"enable_key_rotation":                false,
+				"is_enabled":                         true,
+				"key_usage":                          "ENCRYPT_DECRYPT",
+				"tags":                               null,
+				"timeouts":                           null,
+				"xks_key_id":                         null,
+			},
+			"after_unknown": {
+				"arn":                     true,
+				"id":                      true,
+				"key_id":                  true,
+				"multi_region":            true,
+				"policy":                  true,
+				"rotation_period_in_days": true,
+				"tags_all":                true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "foo",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_kms_key",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_efs_access_point.test",
+					"expressions": {
+						"file_system_id": {
+							"references": [
+								"aws_efs_file_system.foo.id",
+								"aws_efs_file_system.foo",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_efs_access_point",
+				},
+				{
+					"address": "aws_efs_file_system.foo",
+					"expressions": {
+						"creation_token": {
+							"constant_value": "foo",
+						},
+						"encrypted": {
+							"constant_value": true,
+						},
+						"kms_key_id": {
+							"references": [
+								"aws_kms_key.foo.arn",
+								"aws_kms_key.foo",
+							],
+						},
+						"performance_mode": {
+							"constant_value": "generalPurpose",
+						},
+					},
+					"mode":                "managed",
+					"name":                "foo",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_efs_file_system",
+				},
+				{
+					"address": "aws_kms_key.foo",
+					"expressions": {
+						"description": {
+							"constant_value": "KMS key for EFS encryption",
+						},
+					},
+					"mode":                "managed",
+					"name":                "foo",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_kms_key",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_efs_access_point.test",
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"posix_user":     [],
+						"root_directory": [],
+						"tags_all":       {},
+					},
+					"type": "aws_efs_access_point",
+					"values": {
+						"posix_user": [],
+						"tags":       null,
+					},
+				},
+				{
+					"address":        "aws_efs_file_system.foo",
+					"mode":           "managed",
+					"name":           "foo",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"lifecycle_policy": [],
+						"protection":       [],
+						"size_in_bytes":    [],
+						"tags_all":         {},
+					},
+					"type": "aws_efs_file_system",
+					"values": {
+						"creation_token":                  "foo",
+						"encrypted":                       true,
+						"lifecycle_policy":                [],
+						"performance_mode":                "generalPurpose",
+						"provisioned_throughput_in_mibps": null,
+						"tags":            null,
+						"throughput_mode": "bursting",
+					},
+				},
+				{
+					"address":        "aws_kms_key.foo",
+					"mode":           "managed",
+					"name":           "foo",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"tags_all": {},
+					},
+					"type": "aws_kms_key",
+					"values": {
+						"bypass_policy_lockout_safety_check": false,
+						"custom_key_store_id":                null,
+						"customer_master_key_spec":           "SYMMETRIC_DEFAULT",
+						"deletion_window_in_days":            null,
+						"description":                        "KMS key for EFS encryption",
+						"enable_key_rotation":                false,
+						"is_enabled":                         true,
+						"key_usage":                          "ENCRYPT_DECRYPT",
+						"tags":                               null,
+						"timeouts":                           null,
+						"xks_key_id":                         null,
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "aws_kms_key.foo",
+		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_efs_file_system.foo",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_efs_access_point.test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"posix_user": [],
+					"tags":       null,
+				},
+				"after_sensitive": {
+					"posix_user":     [],
+					"root_directory": [],
+					"tags_all":       {},
+				},
+				"after_unknown": {
+					"arn":             true,
+					"file_system_arn": true,
+					"file_system_id":  true,
+					"id":              true,
+					"owner_id":        true,
+					"posix_user":      [],
+					"root_directory":  true,
+					"tags_all":        true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_efs_access_point",
+		},
+		{
+			"address": "aws_efs_file_system.foo",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"creation_token":                  "foo",
+					"encrypted":                       true,
+					"lifecycle_policy":                [],
+					"performance_mode":                "generalPurpose",
+					"provisioned_throughput_in_mibps": null,
+					"tags":            null,
+					"throughput_mode": "bursting",
+				},
+				"after_sensitive": {
+					"lifecycle_policy": [],
+					"protection":       [],
+					"size_in_bytes":    [],
+					"tags_all":         {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"availability_zone_id":   true,
+					"availability_zone_name": true,
+					"dns_name":               true,
+					"id":                     true,
+					"kms_key_id":             true,
+					"lifecycle_policy":       [],
+					"name":                   true,
+					"number_of_mount_targets": true,
+					"owner_id":                true,
+					"protection":              true,
+					"size_in_bytes":           true,
+					"tags_all":                true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "foo",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_efs_file_system",
+		},
+		{
+			"address": "aws_kms_key.foo",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bypass_policy_lockout_safety_check": false,
+					"custom_key_store_id":                null,
+					"customer_master_key_spec":           "SYMMETRIC_DEFAULT",
+					"deletion_window_in_days":            null,
+					"description":                        "KMS key for EFS encryption",
+					"enable_key_rotation":                false,
+					"is_enabled":                         true,
+					"key_usage":                          "ENCRYPT_DECRYPT",
+					"tags":                               null,
+					"timeouts":                           null,
+					"xks_key_id":                         null,
+				},
+				"after_sensitive": {
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn":                     true,
+					"id":                      true,
+					"key_id":                  true,
+					"multi_region":            true,
+					"policy":                  true,
+					"rotation_period_in_days": true,
+					"tags_all":                true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "foo",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_kms_key",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-06-06T10:04:43Z",
+}

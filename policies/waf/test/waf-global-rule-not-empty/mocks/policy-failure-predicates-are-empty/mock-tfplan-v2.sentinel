@@ -1,0 +1,161 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_waf_rule.wafrule": {
+			"address":        "aws_waf_rule.wafrule",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "wafrule",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_waf_rule",
+			"values": {
+				"metric_name": "tfWAFRule",
+				"name":        "tfWAFRule",
+				"predicates":  [],
+				"tags":        null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_waf_rule.wafrule": {
+		"address": "aws_waf_rule.wafrule",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"metric_name": "tfWAFRule",
+				"name":        "tfWAFRule",
+				"predicates":  [],
+				"tags":        null,
+			},
+			"after_unknown": {
+				"arn":        true,
+				"id":         true,
+				"predicates": [],
+				"tags_all":   true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "wafrule",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_waf_rule",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_waf_rule.wafrule",
+					"expressions": {
+						"metric_name": {
+							"constant_value": "tfWAFRule",
+						},
+						"name": {
+							"constant_value": "tfWAFRule",
+						},
+					},
+					"mode":                "managed",
+					"name":                "wafrule",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_waf_rule",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_waf_rule.wafrule",
+					"mode":           "managed",
+					"name":           "wafrule",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"predicates": [],
+						"tags_all":   {},
+					},
+					"type": "aws_waf_rule",
+					"values": {
+						"metric_name": "tfWAFRule",
+						"name":        "tfWAFRule",
+						"predicates":  [],
+						"tags":        null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_waf_rule.wafrule",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"metric_name": "tfWAFRule",
+					"name":        "tfWAFRule",
+					"predicates":  [],
+					"tags":        null,
+				},
+				"after_sensitive": {
+					"predicates": [],
+					"tags_all":   {},
+				},
+				"after_unknown": {
+					"arn":        true,
+					"id":         true,
+					"predicates": [],
+					"tags_all":   true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "wafrule",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_waf_rule",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-04-07T19:39:23Z",
+}

@@ -1,0 +1,54 @@
+# This control checks whether 'aws_lambda_function' runtime settings match the expected values set for the supported runtimes in each language.
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                  "lambda-functions-should-use-supported-runtimes",
+	"resource_aws_lambda_function": "aws_lambda_function",
+	"runtime":                      "runtime",
+	"message":                      "'aws_lambda_function' runtime settings should match the expected values set for the supported runtimes in each language. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-2 for more details.",
+}
+
+runtime_expected_values = ["dotnet8", "java21", "java17", "java11", "java8.al2", "nodejs22.x", "nodejs20.x", "nodejs18.x", "python3.13", "python3.12", "python3.11", "python3.10", "python3.9", "ruby3.3", "ruby3.2"]
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		runtime = maps.get(res.values, const.runtime, null)
+		return runtime in runtime_expected_values
+	})
+}
+
+# Variables
+
+aws_lambda_function = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_lambda_function).resources
+violations = get_violations(aws_lambda_function)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

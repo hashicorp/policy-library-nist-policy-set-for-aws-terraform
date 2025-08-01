@@ -1,0 +1,148 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_db_event_subscription.default": {
+		"address": "aws_db_event_subscription.default",
+		"config": {
+			"event_categories": {
+				"constant_value": [
+					"availability",
+					"deletion",
+					"failover",
+					"failure",
+					"maintenance",
+					"low storage",
+					"notification",
+					"read replica",
+					"recovery",
+					"restoration",
+				],
+			},
+			"name": {
+				"constant_value": "rds-event-sub",
+			},
+			"sns_topic": {
+				"references": [
+					"aws_sns_topic.default.arn",
+					"aws_sns_topic.default",
+				],
+			},
+			"source_ids": {
+				"references": [
+					"aws_rds_cluster.default.id",
+					"aws_rds_cluster.default",
+				],
+			},
+			"source_type": {
+				"constant_value": "db-instance",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "default",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_db_event_subscription",
+	},
+	"aws_rds_cluster.default": {
+		"address": "aws_rds_cluster.default",
+		"config": {
+			"availability_zones": {
+				"constant_value": [
+					"us-west-2a",
+					"us-west-2b",
+					"us-west-2c",
+				],
+			},
+			"backup_retention_period": {
+				"constant_value": 5,
+			},
+			"cluster_identifier": {
+				"constant_value": "aurora-cluster-demo",
+			},
+			"database_name": {
+				"constant_value": "mydb",
+			},
+			"engine": {
+				"constant_value": "aurora-mysql",
+			},
+			"engine_version": {
+				"constant_value": "5.7.mysql_aurora.2.03.2",
+			},
+			"master_password": {
+				"constant_value": "must_be_eight_characters",
+			},
+			"master_username": {
+				"constant_value": "foo",
+			},
+			"preferred_backup_window": {
+				"constant_value": "07:00-09:00",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "default",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_rds_cluster",
+	},
+	"aws_sns_topic.default": {
+		"address": "aws_sns_topic.default",
+		"config": {
+			"name": {
+				"constant_value": "rds-events",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "default",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sns_topic",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

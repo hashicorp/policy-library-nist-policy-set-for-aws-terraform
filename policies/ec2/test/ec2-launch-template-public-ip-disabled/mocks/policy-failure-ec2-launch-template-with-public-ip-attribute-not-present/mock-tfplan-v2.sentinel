@@ -1,0 +1,1110 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_launch_template.foo": {
+			"address":        "aws_launch_template.foo",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "foo",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_launch_template",
+			"values": {
+				"block_device_mappings": [
+					{
+						"device_name": "/dev/sdf",
+						"ebs": [
+							{
+								"delete_on_termination": null,
+								"encrypted":             null,
+								"kms_key_id":            null,
+								"snapshot_id":           null,
+								"volume_size":           20,
+							},
+						],
+						"no_device":    null,
+						"virtual_name": null,
+					},
+				],
+				"capacity_reservation_specification": [
+					{
+						"capacity_reservation_preference": "open",
+						"capacity_reservation_target":     [],
+					},
+				],
+				"cpu_options": [
+					{
+						"amd_sev_snp":      null,
+						"core_count":       4,
+						"threads_per_core": 2,
+					},
+				],
+				"credit_specification": [
+					{
+						"cpu_credits": "standard",
+					},
+				],
+				"description":             null,
+				"disable_api_stop":        true,
+				"disable_api_termination": true,
+				"ebs_optimized":           "true",
+				"elastic_gpu_specifications": [
+					{
+						"type": "test",
+					},
+				],
+				"elastic_inference_accelerator": [
+					{
+						"type": "eia1.medium",
+					},
+				],
+				"enclave_options":     [],
+				"hibernation_options": [],
+				"iam_instance_profile": [
+					{
+						"arn":  null,
+						"name": "test",
+					},
+				],
+				"image_id":                             "ami-test",
+				"instance_initiated_shutdown_behavior": "terminate",
+				"instance_market_options": [
+					{
+						"market_type":  "spot",
+						"spot_options": [],
+					},
+				],
+				"instance_requirements": [],
+				"instance_type":         "t2.micro",
+				"kernel_id":             "test",
+				"key_name":              "test",
+				"license_specification": [
+					{
+						"license_configuration_arn": "arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef",
+					},
+				],
+				"maintenance_options": [],
+				"metadata_options": [
+					{
+						"http_endpoint":               "enabled",
+						"http_put_response_hop_limit": 1,
+						"http_tokens":                 "required",
+						"instance_metadata_tags":      "enabled",
+					},
+				],
+				"monitoring": [
+					{
+						"enabled": true,
+					},
+				],
+				"name": "foo",
+				"network_interfaces": [
+					{
+						"associate_carrier_ip_address": null,
+						"associate_public_ip_address":  null,
+						"delete_on_termination":        null,
+						"description":                  null,
+						"device_index":                 null,
+						"interface_type":               null,
+						"ipv4_address_count":           null,
+						"ipv4_addresses":               null,
+						"ipv4_prefix_count":            null,
+						"ipv4_prefixes":                null,
+						"ipv6_address_count":           null,
+						"ipv6_addresses":               null,
+						"ipv6_prefix_count":            null,
+						"ipv6_prefixes":                null,
+						"network_card_index":           null,
+						"network_interface_id":         null,
+						"primary_ipv6":                 null,
+						"private_ip_address":           null,
+						"security_groups":              null,
+						"subnet_id":                    null,
+					},
+				],
+				"placement": [
+					{
+						"affinity":                null,
+						"availability_zone":       "us-west-2a",
+						"group_name":              null,
+						"host_id":                 null,
+						"host_resource_group_arn": null,
+						"partition_number":        null,
+						"spread_domain":           null,
+						"tenancy":                 null,
+					},
+				],
+				"private_dns_name_options": [],
+				"ram_disk_id":              "test",
+				"security_group_names":     null,
+				"tag_specifications": [
+					{
+						"resource_type": "instance",
+						"tags": {
+							"Name": "test",
+						},
+					},
+				],
+				"tags": null,
+				"update_default_version": null,
+				"user_data":              null,
+				"vpc_security_group_ids": [
+					"sg-12345678",
+				],
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_launch_template.foo": {
+		"address": "aws_launch_template.foo",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"block_device_mappings": [
+					{
+						"device_name": "/dev/sdf",
+						"ebs": [
+							{
+								"delete_on_termination": null,
+								"encrypted":             null,
+								"kms_key_id":            null,
+								"snapshot_id":           null,
+								"volume_size":           20,
+							},
+						],
+						"no_device":    null,
+						"virtual_name": null,
+					},
+				],
+				"capacity_reservation_specification": [
+					{
+						"capacity_reservation_preference": "open",
+						"capacity_reservation_target":     [],
+					},
+				],
+				"cpu_options": [
+					{
+						"amd_sev_snp":      null,
+						"core_count":       4,
+						"threads_per_core": 2,
+					},
+				],
+				"credit_specification": [
+					{
+						"cpu_credits": "standard",
+					},
+				],
+				"description":             null,
+				"disable_api_stop":        true,
+				"disable_api_termination": true,
+				"ebs_optimized":           "true",
+				"elastic_gpu_specifications": [
+					{
+						"type": "test",
+					},
+				],
+				"elastic_inference_accelerator": [
+					{
+						"type": "eia1.medium",
+					},
+				],
+				"enclave_options":     [],
+				"hibernation_options": [],
+				"iam_instance_profile": [
+					{
+						"arn":  null,
+						"name": "test",
+					},
+				],
+				"image_id":                             "ami-test",
+				"instance_initiated_shutdown_behavior": "terminate",
+				"instance_market_options": [
+					{
+						"market_type":  "spot",
+						"spot_options": [],
+					},
+				],
+				"instance_requirements": [],
+				"instance_type":         "t2.micro",
+				"kernel_id":             "test",
+				"key_name":              "test",
+				"license_specification": [
+					{
+						"license_configuration_arn": "arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef",
+					},
+				],
+				"maintenance_options": [],
+				"metadata_options": [
+					{
+						"http_endpoint":               "enabled",
+						"http_put_response_hop_limit": 1,
+						"http_tokens":                 "required",
+						"instance_metadata_tags":      "enabled",
+					},
+				],
+				"monitoring": [
+					{
+						"enabled": true,
+					},
+				],
+				"name": "foo",
+				"network_interfaces": [
+					{
+						"associate_carrier_ip_address": null,
+						"associate_public_ip_address":  null,
+						"delete_on_termination":        null,
+						"description":                  null,
+						"device_index":                 null,
+						"interface_type":               null,
+						"ipv4_address_count":           null,
+						"ipv4_addresses":               null,
+						"ipv4_prefix_count":            null,
+						"ipv4_prefixes":                null,
+						"ipv6_address_count":           null,
+						"ipv6_addresses":               null,
+						"ipv6_prefix_count":            null,
+						"ipv6_prefixes":                null,
+						"network_card_index":           null,
+						"network_interface_id":         null,
+						"primary_ipv6":                 null,
+						"private_ip_address":           null,
+						"security_groups":              null,
+						"subnet_id":                    null,
+					},
+				],
+				"placement": [
+					{
+						"affinity":                null,
+						"availability_zone":       "us-west-2a",
+						"group_name":              null,
+						"host_id":                 null,
+						"host_resource_group_arn": null,
+						"partition_number":        null,
+						"spread_domain":           null,
+						"tenancy":                 null,
+					},
+				],
+				"private_dns_name_options": [],
+				"ram_disk_id":              "test",
+				"security_group_names":     null,
+				"tag_specifications": [
+					{
+						"resource_type": "instance",
+						"tags": {
+							"Name": "test",
+						},
+					},
+				],
+				"tags": null,
+				"update_default_version": null,
+				"user_data":              null,
+				"vpc_security_group_ids": [
+					"sg-12345678",
+				],
+			},
+			"after_unknown": {
+				"arn": true,
+				"block_device_mappings": [
+					{
+						"ebs": [
+							{
+								"iops":        true,
+								"throughput":  true,
+								"volume_type": true,
+							},
+						],
+					},
+				],
+				"capacity_reservation_specification": [
+					{
+						"capacity_reservation_target": [],
+					},
+				],
+				"cpu_options": [
+					{},
+				],
+				"credit_specification": [
+					{},
+				],
+				"default_version": true,
+				"elastic_gpu_specifications": [
+					{},
+				],
+				"elastic_inference_accelerator": [
+					{},
+				],
+				"enclave_options":     [],
+				"hibernation_options": [],
+				"iam_instance_profile": [
+					{},
+				],
+				"id": true,
+				"instance_market_options": [
+					{
+						"spot_options": [],
+					},
+				],
+				"instance_requirements": [],
+				"latest_version":        true,
+				"license_specification": [
+					{},
+				],
+				"maintenance_options": [],
+				"metadata_options": [
+					{
+						"http_protocol_ipv6": true,
+					},
+				],
+				"monitoring": [
+					{},
+				],
+				"name_prefix": true,
+				"network_interfaces": [
+					{},
+				],
+				"placement": [
+					{},
+				],
+				"private_dns_name_options": [],
+				"tag_specifications": [
+					{
+						"tags": {},
+					},
+				],
+				"tags_all": true,
+				"vpc_security_group_ids": [
+					false,
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "foo",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_launch_template",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_launch_template.foo",
+					"expressions": {
+						"block_device_mappings": [
+							{
+								"device_name": {
+									"constant_value": "/dev/sdf",
+								},
+								"ebs": [
+									{
+										"volume_size": {
+											"constant_value": 20,
+										},
+									},
+								],
+							},
+						],
+						"capacity_reservation_specification": [
+							{
+								"capacity_reservation_preference": {
+									"constant_value": "open",
+								},
+							},
+						],
+						"cpu_options": [
+							{
+								"core_count": {
+									"constant_value": 4,
+								},
+								"threads_per_core": {
+									"constant_value": 2,
+								},
+							},
+						],
+						"credit_specification": [
+							{
+								"cpu_credits": {
+									"constant_value": "standard",
+								},
+							},
+						],
+						"disable_api_stop": {
+							"constant_value": true,
+						},
+						"disable_api_termination": {
+							"constant_value": true,
+						},
+						"ebs_optimized": {
+							"constant_value": true,
+						},
+						"elastic_gpu_specifications": [
+							{
+								"type": {
+									"constant_value": "test",
+								},
+							},
+						],
+						"elastic_inference_accelerator": [
+							{
+								"type": {
+									"constant_value": "eia1.medium",
+								},
+							},
+						],
+						"iam_instance_profile": [
+							{
+								"name": {
+									"constant_value": "test",
+								},
+							},
+						],
+						"image_id": {
+							"constant_value": "ami-test",
+						},
+						"instance_initiated_shutdown_behavior": {
+							"constant_value": "terminate",
+						},
+						"instance_market_options": [
+							{
+								"market_type": {
+									"constant_value": "spot",
+								},
+							},
+						],
+						"instance_type": {
+							"constant_value": "t2.micro",
+						},
+						"kernel_id": {
+							"constant_value": "test",
+						},
+						"key_name": {
+							"constant_value": "test",
+						},
+						"license_specification": [
+							{
+								"license_configuration_arn": {
+									"constant_value": "arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef",
+								},
+							},
+						],
+						"metadata_options": [
+							{
+								"http_endpoint": {
+									"constant_value": "enabled",
+								},
+								"http_put_response_hop_limit": {
+									"constant_value": 1,
+								},
+								"http_tokens": {
+									"constant_value": "required",
+								},
+								"instance_metadata_tags": {
+									"constant_value": "enabled",
+								},
+							},
+						],
+						"monitoring": [
+							{
+								"enabled": {
+									"constant_value": true,
+								},
+							},
+						],
+						"name": {
+							"constant_value": "foo",
+						},
+						"network_interfaces": [
+							{},
+						],
+						"placement": [
+							{
+								"availability_zone": {
+									"constant_value": "us-west-2a",
+								},
+							},
+						],
+						"ram_disk_id": {
+							"constant_value": "test",
+						},
+						"tag_specifications": [
+							{
+								"resource_type": {
+									"constant_value": "instance",
+								},
+								"tags": {
+									"constant_value": {
+										"Name": "test",
+									},
+								},
+							},
+						],
+						"vpc_security_group_ids": {
+							"constant_value": [
+								"sg-12345678",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "foo",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_launch_template",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_launch_template.foo",
+					"mode":           "managed",
+					"name":           "foo",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"block_device_mappings": [
+							{
+								"ebs": [
+									{},
+								],
+							},
+						],
+						"capacity_reservation_specification": [
+							{
+								"capacity_reservation_target": [],
+							},
+						],
+						"cpu_options": [
+							{},
+						],
+						"credit_specification": [
+							{},
+						],
+						"elastic_gpu_specifications": [
+							{},
+						],
+						"elastic_inference_accelerator": [
+							{},
+						],
+						"enclave_options":     [],
+						"hibernation_options": [],
+						"iam_instance_profile": [
+							{},
+						],
+						"instance_market_options": [
+							{
+								"spot_options": [],
+							},
+						],
+						"instance_requirements": [],
+						"license_specification": [
+							{},
+						],
+						"maintenance_options": [],
+						"metadata_options": [
+							{},
+						],
+						"monitoring": [
+							{},
+						],
+						"network_interfaces": [
+							{},
+						],
+						"placement": [
+							{},
+						],
+						"private_dns_name_options": [],
+						"tag_specifications": [
+							{
+								"tags": {},
+							},
+						],
+						"tags_all": {},
+						"vpc_security_group_ids": [
+							false,
+						],
+					},
+					"type": "aws_launch_template",
+					"values": {
+						"block_device_mappings": [
+							{
+								"device_name": "/dev/sdf",
+								"ebs": [
+									{
+										"delete_on_termination": null,
+										"encrypted":             null,
+										"kms_key_id":            null,
+										"snapshot_id":           null,
+										"volume_size":           20,
+									},
+								],
+								"no_device":    null,
+								"virtual_name": null,
+							},
+						],
+						"capacity_reservation_specification": [
+							{
+								"capacity_reservation_preference": "open",
+								"capacity_reservation_target":     [],
+							},
+						],
+						"cpu_options": [
+							{
+								"amd_sev_snp":      null,
+								"core_count":       4,
+								"threads_per_core": 2,
+							},
+						],
+						"credit_specification": [
+							{
+								"cpu_credits": "standard",
+							},
+						],
+						"description":             null,
+						"disable_api_stop":        true,
+						"disable_api_termination": true,
+						"ebs_optimized":           "true",
+						"elastic_gpu_specifications": [
+							{
+								"type": "test",
+							},
+						],
+						"elastic_inference_accelerator": [
+							{
+								"type": "eia1.medium",
+							},
+						],
+						"enclave_options":     [],
+						"hibernation_options": [],
+						"iam_instance_profile": [
+							{
+								"arn":  null,
+								"name": "test",
+							},
+						],
+						"image_id":                             "ami-test",
+						"instance_initiated_shutdown_behavior": "terminate",
+						"instance_market_options": [
+							{
+								"market_type":  "spot",
+								"spot_options": [],
+							},
+						],
+						"instance_requirements": [],
+						"instance_type":         "t2.micro",
+						"kernel_id":             "test",
+						"key_name":              "test",
+						"license_specification": [
+							{
+								"license_configuration_arn": "arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef",
+							},
+						],
+						"maintenance_options": [],
+						"metadata_options": [
+							{
+								"http_endpoint":               "enabled",
+								"http_put_response_hop_limit": 1,
+								"http_tokens":                 "required",
+								"instance_metadata_tags":      "enabled",
+							},
+						],
+						"monitoring": [
+							{
+								"enabled": true,
+							},
+						],
+						"name": "foo",
+						"network_interfaces": [
+							{
+								"associate_carrier_ip_address": null,
+								"associate_public_ip_address":  null,
+								"delete_on_termination":        null,
+								"description":                  null,
+								"device_index":                 null,
+								"interface_type":               null,
+								"ipv4_address_count":           null,
+								"ipv4_addresses":               null,
+								"ipv4_prefix_count":            null,
+								"ipv4_prefixes":                null,
+								"ipv6_address_count":           null,
+								"ipv6_addresses":               null,
+								"ipv6_prefix_count":            null,
+								"ipv6_prefixes":                null,
+								"network_card_index":           null,
+								"network_interface_id":         null,
+								"primary_ipv6":                 null,
+								"private_ip_address":           null,
+								"security_groups":              null,
+								"subnet_id":                    null,
+							},
+						],
+						"placement": [
+							{
+								"affinity":                null,
+								"availability_zone":       "us-west-2a",
+								"group_name":              null,
+								"host_id":                 null,
+								"host_resource_group_arn": null,
+								"partition_number":        null,
+								"spread_domain":           null,
+								"tenancy":                 null,
+							},
+						],
+						"private_dns_name_options": [],
+						"ram_disk_id":              "test",
+						"security_group_names":     null,
+						"tag_specifications": [
+							{
+								"resource_type": "instance",
+								"tags": {
+									"Name": "test",
+								},
+							},
+						],
+						"tags": null,
+						"update_default_version": null,
+						"user_data":              null,
+						"vpc_security_group_ids": [
+							"sg-12345678",
+						],
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_launch_template.foo",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"block_device_mappings": [
+						{
+							"device_name": "/dev/sdf",
+							"ebs": [
+								{
+									"delete_on_termination": null,
+									"encrypted":             null,
+									"kms_key_id":            null,
+									"snapshot_id":           null,
+									"volume_size":           20,
+								},
+							],
+							"no_device":    null,
+							"virtual_name": null,
+						},
+					],
+					"capacity_reservation_specification": [
+						{
+							"capacity_reservation_preference": "open",
+							"capacity_reservation_target":     [],
+						},
+					],
+					"cpu_options": [
+						{
+							"amd_sev_snp":      null,
+							"core_count":       4,
+							"threads_per_core": 2,
+						},
+					],
+					"credit_specification": [
+						{
+							"cpu_credits": "standard",
+						},
+					],
+					"description":             null,
+					"disable_api_stop":        true,
+					"disable_api_termination": true,
+					"ebs_optimized":           "true",
+					"elastic_gpu_specifications": [
+						{
+							"type": "test",
+						},
+					],
+					"elastic_inference_accelerator": [
+						{
+							"type": "eia1.medium",
+						},
+					],
+					"enclave_options":     [],
+					"hibernation_options": [],
+					"iam_instance_profile": [
+						{
+							"arn":  null,
+							"name": "test",
+						},
+					],
+					"image_id":                             "ami-test",
+					"instance_initiated_shutdown_behavior": "terminate",
+					"instance_market_options": [
+						{
+							"market_type":  "spot",
+							"spot_options": [],
+						},
+					],
+					"instance_requirements": [],
+					"instance_type":         "t2.micro",
+					"kernel_id":             "test",
+					"key_name":              "test",
+					"license_specification": [
+						{
+							"license_configuration_arn": "arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef",
+						},
+					],
+					"maintenance_options": [],
+					"metadata_options": [
+						{
+							"http_endpoint":               "enabled",
+							"http_put_response_hop_limit": 1,
+							"http_tokens":                 "required",
+							"instance_metadata_tags":      "enabled",
+						},
+					],
+					"monitoring": [
+						{
+							"enabled": true,
+						},
+					],
+					"name": "foo",
+					"network_interfaces": [
+						{
+							"associate_carrier_ip_address": null,
+							"associate_public_ip_address":  null,
+							"delete_on_termination":        null,
+							"description":                  null,
+							"device_index":                 null,
+							"interface_type":               null,
+							"ipv4_address_count":           null,
+							"ipv4_addresses":               null,
+							"ipv4_prefix_count":            null,
+							"ipv4_prefixes":                null,
+							"ipv6_address_count":           null,
+							"ipv6_addresses":               null,
+							"ipv6_prefix_count":            null,
+							"ipv6_prefixes":                null,
+							"network_card_index":           null,
+							"network_interface_id":         null,
+							"primary_ipv6":                 null,
+							"private_ip_address":           null,
+							"security_groups":              null,
+							"subnet_id":                    null,
+						},
+					],
+					"placement": [
+						{
+							"affinity":                null,
+							"availability_zone":       "us-west-2a",
+							"group_name":              null,
+							"host_id":                 null,
+							"host_resource_group_arn": null,
+							"partition_number":        null,
+							"spread_domain":           null,
+							"tenancy":                 null,
+						},
+					],
+					"private_dns_name_options": [],
+					"ram_disk_id":              "test",
+					"security_group_names":     null,
+					"tag_specifications": [
+						{
+							"resource_type": "instance",
+							"tags": {
+								"Name": "test",
+							},
+						},
+					],
+					"tags": null,
+					"update_default_version": null,
+					"user_data":              null,
+					"vpc_security_group_ids": [
+						"sg-12345678",
+					],
+				},
+				"after_sensitive": {
+					"block_device_mappings": [
+						{
+							"ebs": [
+								{},
+							],
+						},
+					],
+					"capacity_reservation_specification": [
+						{
+							"capacity_reservation_target": [],
+						},
+					],
+					"cpu_options": [
+						{},
+					],
+					"credit_specification": [
+						{},
+					],
+					"elastic_gpu_specifications": [
+						{},
+					],
+					"elastic_inference_accelerator": [
+						{},
+					],
+					"enclave_options":     [],
+					"hibernation_options": [],
+					"iam_instance_profile": [
+						{},
+					],
+					"instance_market_options": [
+						{
+							"spot_options": [],
+						},
+					],
+					"instance_requirements": [],
+					"license_specification": [
+						{},
+					],
+					"maintenance_options": [],
+					"metadata_options": [
+						{},
+					],
+					"monitoring": [
+						{},
+					],
+					"network_interfaces": [
+						{},
+					],
+					"placement": [
+						{},
+					],
+					"private_dns_name_options": [],
+					"tag_specifications": [
+						{
+							"tags": {},
+						},
+					],
+					"tags_all": {},
+					"vpc_security_group_ids": [
+						false,
+					],
+				},
+				"after_unknown": {
+					"arn": true,
+					"block_device_mappings": [
+						{
+							"ebs": [
+								{
+									"iops":        true,
+									"throughput":  true,
+									"volume_type": true,
+								},
+							],
+						},
+					],
+					"capacity_reservation_specification": [
+						{
+							"capacity_reservation_target": [],
+						},
+					],
+					"cpu_options": [
+						{},
+					],
+					"credit_specification": [
+						{},
+					],
+					"default_version": true,
+					"elastic_gpu_specifications": [
+						{},
+					],
+					"elastic_inference_accelerator": [
+						{},
+					],
+					"enclave_options":     [],
+					"hibernation_options": [],
+					"iam_instance_profile": [
+						{},
+					],
+					"id": true,
+					"instance_market_options": [
+						{
+							"spot_options": [],
+						},
+					],
+					"instance_requirements": [],
+					"latest_version":        true,
+					"license_specification": [
+						{},
+					],
+					"maintenance_options": [],
+					"metadata_options": [
+						{
+							"http_protocol_ipv6": true,
+						},
+					],
+					"monitoring": [
+						{},
+					],
+					"name_prefix": true,
+					"network_interfaces": [
+						{},
+					],
+					"placement": [
+						{},
+					],
+					"private_dns_name_options": [],
+					"tag_specifications": [
+						{
+							"tags": {},
+						},
+					],
+					"tags_all": true,
+					"vpc_security_group_ids": [
+						false,
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "foo",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_launch_template",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2024-11-26T10:32:03Z",
+}

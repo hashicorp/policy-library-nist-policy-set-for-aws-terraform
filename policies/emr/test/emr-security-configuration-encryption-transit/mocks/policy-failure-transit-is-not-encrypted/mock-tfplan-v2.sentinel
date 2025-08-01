@@ -1,0 +1,143 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_emr_security_configuration.fail_config": {
+			"address":        "aws_emr_security_configuration.fail_config",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "fail_config",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_emr_security_configuration",
+			"values": {
+				"configuration": "{\"EncryptionConfiguration\":{\"AtRestEncryptionConfiguration\":{\"S3EncryptionConfiguration\":{\"EncryptionMode\":\"SSE-S3\"}}}}",
+				"name":          "insecure-in-transit",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_emr_security_configuration.fail_config": {
+		"address": "aws_emr_security_configuration.fail_config",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"configuration": "{\"EncryptionConfiguration\":{\"AtRestEncryptionConfiguration\":{\"S3EncryptionConfiguration\":{\"EncryptionMode\":\"SSE-S3\"}}}}",
+				"name":          "insecure-in-transit",
+			},
+			"after_unknown": {
+				"creation_date": true,
+				"id":            true,
+				"name_prefix":   true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "fail_config",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_emr_security_configuration",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_emr_security_configuration.fail_config",
+					"expressions": {
+						"configuration": {},
+						"name": {
+							"constant_value": "insecure-in-transit",
+						},
+					},
+					"mode":                "managed",
+					"name":                "fail_config",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_emr_security_configuration",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":          "aws_emr_security_configuration.fail_config",
+					"mode":             "managed",
+					"name":             "fail_config",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_emr_security_configuration",
+					"values": {
+						"configuration": "{\"EncryptionConfiguration\":{\"AtRestEncryptionConfiguration\":{\"S3EncryptionConfiguration\":{\"EncryptionMode\":\"SSE-S3\"}}}}",
+						"name":          "insecure-in-transit",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_emr_security_configuration.fail_config",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"configuration": "{\"EncryptionConfiguration\":{\"AtRestEncryptionConfiguration\":{\"S3EncryptionConfiguration\":{\"EncryptionMode\":\"SSE-S3\"}}}}",
+					"name":          "insecure-in-transit",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"creation_date": true,
+					"id":            true,
+					"name_prefix":   true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "fail_config",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_emr_security_configuration",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-06-17T05:17:42Z",
+}

@@ -1,0 +1,55 @@
+# This policy checks if resources of type 'aws_autoscaling_group' have the 'launch_template'
+# atribute or the attribute must be present in 'mixed_instances_policy'
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                    "autoscaling-group-should-use-launch-templates",
+	"message":                        "AWS Autoscaling Group must use AWS EC2 Launch Templates. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-9 for more details.",
+	"resource_aws_autoscaling_group": "aws_autoscaling_group",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		launch_template_values = maps.get(res, "values.launch_template", [])
+		if launch_template_values is empty {
+			return maps.get(res, "values.mixed_instances_policy", []) is not empty
+		}
+		return true
+	})
+}
+
+# Variables
+
+autoscaling_groups_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_autoscaling_group).resources
+violations = get_violations(autoscaling_groups_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

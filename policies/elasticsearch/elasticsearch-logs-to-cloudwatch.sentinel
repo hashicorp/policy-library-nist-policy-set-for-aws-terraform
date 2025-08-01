@@ -1,0 +1,58 @@
+# This policy requires resources of type `aws_elasticsearch_domain` have the `log_publishing_options` should have 'enabled' attribute set to `true`.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Import
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                       "elasticsearch-logs-to-cloudwatch",
+	"message":                           "Attribute 'enabled' must be set to true for the attribute 'log_publishing_options' for 'aws_elasticsearch_domain' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/es-controls.html#es-4 for more details.",
+	"resource_aws_elasticsearch_domain": "aws_elasticsearch_domain",
+	"enabled":                           "enabled",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		log_publishing_options_values = maps.get(res, "values.log_publishing_options", [])
+		if log_publishing_options_values is empty {
+			return false
+		}
+		return maps.get(log_publishing_options_values[0], const.enabled, true) is true
+	})
+}
+
+# Variables
+
+elasticsearch_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elasticsearch_domain).resources
+violations = get_violations(elasticsearch_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

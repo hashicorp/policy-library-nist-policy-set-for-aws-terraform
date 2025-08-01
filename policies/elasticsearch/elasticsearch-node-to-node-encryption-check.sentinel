@@ -1,0 +1,54 @@
+# This policy requires resources of type `aws_elasticsearch_domain` have the `enabled` value set to 'true' for `node_to_node_encrytion` attribute.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Import
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                       "elasticsearch-node-to-node-encryption-check",
+	"message":                           "Attribute 'enabled' must be set to true for the attribute 'node_to_node_encryption' for 'aws_elasticsearch_domain' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/es-controls.html#es-3 for more details.",
+	"resource_aws_elasticsearch_domain": "aws_elasticsearch_domain",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		node_to_node_encryption_values = maps.get(res, "values.node_to_node_encryption", [])
+		return node_to_node_encryption_values is not empty and node_to_node_encryption_values[0].enabled is true
+	})
+}
+
+# Variables
+
+elasticsearch_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elasticsearch_domain).resources
+violations = get_violations(elasticsearch_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

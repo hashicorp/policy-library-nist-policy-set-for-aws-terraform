@@ -1,0 +1,67 @@
+# This policy requires resources of type `aws_s3_access_point` to have all attributes
+# in the `public_access_block_configuration` set to true.
+
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "collection" as collection
+import "collection/maps" as maps
+import "report" as report
+
+# Constants
+
+const = {
+	"policy_name":                  "s3-access-point-block-public-access-enabled",
+	"message":                      "All attributes in 'public_access_block_configuration' must be set to true for 'aws_s3_access_point' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-19 for more details.",
+	"resource_aws_s3_access_point": "aws_s3_access_point",
+	"block_public_acls":            "block_public_acls",
+	"ignore_public_acls":           "ignore_public_acls",
+	"block_public_policy":          "block_public_policy",
+	"restrict_public_buckets":      "restrict_public_buckets",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		public_access_block = maps.get(res, "values.public_access_block_configuration", [])
+		if public_access_block is empty {
+			return false
+		}
+		return maps.get(public_access_block[0], const.block_public_acls, false) is true and
+			maps.get(public_access_block[0], const.ignore_public_acls, false) is true and
+			maps.get(public_access_block[0], const.block_public_policy, false) is true and
+			maps.get(public_access_block[0], const.restrict_public_buckets, false) is true
+	})
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_s3_access_point).resources
+
+violations = get_violations(resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
