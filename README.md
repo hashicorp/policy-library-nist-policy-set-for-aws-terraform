@@ -100,3 +100,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 - [Sentinel Language](https://developer.hashicorp.com/sentinel/docs/language/)
 - [Sentinel Language Specification](https://developer.hashicorp.com/sentinel/docs/language/spec)
 - [Policy Libraries](https://registry.terraform.io/browse/policies)
+
+## Policies Included
+
+- Lambda functions should be in a VPC ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/lambda-functions-should-be-in-a-vpc.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/lambda/lambda-functions-should-be-in-a-vpc.sentinel))

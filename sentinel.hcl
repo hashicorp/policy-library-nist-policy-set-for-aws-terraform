@@ -1268,3 +1268,8 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "lambda-functions-should-be-in-a-vpc" {
+  source = "./policies/lambda/lambda-functions-should-be-in-a-vpc.sentinel"
+  enforcement_level = "advisory"
+}
