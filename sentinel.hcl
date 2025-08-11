@@ -1268,3 +1268,8 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "rabbitmq-brokers-should-use-cluster-deployment-mode" {
+  source = "./policies/mq/rabbitmq-brokers-should-use-cluster-deployment-mode.sentinel"
+  enforcement_level = "advisory"
+}
