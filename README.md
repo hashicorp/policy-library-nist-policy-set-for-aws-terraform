@@ -100,3 +100,8 @@ Following methods outlines various ways to consume and implement pre-written Sen
 - [Sentinel Language](https://developer.hashicorp.com/sentinel/docs/language/)
 - [Sentinel Language Specification](https://developer.hashicorp.com/sentinel/docs/language/spec)
 - [Policy Libraries](https://registry.terraform.io/browse/policies)
+
+
+## Policies Included
+
+- ActiveMQ brokers should use active/standby deployment mode ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/activemq-brokers-should-use-active-standby-deployment-mode.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/mq/activemq-brokers-should-use-active-standby-deployment-mode.sentinel))

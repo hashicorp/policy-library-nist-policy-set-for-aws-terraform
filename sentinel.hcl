@@ -1268,3 +1268,8 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "activemq-brokers-should-use-active-standby-deployment-mode" {
+  source = "./policies/mq/activemq-brokers-should-use-active-standby-deployment-mode.sentinel"
+  enforcement_level = "advisory"
+}
