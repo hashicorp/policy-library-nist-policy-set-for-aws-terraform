@@ -1268,3 +1268,8 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "ecs-task-definitions-should-not-use-host-network-mode" {
+  source = "./policies/ecs/ecs-task-definitions-should-not-use-host-network-mode.sentinel"
+  enforcement_level = "advisory"
+}
