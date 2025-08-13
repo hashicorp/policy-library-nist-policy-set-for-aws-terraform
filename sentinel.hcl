@@ -1268,3 +1268,8 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl" {
+  source = "./policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel"
+  enforcement_level = "advisory"
+}
