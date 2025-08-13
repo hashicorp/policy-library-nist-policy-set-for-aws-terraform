@@ -1268,3 +1268,8 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "cloudwatch-alarms-should-have-specified-actions-configured" {
+  source = "./policies/cloudwatch/cloudwatch-alarms-should-have-specified-actions-configured.sentinel"
+enforcement_level = "advisory"
+}
