@@ -100,3 +100,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 - [Sentinel Language](https://developer.hashicorp.com/sentinel/docs/language/)
 - [Sentinel Language Specification](https://developer.hashicorp.com/sentinel/docs/language/spec)
 - [Policy Libraries](https://registry.terraform.io/browse/policies)
+
+## Policies Included
+
+- CloudWatch log groups should be retained for a specified time period ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/cloudwatch/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.sentinel))
