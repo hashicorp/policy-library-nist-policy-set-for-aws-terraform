@@ -567,6 +567,11 @@ policy "redshift-serverless-namespaces-should-not-use-the-default-database-name"
   enforcement_level = "advisory"
 }
 
+policy "redshift-serverless-namespace-should-be-encrypted-with-cmk" {
+  source = "./policies/redshiftserverless/redshift-serverless-namespace-should-be-encrypted-with-cmk.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "dms-replication-instances-should-not-be-public" {
   source = "./policies/dms/dms-replication-instances-should-not-be-public.sentinel"
   enforcement_level = "advisory"
