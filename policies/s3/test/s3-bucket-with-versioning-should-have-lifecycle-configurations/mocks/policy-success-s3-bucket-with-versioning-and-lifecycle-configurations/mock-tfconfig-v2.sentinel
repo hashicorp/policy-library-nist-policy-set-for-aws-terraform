@@ -1,0 +1,111 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_s3_bucket.bucket": {
+		"address": "aws_s3_bucket.bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "your-bucket-name",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket_lifecycle_configuration.example": {
+		"address": "aws_s3_bucket_lifecycle_configuration.example",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.bucket.id",
+					"aws_s3_bucket.bucket",
+				],
+			},
+			"rule": [
+				{
+					"id": {
+						"constant_value": "rule-1",
+					},
+					"status": {
+						"constant_value": "Enabled",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_lifecycle_configuration",
+	},
+	"aws_s3_bucket_versioning.example": {
+		"address": "aws_s3_bucket_versioning.example",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.bucket.id",
+					"aws_s3_bucket.bucket",
+				],
+			},
+			"versioning_configuration": [
+				{
+					"status": {
+						"constant_value": "Enabled",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_versioning",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

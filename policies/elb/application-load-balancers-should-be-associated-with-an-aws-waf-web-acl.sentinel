@@ -1,0 +1,66 @@
+# ELB.16
+# This control checks whether an Application Load Balancer is associated with an AWS WAF Classic or AWS WAF web access control list (web ACL)
+
+# imports
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+const = {
+	"policy_name":                            "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl",
+	"resource_aws_lb":                        "aws_lb",
+	"resource_aws_wafv2_web_acl_association": "aws_wafv2_web_acl_association",
+	"message": "This control checks whether an Application Load Balancer is associated with an AWS WAF Classic or AWS WAF web access control list (web ACL). Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-16 for more details.",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		resource_arn = maps.get(res, "config.resource_arn", {})
+		if resource_arn is not defined {
+			return false
+		}
+		references = maps.get(resource_arn, "references", [])
+		for references as _, val {
+			if strings.has_prefix(val, const.resource_aws_lb) {
+				return true
+			}
+		}
+		constant_value = maps.get(resource_arn, "constant_value", "")
+		if constant_value != "" {
+			return true
+		}
+		return false
+	})
+}
+
+# Variables
+
+aws_wafv2_web_acl_association = tf.config(tfconfig.resources).type(const.resource_aws_wafv2_web_acl_association).resources
+violations = get_violations(aws_wafv2_web_acl_association)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

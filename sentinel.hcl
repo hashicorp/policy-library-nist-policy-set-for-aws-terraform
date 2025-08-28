@@ -945,6 +945,11 @@ policy "s3-bucket-policy-restrict-access-to-other-accounts" {
   enforcement_level = "advisory"
 }
 
+policy "s3-bucket-with-versioning-should-have-lifecycle-configurations" {
+  source = "./policies/s3/s3-bucket-with-versioning-should-have-lifecycle-configurations.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "kinesis-firehose-delivery-stream-encrypted" {
   source = "./policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel"
   enforcement_level = "advisory"
@@ -1271,5 +1276,50 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
 
 policy "ebs-volumes-should-be-in-a-backup-plan" {
   source = "./policies/ec2/ebs-volumes-should-be-in-a-backup-plan.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "activemq-brokers-should-use-active-standby-deployment-mode" {
+  source = "./policies/mq/activemq-brokers-should-use-active-standby-deployment-mode.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "sns-topic-should-be-encrypted-at-rest" {
+  source = "./policies/sns/sns-topic-should-be-encrypted-at-rest.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "wafv2-webacl-should-have-logging-enabled" {
+  source = "./policies/waf/wafv2-webacl-should-have-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecs-task-definitions-should-not-use-host-network-mode" {
+  source = "./policies/ecs/ecs-task-definitions-should-not-use-host-network-mode.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys" {
+  source = "./policies/ecr/ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-alarm-actions-should-be-enabled" {
+  source = "./policies/cloudwatch/cloudwatch-alarm-actions-should-be-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-alarms-should-have-specified-actions-configured" {
+  source = "./policies/cloudwatch/cloudwatch-alarms-should-have-specified-actions-configured.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-log-groups-should-be-retained-for-a-specified-time-period"{
+  source = "./policies/cloudwatch/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl" {
+  source = "./policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel"
   enforcement_level = "advisory"
 }
