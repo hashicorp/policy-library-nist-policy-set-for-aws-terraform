@@ -1273,3 +1273,28 @@ policy "ecs-task-definitions-should-not-use-host-network-mode" {
   source = "./policies/ecs/ecs-task-definitions-should-not-use-host-network-mode.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys" {
+  source = "./policies/ecr/ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-alarm-actions-should-be-enabled" {
+  source = "./policies/cloudwatch/cloudwatch-alarm-actions-should-be-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-alarms-should-have-specified-actions-configured" {
+  source = "./policies/cloudwatch/cloudwatch-alarms-should-have-specified-actions-configured.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-log-groups-should-be-retained-for-a-specified-time-period"{
+  source = "./policies/cloudwatch/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl" {
+  source = "./policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel"
+  enforcement_level = "advisory"
+}
