@@ -1,0 +1,60 @@
+# CloudWatch.16
+# This control checks whether an Amazon CloudWatch log group has a retention period of at least the specified number of days.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                   "cloudwatch-log-groups-retention-period",
+	"message":                       "CloudWatch Log Groups should have a retention period of at least 365 days or be set to never expire (0). Refer to AWS security best practices for more details. https://docs.aws.amazon.com/securityhub/latest/userguide/cloudwatch-controls.html#cloudwatch-16",
+	"resource_cloudwatch_log_group": "aws_cloudwatch_log_group",
+	"min_retention_days":            365,
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_cloudwatch_log_group).resources
+
+violations = collection.filter(resources, func(res) {
+	retention_in_days = maps.get(res, "values.retention_in_days", null)
+
+	# If retention_in_days is not set, it's a violation
+	if retention_in_days is null {
+		return true
+	}
+
+	# If retention_in_days is 0 (never expire), it's compliant
+	if retention_in_days == 0 {
+		return true
+	}
+
+	# If retention_in_days is less than minimum required, it's a violation
+	return retention_in_days < const.min_retention_days
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
