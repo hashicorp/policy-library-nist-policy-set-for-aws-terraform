@@ -945,6 +945,14 @@ policy "s3-bucket-policy-restrict-access-to-other-accounts" {
   enforcement_level = "advisory"
 }
 
+policy "s3-bucket-should-have-object-lock-enabled" {
+  source = "./policies/s3/s3-bucket-should-have-object-lock-enabled.sentinel"
+  enforcement_level = "advisory"
+  params = {
+    valid_mode = ["GOVERNANCE", "COMPLIANCE"]
+  }
+}
+
 policy "kinesis-firehose-delivery-stream-encrypted" {
   source = "./policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel"
   enforcement_level = "advisory"
