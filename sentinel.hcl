@@ -485,6 +485,11 @@ policy "neptune-cluster-snapshot-encryption-at-rest-enabled" {
  enforcement_level = "advisory"
 }
 
+policy "neptune-cluster-should-be-deployed-in-multi-az" {
+  source = "./policies/neptune/neptune-cluster-should-be-deployed-in-multi-az.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "sagemaker-notebook-no-direct-internet-access" {
   source = "./policies/sagemaker/sagemaker-notebook-no-direct-internet-access.sentinel"
   enforcement_level = "advisory"
