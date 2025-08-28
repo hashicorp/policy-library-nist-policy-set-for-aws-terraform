@@ -1,0 +1,176 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_lb.application": {
+		"address": "aws_lb.application",
+		"config": {
+			"internal": {
+				"constant_value": false,
+			},
+			"load_balancer_type": {
+				"constant_value": "application",
+			},
+			"name": {
+				"constant_value": "example-alb-with-waf",
+			},
+			"subnets": {
+				"references": [
+					"aws_subnet.public_a.id",
+					"aws_subnet.public_a",
+				],
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "alb-with-waf",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "application",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_lb",
+	},
+	"aws_subnet.public_a": {
+		"address": "aws_subnet.public_a",
+		"config": {
+			"availability_zone": {
+				"constant_value": "us-east-1a",
+			},
+			"cidr_block": {
+				"constant_value": "10.0.1.0/24",
+			},
+			"map_public_ip_on_launch": {
+				"constant_value": true,
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "public-a",
+				},
+			},
+			"vpc_id": {
+				"references": [
+					"aws_vpc.main.id",
+					"aws_vpc.main",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "public_a",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_subnet",
+	},
+	"aws_vpc.main": {
+		"address": "aws_vpc.main",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.0.0.0/16",
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "main-vpc",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "main",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_vpc",
+	},
+	"aws_wafv2_web_acl.example": {
+		"address": "aws_wafv2_web_acl.example",
+		"config": {
+			"default_action": [
+				{
+					"allow": [
+						{},
+					],
+				},
+			],
+			"description": {
+				"constant_value": "Example WAF Web ACL to protect the ALB",
+			},
+			"name": {
+				"constant_value": "example-web-acl",
+			},
+			"scope": {
+				"constant_value": "REGIONAL",
+			},
+			"visibility_config": [
+				{
+					"cloudwatch_metrics_enabled": {
+						"constant_value": true,
+					},
+					"metric_name": {
+						"constant_value": "example-waf",
+					},
+					"sampled_requests_enabled": {
+						"constant_value": true,
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_wafv2_web_acl",
+	},
+	"aws_wafv2_web_acl_association.example": {
+		"address": "aws_wafv2_web_acl_association.example",
+		"config": {
+			"resource_arn": {
+				"constant_value": "",
+			},
+			"web_acl_arn": {
+				"references": [
+					"aws_wafv2_web_acl.example.arn",
+					"aws_wafv2_web_acl.example",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_wafv2_web_acl_association",
+	},
+}
