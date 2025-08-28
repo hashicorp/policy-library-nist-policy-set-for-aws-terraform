@@ -1,0 +1,458 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "eu-west-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_iam_policy.replication": {
+		"address": "aws_iam_policy.replication",
+		"config": {
+			"name": {
+				"constant_value": "tf-iam-role-policy-replication-12345",
+			},
+			"policy": {
+				"references": [
+					"data.aws_iam_policy_document.replication.json",
+					"data.aws_iam_policy_document.replication",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "replication",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_policy",
+	},
+	"aws_iam_role.replication": {
+		"address": "aws_iam_role.replication",
+		"config": {
+			"assume_role_policy": {
+				"references": [
+					"data.aws_iam_policy_document.assume_role.json",
+					"data.aws_iam_policy_document.assume_role",
+				],
+			},
+			"name": {
+				"constant_value": "tf-iam-role-replication-12345",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "replication",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role",
+	},
+	"aws_iam_role_policy_attachment.replication": {
+		"address": "aws_iam_role_policy_attachment.replication",
+		"config": {
+			"policy_arn": {
+				"references": [
+					"aws_iam_policy.replication.arn",
+					"aws_iam_policy.replication",
+				],
+			},
+			"role": {
+				"references": [
+					"aws_iam_role.replication.name",
+					"aws_iam_role.replication",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "replication",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role_policy_attachment",
+	},
+	"aws_s3_bucket.destination": {
+		"address": "aws_s3_bucket.destination",
+		"config": {
+			"bucket": {
+				"constant_value": "tf-test-bucket-destination-12345",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "destination",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket.source": {
+		"address": "aws_s3_bucket.source",
+		"config": {
+			"bucket": {
+				"constant_value": "tf-test-bucket-source-12345",
+			},
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "source",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket_acl.source_bucket_acl": {
+		"address": "aws_s3_bucket_acl.source_bucket_acl",
+		"config": {
+			"acl": {
+				"constant_value": "private",
+			},
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.source.id",
+					"aws_s3_bucket.source",
+				],
+			},
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "source_bucket_acl",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_acl",
+	},
+	"aws_s3_bucket_replication_configuration.replication": {
+		"address": "aws_s3_bucket_replication_configuration.replication",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.source.id",
+					"aws_s3_bucket.source",
+				],
+			},
+			"region": {
+				"constant_value": "us-east-1",
+			},
+			"role": {
+				"references": [
+					"aws_iam_role.replication.arn",
+					"aws_iam_role.replication",
+				],
+			},
+			"rule": [
+				{
+					"destination": [
+						{
+							"bucket": {
+								"references": [
+									"aws_s3_bucket.destination.arn",
+									"aws_s3_bucket.destination",
+								],
+							},
+							"storage_class": {
+								"constant_value": "STANDARD",
+							},
+						},
+					],
+					"filter": [
+						{
+							"prefix": {
+								"constant_value": "example",
+							},
+						},
+					],
+					"id": {
+						"constant_value": "examplerule",
+					},
+					"status": {
+						"constant_value": "Enabled",
+					},
+				},
+			],
+		},
+		"count": {},
+		"depends_on": [
+			"aws_s3_bucket_versioning.source",
+		],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "replication",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_replication_configuration",
+	},
+	"aws_s3_bucket_replication_configuration.replication2": {
+		"address": "aws_s3_bucket_replication_configuration.replication2",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.destination.id",
+					"aws_s3_bucket.destination",
+				],
+			},
+			"region": {
+				"constant_value": "us-east-1",
+			},
+			"role": {
+				"references": [
+					"aws_iam_role.replication.arn",
+					"aws_iam_role.replication",
+				],
+			},
+			"rule": [
+				{
+					"destination": [
+						{
+							"bucket": {
+								"references": [
+									"aws_s3_bucket.destination.arn",
+									"aws_s3_bucket.destination",
+								],
+							},
+							"storage_class": {
+								"constant_value": "STANDARD",
+							},
+						},
+					],
+					"filter": [
+						{
+							"prefix": {
+								"constant_value": "example",
+							},
+						},
+					],
+					"id": {
+						"constant_value": "examplerule",
+					},
+					"status": {
+						"constant_value": "Enabled",
+					},
+				},
+			],
+		},
+		"count": {},
+		"depends_on": [
+			"aws_s3_bucket_versioning.destination",
+		],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "replication2",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_replication_configuration",
+	},
+	"aws_s3_bucket_versioning.destination": {
+		"address": "aws_s3_bucket_versioning.destination",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.destination.id",
+					"aws_s3_bucket.destination",
+				],
+			},
+			"versioning_configuration": [
+				{
+					"status": {
+						"constant_value": "Enabled",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "destination",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_versioning",
+	},
+	"aws_s3_bucket_versioning.source": {
+		"address": "aws_s3_bucket_versioning.source",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.source.id",
+					"aws_s3_bucket.source",
+				],
+			},
+			"region": {
+				"constant_value": "us-east-1",
+			},
+			"versioning_configuration": [
+				{
+					"status": {
+						"constant_value": "Enabled",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "source",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_versioning",
+	},
+	"data.aws_iam_policy_document.assume_role": {
+		"address": "data.aws_iam_policy_document.assume_role",
+		"config": {
+			"statement": [
+				{
+					"actions": {
+						"constant_value": [
+							"sts:AssumeRole",
+						],
+					},
+					"effect": {
+						"constant_value": "Allow",
+					},
+					"principals": [
+						{
+							"identifiers": {
+								"constant_value": [
+									"s3.amazonaws.com",
+								],
+							},
+							"type": {
+								"constant_value": "Service",
+							},
+						},
+					],
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "assume_role",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_policy_document",
+	},
+	"data.aws_iam_policy_document.replication": {
+		"address": "data.aws_iam_policy_document.replication",
+		"config": {
+			"statement": [
+				{
+					"actions": {
+						"constant_value": [
+							"s3:GetReplicationConfiguration",
+							"s3:ListBucket",
+						],
+					},
+					"effect": {
+						"constant_value": "Allow",
+					},
+					"resources": {
+						"references": [
+							"aws_s3_bucket.source.arn",
+							"aws_s3_bucket.source",
+						],
+					},
+				},
+				{
+					"actions": {
+						"constant_value": [
+							"s3:GetObjectVersionForReplication",
+							"s3:GetObjectVersionAcl",
+							"s3:GetObjectVersionTagging",
+						],
+					},
+					"effect": {
+						"constant_value": "Allow",
+					},
+					"resources": {
+						"references": [
+							"aws_s3_bucket.source.arn",
+							"aws_s3_bucket.source",
+						],
+					},
+				},
+				{
+					"actions": {
+						"constant_value": [
+							"s3:ReplicateObject",
+							"s3:ReplicateDelete",
+							"s3:ReplicateTags",
+						],
+					},
+					"effect": {
+						"constant_value": "Allow",
+					},
+					"resources": {
+						"references": [
+							"aws_s3_bucket.destination.arn",
+							"aws_s3_bucket.destination",
+						],
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "replication",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_policy_document",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
