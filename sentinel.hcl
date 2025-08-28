@@ -1269,6 +1269,11 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   enforcement_level = "advisory"
 }
 
+policy "wafv2-webacl-should-have-logging-enabled" {
+  source = "./policies/waf/wafv2-webacl-should-have-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ecs-task-definitions-should-not-use-host-network-mode" {
   source = "./policies/ecs/ecs-task-definitions-should-not-use-host-network-mode.sentinel"
   enforcement_level = "advisory"
