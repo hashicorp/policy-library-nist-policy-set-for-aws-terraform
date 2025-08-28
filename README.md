@@ -100,3 +100,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 - [Sentinel Language](https://developer.hashicorp.com/sentinel/docs/language/)
 - [Sentinel Language Specification](https://developer.hashicorp.com/sentinel/docs/language/spec)
 - [Policy Libraries](https://registry.terraform.io/browse/policies)
+
+## Policies Included
+
+- Application Load Balancers should be associated with an AWS WAF web ACL ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel))
