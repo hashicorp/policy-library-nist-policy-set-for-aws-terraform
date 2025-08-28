@@ -1,0 +1,40 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 5.98.0",
+	},
+}
+
+resources = {
+	"aws_cloudtrail_event_data_store.non_compliant_event_data_store": {
+		"address": "aws_cloudtrail_event_data_store.non_compliant_event_data_store",
+		"config": {
+			"name": {
+				"constant_value": "non-compliant-event-data-store",
+			},
+			"retention_period": {
+				"constant_value": 90,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "non_compliant_event_data_store",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_cloudtrail_event_data_store",
+	},
+}
