@@ -1279,6 +1279,11 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   enforcement_level = "advisory"
 }
 
+policy "lambda-functions-should-be-in-a-vpc" {
+  source = "./policies/lambda/lambda-functions-should-be-in-a-vpc.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "eventbridge-global-endpoints-should-have-event-replication-enabled" {
   source = "./policies/eventbridge/eventbridge-global-endpoints-should-have-event-replication-enabled.sentinel"
   enforcement_level = "advisory"
