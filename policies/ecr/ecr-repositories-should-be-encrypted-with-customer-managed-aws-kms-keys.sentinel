@@ -1,0 +1,56 @@
+# ECR.5
+# This control checks whether an Amazon ECR repository is encrypted at rest with a customer managed AWS KMS key.
+
+# Imports
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                 "ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys",
+	"message":                     "ECR repositories must be encrypted with customer-managed KMS keys. Refer to AWS security best practices for more details. https://docs.aws.amazon.com/securityhub/latest/userguide/ecr-controls.html#ecr-5",
+	"resource_aws_ecr_repository": "aws_ecr_repository",
+}
+
+# Variables
+resources = tf.config(tfconfig.resources).type(const.resource_aws_ecr_repository).resources
+
+# Function to check if ECR repository is encrypted with customer-managed KMS key
+is_encrypted_with_customer_managed_key = func(config) {
+	encryption_config = maps.get(config, "encryption_configuration", null)
+
+	if encryption_config is null {
+		return false
+	}
+
+	encryption_type = maps.get(encryption_config[0], "encryption_type.constant_value", "")
+	kms_keys = maps.get(encryption_config[0], "kms_key.references", [])
+
+	return encryption_type == "KMS" and kms_keys is not empty
+}
+
+violations = collection.reject(resources, func(res) {
+	return is_encrypted_with_customer_managed_key(res.config)
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+main = rule {
+	violations is empty
+}

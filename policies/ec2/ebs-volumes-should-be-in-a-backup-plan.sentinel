@@ -1,0 +1,67 @@
+# EC2.28
+# This control evaluates if an Amazon EBS volume in in-use state is covered by a backup plan.
+
+# Imports
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                   "ebs-volumes-should-be-in-a-backup-plan",
+	"message":                       "EBS volumes should be included in AWS Backup plans. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-28 for more details.",
+	"resource_aws_ebs_volume":       "aws_ebs_volume",
+	"resource_aws_backup_plan":      "aws_backup_plan",
+	"resource_aws_backup_selection": "aws_backup_selection",
+}
+
+# Variables
+ebs_volumes = tf.config(tfconfig.resources).type(const.resource_aws_ebs_volume).resources
+backup_plans = tf.config(tfconfig.resources).type(const.resource_aws_backup_plan).resources
+backup_selections = tf.config(tfconfig.resources).type(const.resource_aws_backup_selection).resources
+
+backup_ebs_volumes = []
+
+for backup_selections as backup_selection {
+	# Check if the selection includes this volume by tag
+	config = maps.get(backup_selection, "config", {})
+	resources = maps.get(config, "resources", {})
+	references = maps.get(resources, "references", [])
+	for references as reference {
+		append(backup_ebs_volumes, reference)
+	}
+}
+
+# Function to check if a volume is included in any backup selection
+is_volume_in_backup_plan = func(volume) {
+	address = maps.get(volume, "address", "")
+	# Check if any backup selection includes this volume
+	return address in backup_ebs_volumes
+}
+
+# Find volumes that are not in any backup plan
+violations = collection.reject(ebs_volumes, func(volume) {
+	return is_volume_in_backup_plan(volume)
+})
+
+# Generate summary
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+main = rule {
+	violations is empty
+}

@@ -1,0 +1,283 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_wafv2_web_acl.example": {
+		"address": "aws_wafv2_web_acl.example",
+		"config": {
+			"default_action": [
+				{
+					"allow": [
+						{},
+					],
+				},
+			],
+			"description": {
+				"constant_value": "Example of a managed rule.",
+			},
+			"name": {
+				"constant_value": "managed-rule-example",
+			},
+			"rule": [
+				{
+					"name": {
+						"constant_value": "rule-1",
+					},
+					"override_action": [
+						{
+							"count": [
+								{},
+							],
+						},
+					],
+					"priority": {
+						"constant_value": 1,
+					},
+					"statement": [
+						{
+							"managed_rule_group_statement": [
+								{
+									"name": {
+										"constant_value": "AWSManagedRulesCommonRuleSet",
+									},
+									"rule_action_override": [
+										{
+											"action_to_use": [
+												{
+													"count": [
+														{},
+													],
+												},
+											],
+											"name": {
+												"constant_value": "SizeRestrictions_QUERYSTRING",
+											},
+										},
+										{
+											"action_to_use": [
+												{
+													"count": [
+														{},
+													],
+												},
+											],
+											"name": {
+												"constant_value": "NoUserAgent_HEADER",
+											},
+										},
+									],
+									"scope_down_statement": [
+										{
+											"geo_match_statement": [
+												{
+													"country_codes": {
+														"constant_value": [
+															"US",
+															"NL",
+														],
+													},
+												},
+											],
+										},
+									],
+									"vendor_name": {
+										"constant_value": "AWS",
+									},
+								},
+							],
+						},
+					],
+					"visibility_config": [
+						{
+							"cloudwatch_metrics_enabled": {
+								"constant_value": false,
+							},
+							"metric_name": {
+								"constant_value": "friendly-rule-metric-name",
+							},
+							"sampled_requests_enabled": {
+								"constant_value": false,
+							},
+						},
+					],
+				},
+				{
+					"action": [
+						{
+							"allow": [
+								{},
+							],
+						},
+					],
+					"name": {
+						"constant_value": "rule-to-exclude-a",
+					},
+					"priority": {
+						"constant_value": 10,
+					},
+					"statement": [
+						{
+							"geo_match_statement": [
+								{
+									"country_codes": {
+										"constant_value": [
+											"US",
+										],
+									},
+								},
+							],
+						},
+					],
+					"visibility_config": [
+						{
+							"cloudwatch_metrics_enabled": {
+								"constant_value": false,
+							},
+							"metric_name": {
+								"constant_value": "friendly-rule-metric-name",
+							},
+							"sampled_requests_enabled": {
+								"constant_value": false,
+							},
+						},
+					],
+				},
+				{
+					"action": [
+						{
+							"allow": [
+								{},
+							],
+						},
+					],
+					"name": {
+						"constant_value": "rule-to-exclude-b",
+					},
+					"priority": {
+						"constant_value": 15,
+					},
+					"statement": [
+						{
+							"geo_match_statement": [
+								{
+									"country_codes": {
+										"constant_value": [
+											"GB",
+										],
+									},
+								},
+							],
+						},
+					],
+					"visibility_config": [
+						{
+							"cloudwatch_metrics_enabled": {
+								"constant_value": false,
+							},
+							"metric_name": {
+								"constant_value": "friendly-rule-metric-name",
+							},
+							"sampled_requests_enabled": {
+								"constant_value": false,
+							},
+						},
+					],
+				},
+			],
+			"scope": {
+				"constant_value": "REGIONAL",
+			},
+			"tags": {
+				"constant_value": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+			},
+			"token_domains": {
+				"constant_value": [
+					"mywebsite.com",
+					"myotherwebsite.com",
+				],
+			},
+			"visibility_config": [
+				{
+					"cloudwatch_metrics_enabled": {
+						"constant_value": false,
+					},
+					"metric_name": {
+						"constant_value": "friendly-metric-name",
+					},
+					"sampled_requests_enabled": {
+						"constant_value": false,
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_wafv2_web_acl",
+	},
+	"aws_wafv2_web_acl_logging_configuration.name": {
+		"address": "aws_wafv2_web_acl_logging_configuration.name",
+		"config": {
+			"log_destination_configs": {
+				"constant_value": [
+					"arn:aws:s3:::my-unique-bucket-name-1234567890",
+				],
+			},
+			"resource_arn": {
+				"references": [
+					"aws_wafv2_web_acl.example.arn",
+					"aws_wafv2_web_acl.example",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "name",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_wafv2_web_acl_logging_configuration",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

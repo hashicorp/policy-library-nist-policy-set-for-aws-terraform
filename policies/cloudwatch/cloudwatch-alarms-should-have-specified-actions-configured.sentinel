@@ -1,0 +1,63 @@
+# CloudWatch.15
+# This control checks whether an Amazon CloudWatch alarm has at least one action configured for the ALARM state.
+
+# Imports
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name": "cloudwatch-alarms-should-have-specified-actions-configured",
+	"message":     "CloudWatch alarms must have alarm actions configured. Refer to AWS security best practices for more details. https://docs.aws.amazon.com/securityhub/latest/userguide/cloudwatch-controls.html#cloudwatch-15",
+	"resource_aws_cloudwatch_metric_alarm":    "aws_cloudwatch_metric_alarm",
+	"resource_aws_cloudwatch_composite_alarm": "aws_cloudwatch_composite_alarm",
+	"alarm_actions":                           "alarm_actions",
+}
+
+# Variables
+metric_alarm_resources = tf.config(tfconfig.resources).type(const.resource_aws_cloudwatch_metric_alarm).resources
+composite_alarm_resources = tf.config(tfconfig.resources).type(const.resource_aws_cloudwatch_composite_alarm).resources
+
+# Check if alarm actions are properly configured
+check_alarm_actions = func(res) {
+	config = maps.get(res, "config", {})
+	alarm_actions = maps.get(config, const.alarm_actions, {})
+	if alarm_actions is empty {
+		return false
+	}
+	constant_value = maps.get(alarm_actions, "constant_value", [])
+	references = maps.get(alarm_actions, "references", [])
+	if constant_value is empty and references is empty {
+		return false
+	}
+
+	return length(constant_value) > 0 or length(references) > 0
+}
+
+# Find violations
+metric_alarm_violations = collection.reject(metric_alarm_resources, check_alarm_actions)
+composite_alarm_violations = collection.reject(composite_alarm_resources, check_alarm_actions)
+
+violations = metric_alarm_violations + composite_alarm_violations
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+main = rule {
+	violations is empty
+}
