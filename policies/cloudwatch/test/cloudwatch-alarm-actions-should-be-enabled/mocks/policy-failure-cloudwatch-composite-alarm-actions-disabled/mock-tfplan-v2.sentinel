@@ -1,0 +1,32 @@
+terraform_version = "1.12.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudwatch_composite_alarm.non_compliant_alarm": {
+			"address":        "aws_cloudwatch_composite_alarm.non_compliant_alarm",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "non_compliant_alarm",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_composite_alarm",
+			"values": {
+				"actions_enabled":    false,
+				"actions_suppressor": [],
+				"alarm_actions": [
+					"arn:aws:sns:us-east-1:123456789012:my-topic",
+				],
+				"alarm_description":         "This is a non-compliant composite alarm with actions disabled",
+				"alarm_name":                "non-compliant-composite-alarm",
+				"alarm_rule":                "ALARM(my-base-alarm)",
+				"insufficient_data_actions": null,
+				"ok_actions":                null,
+				"tags":                      null,
+			},
+		},
+	},
+}
