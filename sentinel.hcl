@@ -1268,3 +1268,8 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "wafv2-webacl-should-have-logging-enabled" {
+  source = "./policies/waf/wafv2-webacl-should-have-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
