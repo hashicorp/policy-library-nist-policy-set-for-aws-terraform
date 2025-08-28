@@ -899,6 +899,11 @@ policy "opensearch-update-check" {
   enforcement_level = "advisory"
 }
 
+policy "opensearch-primary-node-count-should-be-atleast-3" {
+  source = "./policies/opensearch/opensearch-primary-node-count-should-be-atleast-3.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "acm-pca-root-ca-disabled" {
   source = "./policies/acm/acm-pca-root-ca-disabled.sentinel"
   enforcement_level = "advisory"
