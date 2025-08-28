@@ -1,0 +1,152 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias":               "",
+		"config":              {},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_s3_bucket.bucket": {
+		"address": "aws_s3_bucket.bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "your-bucket-name",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket_notification.bucket_notification": {
+		"address": "aws_s3_bucket_notification.bucket_notification",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.bucket.id",
+					"aws_s3_bucket.bucket",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "bucket_notification",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_notification",
+	},
+	"aws_sns_topic.topic": {
+		"address": "aws_sns_topic.topic",
+		"config": {
+			"name": {
+				"constant_value": "s3-event-notification-topic",
+			},
+			"policy": {
+				"references": [
+					"data.aws_iam_policy_document.topic.json",
+					"data.aws_iam_policy_document.topic",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "topic",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sns_topic",
+	},
+	"data.aws_iam_policy_document.topic": {
+		"address": "data.aws_iam_policy_document.topic",
+		"config": {
+			"statement": [
+				{
+					"actions": {
+						"constant_value": [
+							"SNS:Publish",
+						],
+					},
+					"condition": [
+						{
+							"test": {
+								"constant_value": "ArnLike",
+							},
+							"values": {
+								"references": [
+									"aws_s3_bucket.bucket.arn",
+									"aws_s3_bucket.bucket",
+								],
+							},
+							"variable": {
+								"constant_value": "aws:SourceArn",
+							},
+						},
+					],
+					"effect": {
+						"constant_value": "Allow",
+					},
+					"principals": [
+						{
+							"identifiers": {
+								"constant_value": [
+									"s3.amazonaws.com",
+								],
+							},
+							"type": {
+								"constant_value": "Service",
+							},
+						},
+					],
+					"resources": {
+						"constant_value": [
+							"arn:aws:sns:*:*:s3-event-notification-topic",
+						],
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "topic",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_policy_document",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
