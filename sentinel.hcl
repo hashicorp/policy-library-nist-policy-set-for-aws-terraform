@@ -1273,3 +1273,13 @@ policy "cloudwatch-alarms-should-have-specified-actions-configured" {
   source = "./policies/cloudwatch/cloudwatch-alarms-should-have-specified-actions-configured.sentinel"
 enforcement_level = "advisory"
 }
+
+policy "cloudwatch-log-groups-should-be-retained-for-a-specified-time-period"{
+  source = "./policies/cloudwatch/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl" {
+  source = "./policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel"
+  enforcement_level = "advisory"
+}
