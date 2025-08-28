@@ -1,0 +1,37 @@
+terraform_version = "1.12.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_mq_broker.rabbitmq_broker": {
+			"address":        "aws_mq_broker.rabbitmq_broker",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "rabbitmq_broker",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_mq_broker",
+			"values": {
+				"apply_immediately":                   false,
+				"auto_minor_version_upgrade":          false,
+				"broker_name":                         "example-rabbitmq-broker",
+				"data_replication_primary_broker_arn": null,
+				"deployment_mode":                     "ACTIVE_STANDBY_MULTI_AZ",
+				"encryption_options":                  [],
+				"engine_type":                         "RabbitMQ",
+				"engine_version":                      "3.10.20",
+				"host_instance_type":                  "mq.m5.large",
+				"ldap_server_metadata":                [],
+				"logs":                                [],
+				"publicly_accessible":                 false,
+				"security_groups":                     null,
+				"tags":                                null,
+				"timeouts":                            null,
+				"user":                                "REDACTED_SENSITIVE",
+			},
+		},
+	},
+}

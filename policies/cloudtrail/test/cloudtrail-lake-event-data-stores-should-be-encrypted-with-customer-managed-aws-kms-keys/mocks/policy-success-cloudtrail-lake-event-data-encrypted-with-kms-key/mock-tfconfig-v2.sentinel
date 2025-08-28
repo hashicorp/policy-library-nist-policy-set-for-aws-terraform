@@ -1,0 +1,69 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 5.98.0",
+	},
+}
+
+resources = {
+	"aws_cloudtrail_event_data_store.compliant_event_data_store": {
+		"address": "aws_cloudtrail_event_data_store.compliant_event_data_store",
+		"config": {
+			"kms_key_id": {
+				"references": [
+					"aws_kms_key.cloudtrail_lake_key.arn",
+					"aws_kms_key.cloudtrail_lake_key",
+				],
+			},
+			"name": {
+				"constant_value": "compliant-event-data-store",
+			},
+			"retention_period": {
+				"constant_value": 90,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "compliant_event_data_store",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_cloudtrail_event_data_store",
+	},
+	"aws_kms_key.cloudtrail_lake_key": {
+		"address": "aws_kms_key.cloudtrail_lake_key",
+		"config": {
+			"deletion_window_in_days": {
+				"constant_value": 30,
+			},
+			"description": {
+				"constant_value": "KMS key for CloudTrail Lake event data store encryption",
+			},
+			"enable_key_rotation": {
+				"constant_value": true,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "cloudtrail_lake_key",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_kms_key",
+	},
+}
