@@ -638,6 +638,11 @@ policy "msk-in-cluster-node-require-encrypted-in-transit" {
   enforcement_level = "advisory"
 }
 
+policy "msk-clusters-should-have-enhanced-monitoring-enabled" {
+  source = "./policies/msk/msk-clusters-should-have-enhanced-monitoring-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "kinesis-stream-encrypted" {
   source = "./policies/kinesis/kinesis-stream-encrypted.sentinel"
   enforcement_level = "advisory"
