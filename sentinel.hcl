@@ -633,6 +633,11 @@ policy "mq-auto-minor-version-upgrade-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "mq-rabbit-brokers-should-use-cluster-deployment" {
+  source = "./policies/mq/mq-rabbit-brokers-should-use-cluster-deployment.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "msk-in-cluster-node-require-encrypted-in-transit" {
   source = "./policies/msk/msk-in-cluster-node-require-encrypted-in-transit.sentinel"
   enforcement_level = "advisory"

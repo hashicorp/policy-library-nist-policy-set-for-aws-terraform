@@ -1,0 +1,57 @@
+# This policy checks if resources of type 'aws_mq_broker' have the 'deployment_mode' attribute set to 'CLUSTER_MULTI_AZ'
+# for RabbitMQ brokers.
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":            "mq-rabbit-brokers-should-use-cluster-deployment",
+	"message":                "Attribute 'deployment_mode' should be 'CLUSTER_MULTI_AZ' for AWS RabbitMQ Broker. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-6 for more details.",
+	"resource_aws_mq_broker": "aws_mq_broker",
+	"engine_type":            "engine_type",
+	"deployment_mode":        "deployment_mode",
+	"rabbitmq":               "RabbitMQ",
+	"cluster_multi_az":       "CLUSTER_MULTI_AZ",
+	"single_instance":        "SINGLE_INSTANCE",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		engine_type = maps.get(res.values, const.engine_type, "")
+		if engine_type != const.rabbitmq {
+			return true
+		}
+		return maps.get(res.values, const.deployment_mode, const.single_instance) is const.cluster_multi_az
+	})
+}
+
+# Variables
+
+mq_brokers = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_mq_broker).resources
+violations = get_violations(mq_brokers)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
