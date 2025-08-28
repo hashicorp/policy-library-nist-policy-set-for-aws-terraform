@@ -1,0 +1,105 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_kms_key.example": {
+		"address": "aws_kms_key.example",
+		"config": {
+			"description": {
+				"constant_value": "KMS key for S3 bucket encryption",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_kms_key",
+	},
+	"aws_s3_bucket.bucket": {
+		"address": "aws_s3_bucket.bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "your-bucket-name",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket_server_side_encryption_configuration.example": {
+		"address": "aws_s3_bucket_server_side_encryption_configuration.example",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.bucket.id",
+					"aws_s3_bucket.bucket",
+				],
+			},
+			"rule": [
+				{
+					"apply_server_side_encryption_by_default": [
+						{
+							"kms_master_key_id": {
+								"constant_value": "aws/s3",
+							},
+							"sse_algorithm": {
+								"constant_value": "aws:kms",
+							},
+						},
+					],
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_server_side_encryption_configuration",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
