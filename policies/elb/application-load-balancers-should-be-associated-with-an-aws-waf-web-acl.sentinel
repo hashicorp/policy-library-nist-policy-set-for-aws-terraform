@@ -14,7 +14,7 @@ const = {
 	"policy_name":                            "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl",
 	"resource_aws_lb":                        "aws_lb",
 	"resource_aws_wafv2_web_acl_association": "aws_wafv2_web_acl_association",
-	"message": "This control checks whether an Application Load Balancer is associated with an AWS WAF Classic or AWS WAF web access control list (web ACL). Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-4 for more details.",
+	"message": "This control checks whether an Application Load Balancer is associated with an AWS WAF Classic or AWS WAF web access control list (web ACL). Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-16 for more details.",
 }
 
 # Functions
