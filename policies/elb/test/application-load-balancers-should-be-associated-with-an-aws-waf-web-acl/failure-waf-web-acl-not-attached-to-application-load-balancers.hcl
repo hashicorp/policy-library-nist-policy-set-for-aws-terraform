@@ -1,0 +1,24 @@
+mock "tfconfig/v2" {
+	module {
+		source = "./mocks/policy-failure-waf-web-acl-not-attached-to-application-load-balancers/mock-tfconfig-v2.sentinel"
+	}
+}
+
+
+mock "tfresources" {
+  module {
+    source = "../../../../modules/tfresources/tfresources.sentinel"
+  }
+}
+
+mock "report" {
+	module {
+		source = "../../../../modules/mocks/report/report.sentinel"
+	}
+}
+
+test {
+	rules = {
+		main = false
+	}
+}
