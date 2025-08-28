@@ -945,6 +945,11 @@ policy "s3-bucket-policy-restrict-access-to-other-accounts" {
   enforcement_level = "advisory"
 }
 
+policy "s3-bucket-should-have-versioning-enabled" {
+  source = "./policies/s3/s3-bucket-should-have-versioning-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "s3-bucket-with-versioning-should-have-lifecycle-configurations" {
   source = "./policies/s3/s3-bucket-with-versioning-should-have-lifecycle-configurations.sentinel"
   enforcement_level = "advisory"
