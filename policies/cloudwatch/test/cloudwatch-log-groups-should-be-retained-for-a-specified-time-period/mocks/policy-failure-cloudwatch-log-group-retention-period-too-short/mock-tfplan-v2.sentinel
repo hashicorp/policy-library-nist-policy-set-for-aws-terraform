@@ -1,0 +1,27 @@
+terraform_version = "1.12.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudwatch_log_group.log_group": {
+			"address":        "aws_cloudwatch_log_group.log_group",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "log_group",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_log_group",
+			"values": {
+				"kms_key_id":        null,
+				"name":              "log-group",
+				"region":            "us-west-2",
+				"retention_in_days": 30,
+				"skip_destroy":      false,
+				"tags":              null,
+			},
+		},
+	},
+}
