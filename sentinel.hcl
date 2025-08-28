@@ -1269,6 +1269,11 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-task-definitions-should-not-use-host-network-mode" {
+  source = "./policies/ecs/ecs-task-definitions-should-not-use-host-network-mode.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys" {
   source = "./policies/ecr/ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel"
   enforcement_level = "advisory"
