@@ -1,0 +1,80 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_kms_key.example": {
+		"address": "aws_kms_key.example",
+		"config": {
+			"deletion_window_in_days": {
+				"constant_value": 10,
+			},
+			"description": {
+				"constant_value": "KMS key for SNS topic encryption",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_kms_key",
+	},
+	"aws_sns_topic.user_updates": {
+		"address": "aws_sns_topic.user_updates",
+		"config": {
+			"kms_master_key_id": {
+				"references": [
+					"aws_kms_key.example.arn",
+					"aws_kms_key.example",
+				],
+			},
+			"name": {
+				"constant_value": "user-updates-topic",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "user_updates",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sns_topic",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
