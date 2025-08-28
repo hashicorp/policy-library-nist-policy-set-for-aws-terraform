@@ -1269,6 +1269,11 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   enforcement_level = "advisory"
 }
 
+policy "ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys" {
+  source = "./policies/ecr/ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "cloudwatch-alarm-actions-should-be-enabled" {
   source = "./policies/cloudwatch/cloudwatch-alarm-actions-should-be-enabled.sentinel"
   enforcement_level = "advisory"
