@@ -1263,6 +1263,11 @@ policy "cloudtrail-cloudwatch-logs-group-arn-present" {
   source = "./policies/cloudtrail/cloudtrail-cloudwatch-logs-group-arn-present.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys" {
+  source = "./policies/cloudtrail/cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel"
+  enforcement_level = "advisory"
+}
   
 policy "appsync-graphql-api-should-not-authenticate-with-api-keys" {
   source = "./policies/appsync/appsync-graphql-api-should-not-authenticate-with-api-keys.sentinel"
