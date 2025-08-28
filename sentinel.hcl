@@ -1323,3 +1323,8 @@ policy "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl"
   source = "./policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "dynamodb-tables-should-be-present-in-a-backup-plan" {
+  source = "./policies/dynamo-db/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel"
+  enforcement_level = "advisory"
+}
