@@ -1,0 +1,1131 @@
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_networkfirewall_firewall.example": {
+			"address":        "aws_networkfirewall_firewall.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_networkfirewall_firewall",
+			"values": {
+				"availability_zone_change_protection": false,
+				"delete_protection":                   false,
+				"description":                         null,
+				"enabled_analysis_types": [
+					"HTTP_HOST",
+					"TLS_SNI",
+				],
+				"encryption_configuration":          [],
+				"firewall_policy_change_protection": null,
+				"name":                     "example",
+				"region":                   "us-east-1",
+				"subnet_change_protection": null,
+				"subnet_mapping": [
+					{},
+				],
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"timeouts": {
+					"create": "40m",
+					"delete": "1h",
+					"update": "50m",
+				},
+				"transit_gateway_id": null,
+			},
+		},
+		"aws_networkfirewall_firewall_policy.example": {
+			"address":        "aws_networkfirewall_firewall_policy.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_networkfirewall_firewall_policy",
+			"values": {
+				"description":              "Example firewall policy",
+				"encryption_configuration": [],
+				"firewall_policy": [
+					{
+						"policy_variables":         [],
+						"stateful_default_actions": null,
+						"stateful_engine_options": [
+							{
+								"flow_timeouts":           [],
+								"rule_order":              "STRICT_ORDER",
+								"stream_exception_policy": null,
+							},
+						],
+						"stateful_rule_group_reference": [],
+						"stateless_custom_action":       [],
+						"stateless_default_actions": [
+							"aws:pass",
+						],
+						"stateless_fragment_default_actions": [
+							"aws:pass",
+						],
+						"stateless_rule_group_reference":   [],
+						"tls_inspection_configuration_arn": null,
+					},
+				],
+				"name":   "example",
+				"region": "us-east-1",
+				"tags":   null,
+			},
+		},
+		"aws_subnet.example": {
+			"address":        "aws_subnet.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_subnet",
+			"values": {
+				"assign_ipv6_address_on_creation":                false,
+				"availability_zone":                              "us-east-1a",
+				"cidr_block":                                     "10.0.1.0/24",
+				"customer_owned_ipv4_pool":                       null,
+				"enable_dns64":                                   false,
+				"enable_lni_at_device_index":                     null,
+				"enable_resource_name_dns_a_record_on_launch":    false,
+				"enable_resource_name_dns_aaaa_record_on_launch": false,
+				"ipv6_cidr_block":                                null,
+				"ipv6_native":                                    false,
+				"map_customer_owned_ip_on_launch":                null,
+				"map_public_ip_on_launch":                        false,
+				"outpost_arn":                                    null,
+				"region":                                         "us-east-1",
+				"tags": {
+					"Name": "example-subnet",
+				},
+				"tags_all": {
+					"Name": "example-subnet",
+				},
+				"timeouts": null,
+			},
+		},
+		"aws_vpc.example": {
+			"address":        "aws_vpc.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_vpc",
+			"values": {
+				"assign_generated_ipv6_cidr_block": null,
+				"cidr_block":                       "10.0.0.0/16",
+				"enable_dns_support":               true,
+				"instance_tenancy":                 "default",
+				"ipv4_ipam_pool_id":                null,
+				"ipv4_netmask_length":              null,
+				"ipv6_ipam_pool_id":                null,
+				"ipv6_netmask_length":              null,
+				"region":                           "us-east-1",
+				"tags": {
+					"Name": "example-vpc",
+				},
+				"tags_all": {
+					"Name": "example-vpc",
+				},
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_networkfirewall_firewall.example": {
+		"address": "aws_networkfirewall_firewall.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"availability_zone_change_protection": false,
+				"delete_protection":                   false,
+				"description":                         null,
+				"enabled_analysis_types": [
+					"HTTP_HOST",
+					"TLS_SNI",
+				],
+				"encryption_configuration":          [],
+				"firewall_policy_change_protection": null,
+				"name":                     "example",
+				"region":                   "us-east-1",
+				"subnet_change_protection": null,
+				"subnet_mapping": [
+					{},
+				],
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"timeouts": {
+					"create": "40m",
+					"delete": "1h",
+					"update": "50m",
+				},
+				"transit_gateway_id": null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"availability_zone_mapping": true,
+				"enabled_analysis_types": [
+					false,
+					false,
+				],
+				"encryption_configuration": [],
+				"firewall_policy_arn":      true,
+				"firewall_status":          true,
+				"id":                       true,
+				"subnet_mapping": [
+					{
+						"ip_address_type": true,
+						"subnet_id":       true,
+					},
+				],
+				"tags":                             {},
+				"tags_all":                         {},
+				"timeouts":                         {},
+				"transit_gateway_owner_account_id": true,
+				"update_token":                     true,
+				"vpc_id":                           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_networkfirewall_firewall",
+	},
+	"aws_networkfirewall_firewall_policy.example": {
+		"address": "aws_networkfirewall_firewall_policy.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description":              "Example firewall policy",
+				"encryption_configuration": [],
+				"firewall_policy": [
+					{
+						"policy_variables":         [],
+						"stateful_default_actions": null,
+						"stateful_engine_options": [
+							{
+								"flow_timeouts":           [],
+								"rule_order":              "STRICT_ORDER",
+								"stream_exception_policy": null,
+							},
+						],
+						"stateful_rule_group_reference": [],
+						"stateless_custom_action":       [],
+						"stateless_default_actions": [
+							"aws:pass",
+						],
+						"stateless_fragment_default_actions": [
+							"aws:pass",
+						],
+						"stateless_rule_group_reference":   [],
+						"tls_inspection_configuration_arn": null,
+					},
+				],
+				"name":   "example",
+				"region": "us-east-1",
+				"tags":   null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"encryption_configuration": [],
+				"firewall_policy": [
+					{
+						"policy_variables": [],
+						"stateful_engine_options": [
+							{
+								"flow_timeouts": [],
+							},
+						],
+						"stateful_rule_group_reference": [],
+						"stateless_custom_action":       [],
+						"stateless_default_actions": [
+							false,
+						],
+						"stateless_fragment_default_actions": [
+							false,
+						],
+						"stateless_rule_group_reference": [],
+					},
+				],
+				"id":           true,
+				"tags_all":     true,
+				"update_token": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_networkfirewall_firewall_policy",
+	},
+	"aws_subnet.example": {
+		"address": "aws_subnet.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assign_ipv6_address_on_creation":                false,
+				"availability_zone":                              "us-east-1a",
+				"cidr_block":                                     "10.0.1.0/24",
+				"customer_owned_ipv4_pool":                       null,
+				"enable_dns64":                                   false,
+				"enable_lni_at_device_index":                     null,
+				"enable_resource_name_dns_a_record_on_launch":    false,
+				"enable_resource_name_dns_aaaa_record_on_launch": false,
+				"ipv6_cidr_block":                                null,
+				"ipv6_native":                                    false,
+				"map_customer_owned_ip_on_launch":                null,
+				"map_public_ip_on_launch":                        false,
+				"outpost_arn":                                    null,
+				"region":                                         "us-east-1",
+				"tags": {
+					"Name": "example-subnet",
+				},
+				"tags_all": {
+					"Name": "example-subnet",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"availability_zone_id": true,
+				"id": true,
+				"ipv6_cidr_block_association_id":      true,
+				"owner_id":                            true,
+				"private_dns_hostname_type_on_launch": true,
+				"tags":     {},
+				"tags_all": {},
+				"vpc_id":   true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_subnet",
+	},
+	"aws_vpc.example": {
+		"address": "aws_vpc.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assign_generated_ipv6_cidr_block": null,
+				"cidr_block":                       "10.0.0.0/16",
+				"enable_dns_support":               true,
+				"instance_tenancy":                 "default",
+				"ipv4_ipam_pool_id":                null,
+				"ipv4_netmask_length":              null,
+				"ipv6_ipam_pool_id":                null,
+				"ipv6_netmask_length":              null,
+				"region":                           "us-east-1",
+				"tags": {
+					"Name": "example-vpc",
+				},
+				"tags_all": {
+					"Name": "example-vpc",
+				},
+			},
+			"after_unknown": {
+				"arn": true,
+				"default_network_acl_id":               true,
+				"default_route_table_id":               true,
+				"default_security_group_id":            true,
+				"dhcp_options_id":                      true,
+				"enable_dns_hostnames":                 true,
+				"enable_network_address_usage_metrics": true,
+				"id": true,
+				"ipv6_association_id":                  true,
+				"ipv6_cidr_block":                      true,
+				"ipv6_cidr_block_network_border_group": true,
+				"main_route_table_id":                  true,
+				"owner_id":                             true,
+				"tags":                                 {},
+				"tags_all":                             {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_vpc",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_networkfirewall_firewall.example",
+					"expressions": {
+						"enabled_analysis_types": {
+							"constant_value": [
+								"TLS_SNI",
+								"HTTP_HOST",
+							],
+						},
+						"firewall_policy_arn": {
+							"references": [
+								"aws_networkfirewall_firewall_policy.example.arn",
+								"aws_networkfirewall_firewall_policy.example",
+							],
+						},
+						"name": {
+							"constant_value": "example",
+						},
+						"subnet_mapping": [
+							{
+								"subnet_id": {
+									"references": [
+										"aws_subnet.example.id",
+										"aws_subnet.example",
+									],
+								},
+							},
+						],
+						"tags": {
+							"constant_value": {
+								"Tag1": "Value1",
+								"Tag2": "Value2",
+							},
+						},
+						"timeouts": {},
+						"vpc_id": {
+							"references": [
+								"aws_vpc.example.id",
+								"aws_vpc.example",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_networkfirewall_firewall",
+				},
+				{
+					"address": "aws_networkfirewall_firewall_policy.example",
+					"expressions": {
+						"description": {
+							"constant_value": "Example firewall policy",
+						},
+						"firewall_policy": [
+							{
+								"stateful_engine_options": [
+									{
+										"rule_order": {
+											"constant_value": "STRICT_ORDER",
+										},
+									},
+								],
+								"stateless_default_actions": {
+									"constant_value": [
+										"aws:pass",
+									],
+								},
+								"stateless_fragment_default_actions": {
+									"constant_value": [
+										"aws:pass",
+									],
+								},
+							},
+						],
+						"name": {
+							"constant_value": "example",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_networkfirewall_firewall_policy",
+				},
+				{
+					"address": "aws_subnet.example",
+					"expressions": {
+						"availability_zone": {
+							"constant_value": "us-east-1a",
+						},
+						"cidr_block": {
+							"constant_value": "10.0.1.0/24",
+						},
+						"tags": {
+							"constant_value": {
+								"Name": "example-subnet",
+							},
+						},
+						"vpc_id": {
+							"references": [
+								"aws_vpc.example.id",
+								"aws_vpc.example",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_subnet",
+				},
+				{
+					"address": "aws_vpc.example",
+					"expressions": {
+						"cidr_block": {
+							"constant_value": "10.0.0.0/16",
+						},
+						"tags": {
+							"constant_value": {
+								"Name": "example-vpc",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_vpc",
+				},
+				{
+					"address": "data.aws_availability_zones.example",
+					"expressions": {
+						"state": {
+							"constant_value": "available",
+						},
+					},
+					"mode":                "data",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_availability_zones",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_networkfirewall_firewall.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"availability_zone_mapping": [],
+						"enabled_analysis_types": [
+							false,
+							false,
+						],
+						"encryption_configuration": [],
+						"firewall_status":          [],
+						"subnet_mapping": [
+							{},
+						],
+						"tags":     {},
+						"tags_all": {},
+						"timeouts": {},
+					},
+					"type": "aws_networkfirewall_firewall",
+					"values": {
+						"availability_zone_change_protection": false,
+						"delete_protection":                   false,
+						"description":                         null,
+						"enabled_analysis_types": [
+							"HTTP_HOST",
+							"TLS_SNI",
+						],
+						"encryption_configuration":          [],
+						"firewall_policy_change_protection": null,
+						"name":                     "example",
+						"region":                   "us-east-1",
+						"subnet_change_protection": null,
+						"subnet_mapping": [
+							{},
+						],
+						"tags": {
+							"Tag1": "Value1",
+							"Tag2": "Value2",
+						},
+						"tags_all": {
+							"Tag1": "Value1",
+							"Tag2": "Value2",
+						},
+						"timeouts": {
+							"create": "40m",
+							"delete": "1h",
+							"update": "50m",
+						},
+						"transit_gateway_id": null,
+					},
+				},
+				{
+					"address":        "aws_networkfirewall_firewall_policy.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"encryption_configuration": [],
+						"firewall_policy": [
+							{
+								"policy_variables": [],
+								"stateful_engine_options": [
+									{
+										"flow_timeouts": [],
+									},
+								],
+								"stateful_rule_group_reference": [],
+								"stateless_custom_action":       [],
+								"stateless_default_actions": [
+									false,
+								],
+								"stateless_fragment_default_actions": [
+									false,
+								],
+								"stateless_rule_group_reference": [],
+							},
+						],
+						"tags_all": {},
+					},
+					"type": "aws_networkfirewall_firewall_policy",
+					"values": {
+						"description":              "Example firewall policy",
+						"encryption_configuration": [],
+						"firewall_policy": [
+							{
+								"policy_variables":         [],
+								"stateful_default_actions": null,
+								"stateful_engine_options": [
+									{
+										"flow_timeouts":           [],
+										"rule_order":              "STRICT_ORDER",
+										"stream_exception_policy": null,
+									},
+								],
+								"stateful_rule_group_reference": [],
+								"stateless_custom_action":       [],
+								"stateless_default_actions": [
+									"aws:pass",
+								],
+								"stateless_fragment_default_actions": [
+									"aws:pass",
+								],
+								"stateless_rule_group_reference":   [],
+								"tls_inspection_configuration_arn": null,
+							},
+						],
+						"name":   "example",
+						"region": "us-east-1",
+						"tags":   null,
+					},
+				},
+				{
+					"address":        "aws_subnet.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"sensitive_values": {
+						"tags":     {},
+						"tags_all": {},
+					},
+					"type": "aws_subnet",
+					"values": {
+						"assign_ipv6_address_on_creation":                false,
+						"availability_zone":                              "us-east-1a",
+						"cidr_block":                                     "10.0.1.0/24",
+						"customer_owned_ipv4_pool":                       null,
+						"enable_dns64":                                   false,
+						"enable_lni_at_device_index":                     null,
+						"enable_resource_name_dns_a_record_on_launch":    false,
+						"enable_resource_name_dns_aaaa_record_on_launch": false,
+						"ipv6_cidr_block":                                null,
+						"ipv6_native":                                    false,
+						"map_customer_owned_ip_on_launch":                null,
+						"map_public_ip_on_launch":                        false,
+						"outpost_arn":                                    null,
+						"region":                                         "us-east-1",
+						"tags": {
+							"Name": "example-subnet",
+						},
+						"tags_all": {
+							"Name": "example-subnet",
+						},
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "aws_vpc.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"sensitive_values": {
+						"tags":     {},
+						"tags_all": {},
+					},
+					"type": "aws_vpc",
+					"values": {
+						"assign_generated_ipv6_cidr_block": null,
+						"cidr_block":                       "10.0.0.0/16",
+						"enable_dns_support":               true,
+						"instance_tenancy":                 "default",
+						"ipv4_ipam_pool_id":                null,
+						"ipv4_netmask_length":              null,
+						"ipv6_ipam_pool_id":                null,
+						"ipv6_netmask_length":              null,
+						"region":                           "us-east-1",
+						"tags": {
+							"Name": "example-vpc",
+						},
+						"tags_all": {
+							"Name": "example-vpc",
+						},
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.10.2",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":        "data.aws_availability_zones.example",
+						"mode":           "data",
+						"name":           "example",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 0,
+						"sensitive_values": {
+							"group_names": [
+								false,
+							],
+							"names": [
+								false,
+								false,
+								false,
+								false,
+								false,
+								false,
+							],
+							"zone_ids": [
+								false,
+								false,
+								false,
+								false,
+								false,
+								false,
+							],
+						},
+						"type": "aws_availability_zones",
+						"values": {
+							"all_availability_zones": null,
+							"exclude_names":          null,
+							"exclude_zone_ids":       null,
+							"filter":                 null,
+							"group_names": [
+								"us-east-1-zg-1",
+							],
+							"id": "us-east-1",
+							"names": [
+								"us-east-1a",
+								"us-east-1b",
+								"us-east-1c",
+								"us-east-1d",
+								"us-east-1e",
+								"us-east-1f",
+							],
+							"region":   "us-east-1",
+							"state":    "available",
+							"timeouts": null,
+							"zone_ids": [
+								"use1-az4",
+								"use1-az6",
+								"use1-az1",
+								"use1-az2",
+								"use1-az3",
+								"use1-az5",
+							],
+						},
+					},
+				],
+			},
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_vpc.example",
+		},
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "aws_networkfirewall_firewall_policy.example",
+		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_subnet.example",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_networkfirewall_firewall.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"availability_zone_change_protection": false,
+					"delete_protection":                   false,
+					"description":                         null,
+					"enabled_analysis_types": [
+						"HTTP_HOST",
+						"TLS_SNI",
+					],
+					"encryption_configuration":          [],
+					"firewall_policy_change_protection": null,
+					"name":                     "example",
+					"region":                   "us-east-1",
+					"subnet_change_protection": null,
+					"subnet_mapping": [
+						{},
+					],
+					"tags": {
+						"Tag1": "Value1",
+						"Tag2": "Value2",
+					},
+					"tags_all": {
+						"Tag1": "Value1",
+						"Tag2": "Value2",
+					},
+					"timeouts": {
+						"create": "40m",
+						"delete": "1h",
+						"update": "50m",
+					},
+					"transit_gateway_id": null,
+				},
+				"after_sensitive": {
+					"availability_zone_mapping": [],
+					"enabled_analysis_types": [
+						false,
+						false,
+					],
+					"encryption_configuration": [],
+					"firewall_status":          [],
+					"subnet_mapping": [
+						{},
+					],
+					"tags":     {},
+					"tags_all": {},
+					"timeouts": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"availability_zone_mapping": true,
+					"enabled_analysis_types": [
+						false,
+						false,
+					],
+					"encryption_configuration": [],
+					"firewall_policy_arn":      true,
+					"firewall_status":          true,
+					"id":                       true,
+					"subnet_mapping": [
+						{
+							"ip_address_type": true,
+							"subnet_id":       true,
+						},
+					],
+					"tags":                             {},
+					"tags_all":                         {},
+					"timeouts":                         {},
+					"transit_gateway_owner_account_id": true,
+					"update_token":                     true,
+					"vpc_id":                           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_networkfirewall_firewall",
+		},
+		{
+			"address": "aws_networkfirewall_firewall_policy.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description":              "Example firewall policy",
+					"encryption_configuration": [],
+					"firewall_policy": [
+						{
+							"policy_variables":         [],
+							"stateful_default_actions": null,
+							"stateful_engine_options": [
+								{
+									"flow_timeouts":           [],
+									"rule_order":              "STRICT_ORDER",
+									"stream_exception_policy": null,
+								},
+							],
+							"stateful_rule_group_reference": [],
+							"stateless_custom_action":       [],
+							"stateless_default_actions": [
+								"aws:pass",
+							],
+							"stateless_fragment_default_actions": [
+								"aws:pass",
+							],
+							"stateless_rule_group_reference":   [],
+							"tls_inspection_configuration_arn": null,
+						},
+					],
+					"name":   "example",
+					"region": "us-east-1",
+					"tags":   null,
+				},
+				"after_sensitive": {
+					"encryption_configuration": [],
+					"firewall_policy": [
+						{
+							"policy_variables": [],
+							"stateful_engine_options": [
+								{
+									"flow_timeouts": [],
+								},
+							],
+							"stateful_rule_group_reference": [],
+							"stateless_custom_action":       [],
+							"stateless_default_actions": [
+								false,
+							],
+							"stateless_fragment_default_actions": [
+								false,
+							],
+							"stateless_rule_group_reference": [],
+						},
+					],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"encryption_configuration": [],
+					"firewall_policy": [
+						{
+							"policy_variables": [],
+							"stateful_engine_options": [
+								{
+									"flow_timeouts": [],
+								},
+							],
+							"stateful_rule_group_reference": [],
+							"stateless_custom_action":       [],
+							"stateless_default_actions": [
+								false,
+							],
+							"stateless_fragment_default_actions": [
+								false,
+							],
+							"stateless_rule_group_reference": [],
+						},
+					],
+					"id":           true,
+					"tags_all":     true,
+					"update_token": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_networkfirewall_firewall_policy",
+		},
+		{
+			"address": "aws_subnet.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assign_ipv6_address_on_creation":                false,
+					"availability_zone":                              "us-east-1a",
+					"cidr_block":                                     "10.0.1.0/24",
+					"customer_owned_ipv4_pool":                       null,
+					"enable_dns64":                                   false,
+					"enable_lni_at_device_index":                     null,
+					"enable_resource_name_dns_a_record_on_launch":    false,
+					"enable_resource_name_dns_aaaa_record_on_launch": false,
+					"ipv6_cidr_block":                                null,
+					"ipv6_native":                                    false,
+					"map_customer_owned_ip_on_launch":                null,
+					"map_public_ip_on_launch":                        false,
+					"outpost_arn":                                    null,
+					"region":                                         "us-east-1",
+					"tags": {
+						"Name": "example-subnet",
+					},
+					"tags_all": {
+						"Name": "example-subnet",
+					},
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"tags":     {},
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"availability_zone_id": true,
+					"id": true,
+					"ipv6_cidr_block_association_id":      true,
+					"owner_id":                            true,
+					"private_dns_hostname_type_on_launch": true,
+					"tags":     {},
+					"tags_all": {},
+					"vpc_id":   true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_subnet",
+		},
+		{
+			"address": "aws_vpc.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assign_generated_ipv6_cidr_block": null,
+					"cidr_block":                       "10.0.0.0/16",
+					"enable_dns_support":               true,
+					"instance_tenancy":                 "default",
+					"ipv4_ipam_pool_id":                null,
+					"ipv4_netmask_length":              null,
+					"ipv6_ipam_pool_id":                null,
+					"ipv6_netmask_length":              null,
+					"region":                           "us-east-1",
+					"tags": {
+						"Name": "example-vpc",
+					},
+					"tags_all": {
+						"Name": "example-vpc",
+					},
+				},
+				"after_sensitive": {
+					"tags":     {},
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"default_network_acl_id":               true,
+					"default_route_table_id":               true,
+					"default_security_group_id":            true,
+					"dhcp_options_id":                      true,
+					"enable_dns_hostnames":                 true,
+					"enable_network_address_usage_metrics": true,
+					"id": true,
+					"ipv6_association_id":                  true,
+					"ipv6_cidr_block":                      true,
+					"ipv6_cidr_block_network_border_group": true,
+					"main_route_table_id":                  true,
+					"owner_id":                             true,
+					"tags":                                 {},
+					"tags_all":                             {},
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_vpc",
+		},
+	],
+	"terraform_version": "1.10.2",
+	"timestamp":         "2025-08-04T04:49:47Z",
+}

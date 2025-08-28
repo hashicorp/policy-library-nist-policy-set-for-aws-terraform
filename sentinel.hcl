@@ -618,6 +618,11 @@ policy "network-firewall-policy-rule-group-associated" {
   enforcement_level = "advisory"
 }
 
+policy "network-firewall-should-be-deployed-across-multiple-azs" {
+  source = "./policies/network-firewall/network-firewall-should-be-deployed-across-multiple-azs.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "macie-status-should-be-enabled" {
   source = "./policies/macie/macie-status-should-be-enabled.sentinel"
   enforcement_level = "advisory"
