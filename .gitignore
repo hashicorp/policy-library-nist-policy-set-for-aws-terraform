@@ -10,3 +10,4 @@ terraform.tfvars
 **/.sentinel/*
 
 .DS_Store
+tf-config

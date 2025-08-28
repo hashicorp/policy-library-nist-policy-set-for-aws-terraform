@@ -1274,6 +1274,11 @@ policy "route-53-public-hosted-zones-should-log-dns-queries" {
   enforcement_level = "advisory"
 }
 
+policy "ebs-volumes-should-be-in-a-backup-plan" {
+  source = "./policies/ec2/ebs-volumes-should-be-in-a-backup-plan.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "activemq-brokers-should-use-active-standby-deployment-mode" {
   source = "./policies/mq/activemq-brokers-should-use-active-standby-deployment-mode.sentinel"
   enforcement_level = "advisory"
@@ -1316,5 +1321,10 @@ policy "cloudwatch-log-groups-should-be-retained-for-a-specified-time-period"{
 
 policy "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl" {
   source = "./policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "dynamodb-tables-should-be-present-in-a-backup-plan" {
+  source = "./policies/dynamo-db/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel"
   enforcement_level = "advisory"
 }
