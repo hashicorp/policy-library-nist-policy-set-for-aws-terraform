@@ -1,0 +1,49 @@
+# This policy requires that resources of type `aws_sns_topic` have encryption enabled with KMS key.
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":            "sns-topic-should-be-encrypted-at-rest",
+	"resource_aws_sns_topic": "aws_sns_topic",
+	"message":                "Attribute 'kms_master_key_id' must be present for 'aws_sns_topic' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sns-controls.html#sns-1 for more details.",
+	"kms_master_key_id":      "kms_master_key_id",
+	"constant_value":         "constant_value",
+}
+
+# Variables
+
+resources = tf.config(tfconfig.resources).type(const.resource_aws_sns_topic).resources
+
+violations = collection.reject(resources, func(res) {
+	return maps.get(res.config, const.kms_master_key_id, false) is not false and
+		maps.get(res.config, const.kms_master_key_id + "." + const.constant_value, false) is not ""
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
