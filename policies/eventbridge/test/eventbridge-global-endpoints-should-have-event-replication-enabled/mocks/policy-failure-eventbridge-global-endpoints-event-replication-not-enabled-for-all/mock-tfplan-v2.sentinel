@@ -1,0 +1,51 @@
+terraform_version = "1.12.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudwatch_event_endpoint.missing_replication_endpoint": {
+			"address":        "aws_cloudwatch_event_endpoint.missing_replication_endpoint",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "missing_replication_endpoint",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_event_endpoint",
+			"values": {
+				"description": null,
+				"event_bus": [
+					{
+						"event_bus_arn": "arn:aws:events:us-east-1:123456789012:event-bus/default",
+					},
+					{
+						"event_bus_arn": "arn:aws:events:ap-southeast-1:123456789012:event-bus/default",
+					},
+				],
+				"name":               "missing-replication-global-endpoint",
+				"replication_config": [],
+				"role_arn":           null,
+				"routing_config": [
+					{
+						"failover_config": [
+							{
+								"primary": [
+									{
+										"health_check": "arn:aws:route53:::healthcheck/hc-98765432",
+									},
+								],
+								"secondary": [
+									{
+										"route": "ap-southeast-1",
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+		},
+	},
+}

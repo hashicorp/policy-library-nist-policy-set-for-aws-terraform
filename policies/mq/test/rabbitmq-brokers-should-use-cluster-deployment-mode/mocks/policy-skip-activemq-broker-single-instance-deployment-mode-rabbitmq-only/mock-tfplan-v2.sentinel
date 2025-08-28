@@ -1,0 +1,37 @@
+terraform_version = "1.12.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_mq_broker.activemq_broker": {
+			"address":        "aws_mq_broker.activemq_broker",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "activemq_broker",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_mq_broker",
+			"values": {
+				"apply_immediately":                   false,
+				"auto_minor_version_upgrade":          false,
+				"broker_name":                         "activemq-broker",
+				"data_replication_primary_broker_arn": null,
+				"deployment_mode":                     "SINGLE_INSTANCE",
+				"encryption_options":                  [],
+				"engine_type":                         "ActiveMQ",
+				"engine_version":                      "5.16.5",
+				"host_instance_type":                  "mq.t3.micro",
+				"ldap_server_metadata":                [],
+				"logs":                                [],
+				"publicly_accessible":                 false,
+				"security_groups":                     null,
+				"tags":                                null,
+				"timeouts":                            null,
+				"user":                                "REDACTED_SENSITIVE",
+			},
+		},
+	},
+}
