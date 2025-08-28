@@ -103,4 +103,5 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 ## Policies Included
 
+- CloudWatch log groups should be retained for a specified time period ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/cloudwatch/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.sentinel))
 - Application Load Balancers should be associated with an AWS WAF web ACL ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel))
