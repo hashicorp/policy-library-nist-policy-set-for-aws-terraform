@@ -1,0 +1,82 @@
+terraform_version = "1.12.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudwatch_composite_alarm.compliant_alarm": {
+			"address":        "aws_cloudwatch_composite_alarm.compliant_alarm",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "compliant_alarm",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_composite_alarm",
+			"values": {
+				"actions_enabled":    true,
+				"actions_suppressor": [],
+				"alarm_actions": [
+					"arn:aws:sns:us-west-2:123456789012:alarm-notification",
+				],
+				"alarm_description": "This is a compliant composite alarm with actions enabled",
+				"alarm_name":        "compliant-composite-alarm",
+				"alarm_rule":        "ALARM(cpu-utilization-alarm)",
+				"insufficient_data_actions": [
+					"arn:aws:sns:us-west-2:123456789012:alarm-insufficient-data",
+				],
+				"ok_actions": [
+					"arn:aws:sns:us-west-2:123456789012:alarm-resolved",
+				],
+				"tags": {
+					"Environment": "Production",
+					"Purpose":     "Monitoring",
+				},
+				"tags_all": {
+					"Environment": "Production",
+					"Purpose":     "Monitoring",
+				},
+			},
+		},
+		"aws_cloudwatch_metric_alarm.cpu_alarm": {
+			"address":        "aws_cloudwatch_metric_alarm.cpu_alarm",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "cpu_alarm",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_metric_alarm",
+			"values": {
+				"actions_enabled": true,
+				"alarm_actions": [
+					"arn:aws:sns:us-west-2:123456789012:alarm-notification",
+				],
+				"alarm_description":   "This metric monitors ec2 cpu utilization",
+				"alarm_name":          "cpu-utilization-alarm",
+				"comparison_operator": "GreaterThanThreshold",
+				"datapoints_to_alarm": null,
+				"dimensions": {
+					"InstanceId": "i-12345678",
+				},
+				"evaluation_periods":        2,
+				"extended_statistic":        null,
+				"insufficient_data_actions": null,
+				"metric_name":               "CPUUtilization",
+				"metric_query":              [],
+				"namespace":                 "AWS/EC2",
+				"ok_actions":                null,
+				"period":                    120,
+				"statistic":                 "Average",
+				"tags":                      null,
+				"threshold":                 80,
+				"threshold_metric_id":       null,
+				"treat_missing_data":        "missing",
+				"unit":                      null,
+			},
+		},
+	},
+}

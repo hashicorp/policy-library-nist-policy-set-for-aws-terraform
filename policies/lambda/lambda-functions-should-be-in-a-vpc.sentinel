@@ -1,0 +1,77 @@
+# Lambda.3
+# This control checks whether a Lambda function is deployed in a virtual private cloud (VPC).
+
+# Imports
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                  "aws-lambda-3-lambda-functions-should-be-in-a-vpc",
+	"message":                      "Lambda functions must be deployed within a VPC with proper subnet_ids and security_group_ids configured.",
+	"resource_aws_lambda_function": "aws_lambda_function",
+}
+
+# Variables
+resources = tf.config(tfconfig.resources).type(const.resource_aws_lambda_function).resources
+
+# Function to check if VPC configuration is valid
+is_vpc_config_valid = func(res) {
+	vpc_config = maps.get(res.config, "vpc_config", [])
+
+	if vpc_config is empty {
+		return false
+	}
+
+	for vpc_config as config {
+		security_group_ids = maps.get(config, "security_group_ids", {})
+		subnet_ids = maps.get(config, "subnet_ids", {})
+
+		if security_group_ids is empty or subnet_ids is empty {
+			return false
+		}
+		# security group
+		sg_references = maps.get(security_group_ids, "references", [])
+		sg_constant_values = maps.get(subnet_ids, "constant_value", [])
+
+		if (sg_references is empty and sg_constant_values is empty) {
+			return false
+		}
+
+		#Subnet ids
+		subnet_references = maps.get(security_group_ids, "references", [])
+		subnet_constant_values = maps.get(subnet_ids, "constant_value", [])
+		if (subnet_references is empty and subnet_constant_values is empty) {
+			return false
+		}
+	}
+	return true
+}
+
+# Find violations
+violations = collection.reject(resources, func(res) {
+	return is_vpc_config_valid(res)
+})
+
+# Generate summary
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+main = rule {
+	violations is empty
+}

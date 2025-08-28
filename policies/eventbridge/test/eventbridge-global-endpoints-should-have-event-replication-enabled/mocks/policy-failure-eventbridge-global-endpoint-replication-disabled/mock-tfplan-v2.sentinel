@@ -1,0 +1,55 @@
+terraform_version = "1.12.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudwatch_event_endpoint.example": {
+			"address":        "aws_cloudwatch_event_endpoint.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_event_endpoint",
+			"values": {
+				"description": null,
+				"event_bus": [
+					{
+						"event_bus_arn": "arn:aws:events:us-east-1:123456789012:event-bus/default",
+					},
+					{
+						"event_bus_arn": "arn:aws:events:us-west-2:123456789012:event-bus/default",
+					},
+				],
+				"name": "example-global-endpoint",
+				"replication_config": [
+					{
+						"state": "DISABLED",
+					},
+				],
+				"role_arn": null,
+				"routing_config": [
+					{
+						"failover_config": [
+							{
+								"primary": [
+									{
+										"health_check": "arn:aws:route53:::healthcheck/1234abcd-1234-abcd-1234-abcd1234abcd",
+									},
+								],
+								"secondary": [
+									{
+										"route": "us-west-2",
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+		},
+	},
+}

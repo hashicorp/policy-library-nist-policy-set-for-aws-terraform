@@ -950,6 +950,29 @@ policy "s3-bucket-should-be-encrypted-at-rest" {
   enforcement_level = "advisory"
 }
 
+policy "s3-bucket-should-have-event-notifications-enabled" {
+  source = "./policies/s3/s3-bucket-should-have-event-notifications-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "s3-bucket-should-have-object-lock-enabled" {
+  source = "./policies/s3/s3-bucket-should-have-object-lock-enabled.sentinel"
+  enforcement_level = "advisory"
+  params = {
+    valid_mode = ["GOVERNANCE", "COMPLIANCE"]
+  }
+}
+
+policy "s3-bucket-should-have-versioning-enabled" {
+  source = "./policies/s3/s3-bucket-should-have-versioning-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "s3-bucket-with-versioning-should-have-lifecycle-configurations" {
+  source = "./policies/s3/s3-bucket-with-versioning-should-have-lifecycle-configurations.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "kinesis-firehose-delivery-stream-encrypted" {
   source = "./policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel"
   enforcement_level = "advisory"
@@ -1263,6 +1286,11 @@ policy "cloudtrail-cloudwatch-logs-group-arn-present" {
   source = "./policies/cloudtrail/cloudtrail-cloudwatch-logs-group-arn-present.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys" {
+  source = "./policies/cloudtrail/cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel"
+  enforcement_level = "advisory"
+}
   
 policy "appsync-graphql-api-should-not-authenticate-with-api-keys" {
   source = "./policies/appsync/appsync-graphql-api-should-not-authenticate-with-api-keys.sentinel"
@@ -1271,5 +1299,75 @@ policy "appsync-graphql-api-should-not-authenticate-with-api-keys" {
 
 policy "route-53-public-hosted-zones-should-log-dns-queries" {
   source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "lambda-functions-should-be-in-a-vpc" {
+  source = "./policies/lambda/lambda-functions-should-be-in-a-vpc.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "eventbridge-global-endpoints-should-have-event-replication-enabled" {
+  source = "./policies/eventbridge/eventbridge-global-endpoints-should-have-event-replication-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+  
+policy "rabbitmq-brokers-should-use-cluster-deployment-mode" {
+  source = "./policies/mq/rabbitmq-brokers-should-use-cluster-deployment-mode.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ebs-volumes-should-be-in-a-backup-plan" {
+  source = "./policies/ec2/ebs-volumes-should-be-in-a-backup-plan.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "activemq-brokers-should-use-active-standby-deployment-mode" {
+  source = "./policies/mq/activemq-brokers-should-use-active-standby-deployment-mode.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "sns-topic-should-be-encrypted-at-rest" {
+  source = "./policies/sns/sns-topic-should-be-encrypted-at-rest.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "wafv2-webacl-should-have-logging-enabled" {
+  source = "./policies/waf/wafv2-webacl-should-have-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecs-task-definitions-should-not-use-host-network-mode" {
+  source = "./policies/ecs/ecs-task-definitions-should-not-use-host-network-mode.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys" {
+  source = "./policies/ecr/ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-alarm-actions-should-be-enabled" {
+  source = "./policies/cloudwatch/cloudwatch-alarm-actions-should-be-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-alarms-should-have-specified-actions-configured" {
+  source = "./policies/cloudwatch/cloudwatch-alarms-should-have-specified-actions-configured.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "cloudwatch-log-groups-should-be-retained-for-a-specified-time-period"{
+  source = "./policies/cloudwatch/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl" {
+  source = "./policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "dynamodb-tables-should-be-present-in-a-backup-plan" {
+  source = "./policies/dynamo-db/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel"
   enforcement_level = "advisory"
 }
