@@ -945,6 +945,11 @@ policy "s3-bucket-policy-restrict-access-to-other-accounts" {
   enforcement_level = "advisory"
 }
 
+policy "s3-bucket-with-versioning-should-have-lifecycle-configurations" {
+  source = "./policies/s3/s3-bucket-with-versioning-should-have-lifecycle-configurations.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "kinesis-firehose-delivery-stream-encrypted" {
   source = "./policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel"
   enforcement_level = "advisory"
