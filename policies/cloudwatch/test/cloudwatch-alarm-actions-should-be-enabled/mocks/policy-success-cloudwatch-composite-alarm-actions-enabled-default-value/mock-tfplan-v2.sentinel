@@ -1,0 +1,43 @@
+terraform_version = "1.12.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudwatch_composite_alarm.example": {
+			"address":        "aws_cloudwatch_composite_alarm.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudwatch_composite_alarm",
+			"values": {
+				"actions_enabled":    true,
+				"actions_suppressor": [],
+				"alarm_actions": [
+					"arn:aws:sns:us-east-1:123456789012:example-topic",
+				],
+				"alarm_description": "Example composite alarm",
+				"alarm_name":        "example-composite-alarm",
+				"alarm_rule":        "ALARM(example-alarm-1) OR ALARM(example-alarm-2)",
+				"insufficient_data_actions": [
+					"arn:aws:sns:us-east-1:123456789012:example-topic",
+				],
+				"ok_actions": [
+					"arn:aws:sns:us-east-1:123456789012:example-topic",
+				],
+				"tags": {
+					"Environment": "Production",
+					"Purpose":     "Monitoring",
+				},
+				"tags_all": {
+					"Environment": "Production",
+					"Purpose":     "Monitoring",
+				},
+			},
+		},
+	},
+}
