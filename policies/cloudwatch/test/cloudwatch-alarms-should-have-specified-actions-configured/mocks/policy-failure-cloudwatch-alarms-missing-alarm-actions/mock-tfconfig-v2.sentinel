@@ -1,0 +1,120 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_cloudwatch_composite_alarm.composite_alarm": {
+		"address": "aws_cloudwatch_composite_alarm.composite_alarm",
+		"config": {
+			"actions_enabled": {
+				"constant_value": true,
+			},
+			"alarm_description": {
+				"constant_value": "This is a composite alarm with actions explicitly enabled",
+			},
+			"alarm_name": {
+				"constant_value": "compliant-composite-alarm",
+			},
+			"alarm_rule": {
+				"constant_value": "ALARM(compliant-composite-alarm)",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "composite_alarm",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_cloudwatch_composite_alarm",
+	},
+	"aws_cloudwatch_metric_alarm.metric_alarm": {
+		"address": "aws_cloudwatch_metric_alarm.metric_alarm",
+		"config": {
+			"actions_enabled": {
+				"constant_value": true,
+			},
+			"alarm_description": {
+				"constant_value": "This alarm monitors EC2 CPU utilization",
+			},
+			"alarm_name": {
+				"constant_value": "compliant-metric-alarm",
+			},
+			"comparison_operator": {
+				"constant_value": "GreaterThanOrEqualToThreshold",
+			},
+			"evaluation_periods": {
+				"constant_value": 2,
+			},
+			"metric_name": {
+				"constant_value": "CPUUtilization",
+			},
+			"namespace": {
+				"constant_value": "AWS/EC2",
+			},
+			"period": {
+				"constant_value": 120,
+			},
+			"statistic": {
+				"constant_value": "Average",
+			},
+			"threshold": {
+				"constant_value": 80,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "metric_alarm",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_cloudwatch_metric_alarm",
+	},
+	"aws_sns_topic.test": {
+		"address":             "aws_sns_topic.test",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sns_topic",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
