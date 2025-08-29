@@ -1,0 +1,49 @@
+# This policy requires that resources of type `aws_redshiftserverless_namespace` have encryption enabled with customer managed KMS key.
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":                               "redshift-serverless-namespace-should-be-encrypted-with-cmk",
+	"resource_aws_redshiftserverless_namespace": "aws_redshiftserverless_namespace",
+	"message":        "Attribute 'kms_key_id' must be present for 'aws_redshiftserverless_namespace' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-4 for more details.",
+	"kms_key_id":     "kms_key_id",
+	"constant_value": "constant_value",
+}
+
+# Variables
+
+resources = tf.config(tfconfig.resources).type(const.resource_aws_redshiftserverless_namespace).resources
+
+violations = collection.reject(resources, func(res) {
+	return maps.get(res.config, const.kms_key_id, false) is not false and
+		maps.get(res.config, const.kms_key_id + "." + const.constant_value, false) is not ""
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

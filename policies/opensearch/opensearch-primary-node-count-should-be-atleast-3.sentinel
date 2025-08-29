@@ -1,0 +1,65 @@
+# This policy checks if resources of type 'aws_opensearch_domain' have the
+# 'dedicated_master_enabled' set to true and 'dedicated_master_count' greater than or equal to 3
+# in the 'cluster_config' block
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Param
+
+param dedicated_master_count_param default 3
+
+# Constants
+const = {
+	"policy_name":                    "opensearch-primary-node-count-should-be-atleast-3",
+	"message":                        "Attribute 'dedicated_master_enabled' should be true and 'dedicated_master_count' in 'cluster_config' should atleast 3 for AWS OpenSearch Domain. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-11 for more details.",
+	"resource_aws_opensearch_domain": "aws_opensearch_domain",
+	"cluster_config":                 "cluster_config",
+	"dedicated_master_count":         "dedicated_master_count",
+	"dedicated_master_enabled":       "dedicated_master_enabled",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		cluster_config_values = maps.get(res.values, const.cluster_config, null)
+		if cluster_config_values is null or cluster_config_values is empty {
+			return false
+		}
+		dedicated_master_count_values = maps.get(cluster_config_values[0], const.dedicated_master_count, 1)
+		dedicated_master_enabled_values = maps.get(cluster_config_values[0], const.dedicated_master_enabled, false)
+		if dedicated_master_count_values is null or dedicated_master_enabled_values is null {
+			return false
+		}
+		return dedicated_master_count_values >= dedicated_master_count_param and dedicated_master_enabled_values is true
+	})
+}
+
+# Variables
+
+opensearch_domain_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_opensearch_domain).resources
+violations = get_violations(opensearch_domain_resources)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

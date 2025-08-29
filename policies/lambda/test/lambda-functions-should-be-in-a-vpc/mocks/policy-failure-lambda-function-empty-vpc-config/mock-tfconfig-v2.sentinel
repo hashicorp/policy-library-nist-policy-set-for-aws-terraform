@@ -1,0 +1,154 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_iam_role.lambda_role": {
+		"address": "aws_iam_role.lambda_role",
+		"config": {
+			"assume_role_policy": {
+				"constant_value": null,
+			},
+			"name": {
+				"constant_value": "lambda-execution-role",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "lambda_role",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role",
+	},
+	"aws_iam_role_policy_attachment.lambda_policy": {
+		"address": "aws_iam_role_policy_attachment.lambda_policy",
+		"config": {
+			"policy_arn": {
+				"constant_value": "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+			},
+			"role": {
+				"references": [
+					"aws_iam_role.lambda_role.name",
+					"aws_iam_role.lambda_role",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "lambda_policy",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role_policy_attachment",
+	},
+	"aws_lambda_function.compliant_function": {
+		"address": "aws_lambda_function.compliant_function",
+		"config": {
+			"filename": {
+				"constant_value": "lambda_function_payload.zip",
+			},
+			"function_name": {
+				"constant_value": "compliant-lambda-function",
+			},
+			"handler": {
+				"constant_value": "index.handler",
+			},
+			"role": {
+				"references": [
+					"aws_iam_role.lambda_role.arn",
+					"aws_iam_role.lambda_role",
+				],
+			},
+			"runtime": {
+				"constant_value": "nodejs18.x",
+			},
+			"vpc_config": [
+				{
+					"security_group_ids": {
+						"constant_value": [],
+					},
+					"subnet_ids": {
+						"constant_value": [],
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "compliant_function",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_lambda_function",
+	},
+	"aws_security_group.test": {
+		"address":             "aws_security_group.test",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_security_group",
+	},
+	"aws_subnet.subnet": {
+		"address": "aws_subnet.subnet",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.0.0.0/24",
+			},
+			"vpc_id": {
+				"references": [
+					"aws_vpc.vpc.id",
+					"aws_vpc.vpc",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "subnet",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_subnet",
+	},
+	"aws_vpc.vpc": {
+		"address":             "aws_vpc.vpc",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "vpc",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_vpc",
+	},
+}
