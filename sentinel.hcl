@@ -975,6 +975,11 @@ policy "s3-bucket-policy-restrict-access-to-other-accounts" {
   enforcement_level = "advisory"
 }
 
+policy "s3-bucket-should-use-cross-region-replication" {
+  source = "./policies/s3/s3-bucket-should-use-cross-region-replication.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "s3-bucket-should-be-encrypted-at-rest" {
   source = "./policies/s3/s3-bucket-should-be-encrypted-at-rest.sentinel"
   enforcement_level = "advisory"
