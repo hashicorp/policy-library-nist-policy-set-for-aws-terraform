@@ -1,5 +1,8 @@
 # This policy requires that resources of type `aws_redshiftserverless_namespace` have encryption enabled with customer managed KMS key.
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
 # Imports
 
 import "tfconfig/v2" as tfconfig

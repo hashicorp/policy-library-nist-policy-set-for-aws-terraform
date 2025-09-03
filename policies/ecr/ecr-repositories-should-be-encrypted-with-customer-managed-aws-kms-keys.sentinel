@@ -1,6 +1,9 @@
 # ECR.5
 # This control checks whether an Amazon ECR repository is encrypted at rest with a customer managed AWS KMS key.
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
 # Imports
 import "tfconfig/v2" as tfconfig
 import "tfresources" as tf

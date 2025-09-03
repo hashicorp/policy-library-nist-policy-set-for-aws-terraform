@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
 mock "tfconfig/v2" {
 	module {
 		source = "./mocks/policy-success-cloudwatch-composite-alarm-alarm-actions-configured/mock-tfconfig-v2.sentinel"

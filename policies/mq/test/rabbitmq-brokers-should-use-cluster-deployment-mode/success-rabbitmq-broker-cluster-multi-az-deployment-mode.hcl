@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
 mock "tfplan/v2" {
 	module {
 		source = "./mocks/policy-success-rabbitmq-broker-cluster-multi-az-deployment-mode/mock-tfplan-v2.sentinel"

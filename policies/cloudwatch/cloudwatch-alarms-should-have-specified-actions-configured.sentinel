@@ -1,6 +1,9 @@
 # CloudWatch.15
 # This control checks whether an Amazon CloudWatch alarm has at least one action configured for the ALARM state.
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
 # Imports
 import "tfconfig/v2" as tfconfig
 import "tfresources" as tf

@@ -1,6 +1,9 @@
 # CloudTrail.10
 # This control checks whether an AWS CloudTrail Lake event data store is encrypted at rest with a customer managed AWS KMS key.
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
 import "tfconfig/v2" as tfconfig
 import "tfresources" as tf
 import "report" as report
