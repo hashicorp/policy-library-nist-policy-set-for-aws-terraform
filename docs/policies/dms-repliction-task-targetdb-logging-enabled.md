@@ -1,4 +1,4 @@
-# AWS DMS Replication Task should have Logging enabled for the attrinute 'replication_task_settings' for target db
+# AWS DMS Replication Task should have Logging enabled for the attribute 'replication_task_settings' for target db
 
 | Provider            |    Category   |
 | ------------------- |   ---------   |
@@ -63,7 +63,7 @@ trace:
         → Module name: root
         ↳ Resource Address: aws_dms_replication_task.test
             | ✗ failed
-            | Attribute 'replication_task-settings' should have the logging enabled for AWS DMS Replication Task.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-7 for more details.
+            | Attribute 'replication_task_settings' should have the logging enabled for AWS DMS Replication Task. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-7 for more details.
 
 
         dms-repliction-task-targetdb-logging-enabled.sentinel:84:1 - Rule "main"
