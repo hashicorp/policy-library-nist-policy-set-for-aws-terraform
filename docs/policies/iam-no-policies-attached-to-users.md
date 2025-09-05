@@ -8,7 +8,7 @@
 
 This policy checks whether your IAM users have policies attached. The policy fails if your IAM users have policies attached. Instead, IAM users must inherit permissions from IAM groups or assume a role.
 
-By default, IAM users, groups, and roles have no access to AWS resources. IAM policies grant privileges to users, groups, or roles. We recommends that you apply IAM policies directly to groups and roles but not to users. Assigning privileges at the group or role level reduces the complexity of access management as the number of users grows. Reducing access management complexity might in turn reduce the opportunity for a principal to inadvertently receive or retain excessive privileges.
+By default, IAM users, groups, and roles have no access to AWS resources. IAM policies grant privileges to users, groups, or roles. We recommend that you apply IAM policies directly to groups and roles but not to users. Assigning privileges at the group or role level reduces the complexity of access management as the number of users grows. Reducing access management complexity might in turn reduce the opportunity for a principal to inadvertently receive or retain excessive privileges.
 
 This rule is covered by the [iam-no-policies-attached-to-users](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/iam/iam-no-policies-attached-to-users.sentinel) policy.
 
