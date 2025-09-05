@@ -1,6 +1,6 @@
 # This policy checks whether a resource 'aws_networkfirewall_firewall' has been deployed across multiple availability zones.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

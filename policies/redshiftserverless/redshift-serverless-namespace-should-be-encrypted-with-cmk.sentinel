@@ -1,6 +1,6 @@
 # This policy requires that resources of type `aws_redshiftserverless_namespace` have encryption enabled with customer managed KMS key.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
