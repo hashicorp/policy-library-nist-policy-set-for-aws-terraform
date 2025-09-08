@@ -1,5 +1,5 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: BUSL-1.1
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
 
 mock "tfconfig/v2" {
   module {
