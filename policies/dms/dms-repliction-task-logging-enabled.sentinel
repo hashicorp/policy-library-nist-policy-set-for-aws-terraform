@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_dms_replication_task' have the 'replication_task_settings'
 # have logging enabled
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
@@ -16,7 +16,7 @@ param db_type default "target"
 # Constants
 const = {
 	"policy_name":                       "dms-replication-instances-should-not-be-public",
-	"message":                           "Attribute 'replication_task-settings' should have the logging enabled for AWS DMS Replication Task.",
+	"message":                           "Attribute 'replication_task_settings' should have the logging enabled for AWS DMS Replication Task.",
 	"resource_aws_dms_replication_task": "aws_dms_replication_task",
 	"target": "https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-7",
 	"source": "https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-8",

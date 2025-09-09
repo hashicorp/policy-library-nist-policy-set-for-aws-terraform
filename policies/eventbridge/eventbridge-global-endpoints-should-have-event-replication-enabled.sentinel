@@ -1,6 +1,9 @@
 # EventBridge.4
 # This control checks if event replication is enabled for an Amazon EventBridge global endpoint.
 
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
+
 # Imports
 
 import "tfplan/v2" as tfplan

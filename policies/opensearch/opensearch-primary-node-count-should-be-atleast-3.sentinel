@@ -2,6 +2,9 @@
 # 'dedicated_master_enabled' set to true and 'dedicated_master_count' greater than or equal to 3
 # in the 'cluster_config' block
 
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
+
 import "tfplan/v2" as tfplan
 import "tfresources" as tf
 import "report" as report

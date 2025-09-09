@@ -1,3 +1,6 @@
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
+
 mock "tfconfig/v2" {
 	module {
 		source = "./mocks/policy-success-ecr-repository-encrypted-with-customer-managed-kms-key/mock-tfconfig-v2.sentinel"

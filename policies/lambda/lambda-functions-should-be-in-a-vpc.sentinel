@@ -1,6 +1,9 @@
 # Lambda.3
 # This control checks whether a Lambda function is deployed in a virtual private cloud (VPC).
 
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
+
 # Imports
 import "tfconfig/v2" as tfconfig
 import "tfresources" as tf

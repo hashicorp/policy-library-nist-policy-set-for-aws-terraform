@@ -1,3 +1,6 @@
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
+
 mock "tfplan/v2" {
 	module {
 		source = "./mocks/policy-failure-cloudwatch-log-groups-retention-period-less-than-365-days/mock-tfplan-v2.sentinel"

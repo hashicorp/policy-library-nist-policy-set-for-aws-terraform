@@ -1,6 +1,9 @@
 # CloudWatch.16
 # This control checks whether an Amazon CloudWatch log group has a retention period of at least the specified number of days.
 
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
+
 # Imports
 
 import "tfplan/v2" as tfplan
