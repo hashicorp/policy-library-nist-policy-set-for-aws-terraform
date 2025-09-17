@@ -10,7 +10,7 @@ This control evaluates whether a firewall managed through AWS Network Firewall i
 
 AWS global infrastructure includes multiple AWS Regions. AZs are physically separated, isolated locations within each Region that are connected by low-latency, high-throughput, and highly redundant networking. By deploying a Network Firewall firewall across multiple AZs, you can balance and shift traffic among AZs, which helps you design highly available solutions.
 
-This rule is covered by the [network-firewall-should-be-deployed-across-multiple-azs](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/network-firewall/network-firewall-should-be-deployed-across-multiple-azs.sentinel) policy.
+This rule is covered by the [network-firewall-should-be-deployed-across-multiple-azs](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/networkfirewall/network-firewall-should-be-deployed-across-multiple-azs.sentinel) policy.
 
 ## Policy Results (Pass)
 

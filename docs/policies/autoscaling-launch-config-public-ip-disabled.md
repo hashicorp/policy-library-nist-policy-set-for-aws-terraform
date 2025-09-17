@@ -10,7 +10,7 @@ This control checks whether an Auto Scaling group's associated launch configurat
 
 Amazon EC2 instances in an Auto Scaling group launch configuration should not have an associated public IP address, except for in limited edge cases. Amazon EC2 instances should only be accessible from behind a load balancer instead of being directly exposed to the internet.
 
-This rule is covered by the [autoscaling-launch-config-public-ip-disabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscaling-group/autoscaling-launch-config-public-ip-disabled.sentinel) policy.
+This rule is covered by the [autoscaling-launch-config-public-ip-disabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscalinggroup/autoscaling-launch-config-public-ip-disabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

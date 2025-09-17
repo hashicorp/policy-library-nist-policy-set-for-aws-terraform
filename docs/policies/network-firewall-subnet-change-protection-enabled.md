@@ -10,7 +10,7 @@ This control checks whether subnet change protection is enabled for an AWS Netwo
 
 AWS Network Firewall is a stateful, managed network firewall and intrusion detection service that you can use to inspect and filter traffic to, from, or between your Virtual Private Clouds (VPCs). If you enable subnet change protection for a Network Firewall firewall, you can protect the firewall against accidental changes to the firewall's subnet associations.
 
-This rule is covered by the [network-firewall-subnet-change-protection-enabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/network-firewall/network-firewall-subnet-change-protection-enabled.sentinel) policy.
+This rule is covered by the [network-firewall-subnet-change-protection-enabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/networkfirewall/network-firewall-subnet-change-protection-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

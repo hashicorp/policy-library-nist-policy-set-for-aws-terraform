@@ -10,7 +10,7 @@ This control checks whether Amazon API Gateway REST API stages have SSL certific
 
 API Gateway REST API stages should be configured with SSL certificates to allow backend systems to authenticate that requests originate from API Gateway.
 
-This rule is covered by the [api-gateway-rest-configure-ssl-certificates](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/api-gateway/api-gateway-rest-configure-ssl-certificates.sentinel) policy.
+This rule is covered by the [api-gateway-rest-configure-ssl-certificates](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/apigateway/api-gateway-rest-configure-ssl-certificates.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash
