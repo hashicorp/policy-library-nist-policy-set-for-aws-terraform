@@ -1,4 +1,4 @@
-# AWS OpenSearch should have the enabled in log_publisging_options attribute set to true and log_type set to 'AUDIT_LOGS'
+# AWS OpenSearch should have the enabled in log_publishing_options attribute set to true and log_type set to 'AUDIT_LOGS'
 
 | Provider            | Category  |
 | ------------------- | --------  |

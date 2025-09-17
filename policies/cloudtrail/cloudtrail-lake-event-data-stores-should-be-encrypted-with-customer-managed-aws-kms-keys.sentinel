@@ -13,7 +13,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":   "cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys",
-	"message":       "CloudTrail Event Data Stores must be encrypted with a KMS key. Specify a valid KMS key ID in the 'kms_key_id' attribute.",
+	"message":       "CloudTrail Event Data Stores must be encrypted with a KMS key. Specify a valid KMS key ID in the 'kms_key_id' attribute. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudtrail-controls.html#cloudtrail-10 for more details.",
 	"resource_type": "aws_cloudtrail_event_data_store",
 }
 

@@ -1,4 +1,4 @@
-#  Amazon Dynamo DB tables should scale its read and write capacity as needed
+# DynamoDB tables should be present in a backup plan
 
 | Provider            | Category             |
 | ------------------- | -------------------- |

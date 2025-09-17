@@ -1,4 +1,4 @@
-# AWS DMS Replication Task should have Logging enabled for the attrinute 'replication_task_settings' for source db
+# AWS DMS Replication Task should have Logging enabled for the attribute 'replication_task_settings' for source db
 
 | Provider            |    Category   |
 | ------------------- |   ---------   |

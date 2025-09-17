@@ -21,7 +21,7 @@ trace:
     Description:
     This policy checks if resources of type 'aws_autoscaling_group' have the
     'launch_template'
-    atribute or the attribute must be present in 'mixed_instances_policy'
+    attribute or the attribute must be present in 'mixed_instances_policy'
 
     Print messages:
 
@@ -47,7 +47,7 @@ trace:
     Description:
     This policy checks if resources of type 'aws_autoscaling_group' have the
     'launch_template'
-    atribute or the attribute must be present in 'mixed_instances_policy'
+    attribute or the attribute must be present in 'mixed_instances_policy'
 
     Print messages:
 

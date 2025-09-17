@@ -1,4 +1,4 @@
-# Cloudtrail Cloudwatch Logs Group Arn is set
+# CloudTrail Lake event data stores should be encrypted with customer managed AWS KMS keys
 
 | Provider            |  Category |
 |---------------------| --------- |

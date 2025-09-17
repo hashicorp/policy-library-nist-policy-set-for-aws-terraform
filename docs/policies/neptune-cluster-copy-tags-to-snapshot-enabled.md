@@ -1,4 +1,4 @@
-#  Neptune DB clusters should should be configured to copy tags to snapshots
+#  Neptune DB clusters should be configured to copy tags to snapshots
 
 | Provider            | Category                    |
 |---------------------|-----------------------------|
