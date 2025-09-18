@@ -582,7 +582,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS RDS DB instances should be configured to copy tags to snapshots ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/rds-instance-copy-tags-to-snapshot-configured.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/rds/rds-copy-tags-to-snapshot-configured.sentinel))
 
-- API Gateway should be associated with a WAF Web ACL ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/apigateway-should-be-associated-with-a-waf-web-acl.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/api-gateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel))
+- API Gateway should be associated with a WAF Web ACL ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-should-be-associated-with-a-waf-web-acl.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/apigateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel))
 
 - CloudFront distributions should use custom SSL/TLS certificates ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel))
 
