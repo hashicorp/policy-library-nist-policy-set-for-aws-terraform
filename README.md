@@ -1,12 +1,12 @@
-# Pre-written Sentinel Policies for AWS NIST Foundations Benchmarking
+# Pre-written Sentinel Policies for AWS NIST SP 800-53 Revision 5 Foundations Benchmarking
 
-Pre-written Sentinel policies are ready to use compliance checks for NIST AWS Foundations Benchmarking to help enable your AWS resources meet industry security standards.
+Pre-written Sentinel policies are ready to use compliance checks for NIST SP 800-53 Revision 5 AWS Foundations Benchmarking to help enable your AWS resources meet industry security standards.
 
 At HashiCorp, we’re committed to making policy management easier for our customers. We understand that developing policies from scratch can be time-consuming and resource-intensive. To address this, we’re introducing our Prewritten Policy Libraries—expertly crafted, ready-to-use policies designed to streamline your compliance processes and enhance security across your infrastructure.
 
-This repository contains several policies designed to accelerate the adoption of the NIST AWS Foundations Benchmark within HCP Terraform. These policies can be utilized to enforce best practices and security standards across your AWS environment.
+This repository contains several policies designed to accelerate the adoption of the NIST SP 800-53 Revision 5 AWS Foundations Benchmark within HCP Terraform. These policies can be utilized to enforce best practices and security standards across your AWS environment.
 
-For more details on how to work with these policies and to understand the Sentinel language and framework, please refer to the [Sentinel documentation](https://developer.hashicorp.com/sentinel/) or the README documentation included with each of the policy [libraries](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/docs/policies).
+For more details on how to work with these policies and to understand the Sentinel language and framework, please refer to the [Sentinel documentation](https://developer.hashicorp.com/sentinel/) or the README documentation included with each of the policy [libraries](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies).
 
 ## Feedback
 
@@ -14,9 +14,9 @@ We aim to validate the effectiveness of our policies by collecting diverse user 
 
 1. You can submit your feedback via a [public survey](https://docs.google.com/forms/d/e/1FAIpQLScswwLMaVaRuYRGJzDjNiycwM4BUa_gAIsAE_zOPdgyFeLXCA/viewform).
 
-2. If you have any issues or enhancement suggestions to the library, please create [a new GitHub issue](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/issues/new).
+2. If you have any issues or enhancement suggestions to the library, please create [a new GitHub issue](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/issues/new).
 
-3. Alternatively, we welcome any contributions that improve the impact of this library! To learn more about contributing and suggesting changes to this library, refer to the [contributing guide](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/CONTRIBUTING.md).
+3. Alternatively, we welcome any contributions that improve the impact of this library! To learn more about contributing and suggesting changes to this library, refer to the [contributing guide](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/CONTRIBUTING.md).
 
 ## Getting Started
 
@@ -53,9 +53,9 @@ If you want to enable only a subset of the policies or change the [enforcement l
 >
 > To learn more about how to configure a policy set as a [policy evaluation](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement/manage-policy-sets#policy-evaluations), please review the Terraform Enterprise provider [documentation](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set#agent_enabled).
 
-## Consuming Pre-Written Sentinel Policies for NIST AWS Foundations Benchmark
+## Consuming Pre-Written Sentinel Policies for NIST SP 800-53 Revision 5 AWS Foundations Benchmark
 
-Following methods outlines various ways to consume and implement pre-written Sentinel policies for the NIST AWS Foundations Benchmark. These policies can be used in both Terraform Enterprise (TFE) and HCP Terraform environments. Below are the recommended methods for integrating these policies into your workflows.
+Following methods outlines various ways to consume and implement pre-written Sentinel policies for the NIST SP 800-53 Revision 5 AWS Foundations Benchmark. These policies can be used in both Terraform Enterprise (TFE) and HCP Terraform environments. Below are the recommended methods for integrating these policies into your workflows.
 
 ### Terraform Registry Method:
 
@@ -79,7 +79,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - These policies are compatible with both Terraform Cloud (TFC) and Terraform Enterprise (TFE). Ensure your workflow is configured accordingly.
 - When using the public GitHub repository, it is recommended to use release branches for stability and avoid consuming policies directly from the default branch.
-- Regularly update your policies to align with the latest NIST AWS Foundations Benchmark standards and Terraform best practices.
+- Regularly update your policies to align with the latest NIST SP 800-53 Revision 5 AWS Foundations Benchmark standards and Terraform best practices.
 - Customize policies as needed to meet your organization's specific compliance and security requirements.
 
 ## Resources

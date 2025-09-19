@@ -1,4 +1,4 @@
-# Testing Pre-written Sentinel Policies for AWS NIST Benchmark
+# Testing Pre-written Sentinel Policies for AWS NIST SP 800-53 Revision 5 Benchmark
 
 These pre-written policies help organizations maintain compliance by validating configurations against industry standards. By running these tests, users can ensure that their pre-written policies are tested for different scenarios. This README also provides details of the folder structure for organizing policies and tests.
 
