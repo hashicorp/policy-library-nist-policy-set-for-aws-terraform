@@ -8,7 +8,7 @@
 
 This control checks whether a DAX cluster is encrypted at rest.
 
-This rule is covered by the [dynamo-db-accelerator-clusters-encryption-at-rest-enabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel) policy.
+This rule is covered by the [dynamo-db-accelerator-clusters-encryption-at-rest-enabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamodb/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

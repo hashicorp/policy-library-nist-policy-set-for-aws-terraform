@@ -1,12 +1,12 @@
-# Pre-written Sentinel Policies for AWS NIST Foundations Benchmarking
+# Pre-written Sentinel Policies for AWS NIST SP 800-53 Revision 5 Foundations Benchmarking
 
-Pre-written Sentinel policies are ready to use compliance checks for NIST AWS Foundations Benchmarking to help enable your AWS resources meet industry security standards.
+Pre-written Sentinel policies are ready to use compliance checks for NIST SP 800-53 Revision 5 AWS Foundations Benchmarking to help enable your AWS resources meet industry security standards.
 
 At HashiCorp, we’re committed to making policy management easier for our customers. We understand that developing policies from scratch can be time-consuming and resource-intensive. To address this, we’re introducing our Prewritten Policy Libraries—expertly crafted, ready-to-use policies designed to streamline your compliance processes and enhance security across your infrastructure.
 
-This repository contains several policies designed to accelerate the adoption of the NIST AWS Foundations Benchmark within HCP Terraform. These policies can be utilized to enforce best practices and security standards across your AWS environment.
+This repository contains several policies designed to accelerate the adoption of the NIST SP 800-53 Revision 5 AWS Foundations Benchmark within HCP Terraform. These policies can be utilized to enforce best practices and security standards across your AWS environment.
 
-For more details on how to work with these policies and to understand the Sentinel language and framework, please refer to the [Sentinel documentation](https://developer.hashicorp.com/sentinel/) or the README documentation included with each of the policy [libraries](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/docs/policies).
+For more details on how to work with these policies and to understand the Sentinel language and framework, please refer to the [Sentinel documentation](https://developer.hashicorp.com/sentinel/) or the README documentation included with each of the policy [libraries](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies).
 
 ## Feedback
 
@@ -14,9 +14,9 @@ We aim to validate the effectiveness of our policies by collecting diverse user 
 
 1. You can submit your feedback via a [public survey](https://docs.google.com/forms/d/e/1FAIpQLScswwLMaVaRuYRGJzDjNiycwM4BUa_gAIsAE_zOPdgyFeLXCA/viewform).
 
-2. If you have any issues or enhancement suggestions to the library, please create [a new GitHub issue](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/issues/new).
+2. If you have any issues or enhancement suggestions to the library, please create [a new GitHub issue](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/issues/new).
 
-3. Alternatively, we welcome any contributions that improve the impact of this library! To learn more about contributing and suggesting changes to this library, refer to the [contributing guide](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/CONTRIBUTING.md).
+3. Alternatively, we welcome any contributions that improve the impact of this library! To learn more about contributing and suggesting changes to this library, refer to the [contributing guide](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/CONTRIBUTING.md).
 
 ## Getting Started
 
@@ -53,9 +53,9 @@ If you want to enable only a subset of the policies or change the [enforcement l
 >
 > To learn more about how to configure a policy set as a [policy evaluation](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement/manage-policy-sets#policy-evaluations), please review the Terraform Enterprise provider [documentation](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set#agent_enabled).
 
-## Consuming Pre-Written Sentinel Policies for NIST AWS Foundations Benchmark
+## Consuming Pre-Written Sentinel Policies for NIST SP 800-53 Revision 5 AWS Foundations Benchmark
 
-Following methods outlines various ways to consume and implement pre-written Sentinel policies for the NIST AWS Foundations Benchmark. These policies can be used in both Terraform Enterprise (TFE) and HCP Terraform environments. Below are the recommended methods for integrating these policies into your workflows.
+Following methods outlines various ways to consume and implement pre-written Sentinel policies for the NIST SP 800-53 Revision 5 AWS Foundations Benchmark. These policies can be used in both Terraform Enterprise (TFE) and HCP Terraform environments. Below are the recommended methods for integrating these policies into your workflows.
 
 ### Terraform Registry Method:
 
@@ -63,23 +63,23 @@ Following methods outlines various ways to consume and implement pre-written Sen
 - Copy the provided policy snippet from the registry.
 - Create a GitHub repository (or use an existing one) to store your policies.
 - Add a Sentinel.hcl file to the repository and paste the copied policy snippet(s) into this file.
-- Connect the repository to Terraform Cloud or Terraform Enterprise using the VCS (Version Control System) workflow.
-- Trigger policy execution automatically during the plan stage in Terraform Cloud or Terraform Enterprise.
+- Connect the repository to HCP Terraform or Terraform Enterprise using the VCS (Version Control System) workflow.
+- Trigger policy execution automatically during the plan stage in HCP Terraform or Terraform Enterprise.
 
 ### Using the Public GitHub Repository:
 
 - Access the public GitHub repository containing the policy library.
 - You can directly use the repository as-is or fork it to customize the policies for your specific requirements.
 - If forking, ensure you sync your fork with the upstream repository periodically to stay updated with the latest changes.
-- Avoid using the default branch for consumption in Terraform Cloud or Terraform Enterprise. Instead, use the release branches for better stability.
-- Attach the repository (or your fork) to Terraform Cloud or Terraform Enterprise using the VCS workflow.
+- Avoid using the default branch for consumption in HCP Terraform or Terraform Enterprise. Instead, use the release branches for better stability.
+- Attach the repository (or your fork) to HCP Terraform or Terraform Enterprise using the VCS workflow.
 - Run a Terraform plan to execute the policies during the post-plan stage.
 
 #### Notes and Best Practices
 
-- These policies are compatible with both Terraform Cloud (TFC) and Terraform Enterprise (TFE). Ensure your workflow is configured accordingly.
+- These policies are compatible with both HCP Terraform (HCPT) and Terraform Enterprise (TFE). Ensure your workflow is configured accordingly.
 - When using the public GitHub repository, it is recommended to use release branches for stability and avoid consuming policies directly from the default branch.
-- Regularly update your policies to align with the latest NIST AWS Foundations Benchmark standards and Terraform best practices.
+- Regularly update your policies to align with the latest NIST SP 800-53 Revision 5 AWS Foundations Benchmark standards and Terraform best practices.
 - Customize policies as needed to meet your organization's specific compliance and security requirements.
 
 ## Resources
@@ -106,7 +106,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Ensure that S3 Buckets are configured with 'Block public access (bucket settings)' ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/s3-block-public-access-bucket-level.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/s3/s3-block-public-access-bucket-level.sentinel))
 
-- Amazon Dynamo DB accelerator clusters should have encryption at rest enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel))
+- Amazon Dynamo DB accelerator clusters should have encryption at rest enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamodb/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel))
 
 - AWS Redshift Cluster should have the encrypted attribute set to true ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/redshift-cluster-should-be-encrypted-at-rest.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/redshift/redshift-cluster-should-be-encrypted-at-rest.sentinel))
 
@@ -178,7 +178,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Amazon ElastiCache for Redis cluster should not use the default subnet group ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/elasticache-redis-cluster-non-default-subnet-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/elasticache/elasticache-redis-cluster-non-default-subnet-enabled.sentinel))
 
-- Network Firewall policy default action full packets ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-policy-default-action-full-packets.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/network-firewall/network-firewall-policy-default-action-full-packets.sentinel))
+- Network Firewall policy default action full packets ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-policy-default-action-full-packets.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/networkfirewall/network-firewall-policy-default-action-full-packets.sentinel))
 
 - CloudFront distributions should have logging enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/cloudfront-distributions-should-have-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-have-logging-enabled.sentinel))
 
@@ -196,7 +196,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS Event Subscriptions should have Event Notifications configured for the AWS RDS Parameter Group resource ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/rds-parameter-group-event-notifications-configured-for-critical-events.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/rds/rds-event-notifications-configured-for-critical-events.sentinel))
 
-- Network Firewall firewalls should have deletion protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-should-have-deletion-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/network-firewall/network-firewall-should-have-deletion-protection-enabled.sentinel))
+- Network Firewall firewalls should have deletion protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-should-have-deletion-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/networkfirewall/network-firewall-should-have-deletion-protection-enabled.sentinel))
 
 - Amazon ECS task definitions should have secure networking modes and user definitions ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/ecs-task-definition-secure-networking-mode-and-user-definitions.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/ecs/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel))
 
@@ -208,13 +208,13 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS RDS instance should have monitoring configured ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/rds-ensure-monitoring-configured.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/rds/rds-ensure-monitoring-configured.sentinel))
 
-- Access logging should be configured for API Gateway V2 Stages ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-access-logging-should-be-configured.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/api-gateway/api-gateway-access-logging-should-be-configured.sentinel))
+- Access logging should be configured for API Gateway V2 Stages ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-access-logging-should-be-configured.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/apigateway/api-gateway-access-logging-should-be-configured.sentinel))
 
 - Elasticsearch domain error logging to CloudWatch Logs should be enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/elasticsearch-logs-to-cloudwatch.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/elasticsearch/elasticsearch-logs-to-cloudwatch.sentinel))
 
 - Attached Amazon EBS volumes should be encrypted at-rest ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/ec2-attached-ebs-volumes-encrypted-at-rest.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/ec2/ec2-attached-ebs-volumes-encrypted-at-rest.sentinel))
 
-- DynamoDB tables should be present in a backup plan ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamodb-tables-should-be-present-in-a-backup-plan.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamo-db/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel))
+- DynamoDB tables should be present in a backup plan ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamodb-tables-should-be-present-in-a-backup-plan.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamodb/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel))
 
 - ECR repositories should have at least one lifecycle policy configured ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/ecr-lifecycle-policy-configured.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/ecr/ecr-lifecycle-policy-configured.sentinel))
 
@@ -240,7 +240,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - SNS topics should be encrypted at-rest using AWS KMS ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/sns-topic-should-be-encrypted-at-rest.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/sns/sns-topic-should-be-encrypted-at-rest.sentinel))
 
-- Amazon Dynamo DB tables should scale its read and write capacity as needed ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamo-db-tables-scales-capacity-with-demand.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamo-db/dynamo-db-tables-scales-capacity-with-demand.sentinel))
+- Amazon Dynamo DB tables should scale its read and write capacity as needed ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamo-db-tables-scales-capacity-with-demand.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamodb/dynamo-db-tables-scales-capacity-with-demand.sentinel))
 
 - AWS WAF Classic global web ACLs should have at least one rule or rule group ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/waf-global-webacl-not-empty.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/waf/waf-global-webacl-not-empty.sentinel))
 
@@ -270,7 +270,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Amazon Elastic Beanstalk environments should have managed platform updates enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/elasticbeanstalk-managed-platform-updates-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/elasticbeanstalk/elasticbeanstalk-managed-platform-updates-enabled.sentinel))
 
-- Network Firewall firewalls should be deployed across multiple Availability Zones ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-should-be-deployed-across-multiple-azs.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/network-firewall/network-firewall-should-be-deployed-across-multiple-azs.sentinel))
+- Network Firewall firewalls should be deployed across multiple Availability Zones ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-should-be-deployed-across-multiple-azs.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/networkfirewall/network-firewall-should-be-deployed-across-multiple-azs.sentinel))
 
 - AWS Elasticsearch domain should be encrypt data between nodes ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/elasticsearch-node-to-node-encryption-check.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/elasticsearch/elasticsearch-node-to-node-encryption-check.sentinel))
 
@@ -288,17 +288,17 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Amazon ElastiCache for Redis replication groups should have encryption at transit enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/elasticache-redis-replication-group-encryption-at-transit-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/elasticache/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel))
 
-- API Gateway REST API cache data should be encrypted at rest ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-rest-cache-have-encryption-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/api-gateway/api-gateway-rest-cache-have-encryption-enabled.sentinel))
+- API Gateway REST API cache data should be encrypted at rest ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-rest-cache-have-encryption-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/apigateway/api-gateway-rest-cache-have-encryption-enabled.sentinel))
 
 - Route 53 public hosted zones should log DNS queries ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/route-53-public-hosted-zones-should-log-dns-queries.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel))
 
 - AWS Sagemaker Endpoint Configuration should have the initial_instance_count greater than one for the production_variants attribute ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/sagemaker-endpoint-config-prod-instance-count-check.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/sagemaker/sagemaker-endpoint-config-prod-instance-count-check.sentinel))
 
-- Network Firewall policies should have at least one rule group associated ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-policy-rule-group-associated.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/network-firewall/network-firewall-policy-rule-group-associated.sentinel))
+- Network Firewall policies should have at least one rule group associated ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-policy-rule-group-associated.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/networkfirewall/network-firewall-policy-rule-group-associated.sentinel))
 
 - AWS RDS instance ensure deletion protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/rds-ensure-deletion-protection-enabled-for-rds-cluster.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/rds/rds-ensure-deletion-protection-enabled.sentinel))
 
-- Amazon EC2 Auto Scaling group should cover multiple Availability Zones ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-group-should-cover-multiple-azs.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscaling-group/autoscaling-group-should-cover-multiple-azs.sentinel))
+- Amazon EC2 Auto Scaling group should cover multiple Availability Zones ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-group-should-cover-multiple-azs.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscalinggroup/autoscaling-group-should-cover-multiple-azs.sentinel))
 
 - AWS EC2 Client VPN endpoints should have client connection logging enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/ec2-client-vpn-connection-log-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/ec2/ec2-client-vpn-connection-log-enabled.sentinel))
 
@@ -320,7 +320,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS Redshift clusters should have automated_snapshot_retention_period set between '7 to 35' ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/redshift-cluster-automated-snapshot-retention-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/redshift/redshift-cluster-automated-snapshot-retention-enabled.sentinel))
 
-- API Gateway REST and WebSocket API execution logging should be enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-rest-and-websocket-api-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/api-gateway/api-gateway-rest-and-websocket-api-logging-enabled.sentinel))
+- API Gateway REST and WebSocket API execution logging should be enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-rest-and-websocket-api-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/apigateway/api-gateway-rest-and-websocket-api-logging-enabled.sentinel))
 
 - AWS Backup Framework Recovery Point should be encrypted at rest ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/backup-recovery-point-encrypted.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/backup/backup-recovery-point-encrypted.sentinel))
 
@@ -364,7 +364,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - S3 general purpose buckets should have block public access settings enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/s3-block-public-access-account-level.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/s3/s3-block-public-access-account-level.sentinel))
 
-- Network Firewall firewalls should have subnet change protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-subnet-change-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/network-firewall/network-firewall-subnet-change-protection-enabled.sentinel))
+- Network Firewall firewalls should have subnet change protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-subnet-change-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/networkfirewall/network-firewall-subnet-change-protection-enabled.sentinel))
 
 - EBS volumes should be covered by a backup plan ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/ebs-volumes-should-be-in-a-backup-plan.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/ec2/ebs-volumes-should-be-in-a-backup-plan.sentinel))
 
@@ -380,7 +380,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Redshift Serverless namespaces should be encrypted with customer managed AWS KMS keys ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/redshift-serverless-namespace-should-be-encrypted-with-cmk.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/redshiftserverless/redshift-serverless-namespace-should-be-encrypted-with-cmk.sentinel))
 
-- Amazon EC2 instances launched using Auto Scaling group launch configurations should not have Public IP addresses ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-launch-config-public-ip-disabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscaling-group/autoscaling-launch-config-public-ip-disabled.sentinel))
+- Amazon EC2 instances launched using Auto Scaling group launch configurations should not have Public IP addresses ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-launch-config-public-ip-disabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscalinggroup/autoscaling-launch-config-public-ip-disabled.sentinel))
 
 - AWS Sagemaker Notebook instance should have the root_access set to "Disabled" ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/sagemaker-notebook-instance-root-access-check.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/sagemaker/sagemaker-notebook-instance-root-access-check.sentinel))
 
@@ -410,7 +410,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Application Load Balancer should be configured to redirect all HTTP requests to HTTPS ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/elb-ensure-http-request-redirection.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/elb/elb-ensure-http-request-redirection.sentinel))
 
-- Amazon EC2 Auto Scaling groups should use Amazon EC2 launch templates ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-group-should-use-launch-templates.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscaling-group/autoscaling-group-should-use-launch-templates.sentinel))
+- Amazon EC2 Auto Scaling groups should use Amazon EC2 launch templates ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-group-should-use-launch-templates.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscalinggroup/autoscaling-group-should-use-launch-templates.sentinel))
 
 - Amazon EMR security configurations should be encrypted at rest ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/emr-security-configuration-encryption-rest.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/emr/emr-security-configuration-encryption-rest.sentinel))
 
@@ -426,7 +426,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - CodeBuild S3 logs should be encrypted ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/codebuild-s3-logs-should-be-encrypted.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/codebuild/codebuild-s3-logs-should-be-encrypted.sentinel))
 
-- Amazon Dynamo DB tables should have point in time recovery enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamo-db-tables-point-in-time-recovery-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamo-db/dynamo-db-tables-point-in-time-recovery-enabled.sentinel))
+- Amazon Dynamo DB tables should have point in time recovery enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamo-db-tables-point-in-time-recovery-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamodb/dynamo-db-tables-point-in-time-recovery-enabled.sentinel))
 
 - AWS DocumentDB clusters should have deletion protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/docdb-cluster-deletion-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/docdb/docdb-cluster-deletion-protection-enabled.sentinel))
 
@@ -448,9 +448,11 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - VPC Lambda functions should operate in multiple Availability Zones ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/lambda-vpc-multi-az-check.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/lambda/lambda-vpc-multi-az-check.sentinel))
 
-- Auto Scaling groups associated with a load balancer should use ELB health checks ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscaling-group/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel))
+- Auto Scaling groups associated with a load balancer should use ELB health checks ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscalinggroup/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel))
 
-- Auto Scaling groups should use multiple instance types in multiple Availability Zones ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-group-should-use-multiple-instance-types.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscaling-group/autoscaling-group-should-use-multiple-instance-types.sentinel))
+- Auto Scaling groups should use multiple instance types in multiple Availability Zones ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/autoscaling-group-should-use-multiple-instance-types.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/autoscalinggroup/autoscaling-group-should-use-multiple-instance-types.sentinel))
+
+- Application Load Balancers should be associated with an AWS WAF web ACL ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/rabbitmq-brokers-should-use-cluster-deployment-mode.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/mq/rabbitmq-brokers-should-use-cluster-deployment-mode.sentinel))
 
 - Neptune DB clusters should have deletion protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/neptune-cluster-deletion-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/neptune/neptune-cluster-deletion-protection-enabled.sentinel))
 
@@ -470,7 +472,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS Redshift Cluster should have the database_name attribute not set to 'dev' (default_value) ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/redshift-cluster-default-db-name-check.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/redshift/redshift-cluster-default-db-name-check.sentinel))
 
-- Network Firewall logging should be enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/network-firewall/network-firewall-logging-enabled.sentinel))
+- Network Firewall logging should be enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/networkfirewall/network-firewall-logging-enabled.sentinel))
 
 - AWS Security Group should not allow ingress traffic from 0.0.0.0/0 or ::/0 to common ports ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/ec2-security-group-ingress-traffic-restriction-to-common-ports.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/ec2/ec2-security-group-ingress-traffic-restriction-to-common-ports.sentinel))
 
@@ -482,7 +484,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS Redshift Cluster should have the require_ssl parameter in the AWS Redshift Parameter Group set to true ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/redshift-cluster-should-be-encrypted-at-transit.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/redshift/redshift-cluster-should-be-encrypted-at-transit.sentinel))
 
-- The default stateless action for Network Firewall policies should be drop or forward for fragmented packets ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-policy-default-action-fragmented-packets.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/network-firewall/network-firewall-policy-default-action-fragmented-packets.sentinel))
+- The default stateless action for Network Firewall policies should be drop or forward for fragmented packets ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-policy-default-action-fragmented-packets.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/networkfirewall/network-firewall-policy-default-action-fragmented-packets.sentinel))
 
 - AWS WAF web ACLs should have at least one rule or rule group ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/wafv2-webacl-not-empty.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/waf/wafv2-webacl-not-empty.sentinel))
 
@@ -508,11 +510,11 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS Event Subscriptions should have Event Notifications configured for the AWS RDS Instance resource ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/rds-instance-event-notifications-configured-for-critical-events.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/rds/rds-event-notifications-configured-for-critical-events.sentinel))
 
-- Amazon Dynamo DB tables should have delete protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamo-db-tables-delete-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamo-db/dynamo-db-tables-delete-protection-enabled.sentinel))
+- Amazon Dynamo DB tables should have delete protection enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dynamo-db-tables-delete-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dynamodb/dynamo-db-tables-delete-protection-enabled.sentinel))
 
-- API Gateway REST API stages should have AWS X-Ray tracing enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-rest-have-x-ray-tracing-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/api-gateway/api-gateway-rest-have-x-ray-tracing-enabled.sentinel))
+- API Gateway REST API stages should have AWS X-Ray tracing enabled ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-rest-have-x-ray-tracing-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/apigateway/api-gateway-rest-have-x-ray-tracing-enabled.sentinel))
 
-- API Gateway REST API stages should be configured to use SSL certificates for backend authentication ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-rest-configure-ssl-certificates.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/api-gateway/api-gateway-rest-configure-ssl-certificates.sentinel))
+- API Gateway REST API stages should be configured to use SSL certificates for backend authentication ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-rest-configure-ssl-certificates.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/apigateway/api-gateway-rest-configure-ssl-certificates.sentinel))
 
 - Service Catalog portfolios should be shared within an AWS organization only ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/service-catalog-shared-within-organization.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/servicecatalog/service-catalog-shared-within-organization.sentinel))
 
@@ -528,7 +530,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS Sagemaker Notebook instance should have the direct_internet_access set to "Disabled" ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/sagemaker-notebook-no-direct-internet-access.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/sagemaker/sagemaker-notebook-no-direct-internet-access.sentinel))
 
-- Stateless Network Firewall rule group should not be empty in AWS Network Firewall ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-stateless-rule-group.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/network-firewall/network-firewall-stateless-rule-group.sentinel))
+- Stateless Network Firewall rule group should not be empty in AWS Network Firewall ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/network-firewall-stateless-rule-group.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/networkfirewall/network-firewall-stateless-rule-group.sentinel))
 
 - Firehose delivery streams should be encrypted at rest ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/kinesis-firehose-delivery-stream-encrypted.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel))
 
@@ -580,7 +582,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS RDS DB instances should be configured to copy tags to snapshots ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/rds-instance-copy-tags-to-snapshot-configured.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/rds/rds-copy-tags-to-snapshot-configured.sentinel))
 
-- API Gateway should be associated with a WAF Web ACL ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-should-be-associated-with-a-waf-web-acl.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/api-gateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel))
+- API Gateway should be associated with a WAF Web ACL ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-should-be-associated-with-a-waf-web-acl.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/apigateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel))
 
 - CloudFront distributions should use custom SSL/TLS certificates ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel))
 
@@ -606,5 +608,5 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS DMS Replication Task should have Logging enabled for the attribute 'replication_task_settings' for source db ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/dms-repliction-task-sourcedb-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/dms/dms-repliction-task-logging-enabled.sentinel))
 
-- API Gateway routes should specify an authorization type ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-routes-should-specify-an-authorization-type.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/api-gateway/api-gateway-routes-should-specify-an-authorization-type.sentinel))
+- API Gateway routes should specify an authorization type ([docs](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies/api-gateway-routes-should-specify-an-authorization-type.md) | [code](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/policies/apigateway/api-gateway-routes-should-specify-an-authorization-type.sentinel))
 

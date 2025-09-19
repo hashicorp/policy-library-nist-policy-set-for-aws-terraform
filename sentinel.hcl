@@ -383,7 +383,7 @@ policy "elasticache-redis-cluster-non-default-subnet-enabled" {
 }
 
 policy "dynamo-db-tables-point-in-time-recovery-enabled" {
-  source = "./policies/dynamo-db/dynamo-db-tables-point-in-time-recovery-enabled.sentinel"
+  source = "./policies/dynamodb/dynamo-db-tables-point-in-time-recovery-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -408,12 +408,12 @@ policy "docdb-cluster-audit-logging-enabled" {
 }
 
 policy "dynamo-db-accelerator-clusters-encryption-at-rest-enabled" {
-  source = "./policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel"
+  source = "./policies/dynamodb/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "dynamo-db-tables-delete-protection-enabled" {
-  source = "./policies/dynamo-db/dynamo-db-tables-delete-protection-enabled.sentinel"
+  source = "./policies/dynamodb/dynamo-db-tables-delete-protection-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -423,7 +423,7 @@ policy "elasticbeanstalk-enhanced-health-reporting-enabled" {
 }
 
 policy "dynamo-db-tables-scales-capacity-with-demand" {
-  source = "./policies/dynamo-db/dynamo-db-tables-scales-capacity-with-demand.sentinel"
+  source = "./policies/dynamodb/dynamo-db-tables-scales-capacity-with-demand.sentinel"
   enforcement_level = "advisory"
   params = {
       min_read_capacity = 1
@@ -619,17 +619,17 @@ policy "dms-repliction-task-sourcedb-logging-enabled" {
 }
 
 policy "network-firewall-logging-enabled" {
-  source = "./policies/network-firewall/network-firewall-logging-enabled.sentinel"
+  source = "./policies/networkfirewall/network-firewall-logging-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "network-firewall-policy-rule-group-associated" {
-  source = "./policies/network-firewall/network-firewall-policy-rule-group-associated.sentinel"
+  source = "./policies/networkfirewall/network-firewall-policy-rule-group-associated.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "network-firewall-should-be-deployed-across-multiple-azs" {
-  source = "./policies/network-firewall/network-firewall-should-be-deployed-across-multiple-azs.sentinel"
+  source = "./policies/networkfirewall/network-firewall-should-be-deployed-across-multiple-azs.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -674,57 +674,57 @@ policy "kms-restrict-iam-inline-policies-decrypt-all-kms-keys" {
 }
 
 policy "network-firewall-policy-default-action-full-packets" {
-  source = "./policies/network-firewall/network-firewall-policy-default-action-full-packets.sentinel"
+  source = "./policies/networkfirewall/network-firewall-policy-default-action-full-packets.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "network-firewall-policy-default-action-fragmented-packets" {
-  source = "./policies/network-firewall/network-firewall-policy-default-action-fragmented-packets.sentinel"
+  source = "./policies/networkfirewall/network-firewall-policy-default-action-fragmented-packets.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "network-firewall-stateless-rule-group" {
-  source = "./policies/network-firewall/network-firewall-stateless-rule-group.sentinel"
+  source = "./policies/networkfirewall/network-firewall-stateless-rule-group.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "network-firewall-should-have-deletion-protection-enabled" {
-  source = "./policies/network-firewall/network-firewall-should-have-deletion-protection-enabled.sentinel"
+  source = "./policies/networkfirewall/network-firewall-should-have-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "api-gateway-rest-and-websocket-api-logging-enabled" {
-  source = "./policies/api-gateway/api-gateway-rest-and-websocket-api-logging-enabled.sentinel"
+  source = "./policies/apigateway/api-gateway-rest-and-websocket-api-logging-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "api-gateway-rest-have-x-ray-tracing-enabled" {
-  source = "./policies/api-gateway/api-gateway-rest-have-x-ray-tracing-enabled.sentinel"
+  source = "./policies/apigateway/api-gateway-rest-have-x-ray-tracing-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "api-gateway-should-be-associated-with-a-waf-web-acl" {
-  source = "./policies/api-gateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel"
+  source = "./policies/apigateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "api-gateway-access-logging-should-be-configured" {
-  source = "./policies/api-gateway/api-gateway-access-logging-should-be-configured.sentinel"
+  source = "./policies/apigateway/api-gateway-access-logging-should-be-configured.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "api-gateway-routes-should-specify-an-authorization-type" {
-  source = "./policies/api-gateway/api-gateway-routes-should-specify-an-authorization-type.sentinel"
+  source = "./policies/apigateway/api-gateway-routes-should-specify-an-authorization-type.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "api-gateway-rest-configure-ssl-certificates" {
-  source = "./policies/api-gateway/api-gateway-rest-configure-ssl-certificates.sentinel"
+  source = "./policies/apigateway/api-gateway-rest-configure-ssl-certificates.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "api-gateway-rest-cache-have-encryption-enabled" {
-  source = "./policies/api-gateway/api-gateway-rest-cache-have-encryption-enabled.sentinel"
+  source = "./policies/apigateway/api-gateway-rest-cache-have-encryption-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -769,12 +769,12 @@ policy "cloudfront-should-require-encryption-in-transit" {
 }
 
 policy "autoscaling-group-should-cover-multiple-azs" {
-  source = "./policies/autoscaling-group/autoscaling-group-should-cover-multiple-azs.sentinel"
+  source = "./policies/autoscalinggroup/autoscaling-group-should-cover-multiple-azs.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "autoscaling-group-should-use-launch-templates" {
-  source = "./policies/autoscaling-group/autoscaling-group-should-use-launch-templates.sentinel"
+  source = "./policies/autoscalinggroup/autoscaling-group-should-use-launch-templates.sentinel"
    enforcement_level = "advisory"
 }
 
@@ -1198,17 +1198,17 @@ policy "service-catalog-shared-within-organization" {
 }
 
 policy "autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck" {
-  source = "./policies/autoscaling-group/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel"
+  source = "./policies/autoscalinggroup/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "autoscaling-launch-config-public-ip-disabled" {
-  source = "./policies/autoscaling-group/autoscaling-launch-config-public-ip-disabled.sentinel"
+  source = "./policies/autoscalinggroup/autoscaling-launch-config-public-ip-disabled.sentinel"
   enforcement_level = "advisory"
 }
 
 policy "autoscaling-group-should-use-multiple-instance-types" {
-  source = "./policies/autoscaling-group/autoscaling-group-should-use-multiple-instance-types.sentinel"
+  source = "./policies/autoscalinggroup/autoscaling-group-should-use-multiple-instance-types.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -1238,7 +1238,7 @@ policy "glue-spark-job-supported-version" {
 }
 
 policy "network-firewall-subnet-change-protection-enabled" {
-  source = "./policies/network-firewall/network-firewall-subnet-change-protection-enabled.sentinel"
+  source = "./policies/networkfirewall/network-firewall-subnet-change-protection-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -1398,6 +1398,6 @@ policy "application-load-balancers-should-be-associated-with-an-aws-waf-web-acl"
 }
 
 policy "dynamodb-tables-should-be-present-in-a-backup-plan" {
-  source = "./policies/dynamo-db/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel"
+  source = "./policies/dynamodb/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel"
   enforcement_level = "advisory"
 }

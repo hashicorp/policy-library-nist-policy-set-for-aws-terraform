@@ -8,7 +8,7 @@
 
 This control checks whether point-in-time recovery (PITR) is enabled for an Amazon DynamoDB table.
 
-This rule is covered by the [dynamo-db-tables-point-in-time-recovery-enabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamo-db/dynamo-db-tables-point-in-time-recovery-enabled.sentinel) policy.
+This rule is covered by the [dynamo-db-tables-point-in-time-recovery-enabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamodb/dynamo-db-tables-point-in-time-recovery-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

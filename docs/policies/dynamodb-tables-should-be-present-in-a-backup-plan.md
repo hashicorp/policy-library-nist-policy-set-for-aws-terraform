@@ -11,7 +11,7 @@ This control evaluates whether an Amazon DynamoDB table in ACTIVE state is cover
 AWS Backup is a fully managed backup service that helps you centralize and automate the backing up of data across AWS services. With AWS Backup, you can create backup plans that define your backup requirements, such as how frequently to back up your data and how long to retain those backups. Including DynamoDB tables in your backup plans helps you protect your data from unintended loss or deletion.
 
 
-This rule is covered by the [dynamodb-tables-should-be-present-in-a-backup-plan](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamo-db/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel) policy.
+This rule is covered by the [dynamodb-tables-should-be-present-in-a-backup-plan](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamodb/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

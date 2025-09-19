@@ -10,7 +10,7 @@ This control checks whether an Amazon EC2 Auto Scaling group is created from an 
 
 An EC2 Auto Scaling group can be created from either an EC2 launch template or a launch configuration. However, using a launch template to create an Auto Scaling group ensures that you have access to the latest features and improvements.
 
-This rule is covered by the [autoscaling-group-should-use-launch-templates](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscaling-group/autoscaling-group-should-use-launch-templates.sentinel) policy.
+This rule is covered by the [autoscaling-group-should-use-launch-templates](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscalinggroup/autoscaling-group-should-use-launch-templates.sentinel) policy.
 
 ## Policy Results (Pass)
 
