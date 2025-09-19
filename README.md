@@ -63,21 +63,21 @@ Following methods outlines various ways to consume and implement pre-written Sen
 - Copy the provided policy snippet from the registry.
 - Create a GitHub repository (or use an existing one) to store your policies.
 - Add a Sentinel.hcl file to the repository and paste the copied policy snippet(s) into this file.
-- Connect the repository to Terraform Cloud or Terraform Enterprise using the VCS (Version Control System) workflow.
-- Trigger policy execution automatically during the plan stage in Terraform Cloud or Terraform Enterprise.
+- Connect the repository to HCP Terraform or Terraform Enterprise using the VCS (Version Control System) workflow.
+- Trigger policy execution automatically during the plan stage in HCP Terraform or Terraform Enterprise.
 
 ### Using the Public GitHub Repository:
 
 - Access the public GitHub repository containing the policy library.
 - You can directly use the repository as-is or fork it to customize the policies for your specific requirements.
 - If forking, ensure you sync your fork with the upstream repository periodically to stay updated with the latest changes.
-- Avoid using the default branch for consumption in Terraform Cloud or Terraform Enterprise. Instead, use the release branches for better stability.
-- Attach the repository (or your fork) to Terraform Cloud or Terraform Enterprise using the VCS workflow.
+- Avoid using the default branch for consumption in HCP Terraform or Terraform Enterprise. Instead, use the release branches for better stability.
+- Attach the repository (or your fork) to HCP Terraform or Terraform Enterprise using the VCS workflow.
 - Run a Terraform plan to execute the policies during the post-plan stage.
 
 #### Notes and Best Practices
 
-- These policies are compatible with both Terraform Cloud (TFC) and Terraform Enterprise (TFE). Ensure your workflow is configured accordingly.
+- These policies are compatible with both HCP Terraform (HCPT) and Terraform Enterprise (TFE). Ensure your workflow is configured accordingly.
 - When using the public GitHub repository, it is recommended to use release branches for stability and avoid consuming policies directly from the default branch.
 - Regularly update your policies to align with the latest NIST SP 800-53 Revision 5 AWS Foundations Benchmark standards and Terraform best practices.
 - Customize policies as needed to meet your organization's specific compliance and security requirements.
