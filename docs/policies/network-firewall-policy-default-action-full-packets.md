@@ -10,7 +10,7 @@ This control checks whether the default stateless action for full packets for a 
 
 A firewall policy defines how your firewall monitors and handles traffic in Amazon VPC. You configure stateless and stateful rule groups to filter packets and traffic flows. Defaulting to Pass can allow unintended traffic.
 
-This rule is covered by the [network-firewall-policy-default-action-full-packets](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/network-firewall/network-firewall-policy-default-action-full-packets.sentinel) policy.
+This rule is covered by the [network-firewall-policy-default-action-full-packets](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/networkfirewall/network-firewall-policy-default-action-full-packets.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

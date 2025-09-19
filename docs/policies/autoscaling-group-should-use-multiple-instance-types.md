@@ -10,7 +10,7 @@ This control checks whether an Amazon EC2 Auto Scaling group uses multiple insta
 
 You can enhance availability by deploying your application across multiple instance types running in multiple Availability Zones. Security Hub recommends using multiple instance types so that the Auto Scaling group can launch another instance type if there is insufficient instance capacity in your chosen Availability Zones.
 
-This rule is covered by the [autoscaling-group-should-use-multiple-instance-types](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscaling-group/autoscaling-group-should-use-multiple-instance-types.sentinel) policy.
+This rule is covered by the [autoscaling-group-should-use-multiple-instance-types](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscalinggroup/autoscaling-group-should-use-multiple-instance-types.sentinel) policy.
 
 ## Policy Results (Pass)
 

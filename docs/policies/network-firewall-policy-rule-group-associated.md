@@ -8,7 +8,7 @@
 
 This control checks whether a Network Firewall policy has any stateful or stateless rule groups associated. The control fails if stateless or stateful rule groups are not assigned.
 
-This rule is covered by the [network-firewall-policy-rule-group-associated](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/network-firewall/network-firewall-policy-rule-group-associated.sentinel) policy.
+This rule is covered by the [network-firewall-policy-rule-group-associated](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/networkfirewall/network-firewall-policy-rule-group-associated.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

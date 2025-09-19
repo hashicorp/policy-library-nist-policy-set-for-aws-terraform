@@ -50,7 +50,7 @@ resources = {
 				"constant_value": "API Gateway with incorrect WAF Web ACL association",
 			},
 			"name": {
-				"constant_value": "example-api-gateway",
+				"constant_value": "example-apigateway",
 			},
 		},
 		"count":               {},

@@ -12,7 +12,7 @@ This control checks whether an Amazon EC2 Auto Scaling group that is associated 
 
 ELB health checks help ensure that an Auto Scaling group can determine an instance's health based on additional tests provided by the load balancer. Using Elastic Load Balancing health checks also helps support the availability of applications that use EC2 Auto Scaling groups.
 
-This rule is covered by the [autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscaling-group/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel) policy.
+This rule is covered by the [autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscalinggroup/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel) policy.
 
 ## Policy Results (Pass)
 
