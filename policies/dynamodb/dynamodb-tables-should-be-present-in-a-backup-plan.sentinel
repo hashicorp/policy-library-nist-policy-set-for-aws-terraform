@@ -14,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":               "dynamodb-tables-should-be-present-in-a-backup-plan",
-	"message":                   "DynamoDB tables should be included in an AWS Backup plan for data protection.",
+	"message":                   "DynamoDB tables should be included in an AWS Backup plan for data protection. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-4 for more details.",
 	"resource_dynamodb_table":   "aws_dynamodb_table",
 	"resource_backup_plan":      "aws_backup_plan",
 	"resource_backup_selection": "aws_backup_selection",

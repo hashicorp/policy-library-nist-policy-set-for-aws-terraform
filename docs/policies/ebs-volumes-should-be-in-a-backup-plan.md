@@ -1,4 +1,4 @@
-# Attached Amazon EBS volumes should be encrypted at-rest
+# EBS volumes should be covered by a backup plan
 
 | Provider            |           Category           |
 |---------------------| ---------------------------- |

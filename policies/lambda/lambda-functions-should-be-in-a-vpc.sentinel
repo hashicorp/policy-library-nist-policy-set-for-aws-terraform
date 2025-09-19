@@ -13,8 +13,8 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                  "aws-lambda-3-lambda-functions-should-be-in-a-vpc",
-	"message":                      "Lambda functions must be deployed within a VPC with proper subnet_ids and security_group_ids configured.",
+	"policy_name":                  "lambda-functions-should-be-in-a-vpc",
+	"message":                      "Lambda functions must be deployed within a VPC with proper subnet_ids and security_group_ids configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-3 for more details.",
 	"resource_aws_lambda_function": "aws_lambda_function",
 }
 

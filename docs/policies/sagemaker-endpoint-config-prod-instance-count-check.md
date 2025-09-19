@@ -1,4 +1,4 @@
-# AWS Sagemaker Endpoint Configuration should have the initial_instance_count greater than one for the production_variants atribute
+# AWS Sagemaker Endpoint Configuration should have the initial_instance_count greater than one for the production_variants attribute
 
 | Provider            | Category         |
 | ------------------- | ---------------- |

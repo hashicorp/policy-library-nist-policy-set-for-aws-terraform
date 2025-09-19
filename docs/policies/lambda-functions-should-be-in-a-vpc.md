@@ -1,4 +1,4 @@
-# Lambda function policies should prohibit public access
+# Lambda functions should be in a VPC
 
 | Provider            | Category                     |
 |---------------------|------------------------------|
@@ -25,7 +25,7 @@ trace:
 
     → → Overall Result: true
 
-    This result means that all resources have passed the policy check for the policy aws-lambda-3-lambda-functions-should-be-in-a-vpc.
+    This result means that all resources have passed the policy check for the policy lambda-functions-should-be-in-a-vpc.
 
     ✓ Found 0 resource violations
 
@@ -52,7 +52,7 @@ trace:
 
     → → Overall Result: false
 
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy aws-lambda-3-lambda-functions-should-be-in-a-vpc.
+    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy lambda-functions-should-be-in-a-vpc.
 
     Found 1 resource violations
 
