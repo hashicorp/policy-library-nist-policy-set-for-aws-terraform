@@ -1,10 +1,10 @@
-# Pre-written Sentinel Policies for AWS NIST SP 800-53 Revision 5 Foundations Benchmarking
+# Pre-written Sentinel Policies for AWS NIST SP 800-53 Revision 5
 
-Pre-written Sentinel policies are ready to use compliance checks for NIST SP 800-53 Revision 5 AWS Foundations Benchmarking to help enable your AWS resources meet industry security standards.
+Pre-written Sentinel policies are ready to use compliance checks for NIST SP 800-53 Revision 5 to help enable your AWS resources meet industry security standards.
 
 At HashiCorp, we’re committed to making policy management easier for our customers. We understand that developing policies from scratch can be time-consuming and resource-intensive. To address this, we’re introducing our Prewritten Policy Libraries—expertly crafted, ready-to-use policies designed to streamline your compliance processes and enhance security across your infrastructure.
 
-This repository contains several policies designed to accelerate the adoption of the NIST SP 800-53 Revision 5 AWS Foundations Benchmark within HCP Terraform. These policies can be utilized to enforce best practices and security standards across your AWS environment.
+This repository contains several policies designed to accelerate the adoption of the NIST SP 800-53, tailored for public sector and government-aligned environments will enable users to continuously evaluate and enforce security and privacy controls across their systems and resources, ensuring compliance, reducing risk, and improving overall security posture with actionable guidance.
 
 For more details on how to work with these policies and to understand the Sentinel language and framework, please refer to the [Sentinel documentation](https://developer.hashicorp.com/sentinel/) or the README documentation included with each of the policy [libraries](https://github.com/hashicorp/policy-library-nist-policy-set-for-aws-terraform/blob/main/docs/policies).
 
