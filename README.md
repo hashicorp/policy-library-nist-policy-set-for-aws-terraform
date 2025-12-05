@@ -53,9 +53,9 @@ If you want to enable only a subset of the policies or change the [enforcement l
 >
 > To learn more about how to configure a policy set as a [policy evaluation](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement/manage-policy-sets#policy-evaluations), please review the Terraform Enterprise provider [documentation](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set#agent_enabled).
 
-## Consuming Pre-Written Sentinel Policies for NIST SP 800-53 Revision 5 AWS Foundations Benchmark
+## Consuming Pre-Written Sentinel Policies for NIST SP 800-53 Revision 5
 
-Following methods outlines various ways to consume and implement pre-written Sentinel policies for the NIST SP 800-53 Revision 5 AWS Foundations Benchmark. These policies can be used in both Terraform Enterprise (TFE) and HCP Terraform environments. Below are the recommended methods for integrating these policies into your workflows.
+Following methods outlines various ways to consume and implement pre-written Sentinel policies for the NIST SP 800-53 Revision 5. These policies can be used in both Terraform Enterprise (TFE) and HCP Terraform environments. Below are the recommended methods for integrating these policies into your workflows.
 
 ### Terraform Registry Method:
 
@@ -79,7 +79,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - These policies are compatible with both HCP Terraform (HCPT) and Terraform Enterprise (TFE). Ensure your workflow is configured accordingly.
 - When using the public GitHub repository, it is recommended to use release branches for stability and avoid consuming policies directly from the default branch.
-- Regularly update your policies to align with the latest NIST SP 800-53 Revision 5 AWS Foundations Benchmark standards and Terraform best practices.
+- Regularly update your policies to align with the latest NIST SP 800-53 Revision 5 compliance standard and Terraform best practices.
 - Customize policies as needed to meet your organization's specific compliance and security requirements.
 
 ## Resources
