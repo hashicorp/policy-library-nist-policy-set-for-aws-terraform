@@ -19,7 +19,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: MQ
-    description: MQ.5 This control checks whether the deployment mode for an Amazon MQ ActiveMQ broker is set to active/standby.
+    description: "MQ.5 This control checks whether the deployment mode for an Amazon MQ ActiveMQ broker is set to active/standby."
     type: sentinel
   api-gateway-access-logging-should-be-configured:
     path: policies/apigateway/api-gateway-access-logging-should-be-configured.sentinel
@@ -107,7 +107,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ELB
-    description: ELB.16 This control checks whether an Application Load Balancer is associated with an AWS WAF Classic or AWS WAF web access control list (web ACL)
+    description: "ELB.16 This control checks whether an Application Load Balancer is associated with an AWS WAF Classic or AWS WAF web access control list (web ACL)"
     type: sentinel
   appsync-graphql-api-should-not-authenticate-with-api-keys:
     path: policies/appsync/appsync-graphql-api-should-not-authenticate-with-api-keys.sentinel
@@ -316,7 +316,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: CloudTrail
-    description: CloudTrail.10 This control checks whether an AWS CloudTrail Lake event data store is encrypted at rest with a customer managed AWS KMS key.
+    description: "CloudTrail.10 This control checks whether an AWS CloudTrail Lake event data store is encrypted at rest with a customer managed AWS KMS key."
     type: sentinel
   cloudtrail-log-file-validation-enabled:
     path: policies/cloudtrail/cloudtrail-log-file-validation-enabled.sentinel
@@ -349,7 +349,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: CloudWatch
-    description: CloudWatch.17 This control checks whether CloudWatch alarm actions are activated (ActionEnabled should be set to true).
+    description: "CloudWatch.17 This control checks whether CloudWatch alarm actions are activated (ActionEnabled should be set to true)."
     type: sentinel
   cloudwatch-alarms-should-have-specified-actions-configured:
     path: policies/cloudwatch/cloudwatch-alarms-should-have-specified-actions-configured.sentinel
@@ -360,7 +360,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: CloudWatch
-    description: CloudWatch.15 This control checks whether an Amazon CloudWatch alarm has at least one action configured for the ALARM state.
+    description: "CloudWatch.15 This control checks whether an Amazon CloudWatch alarm has at least one action configured for the ALARM state."
     type: sentinel
   cloudwatch-log-groups-should-be-retained-for-a-specified-time-period:
     path: policies/cloudwatch/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.sentinel
@@ -371,7 +371,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: CloudWatch
-    description: CloudWatch.16 This control checks whether an Amazon CloudWatch log group has a retention period of at least the specified number of days.
+    description: "CloudWatch.16 This control checks whether an Amazon CloudWatch log group has a retention period of at least the specified number of days."
     type: sentinel
   codebuild-project-environments-should-have-a-logging-aws-configuration:
     path: policies/codebuild/codebuild-project-environments-should-have-a-logging-aws-configuration.sentinel
@@ -569,7 +569,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: DynamoDB
-    description: DynamoDB.4 This control evaluates whether an Amazon DynamoDB table in ACTIVE state is covered by a backup plan
+    description: "DynamoDB.4 This control evaluates whether an Amazon DynamoDB table in ACTIVE state is covered by a backup plan"
     type: sentinel
   ebs-volumes-should-be-in-a-backup-plan:
     path: policies/ec2/ebs-volumes-should-be-in-a-backup-plan.sentinel
@@ -580,7 +580,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: EC2
-    description: EC2.28 This control evaluates if an Amazon EBS volume in in-use state is covered by a backup plan.
+    description: "EC2.28 This control evaluates if an Amazon EBS volume in in-use state is covered by a backup plan."
     type: sentinel
   ec2-attached-ebs-volumes-encrypted-at-rest:
     path: policies/ec2/ec2-attached-ebs-volumes-encrypted-at-rest.sentinel
@@ -646,7 +646,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: EC2
-    description: This policy checks if the EC2 Instance have only one Network Interface
+    description: "This policy checks if the EC2 Instance have only one Network Interface"
     type: sentinel
   ec2-instance-virtualization-should-not-be-paravirtual:
     path: policies/ec2/ec2-instance-virtualization-should-not-be-paravirtual.sentinel
@@ -712,7 +712,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: EC2
-    description: Imports
+    description: "Imports"
     type: sentinel
   ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports:
     path: policies/ec2/ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports.sentinel
@@ -723,7 +723,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: EC2
-    description: Security groups should only allow unrestricted incoming traffic for authorized ports
+    description: "Security groups should only allow unrestricted incoming traffic for authorized ports"
     type: sentinel
   ec2-service-vpc-endpoint-enabled:
     path: policies/ec2/ec2-service-vpc-endpoint-enabled.sentinel
@@ -822,7 +822,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ECR
-    description: ECR.5 This control checks whether an Amazon ECR repository is encrypted at rest with a customer managed AWS KMS key.
+    description: "ECR.5 This control checks whether an Amazon ECR repository is encrypted at rest with a customer managed AWS KMS key."
     type: sentinel
   ecr-tag-immutability-configured:
     path: policies/ecr/ecr-tag-immutability-configured.sentinel
@@ -899,7 +899,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ECS
-    description: This policy checks if the container definitions contain non allow listed secrets as environment variables
+    description: "This policy checks if the container definitions contain non allow listed secrets as environment variables"
     type: sentinel
   ecs-task-definition-read-only-root-file-system-access:
     path: policies/ecs/ecs-task-definition-read-only-root-file-system-access.sentinel
@@ -932,7 +932,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ECS
-    description: This policy checks if the task definition with host networking mode has unprivileged or user container definitions.
+    description: "This policy checks if the task definition with host networking mode has unprivileged or user container definitions."
     type: sentinel
   ecs-task-definitions-should-not-use-host-network-mode:
     path: policies/ecs/ecs-task-definitions-should-not-use-host-network-mode.sentinel
@@ -943,7 +943,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ECS
-    description: ECS.17 This control checks whether the latest active revision of an Amazon ECS task definition uses host network mode.
+    description: "ECS.17 This control checks whether the latest active revision of an Amazon ECS task definition uses host network mode."
     type: sentinel
   efs-access-point-should-enforce-root-directory:
     path: policies/efs/efs-access-point-should-enforce-root-directory.sentinel
@@ -1119,7 +1119,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: Elastic Beanstalk
-    description: This policy requires that the elasticbeanstalk environment have enhanced health reporting enabled
+    description: "This policy requires that the elasticbeanstalk environment have enhanced health reporting enabled"
     type: sentinel
   elasticbeanstalk-managed-platform-updates-enabled:
     path: policies/elasticbeanstalk/elasticbeanstalk-managed-platform-updates-enabled.sentinel
@@ -1130,7 +1130,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: Elastic Beanstalk
-    description: This policy requires that the elasticbeanstalk environment have platform updates enabled
+    description: "This policy requires that the elasticbeanstalk environment have platform updates enabled"
     type: sentinel
   elasticsearch-audit-logging-enabled:
     path: policies/elasticsearch/elasticsearch-audit-logging-enabled.sentinel
@@ -1262,7 +1262,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ELB
-    description: This policy checks if application load balancers are configured to drop invalid HTTP headers
+    description: "This policy checks if application load balancers are configured to drop invalid HTTP headers"
     type: sentinel
   elb-ensure-access-logging-enabled:
     path: policies/elb/elb-ensure-access-logging-enabled.sentinel
@@ -1295,7 +1295,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ELB
-    description: This policy ensures that application load balancer in the terraform configurations have a listener rule configured to redirect HTTP requests to HTTPS
+    description: "This policy ensures that application load balancer in the terraform configurations have a listener rule configured to redirect HTTP requests to HTTPS"
     type: sentinel
   elb-ensure-multi-az-configuration-classic-load-balancer:
     path: policies/elb/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel
@@ -1306,7 +1306,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ELB
-    description: This policy checks if load balancers span across multiple availability zones.
+    description: "This policy checks if load balancers span across multiple availability zones."
     type: sentinel
   elb-ensure-ssl-listener-acm-cert-classic-load-balancer:
     path: policies/elb/elb-ensure-ssl-listener-acm-cert-classic-load-balancer.sentinel
@@ -1328,7 +1328,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: ELB
-    description: This policy checks if classic load balancers with SSL listeners have predefined security policy configured
+    description: "This policy checks if classic load balancers with SSL listeners have predefined security policy configured"
     type: sentinel
   elb-ensure-valid-desync-mitigation-mode:
     path: policies/elb/elb-ensure-valid-desync-mitigation-mode.sentinel
@@ -1372,7 +1372,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: EMR
-    description: This policy requires block public access setting is enabled and any port other than 22 should not be allowed
+    description: "This policy requires block public access setting is enabled and any port other than 22 should not be allowed"
     type: sentinel
   emr-security-configuration-encryption-rest:
     path: policies/emr/emr-security-configuration-encryption-rest.sentinel
@@ -1394,7 +1394,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: EMR
-    description: This policy requires aws_emr_security_configuration to enable encryption in transit.
+    description: "This policy requires aws_emr_security_configuration to enable encryption in transit."
     type: sentinel
   eventbridge-custom-event-bus-should-have-attached-policy:
     path: policies/eventbridge/eventbridge-custom-event-bus-should-have-attached-policy.sentinel
@@ -1416,7 +1416,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: EventBridge
-    description: EventBridge.4 This control checks if event replication is enabled for an Amazon EventBridge global endpoint.
+    description: "EventBridge.4 This control checks if event replication is enabled for an Amazon EventBridge global endpoint."
     type: sentinel
   fsx-lustre-copy-tags-to-backups:
     path: policies/fsx/fsx-lustre-copy-tags-to-backups.sentinel
@@ -1449,7 +1449,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: Glue
-    description: This policy ensures that AWS Glue Spark jobs use only supported Glue versions.
+    description: "This policy ensures that AWS Glue Spark jobs use only supported Glue versions."
     type: sentinel
   guardduty-should-be-enabled:
     path: policies/guardduty/guardduty-should-be-enabled.sentinel
@@ -1471,7 +1471,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: IAM
-    description: IAM policies should not allow administrator privileges to users/roles/groups.
+    description: "IAM policies should not allow administrator privileges to users/roles/groups."
     type: sentinel
   iam-no-policies-attached-to-users:
     path: policies/iam/iam-no-policies-attached-to-users.sentinel
@@ -1482,7 +1482,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: IAM
-    description: IAM users should not be directly attached to IAM policies.
+    description: "IAM users should not be directly attached to IAM policies."
     type: sentinel
   iam-password-policy-strong-configuration:
     path: policies/iam/iam-password-policy-strong-configuration.sentinel
@@ -1504,7 +1504,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: IAM
-    description: IAM customer managed policies that you create should not allow wildcard actions for services.
+    description: "IAM customer managed policies that you create should not allow wildcard actions for services."
     type: sentinel
   kinesis-firehose-delivery-stream-encrypted:
     path: policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel
@@ -1559,7 +1559,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: Lambda
-    description: Lambda.3 This control checks whether a Lambda function is deployed in a virtual private cloud (VPC).
+    description: "Lambda.3 This control checks whether a Lambda function is deployed in a virtual private cloud (VPC)."
     type: sentinel
   lambda-functions-should-use-supported-runtimes:
     path: policies/lambda/lambda-functions-should-use-supported-runtimes.sentinel
@@ -1724,7 +1724,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: Neptune
-    description: This policy requires neptune cluster to be deployed in multiple availability zone (multi-AZ) mode
+    description: "This policy requires neptune cluster to be deployed in multiple availability zone (multi-AZ) mode"
     type: sentinel
   neptune-cluster-snapshot-encryption-at-rest-enabled:
     path: policies/neptune/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel
@@ -1889,7 +1889,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: OpenSearch
-    description: This policy checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access.
+    description: "This policy checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access."
     type: sentinel
   opensearch-logs-to-cloudwatch:
     path: policies/opensearch/opensearch-logs-to-cloudwatch.sentinel
@@ -2109,7 +2109,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: RDS
-    description: This policy checks if the aws rds instances are publicly accessible
+    description: "This policy checks if the aws rds instances are publicly accessible"
     type: sentinel
   rds-event-notifications-configured-for-critical-events:
     path: policies/rds/rds-event-notifications-configured-for-critical-events.sentinel
@@ -2131,7 +2131,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: RDS
-    description: This control checks whether an Amazon RDS for MariaDB DB instance is configured to publish certain types of logs to Amazon CloudWatch Logs.
+    description: "This control checks whether an Amazon RDS for MariaDB DB instance is configured to publish certain types of logs to Amazon CloudWatch Logs."
     type: sentinel
   rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs:
     path: policies/rds/rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel
@@ -2142,7 +2142,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: RDS
-    description: This control checks whether an Amazon RDS for Microsoft SQL Server DB instance is configured to publish logs to Amazon CloudWatch Logs.
+    description: "This control checks whether an Amazon RDS for Microsoft SQL Server DB instance is configured to publish logs to Amazon CloudWatch Logs."
     type: sentinel
   rds-instance-default-admin-check:
     path: policies/rds/rds-instance-default-admin-check.sentinel
@@ -2164,7 +2164,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: RDS
-    description: This policy checks if the aws rds instances are publicly accessible
+    description: "This policy checks if the aws rds instances are publicly accessible"
     type: sentinel
   redshift-cluster-audit-logging-enabled:
     path: policies/redshift/redshift-cluster-audit-logging-enabled.sentinel
@@ -2296,7 +2296,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: Route 53
-    description: This control checks if DNS query logging is enabled for an Amazon Route 53 public hosted zone.
+    description: "This control checks if DNS query logging is enabled for an Amazon Route 53 public hosted zone."
     type: sentinel
   s3-access-point-block-public-access-enabled:
     path: policies/s3/s3-access-point-block-public-access-enabled.sentinel
@@ -2340,7 +2340,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 general purpose buckets should block public read access
+    description: "S3 general purpose buckets should block public read access"
     type: sentinel
   s3-bucket-block-public-write-access:
     path: policies/s3/s3-bucket-block-public-write-access.sentinel
@@ -2351,7 +2351,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 general purpose buckets should block public write access
+    description: "S3 general purpose buckets should block public write access"
     type: sentinel
   s3-bucket-policy-restrict-access-to-other-accounts:
     path: policies/s3/s3-bucket-policy-restrict-access-to-other-accounts.sentinel
@@ -2362,7 +2362,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 general purpose bucket policies should restrict access to other AWS accounts
+    description: "S3 general purpose bucket policies should restrict access to other AWS accounts"
     type: sentinel
   s3-bucket-should-be-encrypted-at-rest:
     path: policies/s3/s3-bucket-should-be-encrypted-at-rest.sentinel
@@ -2373,7 +2373,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 Buckets should have encryption enabled at rest with AWS KMS Key
+    description: "S3 Buckets should have encryption enabled at rest with AWS KMS Key"
     type: sentinel
   s3-bucket-should-have-event-notifications-enabled:
     path: policies/s3/s3-bucket-should-have-event-notifications-enabled.sentinel
@@ -2384,7 +2384,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 Buckets should have event notifications enabled
+    description: "S3 Buckets should have event notifications enabled"
     type: sentinel
   s3-bucket-should-have-object-lock-enabled:
     path: policies/s3/s3-bucket-should-have-object-lock-enabled.sentinel
@@ -2395,7 +2395,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 Buckets should have object lock enabled
+    description: "S3 Buckets should have object lock enabled"
     type: sentinel
   s3-bucket-should-have-versioning-enabled:
     path: policies/s3/s3-bucket-should-have-versioning-enabled.sentinel
@@ -2406,7 +2406,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 Buckets should have versioning enabled
+    description: "S3 Buckets should have versioning enabled"
     type: sentinel
   s3-bucket-should-use-cross-region-replication:
     path: policies/s3/s3-bucket-should-use-cross-region-replication.sentinel
@@ -2417,7 +2417,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 Buckets should have cross-region replication enabled
+    description: "S3 Buckets should have cross-region replication enabled"
     type: sentinel
   s3-bucket-with-versioning-should-have-lifecycle-configurations:
     path: policies/s3/s3-bucket-with-versioning-should-have-lifecycle-configurations.sentinel
@@ -2428,7 +2428,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: S3
-    description: S3 Buckets with versioning should have lifecycle configurations
+    description: "S3 Buckets with versioning should have lifecycle configurations"
     type: sentinel
   s3-require-ssl:
     path: policies/s3/s3-require-ssl.sentinel
@@ -2483,7 +2483,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: SageMaker
-    description: This control checks if an Amazon SageMaker AI notebook instance is launched within a custom virtual private cloud (VPC).
+    description: "This control checks if an Amazon SageMaker AI notebook instance is launched within a custom virtual private cloud (VPC)."
     type: sentinel
   sagemaker-notebook-no-direct-internet-access:
     path: policies/sagemaker/sagemaker-notebook-no-direct-internet-access.sentinel
@@ -2560,7 +2560,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: Transfer Family
-    description: This control checks whether Amazon CloudWatch logging is enabled for an AWS Transfer Family connector.
+    description: "This control checks whether Amazon CloudWatch logging is enabled for an AWS Transfer Family connector."
     type: sentinel
   transfer-family-server-should-not-use-ftp:
     path: policies/transfer/transfer-family-server-should-not-use-ftp.sentinel
@@ -2637,7 +2637,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: WAF
-    description: This policy checks whether an AWS WAF Regional rule group has at least one rule.
+    description: "This policy checks whether an AWS WAF Regional rule group has at least one rule."
     type: sentinel
   waf-regional-webacl-not-empty:
     path: policies/waf/waf-regional-webacl-not-empty.sentinel
@@ -2681,7 +2681,7 @@ policies:
       - name: NIST SP 800-53
         version: Revision 5
     service: WAF
-    description: WAFv2 Web ACLs should have logging enabled
+    description: "WAFv2 Web ACLs should have logging enabled"
     type: sentinel
 modules:
   report:
