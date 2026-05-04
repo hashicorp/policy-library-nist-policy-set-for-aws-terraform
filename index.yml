@@ -1,0 +1,2698 @@
+policies:
+  acm-pca-root-ca-disabled:
+    path: policies/acm/acm-pca-root-ca-disabled.sentinel
+    sha: 217c71c12a133182821545729cd4ccda9085f75a6671ca0caf89210929061355
+    governed_resources: [aws_acmpca_certificate_authority]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ACM
+    description: "This policy checks if AWS ACM Private CA has a root certificate authority (CA) that is enabled. The control fails if the root CA is enabled with type `ROOT`."
+    type: sentinel
+  activemq-brokers-should-use-active-standby-deployment-mode:
+    path: policies/mq/activemq-brokers-should-use-active-standby-deployment-mode.sentinel
+    sha: 308b5baec990e2bdda2ccd6c601e3321b48d4c33a74b0df60d1c79972d8133b1
+    governed_resources: [aws_mq_broker]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: MQ
+    description: "MQ.5 This control checks whether the deployment mode for an Amazon MQ ActiveMQ broker is set to active/standby."
+    type: sentinel
+  api-gateway-access-logging-should-be-configured:
+    path: policies/apigateway/api-gateway-access-logging-should-be-configured.sentinel
+    sha: de450a6a015918aa33c90d200b7a754ddc524a6d208746320193c5697f2bc7e6
+    governed_resources: [aws_apigatewayv2_stage]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: API Gateway
+    description: "This policy checks if `aws_apigatewayv2_stage` have access logging configured."
+    type: sentinel
+  api-gateway-rest-and-websocket-api-logging-enabled:
+    path: policies/apigateway/api-gateway-rest-and-websocket-api-logging-enabled.sentinel
+    sha: dcb6ea6bc438dbc0199ecdbfbc3ab91a3b2883f2aebe6296ed43806e91d85d27
+    governed_resources: [aws_api_gateway_method_settings]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: API Gateway
+    description: "This policy checks for resource type of `aws_api_gateway_method_settings` whether all stages of an Amazon API Gateway REST or WebSocket API have logging enabled."
+    type: sentinel
+  api-gateway-rest-cache-have-encryption-enabled:
+    path: policies/apigateway/api-gateway-rest-cache-have-encryption-enabled.sentinel
+    sha: 59fb6503d48b2876651aceafa9f56d44c1baf33a65a7dc6a67821fa7afcfc3b6
+    governed_resources: [aws_api_gateway_method_settings]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: API Gateway
+    description: "This policy checks `aws_api_gateway_method_settings` in API Gateway REST API stages that have cache enabled are encrypted."
+    type: sentinel
+  api-gateway-rest-configure-ssl-certificates:
+    path: policies/apigateway/api-gateway-rest-configure-ssl-certificates.sentinel
+    sha: 676e69498a2f66fe361b3a246851fc01dac9fc75152afd4f15ebfc7f29fb58fd
+    governed_resources: [aws_api_gateway_stage]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: API Gateway
+    description: "This policy checks whether `aws_api_gateway_stage` have SSL certificates configured."
+    type: sentinel
+  api-gateway-rest-have-x-ray-tracing-enabled:
+    path: policies/apigateway/api-gateway-rest-have-x-ray-tracing-enabled.sentinel
+    sha: 7cf768b58757dfac46e8465188ad1107eab87cbac5ccb527bf4ec5ed909491b6
+    governed_resources: [aws_api_gateway_stage]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: API Gateway
+    description: "This policy checks whether AWS X-Ray active tracing is enabled for your resource `aws_api_gateway_stage`."
+    type: sentinel
+  api-gateway-routes-should-specify-an-authorization-type:
+    path: policies/apigateway/api-gateway-routes-should-specify-an-authorization-type.sentinel
+    sha: 8d01e81a86d941d5d10ca9eeb7729620c6327e5f453ceace043e639c7fa330bd
+    governed_resources: [aws_apigatewayv2_route]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: API Gateway
+    description: "This policy checks if `aws_apigatewayv2_route` have an authorization type."
+    type: sentinel
+  api-gateway-should-be-associated-with-a-waf-web-acl:
+    path: policies/apigateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel
+    sha: b240f25af8fe7239f58477dc51019f57ac616ab56b529d2aea8f1a048fc9e3be
+    governed_resources: [aws_wafv2_web_acl_association]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: API Gateway
+    description: "This policy checks whether an `aws_api_gateway_stage` uses `aws_wafv2_web_acl_association`."
+    type: sentinel
+  application-load-balancers-should-be-associated-with-an-aws-waf-web-acl:
+    path: policies/elb/application-load-balancers-should-be-associated-with-an-aws-waf-web-acl.sentinel
+    sha: 8406e65e4d09d04c4230e66054c44b52f56c23b97265172456eeb225c5a60324
+    governed_resources: [aws_wafv2_web_acl_association]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "ELB.16 This control checks whether an Application Load Balancer is associated with an AWS WAF Classic or AWS WAF web access control list (web ACL)"
+    type: sentinel
+  appsync-graphql-api-should-not-authenticate-with-api-keys:
+    path: policies/appsync/appsync-graphql-api-should-not-authenticate-with-api-keys.sentinel
+    sha: 2d2473ff678ff2468908c58e183e85aa0082d229c607be20a51a008166d89268
+    governed_resources: [aws_appsync_graphql_api]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: AppSync
+    description: "This policy requires resources of type `aws_appsync_graphql_api` have attribute `authentication_type` should not be `API_KEY`."
+    type: sentinel
+  autoscaling-group-should-cover-multiple-azs:
+    path: policies/autoscalinggroup/autoscaling-group-should-cover-multiple-azs.sentinel
+    sha: 18708001c2f0f785be9389d9cfef44908eeb9e0fcfd61d0728fe7c5bbdf68e0e
+    governed_resources: [aws_autoscaling_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Auto Scaling Group
+    description: "This policy checks if resources of type `aws_autoscaling_group` have more than one value in either `availability_zone` or `vpc_zone_identifier`"
+    type: sentinel
+  autoscaling-group-should-use-launch-templates:
+    path: policies/autoscalinggroup/autoscaling-group-should-use-launch-templates.sentinel
+    sha: 791bc021f53578e757bd692a25dc2bac7a60683a7262e6cd07446a92598fe710
+    governed_resources: [aws_autoscaling_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Auto Scaling Group
+    description: "This policy checks if resources of type `aws_autoscaling_group` have the `launch_template` attribute or the attribute must be present in `mixed_instances_policy`"
+    type: sentinel
+  autoscaling-group-should-use-multiple-instance-types:
+    path: policies/autoscalinggroup/autoscaling-group-should-use-multiple-instance-types.sentinel
+    sha: cba7c84938c03a003773e134b2cfe3dbd6b8c02e215aeb20255d2f688b936e4a
+    governed_resources: [aws_autoscaling_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Auto Scaling Group
+    description: "This policy checks if resources of type `aws_autoscaling_group` have the multiple instance types"
+    type: sentinel
+  autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck:
+    path: policies/autoscalinggroup/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel
+    sha: a5a75bba7289374b16cbe08f002fc65691a8d40a51d9a74a19d8d502acfed3b1
+    governed_resources: [aws_autoscaling_attachment, aws_autoscaling_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Auto Scaling Group
+    description: "This policy requires `aws_autoscaling_group` resources to be associated with load balancers and to have attribute `health_check_health_check_type` should be `ELB`."
+    type: sentinel
+  autoscaling-launch-config-public-ip-disabled:
+    path: policies/autoscalinggroup/autoscaling-launch-config-public-ip-disabled.sentinel
+    sha: 5cd47033d9789bdf96457748ee97f4cbe5f803c1b1641bc698bb36b0b817cc3f
+    governed_resources: [aws_launch_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Auto Scaling Group
+    description: "This policy requires resources of type `aws_launch_configuration` should have `associate_public_ip_address` set to false."
+    type: sentinel
+  backup-recovery-point-encrypted:
+    path: policies/backup/backup-recovery-point-encrypted.sentinel
+    sha: 557919df6b581b34914cb019f67e009059bbd85c2de45272c39d29472e7041ca
+    governed_resources: [aws_backup_framework]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Backup
+    description: "This policy checks if resources of type `aws_backup_framework` have the attribute `control` value set to `BACKUP_RECOVERY_POINT_ENCRYPTED`"
+    type: sentinel
+  cloudfront-associated-with-waf:
+    path: policies/cloudfront/cloudfront-associated-with-waf.sentinel
+    sha: 16d2f7c924383a61d167cffef42639b7e29c8786e6c137259543038b50de9025
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This policy checks whether `aws_cloudfront_distribution` are associated with either AWS WAF Classic or AWS WAF web ACLs."
+    type: sentinel
+  cloudfront-distributions-should-encrypt-traffic-to-custom-origins:
+    path: policies/cloudfront/cloudfront-distributions-should-encrypt-traffic-to-custom-origins.sentinel
+    sha: bd59206cb6cf2cae277ba6786b3e634fa3e6d75de6ab557c3002b81547212b4b
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This control checks whether `aws_cloudfront_distribution` are encrypting traffic to custom origins."
+    type: sentinel
+  cloudfront-distributions-should-have-logging-enabled:
+    path: policies/cloudfront/cloudfront-distributions-should-have-logging-enabled.sentinel
+    sha: 7b7e89840afce18c3d35a2381e02237202a7c918a5bb290e93914a07202bdbb1
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This control checks whether server access logging is enabled on `aws_cloudfront_distribution`."
+    type: sentinel
+  cloudfront-distributions-should-have-origin-failover-configured:
+    path: policies/cloudfront/cloudfront-distributions-should-have-origin-failover-configured.sentinel
+    sha: 1f3409aa81b039e76aff010051280c0e42ca376b5131f575e0b68282e2b1ec20
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This control checks whether an `aws_cloudfront_distribution` is configured with an origin group that has two or more origins."
+    type: sentinel
+  cloudfront-distributions-should-not-use-deprecated-ssl-protocols:
+    path: policies/cloudfront/cloudfront-distributions-should-not-use-deprecated-ssl-protocols.sentinel
+    sha: 1fe0984b7924d1070f168ddb99245a05d55f22e6e3595a67c7990a4a354ddb26
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This control checks whether `aws_cloudfront_distribution` are using deprecated SSL protocols for HTTPS communication between CloudFront edge locations and your custom origins."
+    type: sentinel
+  cloudfront-distributions-should-use-custom-ssl-tls-certificates:
+    path: policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel
+    sha: 33f184c1c25f3d3f8ef22da941b6eaa56607ab2996a77d7b3185245ecda15853
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This control checks whether `aws_cloudfront_distribution` are using the default SSL/TLS certificate CloudFront provides."
+    type: sentinel
+  cloudfront-distributions-should-use-sni-to-serve-https-requests:
+    path: policies/cloudfront/cloudfront-distributions-should-use-sni-to-serve-https-requests.sentinel
+    sha: d646d4620fa70e2ab98dc87a7073716f53aec1244f6108298125b9162975b502
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This control checks whether `aws_cloudfront_distribution` are using a custom SSL/TLS certificate and are configured to use SNI to serve HTTPS requests."
+    type: sentinel
+  cloudfront-s3-origin-non-existent-bucket:
+    path: policies/cloudfront/cloudfront-s3-origin-non-existent-bucket.sentinel
+    sha: db0219171a3613a76e80b6e5219ef859f7a0e509b0a313a71e0a65d526c012ca
+    governed_resources: [aws_cloudfront_distribution, aws_s3_bucket]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This policy checks whether `aws_cloudfront_distribution` are pointing to non-existent Amazon S3 origins."
+    type: sentinel
+  cloudfront-should-have-default-root-object-configured:
+    path: policies/cloudfront/cloudfront-should-have-default-root-object-configured.sentinel
+    sha: 32a0efa2df3bb49ae10f6744537344559b5748378d946ac85e5b9819e815a1e7
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This control checks whether an `aws_cloudfront_distribution` is configured to return a specific object that is the default root object."
+    type: sentinel
+  cloudfront-should-require-encryption-in-transit:
+    path: policies/cloudfront/cloudfront-should-require-encryption-in-transit.sentinel
+    sha: efc9354855cde130f7b7411316d119e1511253f18108b77576ba9a1cbaa3581f
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudFront
+    description: "This control checks whether an `aws_cloudfront_distribution` requires viewers to use HTTPS directly or whether it uses redirection."
+    type: sentinel
+  cloudtrail-cloudwatch-logs-group-arn-present:
+    path: policies/cloudtrail/cloudtrail-cloudwatch-logs-group-arn-present.sentinel
+    sha: 0d484d4d3b7f4fd90127beef03385002f8c7fd63d5c0825f99e9f5a279775a4b
+    governed_resources: [aws_cloudtrail]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudTrail
+    description: "This policy requires resources of type `aws_cloudtrail` to have cloudwatch log group arn set."
+    type: sentinel
+  cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys:
+    path: policies/cloudtrail/cloudtrail-lake-event-data-stores-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel
+    sha: d2e2c910ce5c41924c8375fe2360fbddd652971137b73af4023e0ddda9bc310e
+    governed_resources: [aws_cloudtrail_event_data_store]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudTrail
+    description: "CloudTrail.10 This control checks whether an AWS CloudTrail Lake event data store is encrypted at rest with a customer managed AWS KMS key."
+    type: sentinel
+  cloudtrail-log-file-validation-enabled:
+    path: policies/cloudtrail/cloudtrail-log-file-validation-enabled.sentinel
+    sha: 8b2129fbe8c0d4201cd1cb01d2bc87a263e56e4d1f960e7585d874be99049cb6
+    governed_resources: [aws_cloudtrail]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudTrail
+    description: "This policy requires resources of type `aws_cloudtrail` to have log file validation enabled."
+    type: sentinel
+  cloudtrail-server-side-encryption-enabled:
+    path: policies/cloudtrail/cloudtrail-server-side-encryption-enabled.sentinel
+    sha: 0dd8f97b3eb507935cdbc87c5c598dd459415369f14533a1a6557fb298026ebc
+    governed_resources: [aws_cloudtrail]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudTrail
+    description: "This policy requires that resources of type `aws_cloudtrail` have server-side encryption enabled."
+    type: sentinel
+  cloudwatch-alarm-actions-should-be-enabled:
+    path: policies/cloudwatch/cloudwatch-alarm-actions-should-be-enabled.sentinel
+    sha: f398546daee6a038be6527ab7ab0820a3d9519d4f8a32dff6e74c5e92e8f446f
+    governed_resources: [aws_cloudwatch_composite_alarm, aws_cloudwatch_metric_alarm]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudWatch
+    description: "CloudWatch.17 This control checks whether CloudWatch alarm actions are activated (ActionEnabled should be set to true)."
+    type: sentinel
+  cloudwatch-alarms-should-have-specified-actions-configured:
+    path: policies/cloudwatch/cloudwatch-alarms-should-have-specified-actions-configured.sentinel
+    sha: 748c5e5ddccaf177780f794bbac35357f5e687bd59f02edd2634025dda197658
+    governed_resources: [aws_cloudwatch_composite_alarm, aws_cloudwatch_metric_alarm]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudWatch
+    description: "CloudWatch.15 This control checks whether an Amazon CloudWatch alarm has at least one action configured for the ALARM state."
+    type: sentinel
+  cloudwatch-log-groups-should-be-retained-for-a-specified-time-period:
+    path: policies/cloudwatch/cloudwatch-log-groups-should-be-retained-for-a-specified-time-period.sentinel
+    sha: 87cc3102a235b24e12b90d44f730009e626b04077c5e91964394c7e2960b090f
+    governed_resources: [aws_cloudwatch_log_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CloudWatch
+    description: "CloudWatch.16 This control checks whether an Amazon CloudWatch log group has a retention period of at least the specified number of days."
+    type: sentinel
+  codebuild-project-environments-should-have-a-logging-aws-configuration:
+    path: policies/codebuild/codebuild-project-environments-should-have-a-logging-aws-configuration.sentinel
+    sha: 2b56029da7993cfe3da473dc972145de01f5a2037ca436a5e194131a24e2ce83
+    governed_resources: [aws_codebuild_project]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CodeBuild
+    description: "This control checks whether a `aws_codebuild_project` has at least one log option, either to S3 or CloudWatch logs enabled."
+    type: sentinel
+  codebuild-s3-logs-should-be-encrypted:
+    path: policies/codebuild/codebuild-s3-logs-should-be-encrypted.sentinel
+    sha: c4e5b096128ce4ce2af167e294ec5b08744b5a7776f02f9377601a12631c06e9
+    governed_resources: [aws_codebuild_project]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: CodeBuild
+    description: "This control checks if Amazon S3 logs for an `aws_codebuild_project` are encrypted."
+    type: sentinel
+  dms-auto-minor-version-upgrade-check:
+    path: policies/dms/dms-auto-minor-version-upgrade-check.sentinel
+    sha: 13a7967d8dbda87a4fe606f6c906b423016b54b01ec80d0b6e96f97bcaf8db59
+    governed_resources: [aws_dms_replication_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_replication_instance` have the `auto_minor_version_upgrade` attribute set to true"
+    type: sentinel
+  dms-endpoint-should-be-ssl-configured:
+    path: policies/dms/dms-endpoint-should-be-ssl-configured.sentinel
+    sha: f7906f06073754311a27476d941774aaf73ec8494c86aed2c16d55788ae4a67e
+    governed_resources: [aws_dms_endpoint]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_endpoint` have the `certificate_arn` shouldn't be empty"
+    type: sentinel
+  dms-endpoints-should-use-ssl:
+    path: policies/dms/dms-endpoints-should-use-ssl.sentinel
+    sha: 687441917a83e45c32bfaddafc8da775501d7af25bc0c73c45fa7421f18c6679
+    governed_resources: [aws_dms_endpoint]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DMS
+    description: "This policy requires resources of type `aws_dms_endpoint` have attribute \"ssl_mode\" set to one of: require, verify-ca, verify-full."
+    type: sentinel
+  dms-mongo-db-authentication-enabled:
+    path: policies/dms/dms-mongo-db-authentication-enabled.sentinel
+    sha: b5cb0ae5650be0d2076e49e0a7fcea6592366bf0d3e6ba4ee5ab2c83d391cdc7
+    governed_resources: [aws_dms_endpoint]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_endpoint` have the `auth_mechanism` not set to default in `mongodb_settings` for engine of type `mongodb`"
+    type: sentinel
+  dms-redis-tls-enabled:
+    path: policies/dms/dms-redis-tls-enabled.sentinel
+    sha: d30754b73ddbd67bef4ef630ef91070d58650a0f56b53c65e2a9119d7937b55e
+    governed_resources: [aws_dms_endpoint]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_endpoint` have the `ssl_security_protocol` set to `ssl-encryption` in `redis_settings` for engine of type `redis`"
+    type: sentinel
+  dms-replication-instances-should-not-be-public:
+    path: policies/dms/dms-replication-instances-should-not-be-public.sentinel
+    sha: b99f82b37b80b3dded35650b3b281c12d102d0687e5fba9302f80023db57d1fb
+    governed_resources: [aws_dms_replication_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_replication_instance` have the `publicly_accessible` attribute set to false"
+    type: sentinel
+  dms-repliction-task-logging-enabled:
+    path: policies/dms/dms-repliction-task-logging-enabled.sentinel
+    sha: d576daa41047f71c1d72c1b937ae8a4f7366a337c3435847947d9b8b41d60b26
+    governed_resources: [aws_dms_replication_task]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_replication_task` have the `replication_task_settings` have logging enabled"
+    type: sentinel
+  docdb-cluster-audit-logging-enabled:
+    path: policies/docdb/docdb-cluster-audit-logging-enabled.sentinel
+    sha: 474ef64706f3b7fcc40fefb3c50843f4c5982ee4c448e56b1ad03614117f87d4
+    governed_resources: [aws_docdb_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DocDB
+    description: "This policy checks if resources of type `aws_docdb_cluster` have the `enabled_cloudwatch_logs_exports attribute` set to `audit`"
+    type: sentinel
+  docdb-cluster-backup-retention-check:
+    path: policies/docdb/docdb-cluster-backup-retention-check.sentinel
+    sha: 03f7664872a98f59bd3b2eac406143ca4a3aad4756b937aa7f2ca225512fdf6c
+    governed_resources: [aws_docdb_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DocDB
+    description: "This policy checks if resources of type `aws_docdb_cluster` have the `backup-retention-period` attribute set in between `7 to 35`"
+    type: sentinel
+  docdb-cluster-deletion-protection-enabled:
+    path: policies/docdb/docdb-cluster-deletion-protection-enabled.sentinel
+    sha: 4c3412e3e5c7f69ac993fa3cf94458ed7a19619c48fbccbe737bacff8ee4686d
+    governed_resources: [aws_docdb_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DocDB
+    description: "This policy checks if resources of type `aws_docdb_cluster` have the `deletion_protection` attribute set to true"
+    type: sentinel
+  docdb-cluster-storage-encrypted:
+    path: policies/docdb/docdb-cluster-storage-encrypted.sentinel
+    sha: 35db063988d02e34368418c96b74cb149c3855dbc929132b2b9c04ef7818d853
+    governed_resources: [aws_docdb_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DocDB
+    description: "This policy checks if resources of type `aws_docdb_cluster` have the `storage_encrypted` attribute set to true"
+    type: sentinel
+  dynamo-db-accelerator-clusters-encryption-at-rest-enabled:
+    path: policies/dynamodb/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel
+    sha: 4e5c5f92e24408854f1b89d8feb2f9c9fe1a10eeae7d7ecd5b7495b97cc9b1d3
+    governed_resources: [aws_dax_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DynamoDB
+    description: "This policy requires that `server_side_encryption` attribute of the `aws_dax_cluster` resource has `enabled` set to true"
+    type: sentinel
+  dynamo-db-tables-delete-protection-enabled:
+    path: policies/dynamodb/dynamo-db-tables-delete-protection-enabled.sentinel
+    sha: 186f9b376d4843fee5479ef05666f10419f89d1bdff814687bc33f34cbd8bc59
+    governed_resources: [aws_dynamodb_table]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DynamoDB
+    description: "This policy requires that `dynamo-db-tables-delete-protection-enabled` attribute of the `aws_dynamodb_table` resource is set to true"
+    type: sentinel
+  dynamo-db-tables-point-in-time-recovery-enabled:
+    path: policies/dynamodb/dynamo-db-tables-point-in-time-recovery-enabled.sentinel
+    sha: bb4191366e69c9d89ad12c9684e6fe2282f3970cf327faf5c5666a18bc907e83
+    governed_resources: [aws_dynamodb_table]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DynamoDB
+    description: "This policy requires that `point_in_time_recovery` attribute of the `aws_dynamodb_table` resource has `enabled` set to true"
+    type: sentinel
+  dynamo-db-tables-scales-capacity-with-demand:
+    path: policies/dynamodb/dynamo-db-tables-scales-capacity-with-demand.sentinel
+    sha: 9c65b2dc8ebbcf65f4c726e2a74d204963353f57eb90dd957345feda26eecf00
+    governed_resources: [aws_appautoscaling_policy, aws_appautoscaling_target, aws_dynamodb_table]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DynamoDB
+    description: "This policy requires that `aws_dynamodb_table` resources with `billing_mode` attribute set to `PROVISIONED` have autoscaling configured"
+    type: sentinel
+  dynamodb-tables-should-be-present-in-a-backup-plan:
+    path: policies/dynamodb/dynamodb-tables-should-be-present-in-a-backup-plan.sentinel
+    sha: 53f27d852afdddf23b7497c751794f5cc2704e4f8f688c7e4c533d4c4cad1f21
+    governed_resources: [aws_backup_plan, aws_backup_selection, aws_dynamodb_table]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: DynamoDB
+    description: "DynamoDB.4 This control evaluates whether an Amazon DynamoDB table in ACTIVE state is covered by a backup plan"
+    type: sentinel
+  ebs-volumes-should-be-in-a-backup-plan:
+    path: policies/ec2/ebs-volumes-should-be-in-a-backup-plan.sentinel
+    sha: bb4734124eb2b0a4ee2942acb02d04d87019ec9f58a860646a7dee3fcc5f01cb
+    governed_resources: [aws_backup_plan, aws_backup_selection, aws_ebs_volume]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "EC2.28 This control evaluates if an Amazon EBS volume in in-use state is covered by a backup plan."
+    type: sentinel
+  ec2-attached-ebs-volumes-encrypted-at-rest:
+    path: policies/ec2/ec2-attached-ebs-volumes-encrypted-at-rest.sentinel
+    sha: 2396ea59a31ec37d94e98e2df3aaf74ff9129f5e76e5431351780a7a5830facb
+    governed_resources: [aws_ebs_volume, aws_volume_attachment]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires `aws_ebs_volume` resources to be encrypted and in attached state."
+    type: sentinel
+  ec2-client-vpn-connection-log-enabled:
+    path: policies/ec2/ec2-client-vpn-connection-log-enabled.sentinel
+    sha: f24c62263301c8403f65c73a578b224d08bd815c03f15b259bb9aba6a2d4d978
+    governed_resources: [aws_ec2_client_vpn_endpoint]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy checks if resources of type `aws_ec2_client_vpn_endpoint` have the cloudwatch logs enabled in the `connection_log_options` attribute"
+    type: sentinel
+  ec2-ebs-encryption-enabled:
+    path: policies/ec2/ec2-ebs-encryption-enabled.sentinel
+    sha: 0aaade8a7061ef57f59e6ad5efdc8e1014f70d229c052b85fae6bf0b97225709
+    governed_resources: [aws_ebs_volume]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires resources of type `aws_ebs_volume` have the `encrypted` attribute set to `true`."
+    type: sentinel
+  ec2-ebs-snapshot-public-restorable-check-account-level:
+    path: policies/ec2/ec2-ebs-snapshot-public-restorable-check-account-level.sentinel
+    sha: b44a0b664b66aa49c35cd6009372e4a7486d12a2a29ebbacd4e1c54505e57aac
+    governed_resources: [aws_ebs_snapshot_block_public_access]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires `aws_ebs_snapshot_block_public_access` resources to have attribute state to either `block-new-sharing` or `block-all-sharing`."
+    type: sentinel
+  ec2-instance-should-not-have-public-ip:
+    path: policies/ec2/ec2-instance-should-not-have-public-ip.sentinel
+    sha: fb1a1e238914711de32969cb4159dd02ac7765b2b54cc5b2ee201651127ba104
+    governed_resources: [aws_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires resources of type `aws_instance` to not have a public IP address."
+    type: sentinel
+  ec2-instance-should-not-use-multiple-enis:
+    path: policies/ec2/ec2-instance-should-not-use-multiple-enis.sentinel
+    sha: f494ba6df44923afa09f47bf4826952734f67866543989d7560c4caadbe19747
+    governed_resources: [aws_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy checks if the EC2 Instance have only one Network Interface"
+    type: sentinel
+  ec2-instance-virtualization-should-not-be-paravirtual:
+    path: policies/ec2/ec2-instance-virtualization-should-not-be-paravirtual.sentinel
+    sha: 8ced21c7965804e992940575117bc786a98c9a26a32624aa86f8708c74e04929
+    governed_resources: [aws_ami, aws_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires `aws_ami` resources to have attribute `virtualization_type` to be `hvm`."
+    type: sentinel
+  ec2-launch-template-public-ip-disabled:
+    path: policies/ec2/ec2-launch-template-public-ip-disabled.sentinel
+    sha: bca2985196f443f50f11fdd57b6724e584a8b464753ded874d0e1a5f09c30405
+    governed_resources: [aws_launch_template]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy checks if resources of type `aws_launch_template` have the attribute `associate_public_ip_address` in `network_interfaces` set to `false`"
+    type: sentinel
+  ec2-metadata-imdsv2-required:
+    path: policies/ec2/ec2-metadata-imdsv2-required.sentinel
+    sha: 3a0a6ed4b3b52cd870e147dd9b65abe8745630155461a61b63f2c47771eba775
+    governed_resources: [aws_ec2_instance_metadata_defaults, aws_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires resources of type `aws_instance` or `aws_ec2_instance_metadata_defaults` to have `http_tokens` attribute set to `required`."
+    type: sentinel
+  ec2-network-acl:
+    path: policies/ec2/ec2-network-acl.sentinel
+    sha: 3f9f817b1baa40823e5ab22c52ecdf1913b8e86da15fb48657eee397f68435f2
+    governed_resources: [aws_network_acl, aws_network_acl_rule]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires resources of type `aws_network_acl` and `aws_network_acl_rule` to block ingress traffic from unknown sources to the configured ports"
+    type: sentinel
+  ec2-network-acl-should-have-subnet-ids:
+    path: policies/ec2/ec2-network-acl-should-have-subnet-ids.sentinel
+    sha: 62bc2366df1c065a3fd7410155463141e82e5024b8fb3b45049b90433c6d7a25
+    governed_resources: [aws_network_acl, aws_network_acl_association]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires `aws_network_acl` resources to have `subnet_ids` present."
+    type: sentinel
+  ec2-security-group-ingress-traffic-restriction-to-common-ports:
+    path: policies/ec2/ec2-security-group-ingress-traffic-restriction-to-common-ports.sentinel
+    sha: c3ebd09d670e9de8cc4ac1baaca35ce9918be6ee002f5e303345f335e94a88c0
+    governed_resources: [aws_security_group, aws_security_group_rule, aws_vpc_security_group_ingress_rule]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "Imports"
+    type: sentinel
+  ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports:
+    path: policies/ec2/ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports.sentinel
+    sha: 4b63ae6f6a4bc750be18a96a0cbb9629ba3891f0363a68f9d0713579b22309b6
+    governed_resources: [aws_security_group, aws_security_group_rule, aws_vpc_security_group_ingress_rule]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "Security groups should only allow unrestricted incoming traffic for authorized ports"
+    type: sentinel
+  ec2-service-vpc-endpoint-enabled:
+    path: policies/ec2/ec2-service-vpc-endpoint-enabled.sentinel
+    sha: dbeb651da8db7aaa527cfa557bb6f1b8283fc68afdb488b2b656c0ada6a035d6
+    governed_resources: [aws_vpc, aws_vpc_endpoint]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires `aws_vpc_endpoint` resources to have attribute `vpc_endpoint_type` to be `Interface` and `service_name` to be `ec2`."
+    type: sentinel
+  ec2-subnet-with-auto-assign-public-ip-disabled:
+    path: policies/ec2/ec2-subnet-with-auto-assign-public-ip-disabled.sentinel
+    sha: 8b969ab2da8aaf37382371d08a6e7ccb159473deccc682f7d380fc7646e6675e
+    governed_resources: [aws_subnet]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires `aws_subnet` resources to have attribute `map_public_ip_on_launch` to be false."
+    type: sentinel
+  ec2-transit-gateway-auto-vpc-attach-disabled:
+    path: policies/ec2/ec2-transit-gateway-auto-vpc-attach-disabled.sentinel
+    sha: 880c8ad11b4e7ddc6515b95af48ce638f9672ef45c3862d7649d02f5e6d72bd6
+    governed_resources: [aws_ec2_transit_gateway]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy checks if the EC2 Transit Gateway have the attribute `auto_accept_shared_attachments` set to disable"
+    type: sentinel
+  ec2-vpc-default-security-group-no-traffic:
+    path: policies/ec2/ec2-vpc-default-security-group-no-traffic.sentinel
+    sha: 7e4d2dab7bbe5bd613dd1dfbc9394bdceb95aef4b8abdefd6f762f6dc012f01b
+    governed_resources: [aws_default_security_group, aws_security_group_rule, aws_vpc_security_group_egress_rule, aws_vpc_security_group_ingress_rule]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires resources of type `aws_vpc` to have no traffic for default security group."
+    type: sentinel
+  ec2-vpc-flow-logging-enabled:
+    path: policies/ec2/ec2-vpc-flow-logging-enabled.sentinel
+    sha: ed87bbee3e42fa0d3fe885c411e338f669c5763146ae9d6aa81dc9a4bfa2b22f
+    governed_resources: [aws_default_vpc, aws_flow_log, aws_vpc]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires resources of type `aws_vpc` and `aws_default_vpc` to have flow logs enabled."
+    type: sentinel
+  ec2-vpc-should-be-configured-for-interface-endpoint:
+    path: policies/ec2/ec2-vpc-should-be-configured-for-interface-endpoint.sentinel
+    sha: 999f764f61239e06d9ed3b2039624403ccc25ee6209752e823d0566b57aa55bd
+    governed_resources: [aws_vpc, aws_vpc_endpoint]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EC2
+    description: "This policy requires resources of type `aws_vpc_endpoint` should have `vpc_endpoint_type` configured with interface endpoint and should be referenced to `aws_vpc` resource."
+    type: sentinel
+  ecr-image-scanning-enabled:
+    path: policies/ecr/ecr-image-scanning-enabled.sentinel
+    sha: 49194f5a582b537c127e790742841a48c1b2745e440974d2b4552be7b1c3a0b1
+    governed_resources: [aws_ecr_repository]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECR
+    description: "This policy checks if resources of type `aws_ecr_repository` have image scanning configuration enabled"
+    type: sentinel
+  ecr-lifecycle-policy-configured:
+    path: policies/ecr/ecr-lifecycle-policy-configured.sentinel
+    sha: 545d0c76235138531d0afe463778fd43dfcfd3d5493492623e91c0135ff06bcc
+    governed_resources: [aws_ecr_lifecycle_policy, aws_ecr_repository]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECR
+    description: "This policy ensures that resources of type `aws_ecr_repository` have a lifecycle policy configured"
+    type: sentinel
+  ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys:
+    path: policies/ecr/ecr-repositories-should-be-encrypted-with-customer-managed-aws-kms-keys.sentinel
+    sha: a4b2b047ba46e683e46153a7575f3f523bc5bd7447471ae35c6f6fb42f3f2cf5
+    governed_resources: [aws_ecr_repository]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECR
+    description: "ECR.5 This control checks whether an Amazon ECR repository is encrypted at rest with a customer managed AWS KMS key."
+    type: sentinel
+  ecr-tag-immutability-configured:
+    path: policies/ecr/ecr-tag-immutability-configured.sentinel
+    sha: ca1ff13be67d42f5847d8c3057bf0f744e04d1861fe6ee4b92c18756e148c381
+    governed_resources: [aws_ecr_repository]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECR
+    description: "This policy checks if resources of type `aws_ecr_repository` have tag immutability configured"
+    type: sentinel
+  ecs-cluster-enable-container-insights:
+    path: policies/ecs/ecs-cluster-enable-container-insights.sentinel
+    sha: e273878c40868e89942d92553d997fab032cf21ef963d7b5ad00c56d0a8d28a1
+    governed_resources: [aws_ecs_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if the `aws_ecs_cluster` has the setting named `containerInsights` enabled"
+    type: sentinel
+  ecs-fargate-service-platform-compatibility:
+    path: policies/ecs/ecs-fargate-service-platform-compatibility.sentinel
+    sha: e2f91222677afb4b7a04a27ffca96aed73ff51b53ac5e8854ae017cbc193c904
+    governed_resources: [aws_ecs_service]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if resources of type `aws_ecs_service` with launch_type as `FARGATE` points to the `LATEST` platform version"
+    type: sentinel
+  ecs-non-privileged-container-definitions:
+    path: policies/ecs/ecs-non-privileged-container-definitions.sentinel
+    sha: ecbebb9d973aeeb6679fb32c078e503ce8085ea7375fab0a0cb1f522189685c0
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if the container definitions have the `privileged` parameter set to true and fails if that is the case."
+    type: sentinel
+  ecs-service-no-public-ip-assignment:
+    path: policies/ecs/ecs-service-no-public-ip-assignment.sentinel
+    sha: 6ac364aaa6d7637201546d172a43b5dcc54d277bf2fb1ec2a9b7ac1e09ad28a3
+    governed_resources: [aws_ecs_service]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if resources of type `aws_ecs_service` have the `assign_public_ip` attribute under networking configuration set to true"
+    type: sentinel
+  ecs-task-definition-log-configuration-present:
+    path: policies/ecs/ecs-task-definition-log-configuration-present.sentinel
+    sha: ee05318c72ffb17689f53051670132d0bc19343735a1126ecc6039487e1a3ffe
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if all container definitions of a given `aws_ecs_task_definition` resource contains a non empty value for the logConfiguration.logDriver attribute."
+    type: sentinel
+  ecs-task-definition-no-secrets-as-environment-variables:
+    path: policies/ecs/ecs-task-definition-no-secrets-as-environment-variables.sentinel
+    sha: 5de26a786ea16113ed1bab94acd96c1e8a60b4cedff0d735d4795071728dd204
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if the container definitions contain non allow listed secrets as environment variables"
+    type: sentinel
+  ecs-task-definition-read-only-root-file-system-access:
+    path: policies/ecs/ecs-task-definition-read-only-root-file-system-access.sentinel
+    sha: 5b4f7975533352a103519fe70dd3d8938a66718d216d5cd8144094487011be0c
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if the container definitions have the `readOnlyRootFileSystem` set to true."
+    type: sentinel
+  ecs-task-definition-restrict-process-id:
+    path: policies/ecs/ecs-task-definition-restrict-process-id.sentinel
+    sha: bd30b42ed27190a2669a8076356e0d854f6385563170c0e5bee5abfa102b0547
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if the `pidMode` attribute for resources of type `aws_ecs_task_definition` is equal to `host`"
+    type: sentinel
+  ecs-task-definition-secure-networking-mode-and-user-definitions:
+    path: policies/ecs/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel
+    sha: c301235cf7893b78104fab9b87fe49caf9ae2aeac50ebf8ac635d84a1f48212e
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "This policy checks if the task definition with host networking mode has unprivileged or user container definitions."
+    type: sentinel
+  ecs-task-definitions-should-not-use-host-network-mode:
+    path: policies/ecs/ecs-task-definitions-should-not-use-host-network-mode.sentinel
+    sha: 455419cf87792ad08df0d49b6c701062ce946c6fb39bb8cfff29c48ffab40fb7
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ECS
+    description: "ECS.17 This control checks whether the latest active revision of an Amazon ECS task definition uses host network mode."
+    type: sentinel
+  efs-access-point-should-enforce-root-directory:
+    path: policies/efs/efs-access-point-should-enforce-root-directory.sentinel
+    sha: 456117cb59c33e54ff8641bd0ceb99f4f16dae05bd9a7754d04261ebf1cacc8c
+    governed_resources: [aws_efs_access_point]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_access_point` have attribute `root_directory` should not have path set to `/`."
+    type: sentinel
+  efs-access-point-should-enforce-user-identity:
+    path: policies/efs/efs-access-point-should-enforce-user-identity.sentinel
+    sha: 8fd58483f82061c552cb48cae866263c84b792a7089eefcffe4fff7a1ddcbf55
+    governed_resources: [aws_efs_access_point]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_access_point` have attribute `posix_user` should be defined."
+    type: sentinel
+  efs-file-systems-should-be-encrypted-at-rest:
+    path: policies/efs/efs-file-systems-should-be-encrypted-at-rest.sentinel
+    sha: c4aa61b911e5b5dd5a095c2e1ad48fda99bff9fa0bc2edf83614643da7468700
+    governed_resources: [aws_efs_file_system]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_file_system` should have `encrypted` set to true and `kms_key_id` should not be empty."
+    type: sentinel
+  efs-file-systems-should-be-in-backup-plans:
+    path: policies/efs/efs-file-systems-should-be-in-backup-plans.sentinel
+    sha: 6f8b9f895b5dba1a3cb6adf22942aa5a7746bb6ee660f44551838c1038b7e7d2
+    governed_resources: [aws_backup_selection, aws_efs_file_system]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_file_system` should be associated with resource `aws_backup_selection`."
+    type: sentinel
+  eks-cluster-audit-logging-enabled:
+    path: policies/eks/eks-cluster-audit-logging-enabled.sentinel
+    sha: b141180f8a4cdec89f3b2dc569b1b315d4cee1acc8fd0de6d77d0ac667354103
+    governed_resources: [aws_eks_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EKS
+    description: "This policy checks if `aws_eks_cluster` resources have their unrestricted public endpoint access"
+    type: sentinel
+  eks-cluster-encrypted-kubernetes-secrets:
+    path: policies/eks/eks-cluster-encrypted-kubernetes-secrets.sentinel
+    sha: a221f7a3a6be60495fb630f0eea5dd0b42edefe28f8724fc49482510523895b4
+    governed_resources: [aws_eks_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EKS
+    description: "This policy checks if `aws_eks_cluster` uses KMS service to encrypted Kubernetes secrets"
+    type: sentinel
+  eks-cluster-endpoints-restrict-public-access:
+    path: policies/eks/eks-cluster-endpoints-restrict-public-access.sentinel
+    sha: c6add2faee3a9db1780d10c2bb987cb3cfcf4723f2264c1e297715750a4c3759
+    governed_resources: [aws_eks_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EKS
+    description: "This policy checks if `aws_eks_cluster` resources have their unrestricted public endpoint access"
+    type: sentinel
+  eks-cluster-supported-k8s-version-check:
+    path: policies/eks/eks-cluster-supported-k8s-version-check.sentinel
+    sha: db9fef6a17f710612be18bfd34c33642289655c1ceb4047ea16bb57fecb8ec81
+    governed_resources: [aws_eks_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EKS
+    description: "This policy checks if `aws_eks_cluster` does not run on unsupported kubernetes versions"
+    type: sentinel
+  elasticache-redis-cluster-auto-backup-enabled:
+    path: policies/elasticache/elasticache-redis-cluster-auto-backup-enabled.sentinel
+    sha: 6806e3de54ef947f714558162e7800c75ecf729d89ef14b1ac7fcc7e1efeed6b
+    governed_resources: [aws_elasticache_cluster, aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ElastiCache
+    description: "This policy requires that the `snapshot_retention_limit` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is greater than 0."
+    type: sentinel
+  elasticache-redis-cluster-auto-minor-version-upgrade-enabled:
+    path: policies/elasticache/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel
+    sha: acec9fb1db4f600cf04145a4419a1d4398c128b552f52ef0e402d0fbd644e28f
+    governed_resources: [aws_elasticache_cluster, aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ElastiCache
+    description: "This policy requires that the `auto_minor_version_upgrade` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is true."
+    type: sentinel
+  elasticache-redis-cluster-non-default-subnet-enabled:
+    path: policies/elasticache/elasticache-redis-cluster-non-default-subnet-enabled.sentinel
+    sha: 9b83588f23bc7292989fcea84a292bd67bbd6afb6181c2f4c33e9ad188eb7493
+    governed_resources: [aws_elasticache_cluster, aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ElastiCache
+    description: "This policy requires that the `subnet_group_name` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is set."
+    type: sentinel
+  elasticache-redis-replication-group-auto-failover-enabled:
+    path: policies/elasticache/elasticache-redis-replication-group-auto-failover-enabled.sentinel
+    sha: 35cc6a6fc9070fc84108d7b2727b6b13f3e78f93ecd3d387cb8e4e3538372c41
+    governed_resources: [aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ElastiCache
+    description: "This policy requires that the `automatic_failover_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: sentinel
+  elasticache-redis-replication-group-encryption-at-rest-enabled:
+    path: policies/elasticache/elasticache-redis-replication-group-encryption-at-rest-enabled.sentinel
+    sha: c6fd266304e97736e5947bf763cc9d4f8f34c4071d686ff4592e7d9a15de36bd
+    governed_resources: [aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ElastiCache
+    description: "This policy requires that the `at_rest_encryption_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: sentinel
+  elasticache-redis-replication-group-encryption-at-transit-enabled:
+    path: policies/elasticache/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel
+    sha: 517e95d940553bf738bddaba8d84fb8428073a63f67fba0fa67c3740e4fb7edf
+    governed_resources: [aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ElastiCache
+    description: "This policy requires that the `transit_encryption_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: sentinel
+  elasticache-redis-replication-group-redis-auth-enabled:
+    path: policies/elasticache/elasticache-redis-replication-group-redis-auth-enabled.sentinel
+    sha: 8478c26ea0d4d38703c7e4926f921e23ddf5a316e216fe8f34641382fea3ac26
+    governed_resources: [aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ElastiCache
+    description: "This policy requires that the `aws_elasticache_replication_group` resource with `engine_version` less than 6.0 has `auth_token` set."
+    type: sentinel
+  elasticbeanstalk-enhanced-health-reporting-enabled:
+    path: policies/elasticbeanstalk/elasticbeanstalk-enhanced-health-reporting-enabled.sentinel
+    sha: 002de5a0020cccc6fa737b95634cc24a7ad973acd0b1492396d98fbee9b91f81
+    governed_resources: [aws_elastic_beanstalk_environment]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elastic Beanstalk
+    description: "This policy requires that the elasticbeanstalk environment have enhanced health reporting enabled"
+    type: sentinel
+  elasticbeanstalk-managed-platform-updates-enabled:
+    path: policies/elasticbeanstalk/elasticbeanstalk-managed-platform-updates-enabled.sentinel
+    sha: 8e9594d1df81e32784738983df357cd0a9038192daf748b0571a7015ecd3b025
+    governed_resources: [aws_elastic_beanstalk_environment]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elastic Beanstalk
+    description: "This policy requires that the elasticbeanstalk environment have platform updates enabled"
+    type: sentinel
+  elasticsearch-audit-logging-enabled:
+    path: policies/elasticsearch/elasticsearch-audit-logging-enabled.sentinel
+    sha: df1faf335ead90b6ea37be5d3126996fbc87a699da524d365139e5015ee67aab
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `log_publishing_options` should have `enabled` attribute set to `true` and `log_type` set to `AUDIT_LOGS`."
+    type: sentinel
+  elasticsearch-domains-should-have-atleast-three-data-nodes:
+    path: policies/elasticsearch/elasticsearch-domains-should-have-atleast-three-data-nodes.sentinel
+    sha: 6d822e2e21ca6e89497e8e114af41d80956f2920e1ee1e87d1e33afd7ffee2f5
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` to have at least three data nodes and zone awareness enabled."
+    type: sentinel
+  elasticsearch-encrypted-at-rest:
+    path: policies/elasticsearch/elasticsearch-encrypted-at-rest.sentinel
+    sha: be3a50fd36b317776aeaffa393b30b37560795b20832af569ee59ed5de99b8a1
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `encrypt_at_rest` should have `enabled` attribute set to `true`."
+    type: sentinel
+  elasticsearch-https-required:
+    path: policies/elasticsearch/elasticsearch-https-required.sentinel
+    sha: b6e0666945ee372fd00a00780e2f352daf46629c9e9b205aa4e54d634a76a5fd
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `tls_security_policy` set to latest policy that is `Policy-Min-TLS-1-2-PFS-2023-10` and `enforce_https` set to true for `domain_endpoint_options` attribute."
+    type: sentinel
+  elasticsearch-in-vpc-only:
+    path: policies/elasticsearch/elasticsearch-in-vpc-only.sentinel
+    sha: 73ea42db485d483a1ebb2d736077d7caad7378a8803f3503d809981509d86ac1
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `subnet_ids` should not be empty inside `vpc_options`."
+    type: sentinel
+  elasticsearch-logs-to-cloudwatch:
+    path: policies/elasticsearch/elasticsearch-logs-to-cloudwatch.sentinel
+    sha: 6342b24417646d396ef998c4f59bd352d6be62a5e6793ce498ef8651a7df3a5c
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `log_publishing_options` should have `enabled` attribute set to `true`."
+    type: sentinel
+  elasticsearch-node-to-node-encryption-check:
+    path: policies/elasticsearch/elasticsearch-node-to-node-encryption-check.sentinel
+    sha: 932037dcc39438df7942ed1d78a10e7a9b9c2e2e4ca6315a2148488efbe2e4c0
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `enabled` value set to `true` for `node_to_node_encrytion` attribute."
+    type: sentinel
+  elasticsearch-primary-node-fault-tolerance:
+    path: policies/elasticsearch/elasticsearch-primary-node-fault-tolerance.sentinel
+    sha: c18656d5328cfcceff2c5c94a67be40f4f19097b5bd6ae50096a96d76ff70457
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `dedicated_master_count` atleast 3 and `dedicated_master_enabled` set to true for `cluster_config` attribute."
+    type: sentinel
+  elb-configure-https-tls-termination-classic-load-balancer:
+    path: policies/elb/elb-configure-https-tls-termination-classic-load-balancer.sentinel
+    sha: 07989ef3d0c03545dd586e2c991e1397739500314cd7cb1ea4489ce27866c85d
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if resources of type `aws_elb` have listeners configured with HTTPS or TLS termination"
+    type: sentinel
+  elb-connection-draining-enabled:
+    path: policies/elb/elb-connection-draining-enabled.sentinel
+    sha: 52fb666016e99eec2a05ce1a1ea709d022c2695418b989a0183465c8fbe8cbe6
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if resources of type `aws_elb` have the attribute `connection_draining` set to true"
+    type: sentinel
+  elb-cross-zone-load-balancing-enabled:
+    path: policies/elb/elb-cross-zone-load-balancing-enabled.sentinel
+    sha: 85a7efa01a11f8c259ec935909e3a24a1282497e3e0f57a6b3ae80c50dae8b2c
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if resources of type `aws_elb` have the attribute `cross_zone_load_balancing` set to true"
+    type: sentinel
+  elb-drop-invalid-http-headers:
+    path: policies/elb/elb-drop-invalid-http-headers.sentinel
+    sha: ec146219cf92bd3b7083ecd32a5adda1c71b599fbf42b8d98308cb05a05cbb9f
+    governed_resources: [aws_lb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if application load balancers are configured to drop invalid HTTP headers"
+    type: sentinel
+  elb-ensure-access-logging-enabled:
+    path: policies/elb/elb-ensure-access-logging-enabled.sentinel
+    sha: 4baf180a86a6ff12447229aabb3b01376ad0d728f7880b88b5ec029a83d711fa
+    governed_resources: [aws_elb, aws_lb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if resources of type `aws_lb` and `aws_elb` have `access_logging` enabled."
+    type: sentinel
+  elb-ensure-deletion-protection-enabled:
+    path: policies/elb/elb-ensure-deletion-protection-enabled.sentinel
+    sha: d02c8593301818b348862f4561f1e2332437951d96e88feb9a260cd569e25b63
+    governed_resources: [aws_lb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if resources of type `aws_lb` has the `enable_deletion_protection` attribute set to true."
+    type: sentinel
+  elb-ensure-http-request-redirection:
+    path: policies/elb/elb-ensure-http-request-redirection.sentinel
+    sha: 6bf6db2ad485f911467e64eca3a2ace515f8ffe2cb7678fae7e908505b56e53c
+    governed_resources: [aws_lb, aws_lb_listener, aws_lb_listener_rule]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy ensures that application load balancer in the terraform configurations have a listener rule configured to redirect HTTP requests to HTTPS"
+    type: sentinel
+  elb-ensure-multi-az-configuration-classic-load-balancer:
+    path: policies/elb/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel
+    sha: b2227a00f087d75ced74fdc5850c9e0d207e513680024f6f3b9bf6a504baa94d
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if load balancers span across multiple availability zones."
+    type: sentinel
+  elb-ensure-ssl-listener-acm-cert-classic-load-balancer:
+    path: policies/elb/elb-ensure-ssl-listener-acm-cert-classic-load-balancer.sentinel
+    sha: 3ff3ad45417b9d6a25d2bfdb46577558535e546676215ea59bb9ff80860f564b
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if resources of type `aws_elb` have HTTPS/SSL listeners configured with certs from acm."
+    type: sentinel
+  elb-ensure-ssl-listener-predefined-security-policy:
+    path: policies/elb/elb-ensure-ssl-listener-predefined-security-policy.sentinel
+    sha: 4369adfb43395151579ffaa2b5273ffa62031c24662d812cf98d0bee3d5674e0
+    governed_resources: [aws_elb, aws_load_balancer_listener_policy, aws_load_balancer_policy]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if classic load balancers with SSL listeners have predefined security policy configured"
+    type: sentinel
+  elb-ensure-valid-desync-mitigation-mode:
+    path: policies/elb/elb-ensure-valid-desync-mitigation-mode.sentinel
+    sha: ca8dd8b285e52ab5df19666ab1710578421fd31739db371bdcc1f02e8a60686a
+    governed_resources: [aws_lb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy checks if load_balancer resources have the `desync_mitigation_mode` attribute set to either `defensive` or `strictest`"
+    type: sentinel
+  elb-multiple-az:
+    path: policies/elb/elb-multiple-az.sentinel
+    sha: aaf5c933f491178534abf0d38a0e3f4252654c21683b10820530cbf7b1cf7ca0
+    governed_resources: [aws_lb]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy ensures that Application, Network, and Gateway Load Balancers span multiple Availability Zones"
+    type: sentinel
+  elb-predefined-security-policy-ssl-check:
+    path: policies/elb/elb-predefined-security-policy-ssl-check.sentinel
+    sha: 833926620f0e412953d06c16494207000eafd59c598035df6aff0ab21a739ff4
+    governed_resources: [aws_lb_listener]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: ELB
+    description: "This policy requires `aws_lb_listener` resources using HTTPS/TLS to use recommended SSL policies."
+    type: sentinel
+  emr-block-public-access-enabled:
+    path: policies/emr/emr-block-public-access-enabled.sentinel
+    sha: 47ca24aa7c5e1f15e59d20a9b2de64f6737f55baf287cb1df2aedd0b6b40149d
+    governed_resources: [aws_emr_block_public_access_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EMR
+    description: "This policy requires block public access setting is enabled and any port other than 22 should not be allowed"
+    type: sentinel
+  emr-security-configuration-encryption-rest:
+    path: policies/emr/emr-security-configuration-encryption-rest.sentinel
+    sha: f3b2e0781ef9dfae0d1626fbd71a564607c69644bba09d92db81dbdf218525eb
+    governed_resources: [aws_emr_security_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EMR
+    description: "This policy requires `aws_emr_security_configuration` to include at-rest encryption settings."
+    type: sentinel
+  emr-security-configuration-encryption-transit:
+    path: policies/emr/emr-security-configuration-encryption-transit.sentinel
+    sha: eb93e00b99301e02b6e84d1ddc6a227599cb08d8e5ab855773fa54055ce18b36
+    governed_resources: [aws_emr_security_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EMR
+    description: "This policy requires aws_emr_security_configuration to enable encryption in transit."
+    type: sentinel
+  eventbridge-custom-event-bus-should-have-attached-policy:
+    path: policies/eventbridge/eventbridge-custom-event-bus-should-have-attached-policy.sentinel
+    sha: 3e31f567661b3220ff754c446d1d87c74edffab61710b64e33c1c49e9bfb175a
+    governed_resources: [aws_cloudwatch_event_bus, aws_cloudwatch_event_bus_policy]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EventBridge
+    description: "This policy requires `aws_cloudwatch_event_bus` resources to be attached to a policy."
+    type: sentinel
+  eventbridge-global-endpoints-should-have-event-replication-enabled:
+    path: policies/eventbridge/eventbridge-global-endpoints-should-have-event-replication-enabled.sentinel
+    sha: d9a92618b88579d11c2ede1b516a4326d82bf02b55225fe8bec17a0c5d2b0a7a
+    governed_resources: [aws_cloudwatch_event_endpoint]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: EventBridge
+    description: "EventBridge.4 This control checks if event replication is enabled for an Amazon EventBridge global endpoint."
+    type: sentinel
+  fsx-lustre-copy-tags-to-backups:
+    path: policies/fsx/fsx-lustre-copy-tags-to-backups.sentinel
+    sha: 6e121007e98c9c2e3393b27320dd23d1cef51c3960e285c143c01a715c4846ad
+    governed_resources: [aws_fsx_lustre_file_system]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: FSx
+    description: "This policy requires resources of type `aws_fsx_lustre_file_system` have the `copy_tags_to_backups` attributes set to true."
+    type: sentinel
+  fsx-openzfs-copy-tags-to-backups-and-volumes-enabled:
+    path: policies/fsx/fsx-openzfs-copy-tags-to-backups-and-volumes-enabled.sentinel
+    sha: a035826951315cc8732fd7050a4f47f834a5bc80fa62838afb2430ba0b4f9843
+    governed_resources: [aws_fsx_openzfs_file_system]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: FSx
+    description: "This policy requires resources of type `aws_fsx_openzfs_file_system` have the `copy_tags_to_backups` and `copy_tags_to_columes` attributes set to true."
+    type: sentinel
+  glue-spark-job-supported-version:
+    path: policies/glue/glue-spark-job-supported-version.sentinel
+    sha: e3246f374c7e51fbcf2002564f32cbc3989087b798768eb3b748b9ff6d8357c7
+    governed_resources: [aws_glue_job]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Glue
+    description: "This policy ensures that AWS Glue Spark jobs use only supported Glue versions."
+    type: sentinel
+  guardduty-should-be-enabled:
+    path: policies/guardduty/guardduty-should-be-enabled.sentinel
+    sha: 5ba85dcc0813785f4e669f30df5d8d5db1de766aca005fb96aab43ee1a3fbe65
+    governed_resources: [aws_guardduty_detector]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: GuardDuty
+    description: "This control checks whether `aws_guardduty_detector` is enabled in your GuardDuty account and Region."
+    type: sentinel
+  iam-no-admin-privileges-allowed-by-policies:
+    path: policies/iam/iam-no-admin-privileges-allowed-by-policies.sentinel
+    sha: 82367793158e1d07b5a060ca379d6b38740dad705e0e76300765a69098d4454c
+    governed_resources: [aws_iam_policy, aws_iam_policy_document]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: IAM
+    description: "IAM policies should not allow administrator privileges to users/roles/groups."
+    type: sentinel
+  iam-no-policies-attached-to-users:
+    path: policies/iam/iam-no-policies-attached-to-users.sentinel
+    sha: 40bebff24c83286594dc9e5753fb1c75c5fc2b897bbfdc570b10034826f6b2e7
+    governed_resources: [aws_iam_user_policy, aws_iam_user_policy_attachment]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: IAM
+    description: "IAM users should not be directly attached to IAM policies."
+    type: sentinel
+  iam-password-policy-strong-configuration:
+    path: policies/iam/iam-password-policy-strong-configuration.sentinel
+    sha: f85c3f53f1e241bba2aa51cdeb5bac435b58a940fef34a54d07500c5910a27c5
+    governed_resources: [aws_iam_account_password_policy]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: IAM
+    description: "This policy requires that the `aws_iam_account_password_policy` resource have the strong configurations"
+    type: sentinel
+  iam-policy-no-statements-with-full-access:
+    path: policies/iam/iam-policy-no-statements-with-full-access.sentinel
+    sha: 33e877a1b7fb82662fffcfcd33abccc026b2b0a747ebf8bd0ce436487dd55e66
+    governed_resources: [aws_iam_policy_document]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: IAM
+    description: "IAM customer managed policies that you create should not allow wildcard actions for services."
+    type: sentinel
+  kinesis-firehose-delivery-stream-encrypted:
+    path: policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel
+    sha: 364fa6f57520be172985fe04a90d04b1f8d939fb1c3f54fa73e10501bf2364f4
+    governed_resources: [aws_kinesis_firehose_delivery_stream]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Kinesis
+    description: "This policy requires `aws_kinesis_firehose_delivery_stream` resources to have server-side encryption enabled."
+    type: sentinel
+  kinesis-stream-encrypted:
+    path: policies/kinesis/kinesis-stream-encrypted.sentinel
+    sha: bb4a0029a624cfdfc0716b6e7f6bf283f5e8cc8fc334343d75dd2349da1c68e9
+    governed_resources: [aws_kinesis_stream]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Kinesis
+    description: "This policy checks if resources of type `kinesis-stream-encrypted` have the `encryption_type` set to `KMS`"
+    type: sentinel
+  kms-restrict-iam-inline-policies-decrypt-all-kms-keys:
+    path: policies/kms/kms-restrict-iam-inline-policies-decrypt-all-kms-keys.sentinel
+    sha: 03b0d1059b20d8f2371ed7d761c135723adcf1fba4b973e9d6b2d1136cdeb81b
+    governed_resources: [aws_iam_policy_document]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: KMS
+    description: "This policy checks if resources of type `aws_iam_policy_document` contain blocked action patterns such as `kms:ReEncryptFrom` and `kms:Decrypt`"
+    type: sentinel
+  lambda-function-public-access-prohibited:
+    path: policies/lambda/lambda-function-public-access-prohibited.sentinel
+    sha: f0229cead94b4a65f226e0543068cebeaf8a11046338e73546e67157d63cbc86
+    governed_resources: [aws_lambda_permission]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Lambda
+    description: "This control checks whether the `aws_lambda_function` resource-based policy prohibits public access outside of your account."
+    type: sentinel
+  lambda-functions-should-be-in-a-vpc:
+    path: policies/lambda/lambda-functions-should-be-in-a-vpc.sentinel
+    sha: 18150732370d57bbbdbb5f7fbf3dd926ff6c34eda1607844c89df1bf79de0a30
+    governed_resources: [aws_lambda_function]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Lambda
+    description: "Lambda.3 This control checks whether a Lambda function is deployed in a virtual private cloud (VPC)."
+    type: sentinel
+  lambda-functions-should-use-supported-runtimes:
+    path: policies/lambda/lambda-functions-should-use-supported-runtimes.sentinel
+    sha: 17598a5cb2a77c47a5bf5bd7201cd10e748b717c6cc6446bacd933282c24979f
+    governed_resources: [aws_lambda_function]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Lambda
+    description: "This control checks whether `aws_lambda_function` runtime settings match the expected values set for the supported runtimes in each language."
+    type: sentinel
+  lambda-vpc-multi-az-check:
+    path: policies/lambda/lambda-vpc-multi-az-check.sentinel
+    sha: 49c56796d4e9e3f5921aa4a65940686df14ac3bfa825187872db1e9f5459657c
+    governed_resources: [aws_lambda_function]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Lambda
+    description: "This policy if an `aws_lambda_function` that connects to a virtual private cloud (VPC) operates in at least the specified number of Availability Zone (AZs)"
+    type: sentinel
+  macie-status-should-be-enabled:
+    path: policies/macie/macie-status-should-be-enabled.sentinel
+    sha: 4a54fb41d7f798538fa57fd16602905eb3a848634013716478107b7f492eedec
+    governed_resources: [aws_macie2_account]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Macie
+    description: "This policy checks if resources of type `aws_macie2_account` have the `status` attribute set to `ENABLED`"
+    type: sentinel
+  mq-auto-minor-version-upgrade-enabled:
+    path: policies/mq/mq-auto-minor-version-upgrade-enabled.sentinel
+    sha: 7f15bf673ca81d5b5fa94631efd33cb02f98b3ad18c635cbf669a890871f9475
+    governed_resources: [aws_mq_broker]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: MQ
+    description: "This policy checks if resources of type `aws_mq_broker` have the `auto_minor_version_upgrade` attribute set to true"
+    type: sentinel
+  mq-cloudwatch-audit-log-enabled:
+    path: policies/mq/mq-cloudwatch-audit-log-enabled.sentinel
+    sha: ba84cab9584fb35dbd2da5a72fd96c2e5594efd9a270e9450441c586c18f7a4a
+    governed_resources: [aws_mq_broker]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: MQ
+    description: "This policy checks if resources of type `aws_mq_broker` have the attribute `logs` with parameter `audit` set to true"
+    type: sentinel
+  mq-rabbit-brokers-should-use-cluster-deployment:
+    path: policies/mq/mq-rabbit-brokers-should-use-cluster-deployment.sentinel
+    sha: b4bd7b6dabcaa39645c370cebf81a61bf32d9477bd70e1340a34b55cddb1658c
+    governed_resources: [aws_mq_broker]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: MQ
+    description: "This policy checks if resources of type `aws_mq_broker` have the `deployment_mode` attribute set to `CLUSTER_MULTI_AZ` for RabbitMQ brokers."
+    type: sentinel
+  msk-clusters-should-have-enhanced-monitoring-enabled:
+    path: policies/msk/msk-clusters-should-have-enhanced-monitoring-enabled.sentinel
+    sha: 58d280212716117913356619b0375b28e9f0b7f814a244de1fe44390f76f7736
+    governed_resources: [aws_msk_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: MSK
+    description: "This policy checks if resources of type `aws_msk_cluster` have the `enhanced monitoring` should be not set to `DEFAULT` or `PER_BROKER` in the monitoring configuration."
+    type: sentinel
+  msk-in-cluster-node-require-encrypted-in-transit:
+    path: policies/msk/msk-in-cluster-node-require-encrypted-in-transit.sentinel
+    sha: e1b3c37f64a89c9cc3247d5a6bd9a9d8ed209964f29cfbc970253c3ba5322789
+    governed_resources: [aws_msk_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: MSK
+    description: "This policy checks if resources of type `aws_msk_cluster` have the `in_cluster` attribute set to true in encryption_in_transit of encryption_info attribute"
+    type: sentinel
+  neptune-cluster-audit-logs-publishing-enabled:
+    path: policies/neptune/neptune-cluster-audit-logs-publishing-enabled.sentinel
+    sha: 727a5a09a21387834d0eac8fda0754c5489439c4abf2a03ed9a0c9210509160d
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Neptune
+    description: "This policy requires attribute `enable_cloudwatch_logs_exports` to contain `audit` for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-automated-backups-enabled:
+    path: policies/neptune/neptune-cluster-automated-backups-enabled.sentinel
+    sha: e4e1ba601f94440a695ca989fff4654bba31d307a65edce0f202aff405b44744
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Neptune
+    description: "This policy requires attribute `backup_retention_period` to be greater than or equal to 7 for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-copy-tags-to-snapshot-enabled:
+    path: policies/neptune/neptune-cluster-copy-tags-to-snapshot-enabled.sentinel
+    sha: 005818c407e10c2d1f20b5c8d83f6d6a9b17ddab4d058a3f15f573c24eb3b170
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Neptune
+    description: "This policy requires attribute `copy_tags_to_snapshot` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-db-auth-enabled:
+    path: policies/neptune/neptune-cluster-db-auth-enabled.sentinel
+    sha: b3099bb16c5d44985e125466dd1a419b8bb68dadd97fb49cb7c6bcbb05665777
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Neptune
+    description: "This policy requires attribute `iam_database_authentication_enabled` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-deletion-protection-enabled:
+    path: policies/neptune/neptune-cluster-deletion-protection-enabled.sentinel
+    sha: 3287443f2ef202b77e53960b87a59f8a70bed59275924c6598dd76246ae52963
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Neptune
+    description: "This policy requires attribute `deletion_protection` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-encryption-at-rest-enabled:
+    path: policies/neptune/neptune-cluster-encryption-at-rest-enabled.sentinel
+    sha: b837a185fdb84781e5b32e09ff2b3feb532480d4b8dbc7303d8a3e028c3c397b
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Neptune
+    description: "This policy requires attribute `storage_encrypted` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-should-be-deployed-in-multi-az:
+    path: policies/neptune/neptune-cluster-should-be-deployed-in-multi-az.sentinel
+    sha: 3692ca27aa2bf31b85898e5418e207114764a2b8a2480214172a1fa6db89688b
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Neptune
+    description: "This policy requires neptune cluster to be deployed in multiple availability zone (multi-AZ) mode"
+    type: sentinel
+  neptune-cluster-snapshot-encryption-at-rest-enabled:
+    path: policies/neptune/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel
+    sha: 05c607152e6ea7231e7f218e1f16f3d7db7b72da62ec2251c162974f1b6eadf4
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Neptune
+    description: "This policy requires attribute `snapshot_identifier` to be set and `storage_encrypted` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  network-firewall-logging-enabled:
+    path: policies/networkfirewall/network-firewall-logging-enabled.sentinel
+    sha: 3dee3b70bd07b13360dbce23228db0290e3054cddf5aff6563af90272a1ecd7e
+    governed_resources: [aws_networkfirewall_firewall, aws_networkfirewall_logging_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Network Firewall
+    description: "This policy ensures that resources of type `aws_networkfirewall_firewall` have logging enabled"
+    type: sentinel
+  network-firewall-policy-default-action-fragmented-packets:
+    path: policies/networkfirewall/network-firewall-policy-default-action-fragmented-packets.sentinel
+    sha: a65c2768c46d6fcae332f88687f0acca3147d0a1ea42d2e3c4629a9d48b8869c
+    governed_resources: [aws_networkfirewall_firewall_policy]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Network Firewall
+    description: "This policy ensures that resources of type `aws_networkfirewall_firewall_policy` have default stateless action should be `aws:drop` or `aws:forward_to_sfe` for fragmented packets"
+    type: sentinel
+  network-firewall-policy-default-action-full-packets:
+    path: policies/networkfirewall/network-firewall-policy-default-action-full-packets.sentinel
+    sha: c53f32ea82d73aed9697090bae710d451901fbd5a9681f1918f8292f6be5a652
+    governed_resources: [aws_networkfirewall_firewall_policy]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Network Firewall
+    description: "This policy ensures that resources of type `aws_networkfirewall_firewall_policy` have default stateless action should be `aws:drop` or `aws:forward_to_sfe` for full packets"
+    type: sentinel
+  network-firewall-policy-rule-group-associated:
+    path: policies/networkfirewall/network-firewall-policy-rule-group-associated.sentinel
+    sha: 9baae910e42e3f61e0a9aaaf4ae368cfa3922ae1428ef3132c6d326d84b9de33
+    governed_resources: [aws_networkfirewall_firewall_policy]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Network Firewall
+    description: "This policy requires atleast 1 rule group to be enabled for `aws_networkfirewall_firewall_policy` resources"
+    type: sentinel
+  network-firewall-should-be-deployed-across-multiple-azs:
+    path: policies/networkfirewall/network-firewall-should-be-deployed-across-multiple-azs.sentinel
+    sha: aa8338b4ba1df41b1df8212022119cdc71bad15d5b8f5742964eae8c43c38b97
+    governed_resources: [aws_networkfirewall_firewall]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Network Firewall
+    description: "This policy checks whether a resource `aws_networkfirewall_firewall` has been deployed across multiple availability zones."
+    type: sentinel
+  network-firewall-should-have-deletion-protection-enabled:
+    path: policies/networkfirewall/network-firewall-should-have-deletion-protection-enabled.sentinel
+    sha: f17a5e052ef1556d42e4b06d34eecf08c363b4198bc6b14088ea74d3f02b96f7
+    governed_resources: [aws_networkfirewall_firewall]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Network Firewall
+    description: "This policy checks whether a resource `aws_networkfirewall_firewall` has deletion protection enabled."
+    type: sentinel
+  network-firewall-stateless-rule-group:
+    path: policies/networkfirewall/network-firewall-stateless-rule-group.sentinel
+    sha: eb56f695ec1824353c9ba88699de94b833ec5e05daf86f5d28bbc5fc9f896b5d
+    governed_resources: [aws_networkfirewall_rule_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Network Firewall
+    description: "This policy checks if a stateless rule group in `aws_networkfirewall_rule_group` contains rules"
+    type: sentinel
+  network-firewall-subnet-change-protection-enabled:
+    path: policies/networkfirewall/network-firewall-subnet-change-protection-enabled.sentinel
+    sha: 814d8831aa9c267b37bcc8e99d9eb098f39a0b2343e2a2091a7e9a4125fe93c8
+    governed_resources: [aws_networkfirewall_firewall]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Network Firewall
+    description: "This policy requires resources of type `aws_networkfirewall_firewall` have attribute \"subnet_change_protection\" set to true."
+    type: sentinel
+  opensearch-access-control-enabled:
+    path: policies/opensearch/opensearch-access-control-enabled.sentinel
+    sha: f48d6cc3550746a154bef4d1f84de876f4fbcf689412aa213823251e1f5df4a2
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `anonymous_auth_enabled` attribute set to true in the `advanced_security_options` block and the `advanced_security_options` block is enabled"
+    type: sentinel
+  opensearch-audit-logging-enabled:
+    path: policies/opensearch/opensearch-audit-logging-enabled.sentinel
+    sha: 7cca4b2bd265223eb2571af13128e7ddeefd9dc1f0cebc505a3f5f9bacdaaeec
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `enable` attribute set to true and `log_type` set to `AUDIT_LOGS` in the `log_publishing_options` block"
+    type: sentinel
+  opensearch-data-node-fault-tolerance:
+    path: policies/opensearch/opensearch-data-node-fault-tolerance.sentinel
+    sha: 18ef736dc37a927c3f79eebaaa695446b8e8e8ae37c0e520ed0582dac5fd61b4
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `instance_count` greater than or equal to 3 in the `cluster_config` block"
+    type: sentinel
+  opensearch-encrypted-at-rest:
+    path: policies/opensearch/opensearch-encrypted-at-rest.sentinel
+    sha: 80fc07fe10c7aff829b7496aa2d95a5cacbd0cc9dc566d8c63d3d3b0bb65eaa9
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `enable` attribute set to true in the `encrypt_at_rest` block"
+    type: sentinel
+  opensearch-https-required:
+    path: policies/opensearch/opensearch-https-required.sentinel
+    sha: cdbf4657fbbd36468f193a724e892d0662c8e3e30612316214b10060955921f7
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy requires resources of type `aws_opensearch_domain` have the `tls_security_policy` set to latest policy that is `Policy-Min-TLS-1-2-PFS-2023-10` and `enforce_https` set to true for `domain_endpoint_options` attribute."
+    type: sentinel
+  opensearch-in-vpc-only:
+    path: policies/opensearch/opensearch-in-vpc-only.sentinel
+    sha: 4ae36c40b036d262582d2e85999887c7c6e9295b07e54a7715e62a8840f4fe8d
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access."
+    type: sentinel
+  opensearch-logs-to-cloudwatch:
+    path: policies/opensearch/opensearch-logs-to-cloudwatch.sentinel
+    sha: 5ebd02488cea9c444309e5355f8204518c87c430713c78f7237311c63e5c9ec9
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `enable` attribute set to true in the `log_publishing_options` block"
+    type: sentinel
+  opensearch-node-to-node-encryption-check:
+    path: policies/opensearch/opensearch-node-to-node-encryption-check.sentinel
+    sha: 469e29ce216bfedc441cc81ead3243a2bb67aced1af71d7d381fecaa2246bffc
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `enable` attribute set to true in the `node_to_node_encryption` block"
+    type: sentinel
+  opensearch-primary-node-count-should-be-atleast-3:
+    path: policies/opensearch/opensearch-primary-node-count-should-be-atleast-3.sentinel
+    sha: 55f11d713bd35e80d1c3ba8946984dc90f28647a9f3582e564ed64ddd3336023
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `dedicated_master_enabled` set to true and `dedicated_master_count` greater than or equal to 3 in the `cluster_config` block"
+    type: sentinel
+  opensearch-update-check:
+    path: policies/opensearch/opensearch-update-check.sentinel
+    sha: 4dd47eea065c123e2e156966ed1908dd9be9b9ea1c9546998de2b18684253eec
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `auto_software_update_enabled` attribute set to true in the `software_update_options` block"
+    type: sentinel
+  rds-aurora-mysql-audit-logging-enabled:
+    path: policies/rds/rds-aurora-mysql-audit-logging-enabled.sentinel
+    sha: 111b1ed62bc7fdfb1cc81ac4684c2e1303f4a58acf4f347a3c714fdbbe963f4b
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy checks if resources of type `aws_rds_cluster` with `aurora-mysql` engine have the `enabled_cloudwatch_logs_exports` attribute contains `audit`"
+    type: sentinel
+  rds-cluster-and-db-snapshot-encrypted:
+    path: policies/rds/rds-cluster-and-db-snapshot-encrypted.sentinel
+    sha: 8e62bc1e1bd0a595a5824bcb2d54137efada87817f43af362f6d54e208e465f9
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` have attribute \"storage_encrypted\" set to true and has kms_key_id This will make sure snapshots are encrypted"
+    type: sentinel
+  rds-cluster-default-admin-check:
+    path: policies/rds/rds-cluster-default-admin-check.sentinel
+    sha: 34cf6e926d486eebd89f1699ec41eff4cddaf3c1edfd9f0bd92b7cb5f4e8fc29
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy checks if resources of type `aws_rds_cluster` have the `master_username` attribute not set to `admin` (default value)"
+    type: sentinel
+  rds-cluster-encrypted-at-rest:
+    path: policies/rds/rds-cluster-encrypted-at-rest.sentinel
+    sha: 229a61cf877225610f960b4588327605bb397acc82e5c9bc39b821cceb33595a
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy checks if resources of type `aws_rds_cluster` have the `storage_encrypted` attribute set to true"
+    type: sentinel
+  rds-copy-tags-to-snapshot-configured:
+    path: policies/rds/rds-copy-tags-to-snapshot-configured.sentinel
+    sha: 751e4da7cc320d5e4d3c41ba69ab0cb4b570a3e193803239b08c710441292256
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_rds_cluster` or `aws_db_instance` to have `copy_tags_to_snapshot` set to true"
+    type: sentinel
+  rds-encryption-at-rest-enabled:
+    path: policies/rds/rds-encryption-at-rest-enabled.sentinel
+    sha: 79b9e847288bd4f85bbf39002ac7a1bb5248f12abd4f84c50f73035e38d2bc8c
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"storage_encrypted\" set to true."
+    type: sentinel
+  rds-ensure-automatic-backups-enabled:
+    path: policies/rds/rds-ensure-automatic-backups-enabled.sentinel
+    sha: c36adc08a219bb8210bc44c51dd78f28a6a70bc81423aae9413d5f504630b4cc
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"backup_retention_period\" set to integer value between (7, 35)."
+    type: sentinel
+  rds-ensure-automatic-minor-version-upgrades-enabled:
+    path: policies/rds/rds-ensure-automatic-minor-version-upgrades-enabled.sentinel
+    sha: 2b789904251cdf8b8c99996c9978d636239e44426298a9a4c3753c3876362b2e
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"auto_minor_version_upgrade\" set to true."
+    type: sentinel
+  rds-ensure-cloudwatch-logs-enabled:
+    path: policies/rds/rds-ensure-cloudwatch-logs-enabled.sentinel
+    sha: 57a39e3188b2f4d246f002c2ba945392b7a0918f07c5538ed50ea22d3fc74e01
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` to have `enabled_cloudwatch_logs_exports` set to valid array of values."
+    type: sentinel
+  rds-ensure-cluster-and-db-instance-iam-auth-configured:
+    path: policies/rds/rds-ensure-cluster-and-db-instance-iam-auth-configured.sentinel
+    sha: a7f8faeec60090c4d841bea09dbc0d30c51a976eb550c2a50ac8751e3a94c930
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `iam_database_authentication_enabled` set to true"
+    type: sentinel
+  rds-ensure-cluster-backtracking-enabled:
+    path: policies/rds/rds-ensure-cluster-backtracking-enabled.sentinel
+    sha: 86e08bf1695c3d38b28dcb74fde3b4273bc21dcc3f5a20f4d7ae5317a445b7ec
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_rds_cluster` to have `backtrack_window` greater than 0 for engine \"aurora\" and \"aurora-mysql\""
+    type: sentinel
+  rds-ensure-cluster-multi-az-configured:
+    path: policies/rds/rds-ensure-cluster-multi-az-configured.sentinel
+    sha: c8f08a2011cb20b2172a982b077eb626f0f346e95f50a2f075444ebf6c470167
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_rds_cluster` to be configured for multiple availability zones"
+    type: sentinel
+  rds-ensure-deletion-protection-enabled:
+    path: policies/rds/rds-ensure-deletion-protection-enabled.sentinel
+    sha: 7daa4feb092d4f34860685363b4293c94903a2661500e2936bfaa1181cfd40ef
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `deletion_protection` set to true"
+    type: sentinel
+  rds-ensure-monitoring-configured:
+    path: policies/rds/rds-ensure-monitoring-configured.sentinel
+    sha: 76742bbc42421387f73e9a36c67de39951762b205231f0971491f3472a8708b4
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` to have `monitoring_interval` set to any value in (1, 5, 10, 15, 30, 60)"
+    type: sentinel
+  rds-ensure-multi-az-configuration:
+    path: policies/rds/rds-ensure-multi-az-configuration.sentinel
+    sha: 8a821cce89df069a64f2db9fea14d693cbbb6bf8e725677cd66d96c605442857
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` to have `multi_az` set to true"
+    type: sentinel
+  rds-ensure-no-default-port:
+    path: policies/rds/rds-ensure-no-default-port.sentinel
+    sha: 2500fade59e12ddf44d1961fad095dcef9b4c4d30c5a402fb1a404fc15903f51
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy checks if the aws rds instances are publicly accessible"
+    type: sentinel
+  rds-event-notifications-configured-for-critical-events:
+    path: policies/rds/rds-event-notifications-configured-for-critical-events.sentinel
+    sha: 18c2c5235dfb8443071d4910938bb9587bddcd6418158fc6f84fcd9ccb96254c
+    governed_resources: [aws_db_event_subscription, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy checks if resources of type `aws_event_subscription` have the event notifications configured"
+    type: sentinel
+  rds-for-mariadb-db-instances-should-publish-logs-to-cloudwatch-logs:
+    path: policies/rds/rds-for-mariadb-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel
+    sha: 62bb774ca5274c612b28f81b30a14e9aae87004a13a8d03097b7f26497ab6d79
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This control checks whether an Amazon RDS for MariaDB DB instance is configured to publish certain types of logs to Amazon CloudWatch Logs."
+    type: sentinel
+  rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs:
+    path: policies/rds/rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel
+    sha: 2547b823727dc398e8ba814ae450d8d55f51f526216f6f0088cb3de3ebab7be3
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This control checks whether an Amazon RDS for Microsoft SQL Server DB instance is configured to publish logs to Amazon CloudWatch Logs."
+    type: sentinel
+  rds-instance-default-admin-check:
+    path: policies/rds/rds-instance-default-admin-check.sentinel
+    sha: f0c1e5d2d000e5817f13ff8ed5e5836f0f241b14a680023951fa025ca57371a1
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy checks if resources of type `aws_db_instance` have the `username` attribute not set to `admin` (default value)"
+    type: sentinel
+  rds-instance-should-be-private:
+    path: policies/rds/rds-instance-should-be-private.sentinel
+    sha: 58bbcc1d16eed53f8f786cb72d3f15f7325bf33ace8cadebfb5d50c848ca7cb4
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: RDS
+    description: "This policy checks if the aws rds instances are publicly accessible"
+    type: sentinel
+  redshift-cluster-audit-logging-enabled:
+    path: policies/redshift/redshift-cluster-audit-logging-enabled.sentinel
+    sha: 65d54bbb9b6572e1fd927bdb0d04a53522509e124e76de691e70070bf70d46ce
+    governed_resources: [aws_redshift_cluster, aws_redshift_logging]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the enable attribute set to true in logging or referenced to the resource `aws_redshift_logging`"
+    type: sentinel
+  redshift-cluster-automated-snapshot-retention-enabled:
+    path: policies/redshift/redshift-cluster-automated-snapshot-retention-enabled.sentinel
+    sha: 86baa77fbfeb16f6ae20928bedb5073a52f80bcf63894c7baf38f46f61cdb6de
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `automated-snapshot-retention-period` attribute set in between `7 to 35`"
+    type: sentinel
+  redshift-cluster-default-admin-check:
+    path: policies/redshift/redshift-cluster-default-admin-check.sentinel
+    sha: e3c9c1368378ffe63adee335946460aa10e3ad4b14c7ed92900da1f2e5392171
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `master_username` attribute not set to null or `awsuser` (default value)"
+    type: sentinel
+  redshift-cluster-default-db-name-check:
+    path: policies/redshift/redshift-cluster-default-db-name-check.sentinel
+    sha: 9d63504a324ec508add93a5e4ff97bb29c4fe95e8e8fdc0c9c3accd4ee95540c
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `database_name` attribute not set to `dev` (default value)"
+    type: sentinel
+  redshift-cluster-enhanced-vpc-routing-enabled:
+    path: policies/redshift/redshift-cluster-enhanced-vpc-routing-enabled.sentinel
+    sha: 1f7712434d07267d2c5dab7e65b098e2270223b64d0fa4a4111d65a2b6b6fa8e
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `enhanced_vpc_routing` attribute set to true"
+    type: sentinel
+  redshift-cluster-maintenance-settings-check:
+    path: policies/redshift/redshift-cluster-maintenance-settings-check.sentinel
+    sha: 161f42dc6ec73f2a663b06a18840acd47dd2352a7b7e937a94ab11696c172bb3
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `allow_version_upgrade` attribute set to true"
+    type: sentinel
+  redshift-cluster-public-access-check:
+    path: policies/redshift/redshift-cluster-public-access-check.sentinel
+    sha: 6fad2d01f2fb186be74dcf4e0cf87705783e8886122a6b592cc2668e46db4c3d
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `publicly_accessible` attribute set to false"
+    type: sentinel
+  redshift-cluster-should-be-encrypted-at-rest:
+    path: policies/redshift/redshift-cluster-should-be-encrypted-at-rest.sentinel
+    sha: 19806b083fad41e734aa499915ddeb2a12e3d0b26dee50438dd23895501efb62
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `encrypted` attribute set to true"
+    type: sentinel
+  redshift-cluster-should-be-encrypted-at-transit:
+    path: policies/redshift/redshift-cluster-should-be-encrypted-at-transit.sentinel
+    sha: 0b2888d1718f5762ac890b99ad5495c50c20e98f2557aef385de0df9fb77cf75
+    governed_resources: [aws_redshift_cluster, aws_redshift_parameter_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` referenced to the resources of type `aws_redshift_parameter_group` and having the `require_ssl` set to `true`"
+    type: sentinel
+  redshift-serverless-namespace-should-be-encrypted-with-cmk:
+    path: policies/redshiftserverless/redshift-serverless-namespace-should-be-encrypted-with-cmk.sentinel
+    sha: 10999bb24d75a1d4bf7b9d42bf51d4e58c0e8af8a578bf2b2a97951f71cef6d2
+    governed_resources: [aws_redshiftserverless_namespace]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift Serverless
+    description: "This policy requires that resources of type `aws_redshiftserverless_namespace` have encryption enabled with customer managed KMS key."
+    type: sentinel
+  redshift-serverless-namespaces-should-not-use-the-default-database-name:
+    path: policies/redshiftserverless/redshift-serverless-namespaces-should-not-use-the-default-database-name.sentinel
+    sha: c61602c7b55d203a921e05ba12ea00ccbca1ab104f2611f53b05eb05e71fd776
+    governed_resources: [aws_redshiftserverless_namespace]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Redshift Serverless
+    description: "This control checks whether an Amazon Redshift Serverless namespace uses the default database name, dev."
+    type: sentinel
+  route-53-public-hosted-zones-should-log-dns-queries:
+    path: policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel
+    sha: 2807f159751c50b3db92a04c60df887f23506a8ce1fa079f6d878964092bbddb
+    governed_resources: [aws_route53_query_log]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Route 53
+    description: "This control checks if DNS query logging is enabled for an Amazon Route 53 public hosted zone."
+    type: sentinel
+  s3-access-point-block-public-access-enabled:
+    path: policies/s3/s3-access-point-block-public-access-enabled.sentinel
+    sha: 8f67ef72e349f77099b61eb01aa98a6e82be90dc891e72db64e65cfbe1364985
+    governed_resources: [aws_s3_access_point]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "This policy requires resources of type `aws_s3_access_point` to have all attributes in the `public_access_block_configuration` set to true."
+    type: sentinel
+  s3-block-public-access-account-level:
+    path: policies/s3/s3-block-public-access-account-level.sentinel
+    sha: 8c9c32d80fa1c70d3dcf5b70167cb81ead29ea944a72e04344380fec27b1d024
+    governed_resources: [aws_s3_account_public_access_block]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "This policy verifies if the attributes of the `aws_s3_account_public_access_block` resource (if present) are in accordance to AWS NIST standards."
+    type: sentinel
+  s3-block-public-access-bucket-level:
+    path: policies/s3/s3-block-public-access-bucket-level.sentinel
+    sha: 73ca63fa57a5ac8a14361f4945d49ccb954cb76906b0e746de501e9e70b797c0
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_public_access_block]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "This policy verifies if the attributes of the `aws_s3_bucket_public_access_block` resource (if present) block public access of an S3 general purpose bucket."
+    type: sentinel
+  s3-bucket-block-public-read-access:
+    path: policies/s3/s3-bucket-block-public-read-access.sentinel
+    sha: 7d4abbcc420b734802eb60a316a149de41f6c5c66acaf51ac22506973f9b2b7e
+    governed_resources: [aws_iam_policy_document, aws_s3_bucket_acl, aws_s3_bucket_public_access_block]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 general purpose buckets should block public read access"
+    type: sentinel
+  s3-bucket-block-public-write-access:
+    path: policies/s3/s3-bucket-block-public-write-access.sentinel
+    sha: d1136021657b66e351d5f210703a4c086997dc6172b4eef0bde1fc7d44d56c5a
+    governed_resources: [aws_iam_policy_document, aws_s3_bucket_acl, aws_s3_bucket_public_access_block]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 general purpose buckets should block public write access"
+    type: sentinel
+  s3-bucket-policy-restrict-access-to-other-accounts:
+    path: policies/s3/s3-bucket-policy-restrict-access-to-other-accounts.sentinel
+    sha: db177facdf47b79aa66e037d4210470bb575711920182663a1d3b6feb6cb76b6
+    governed_resources: [aws_iam_policy_document]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 general purpose bucket policies should restrict access to other AWS accounts"
+    type: sentinel
+  s3-bucket-should-be-encrypted-at-rest:
+    path: policies/s3/s3-bucket-should-be-encrypted-at-rest.sentinel
+    sha: 42ace75ceb8621acb5b595a17b320f0a401d8614ad3fcccfec060dcafc0a4a72
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_server_side_encryption_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 Buckets should have encryption enabled at rest with AWS KMS Key"
+    type: sentinel
+  s3-bucket-should-have-event-notifications-enabled:
+    path: policies/s3/s3-bucket-should-have-event-notifications-enabled.sentinel
+    sha: c6abee34b018b93813eecef0b504a24cb5206b48be9e5835733ad276a4054062
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_notification]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 Buckets should have event notifications enabled"
+    type: sentinel
+  s3-bucket-should-have-object-lock-enabled:
+    path: policies/s3/s3-bucket-should-have-object-lock-enabled.sentinel
+    sha: ef1c51f5db9df86842a5a8ca0bf46f2fe4d56fa6cc864382bfbed546d91034ff
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_object_lock_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 Buckets should have object lock enabled"
+    type: sentinel
+  s3-bucket-should-have-versioning-enabled:
+    path: policies/s3/s3-bucket-should-have-versioning-enabled.sentinel
+    sha: 58c695005b2756e7dc5133fa1cc4c151825f1718442ce48569e5a4306b8b1f8d
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_versioning]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 Buckets should have versioning enabled"
+    type: sentinel
+  s3-bucket-should-use-cross-region-replication:
+    path: policies/s3/s3-bucket-should-use-cross-region-replication.sentinel
+    sha: 7cff74202c35e5ae72fd918cdb8bd3df91ed28e9cccbb57ea0484b56e81ca26f
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_replication_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 Buckets should have cross-region replication enabled"
+    type: sentinel
+  s3-bucket-with-versioning-should-have-lifecycle-configurations:
+    path: policies/s3/s3-bucket-with-versioning-should-have-lifecycle-configurations.sentinel
+    sha: 8974e9410534a573203a05e4071722f835a42b06ab6e45b0c44671f80de6e42d
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_lifecycle_configuration, aws_s3_bucket_versioning]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "S3 Buckets with versioning should have lifecycle configurations"
+    type: sentinel
+  s3-require-ssl:
+    path: policies/s3/s3-require-ssl.sentinel
+    sha: 7b2d092e6529ea868fa85a6b41d36ba10e7b835f0ca5b0a4e333a002427d9488
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_policy]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: S3
+    description: "This policy mandates all requests to `aws_s3_bucket` resources to use ssl using `aws_s3_bucket_policy` resource."
+    type: sentinel
+  sagemaker-endpoint-config-prod-instance-count-check:
+    path: policies/sagemaker/sagemaker-endpoint-config-prod-instance-count-check.sentinel
+    sha: 4087af8efede4374cb0b4bab27d9aec681e76423f295ec6e9777213e10ef7b59
+    governed_resources: [aws_sagemaker_endpoint_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: SageMaker
+    description: "This policy checks if resources of type `aws_sagemaker_endpoint_configuration` have the `initial_instance_count` in `production_variants` attribute greater than 1"
+    type: sentinel
+  sagemaker-notebook-ensure-subnet-id-for-instance:
+    path: policies/sagemaker/sagemaker-notebook-ensure-subnet-id-for-instance.sentinel
+    sha: b942b4950d4b4dc7052c903b90b3f2156e2e52dc7b4d3563c71013ed0a595854
+    governed_resources: [aws_sagemaker_notebook_instance, aws_subnet]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: SageMaker
+    description: "This policy checks if resources of type `aws_sagemaker_instance` is launched in custom vpc"
+    type: sentinel
+  sagemaker-notebook-instance-root-access-check:
+    path: policies/sagemaker/sagemaker-notebook-instance-root-access-check.sentinel
+    sha: 6f41e696946cdebdc59095c932fd557e0d11b6ac66678dbef23e055b498b40a6
+    governed_resources: [aws_sagemaker_notebook_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: SageMaker
+    description: "This policy checks if resources of type `aws_sagemaker_notebook_instance` have the `root_access` attribute set to \"Disabled\""
+    type: sentinel
+  sagemaker-notebook-instances-should-be-launched-in-a-custom-vpc:
+    path: policies/sagemaker/sagemaker-notebook-instances-should-be-launched-in-a-custom-vpc.sentinel
+    sha: e219954c0fabfcf42c1ce162162867de1a07478607d82ba4e3972dd9206f50b8
+    governed_resources: [aws_sagemaker_notebook_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: SageMaker
+    description: "This control checks if an Amazon SageMaker AI notebook instance is launched within a custom virtual private cloud (VPC)."
+    type: sentinel
+  sagemaker-notebook-no-direct-internet-access:
+    path: policies/sagemaker/sagemaker-notebook-no-direct-internet-access.sentinel
+    sha: f178cfc094f9d9bb86d710e53788075b737cec2cf2c82101de0292ace3f76622
+    governed_resources: [aws_sagemaker_notebook_instance]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: SageMaker
+    description: "This policy checks if resources of type `aws_sagemaker_notebook_instance` have the `direct_internet_access` attribute set to \"Disabled\""
+    type: sentinel
+  secretsmanager-auto-rotation-enabled-check:
+    path: policies/secretsmanager/secretsmanager-auto-rotation-enabled-check.sentinel
+    sha: 148cc06f9637bbd54211438cf661818e66cfd380ff6cf5e319099da278fe7cd9
+    governed_resources: [aws_secretsmanager_secret, aws_secretsmanager_secret_rotation]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Secrets Manager
+    description: "This policy requires resources of type `aws_secretsmanager_secret` should be configured for automatic rotation."
+    type: sentinel
+  service-catalog-shared-within-organization:
+    path: policies/servicecatalog/service-catalog-shared-within-organization.sentinel
+    sha: c9752f481a9bdd7d5ef00c85e6a1dac0d984cf9c2094f910581a0ba5ae08358f
+    governed_resources: [aws_servicecatalog_portfolio, aws_servicecatalog_portfolio_share]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Service Catalog
+    description: "This policy requires `aws_servicecatalog_portfolio_share` resources to have attribute `type` should not be `ACCOUNT`."
+    type: sentinel
+  sns-topic-should-be-encrypted-at-rest:
+    path: policies/sns/sns-topic-should-be-encrypted-at-rest.sentinel
+    sha: dd0cd4ac980ec3a44b5479863fb7a49afce3359463750a4a59adf37d7f0037bc
+    governed_resources: [aws_sns_topic]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: SNS
+    description: "This policy requires that resources of type `aws_sns_topic` have encryption enabled with KMS key."
+    type: sentinel
+  sqs-queue-should-be-encrypted-at-rest:
+    path: policies/sqs/sqs-queue-should-be-encrypted-at-rest.sentinel
+    sha: 05dc080069dd38f5f404cd4c8bf0e22423ba86f5fcfaf94e0fd2b95a4ab62167
+    governed_resources: [aws_sqs_queue]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: SQS
+    description: "This policy requires resources of type `aws_sqs_queue` to be encrypted at rest."
+    type: sentinel
+  ssm-documents-should-not-be-public:
+    path: policies/ssm/ssm-documents-should-not-be-public.sentinel
+    sha: d481c20750c125bada4aacd66dc779c244acd3591564d56bd41a29863333dd07
+    governed_resources: [aws_ssm_document]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: SSM
+    description: "This policy requires resources of type `aws_ssm_document` to not be public."
+    type: sentinel
+  transfer-family-connectors-should-have-logging-enabled:
+    path: policies/transfer/transfer-family-connectors-should-have-logging-enabled.sentinel
+    sha: 59c9d858785112d281ee0cdc5e8705a936938337de9023d746ab2420cb1a59a1
+    governed_resources: [aws_transfer_connector]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Transfer Family
+    description: "This control checks whether Amazon CloudWatch logging is enabled for an AWS Transfer Family connector."
+    type: sentinel
+  transfer-family-server-should-not-use-ftp:
+    path: policies/transfer/transfer-family-server-should-not-use-ftp.sentinel
+    sha: 5258074dca43408273b1ec85bf0479396d1d2133351ad9da6b6b64cc88c15dd0
+    governed_resources: [aws_transfer_server]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: Transfer Family
+    description: "This policy requires AWS Transfer Servers shouldn't contain \"FTP\" for the attribute protocols."
+    type: sentinel
+  waf-classic-logging-enabled:
+    path: policies/waf/waf-classic-logging-enabled.sentinel
+    sha: 64f8e8e92b02a83c2c713059a3458da305fd6c3ac03e05573ace936792e3d3a8
+    governed_resources: [aws_waf_web_acl]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy checks whether logging is enabled for an `aws_waf_web_acl`."
+    type: sentinel
+  waf-global-rule-not-empty:
+    path: policies/waf/waf-global-rule-not-empty.sentinel
+    sha: 9ca1984cded72f38a2ac95941ca44d64af374bc394a23da0dc632b8c592aeabe
+    governed_resources: [aws_waf_rule]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy requires resources of type `aws_waf_rule` to have at least one predicate."
+    type: sentinel
+  waf-global-rulegroup-not-empty:
+    path: policies/waf/waf-global-rulegroup-not-empty.sentinel
+    sha: c7eb5360cfe81f3f835380e515d18c766837196d27e6721d1d4a9fcff6e7c382
+    governed_resources: [aws_waf_rule_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy requires resources of type `aws_waf_rule_group` to have at least one rule."
+    type: sentinel
+  waf-global-webacl-not-empty:
+    path: policies/waf/waf-global-webacl-not-empty.sentinel
+    sha: e37e23b3c65713eafddc2e7046d358a422c07ffc34b9fc8d4c0b82d368b67598
+    governed_resources: [aws_waf_web_acl]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy requires resources of type `aws_waf_web_acl` to have at least one rule or rule group."
+    type: sentinel
+  waf-regional-rule-not-empty:
+    path: policies/waf/waf-regional-rule-not-empty.sentinel
+    sha: 38df9e6e36088be3cd502ee983d45d61601c9b5f86f864f909dba747730d567c
+    governed_resources: [aws_wafregional_rule]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy checks whether an `aws_wafregional_rule` has at least one condition."
+    type: sentinel
+  waf-regional-rulegroup-not-empty:
+    path: policies/waf/waf-regional-rulegroup-not-empty.sentinel
+    sha: a8b1fe98752f6930597e16fadb2ee280981adb7fdcac402e7fcfa10c3fdd8523
+    governed_resources: [aws_wafregional_rule_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy checks whether an AWS WAF Regional rule group has at least one rule."
+    type: sentinel
+  waf-regional-webacl-not-empty:
+    path: policies/waf/waf-regional-webacl-not-empty.sentinel
+    sha: 25ddabbe2c5f86104e702992aac0c49ec60c4fbb02938ad3074d741d410e5036
+    governed_resources: [aws_wafregional_web_acl]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy requires resources of type `aws_wafregional_web_acl` to have at least one rule or rule group."
+    type: sentinel
+  wafv2-rulegroup-logging-enabled:
+    path: policies/waf/wafv2-rulegroup-logging-enabled.sentinel
+    sha: b4ca3c8ce7299a56873a971907e4c12ceb99936e0e9659526061156847e8ee54
+    governed_resources: [aws_wafv2_rule_group]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy requires resources of type `aws_wafv2_rule_group` have attribute `cloudwatch_metrics_enabled` set to true."
+    type: sentinel
+  wafv2-webacl-not-empty:
+    path: policies/waf/wafv2-webacl-not-empty.sentinel
+    sha: d788a97045c5abccc369f726fa613098dcbc714ba1d181e463706e417bab919f
+    governed_resources: [aws_wafv2_web_acl]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "This policy requires resources of type `aws_wafv2_web_acl` to have at least one rule or rule group."
+    type: sentinel
+  wafv2-webacl-should-have-logging-enabled:
+    path: policies/waf/wafv2-webacl-should-have-logging-enabled.sentinel
+    sha: 312bba7af4d662e1b1642b572e61a27a37a461ba7ef6e47ce9c4a3dd8d3cf045
+    governed_resources: [aws_wafv2_web_acl, aws_wafv2_web_acl_logging_configuration]
+    provider: AWS
+    regulations:
+      - name: NIST SP 800-53
+        version: Revision 5
+    service: WAF
+    description: "WAFv2 Web ACLs should have logging enabled"
+    type: sentinel
+modules:
+  report:
+    path: modules/report/report.sentinel
+    sha: 47fa386c0042bfd4b203f187b476d93cf86ec996c06c7caddf4cdb651d7926c9
+  tfconfig-functions:
+    path: modules/tfconfig-functions/tfconfig-functions.sentinel
+    sha: 0ecd10b670178783732b5f26a6057790179df8d3cf9a49a39793f25381ae99fd
+  tfplan-functions:
+    path: modules/tfplan-functions/tfplan-functions.sentinel
+    sha: e146595b0e9d3485cecacda2f1d1f489821ddc33076f4e8a792af16dd656f03b
+  tfresources:
+    path: modules/tfresources/tfresources.sentinel
+    sha: 852a03144b03be5aec3a25bfe77e869d6dbfb824b4ec22db0efee8f708981963
