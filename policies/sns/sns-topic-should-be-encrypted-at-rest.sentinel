@@ -1,4 +1,5 @@
 # This policy requires that resources of type `aws_sns_topic` have encryption enabled with KMS key.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sns-controls.html#sns-1 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":            "sns-topic-should-be-encrypted-at-rest",
 	"resource_aws_sns_topic": "aws_sns_topic",
-	"message":                "Attribute 'kms_master_key_id' must be present for 'aws_sns_topic' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sns-controls.html#sns-1 for more details.",
+	"message":                "Attribute 'kms_master_key_id' must be present for 'aws_sns_topic' resources",
 	"kms_master_key_id":      "kms_master_key_id",
 	"constant_value":         "constant_value",
 }

@@ -1,4 +1,5 @@
 # This policy requires that resources of type `aws_redshiftserverless_namespace` have encryption enabled with customer managed KMS key.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-4 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                               "redshift-serverless-namespace-should-be-encrypted-with-cmk",
 	"resource_aws_redshiftserverless_namespace": "aws_redshiftserverless_namespace",
-	"message":        "Attribute 'kms_key_id' must be present for 'aws_redshiftserverless_namespace' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-4 for more details.",
+	"message":        "Attribute 'kms_key_id' must be present for 'aws_redshiftserverless_namespace' resources",
 	"kms_key_id":     "kms_key_id",
 	"constant_value": "constant_value",
 }

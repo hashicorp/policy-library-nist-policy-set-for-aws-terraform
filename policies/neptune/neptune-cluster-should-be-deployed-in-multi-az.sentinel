@@ -1,4 +1,5 @@
 # This policy requires neptune cluster to be deployed in multiple availability zone (multi-AZ) mode
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-9 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                  "neptune-cluster-should-be-deployed-in-multi-az",
-	"message":                      "Attribute 'availability_zones' must be greater than or equal to 2 for 'aws_neptune_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-9 for more details.",
+	"message":                      "Attribute 'availability_zones' must be greater than or equal to 2 for 'aws_neptune_cluster' resources",
 	"resource_aws_neptune_cluster": "aws_neptune_cluster",
 }
 

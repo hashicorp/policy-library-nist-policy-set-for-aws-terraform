@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_mq_broker' have the 'deployment_mode' attribute set to 'CLUSTER_MULTI_AZ'
 # for RabbitMQ brokers.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-6 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":            "mq-rabbit-brokers-should-use-cluster-deployment",
-	"message":                "Attribute 'deployment_mode' should be 'CLUSTER_MULTI_AZ' for AWS RabbitMQ Broker. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-6 for more details.",
+	"message":                "Attribute 'deployment_mode' should be 'CLUSTER_MULTI_AZ' for AWS RabbitMQ Broker",
 	"resource_aws_mq_broker": "aws_mq_broker",
 	"engine_type":            "engine_type",
 	"deployment_mode":        "deployment_mode",

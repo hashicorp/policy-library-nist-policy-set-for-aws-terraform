@@ -1,4 +1,5 @@
 # S3 Buckets with versioning should have lifecycle configurations
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-10 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "types"
 # Constants
 const = {
 	"policy_name":                                    "s3-bucket-with-versioning-should-have-lifecycle-configurations",
-	"message":                                        "S3 Buckets with versioning should have lifecycle configurations. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-10 for more details.",
+	"message":                                        "S3 Buckets with versioning should have lifecycle configurations",
 	"resource_aws_s3_bucket":                         "aws_s3_bucket",
 	"resource_aws_s3_bucket_lifecycle_configuration": "aws_s3_bucket_lifecycle_configuration",
 	"resource_aws_s3_bucket_versioning":              "aws_s3_bucket_versioning",

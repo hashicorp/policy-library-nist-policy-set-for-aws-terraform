@@ -1,5 +1,6 @@
 # MQ.5
 # This control checks whether the deployment mode for an Amazon MQ ActiveMQ broker is set to active/standby.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-5 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":            "activemq-brokers-should-use-active_standby-deployment-mode",
-	"message":                "Amazon MQ brokers should use ACTIVE_STANDBY_MULTI_AZ or CLUSTER_MULTI_AZ deployment mode for high availability. https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-5",
+	"message":                "Amazon MQ brokers should use ACTIVE_STANDBY_MULTI_AZ or CLUSTER_MULTI_AZ deployment mode for high availability.",
 	"resource_aws_mq_broker": "aws_mq_broker",
 	"valid_deployment_modes": ["ACTIVE_STANDBY_MULTI_AZ", "CLUSTER_MULTI_AZ"],
 }
