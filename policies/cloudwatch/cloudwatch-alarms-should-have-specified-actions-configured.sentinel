@@ -1,5 +1,6 @@
 # CloudWatch.15
 # This control checks whether an Amazon CloudWatch alarm has at least one action configured for the ALARM state.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudwatch-controls.html#cloudwatch-15 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name": "cloudwatch-alarms-should-have-specified-actions-configured",
-	"message":     "CloudWatch alarms must have alarm actions configured. Refer to AWS security best practices for more details. https://docs.aws.amazon.com/securityhub/latest/userguide/cloudwatch-controls.html#cloudwatch-15",
+	"message":     "CloudWatch alarms must have alarm actions configured.",
 	"resource_aws_cloudwatch_metric_alarm":    "aws_cloudwatch_metric_alarm",
 	"resource_aws_cloudwatch_composite_alarm": "aws_cloudwatch_composite_alarm",
 	"alarm_actions":                           "alarm_actions",

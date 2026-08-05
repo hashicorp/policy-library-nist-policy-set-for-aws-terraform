@@ -1,4 +1,5 @@
 # This policy checks whether a resource 'aws_networkfirewall_firewall' has been deployed across multiple availability zones.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-1 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                           "network-firewall-should-be-deployed-across-multiple-azs",
 	"resource_aws_networkfirewall_firewall": "aws_networkfirewall_firewall",
-	"message":                   "Resource 'aws_networkfirewall_firewall' should be deployed across multiple availability zones. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-1 for more details.",
+	"message":                   "Resource 'aws_networkfirewall_firewall' should be deployed across multiple availability zones",
 	"availability_zone_mapping": "availability_zone_mapping",
 }
 

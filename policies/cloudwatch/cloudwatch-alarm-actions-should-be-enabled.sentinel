@@ -1,5 +1,6 @@
 # CloudWatch.17
 # This control checks whether CloudWatch alarm actions are activated (ActionEnabled should be set to true).
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudwatch-controls.html#cloudwatch-17 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "cloudwatch-alarm-actions-should-be-enabled",
-	"message":     "CloudWatch alarms should have actions enabled. Refer to AWS security best practices for more details. https://docs.aws.amazon.com/securityhub/latest/userguide/cloudwatch-controls.html#cloudwatch-17",
+	"message":     "CloudWatch alarms should have actions enabled.",
 	"resource_aws_cloudwatch_metric_alarm":    "aws_cloudwatch_metric_alarm",
 	"resource_aws_cloudwatch_composite_alarm": "aws_cloudwatch_composite_alarm",
 	"actions_enabled":                         "actions_enabled",

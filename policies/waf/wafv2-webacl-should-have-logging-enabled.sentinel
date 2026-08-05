@@ -1,4 +1,5 @@
 # WAFv2 Web ACLs should have logging enabled
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/waf-controls.html#waf-11 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -17,7 +18,7 @@ import "types"
 
 const = {
 	"policy_name":                                      "wafv2-webacl-should-have-logging-enabled",
-	"message":                                          "WAFv2 Web ACLs should have logging enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/waf-controls.html#waf-11 for more details.",
+	"message":                                          "WAFv2 Web ACLs should have logging enabled",
 	"resource_aws_wafv2_web_acl":                       "aws_wafv2_web_acl",
 	"resource_aws_wafv2_web_acl_logging_configuration": "aws_wafv2_web_acl_logging_configuration",
 	"address":        "address",

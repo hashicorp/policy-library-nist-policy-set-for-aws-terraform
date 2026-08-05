@@ -1,4 +1,5 @@
 # S3 Buckets should have object lock enabled
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-15 for more details.
 
 # Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -21,7 +22,7 @@ param valid_mode default ["GOVERNANCE", "COMPLIANCE"]
 
 const = {
 	"policy_name":                                      "s3-bucket-should-have-object-lock-enabled",
-	"message":                                          "S3 Buckets should have object lock enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-15 for more details.",
+	"message":                                          "S3 Buckets should have object lock enabled",
 	"resource_aws_s3_bucket":                           "aws_s3_bucket",
 	"resource_aws_s3_bucket_object_lock_configuration": "aws_s3_bucket_object_lock_configuration",
 	"address":           "address",
