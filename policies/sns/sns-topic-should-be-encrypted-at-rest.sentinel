@@ -1,7 +1,7 @@
 # This policy requires that resources of type `aws_sns_topic` have encryption enabled with KMS key.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sns-controls.html#sns-1 for more details.
 
-# Copyright IBM Corp. 2025
+# Copyright IBM Corp. 2025, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
