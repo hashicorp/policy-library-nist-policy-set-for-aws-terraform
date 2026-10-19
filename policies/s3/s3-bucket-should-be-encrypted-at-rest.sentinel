@@ -17,7 +17,7 @@ import "types"
 # Constants
 
 const = {
-	"policy_name":                                                 "s3-bucket=should-be-encrypted-at-rest",
+	"policy_name":                                                 "s3-bucket-should-be-encrypted-at-rest",
 	"message":                                                     "S3 Buckets should have encryption enabled at rest with AWS KMS Key",
 	"resource_aws_s3_bucket":                                      "aws_s3_bucket",
 	"resource_aws_s3_bucket_server_side_encryption_configuration": "aws_s3_bucket_server_side_encryption_configuration",
