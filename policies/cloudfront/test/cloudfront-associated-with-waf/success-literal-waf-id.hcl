@@ -1,15 +1,6 @@
-# Copyright IBM Corp. 2025
-# SPDX-License-Identifier: BUSL-1.1
-
 mock "tfconfig/v2" {
   module {
-    source = "./mocks/success-traffic-deny-ssl-disabled/mock-tfconfig-v2.sentinel"
-  }
-}
-
-mock "tfstate/v2" {
-  module {
-    source = "./mocks/success-traffic-deny-ssl-disabled/mock-tfstate-v2.sentinel"
+    source = "./mocks/policy-success-literal-waf-id/mock-tfconfig-v2.sentinel"
   }
 }
 
