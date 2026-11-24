@@ -16,8 +16,6 @@ This rule is covered by the [s3-bucket-should-have-object-lock-enabled](https://
 
 ## Parameters
 
-Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-15).
-
 | Parameter | Description | Type | Default | Constraints |
 | --- | --- | --- | --- | --- |
 | `valid_mode` | S3 Object Lock retention mode. A bucket passes when its default retention mode is one of these. | `list(string)` | `["GOVERNANCE", "COMPLIANCE"]` | `{ allowed_values: ["GOVERNANCE", "COMPLIANCE"], min_items: 1 }` |
