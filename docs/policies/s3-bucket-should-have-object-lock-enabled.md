@@ -14,6 +14,12 @@ You can use S3 Object Lock to store objects using a write-once-read-many (WORM) 
 
 This rule is covered by the [s3-bucket-should-have-object-lock-enabled](https://github.com/hashicorp/policy-library-NIST-Policy-Set-for-AWS-Terraform/blob/main/policies/s3/s3-bucket-should-have-object-lock-enabled.sentinel) policy.
 
+## Parameters
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `valid_mode` | S3 Object Lock retention mode. A bucket passes when its default retention mode is one of these. | `list(string)` | `["GOVERNANCE", "COMPLIANCE"]` | `{ allowed_values: ["GOVERNANCE", "COMPLIANCE"], min_items: 1 }` |
+
 ## Policy Results (Pass)
 
 ```bash
